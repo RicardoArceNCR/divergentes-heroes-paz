@@ -112,6 +112,7 @@
   display: grid;
   place-items: center;
   text-align: center;
+  height: 100vh;
 }
 
 .hp-shell .hp-title {
