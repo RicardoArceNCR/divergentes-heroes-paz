@@ -236,7 +236,7 @@
               const noPhotoClass = img ? '' : ' hp-event--no-photo';
 
               return (
-                '<article class="hp-event' +
+                '<article class="hp-event hp-reveal' +
                 noPhotoClass +
                 '" id="' +
                 escapeHtml(id) +
@@ -264,7 +264,7 @@
             .join('');
 
           return (
-            '<section class="hp-month" id="' +
+            '<section class="hp-month hp-reveal" id="' +
             escapeHtml(monthAnchorId) +
             '" data-hp-month-section="' +
             escapeHtml(mid) +
@@ -320,15 +320,23 @@
   function setupActiveStep(root, navApi) {
     const events = Array.from(root.querySelectorAll('[data-hp-event="true"]'));
     const monthSections = Array.from(root.querySelectorAll('[data-hp-month-section]'));
+    const revealEls = Array.from(root.querySelectorAll('.hp-reveal'));
 
     const io = new IntersectionObserver(
       (entries) => {
         let best = null;
         for (const e of entries) {
+          // Reveal handling
+          if (e.isIntersecting && e.target.classList.contains('hp-reveal')) {
+            e.target.classList.add('is-inview');
+          }
+
+          // Active state handling
           if (!e.isIntersecting) continue;
           if (!best || e.intersectionRatio > best.intersectionRatio) best = e;
         }
-        if (best && best.target) {
+
+        if (best && best.target && best.target.hasAttribute('data-hp-event')) {
           for (const el of events) el.classList.toggle('is-active', el === best.target);
         }
 
@@ -339,10 +347,10 @@
           if (mid) navApi.setActive(mid);
         }
       },
-      { threshold: [0.25, 0.45, 0.65] }
+      { threshold: [0.15, 0.45, 0.75] }
     );
 
-    events.forEach((el) => io.observe(el));
+    revealEls.forEach((el) => io.observe(el));
     monthSections.forEach((el) => io.observe(el));
 
     return io;
@@ -364,7 +372,8 @@
       const progressPx = referenceY - rect.top;
       const clamped = Math.max(0, Math.min(1, progressPx / Math.max(1, total)));
 
-      fill.style.height = (clamped * total).toFixed(1) + 'px';
+      // Using scaleY for better performance (paints only, no layouts)
+      fill.style.transform = 'scaleY(' + clamped.toFixed(3) + ')';
     }
 
     function onScroll() {
