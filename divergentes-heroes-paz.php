@@ -25,9 +25,28 @@ final class Divergentes_Heroes_Paz_Plugin
     {
         $atts = shortcode_atts([
             'slug' => 'heroes-de-la-paz',
+            'theme' => 'default',
+            'layout' => 'contained',
+            'max' => '',
+            'rail_w' => '',
+            'rail_gap' => '',
+            'sticky_top' => '',
+            'event_photo_w' => '',
+            'font_body' => '',
+            'font_title' => '',
         ], $atts, self::SHORTCODE);
 
         $slug = sanitize_title($atts['slug'] ?? 'heroes-de-la-paz');
+
+        $theme = sanitize_key($atts['theme'] ?? 'default');
+        if ($theme === '') {
+            $theme = 'default';
+        }
+
+        $layout = sanitize_key($atts['layout'] ?? 'contained');
+        if ($layout !== 'fullbleed') {
+            $layout = 'contained';
+        }
 
         $root_id = 'heroesPazApp';
 
@@ -41,6 +60,51 @@ final class Divergentes_Heroes_Paz_Plugin
             'slug' => $slug,
             'basePath' => home_url('/'),
         ];
+
+        $css_vars = [];
+        $max = trim((string) ($atts['max'] ?? ''));
+        if ($max !== '') {
+            $css_vars['--hp-max'] = $max;
+        }
+
+        $rail_w = trim((string) ($atts['rail_w'] ?? ''));
+        if ($rail_w !== '') {
+            $css_vars['--hp-rail-w'] = $rail_w;
+        }
+
+        $rail_gap = trim((string) ($atts['rail_gap'] ?? ''));
+        if ($rail_gap !== '') {
+            $css_vars['--hp-rail-gap'] = $rail_gap;
+        }
+
+        $sticky_top = trim((string) ($atts['sticky_top'] ?? ''));
+        if ($sticky_top !== '') {
+            $css_vars['--hp-sticky-top'] = $sticky_top;
+        }
+
+        $event_photo_w = trim((string) ($atts['event_photo_w'] ?? ''));
+        if ($event_photo_w !== '') {
+            $css_vars['--hp-event-photo-w'] = $event_photo_w;
+        }
+
+        $font_body = trim((string) ($atts['font_body'] ?? ''));
+        if ($font_body !== '') {
+            $css_vars['--hp-font-body'] = $font_body;
+        }
+
+        $font_title = trim((string) ($atts['font_title'] ?? ''));
+        if ($font_title !== '') {
+            $css_vars['--hp-font-title'] = $font_title;
+        }
+
+        $shell_style_attr = '';
+        if (!empty($css_vars)) {
+            $pairs = [];
+            foreach ($css_vars as $k => $v) {
+                $pairs[] = $k . ':' . $v;
+            }
+            $shell_style_attr = implode(';', $pairs) . ';';
+        }
 
         ob_start();
         $plugin_dir = plugin_dir_path(__FILE__);

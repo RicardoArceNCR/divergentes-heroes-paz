@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 }
 ?>
 
-<section class="hp-shell">
+<section class="hp-shell" data-theme="<?php echo esc_attr($theme ?? 'default'); ?>" data-layout="<?php echo esc_attr($layout ?? 'contained'); ?>"<?php echo !empty($shell_style_attr) ? ' style="' . esc_attr($shell_style_attr) . '"' : ''; ?>>
     <section class="hp-hero" aria-label="Héroes de la Paz">
         <div class="hp-container">
             <h1 class="hp-title">Los “Héroes de la Paz”</h1>

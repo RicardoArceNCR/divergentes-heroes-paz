@@ -49,7 +49,7 @@
     );
   }
 
-  function createModal() {
+  function createModal(mountEl) {
     const backdrop = document.createElement('div');
     backdrop.className = 'hp-modal-backdrop';
     backdrop.setAttribute('role', 'dialog');
@@ -68,7 +68,8 @@
       '  <div class="hp-modal-body" id="hpModalBody"></div>' +
       '</div>';
 
-    document.body.appendChild(backdrop);
+    const mount = mountEl && mountEl.appendChild ? mountEl : document.body;
+    mount.appendChild(backdrop);
 
     const modal = backdrop.querySelector('.hp-modal');
     const btnClose = backdrop.querySelector('[data-hp-close]');
@@ -364,7 +365,8 @@
   }
 
   function setupProfiles(root, data) {
-    const modal = createModal();
+    const shell = root && root.closest ? root.closest('.hp-shell') : null;
+    const modal = createModal(shell);
     const byId = new Map();
     for (const e of data.events) {
       if (e && e.id) byId.set(String(e.id), e);
