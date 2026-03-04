@@ -114,7 +114,11 @@ final class Divergentes_Heroes_Paz_Plugin
         ob_start();
         $plugin_dir = plugin_dir_path(__FILE__);
         $config_json = wp_json_encode($config, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+
+        echo '<div class="hp-mount ' . ($layout === 'fullbleed' ? 'hp-fullbleed' : '') . '">';
         include $plugin_dir . 'templates/app-shell.php';
+        echo '</div>';
+
         return (string) ob_get_clean();
     }
 
@@ -123,13 +127,27 @@ final class Divergentes_Heroes_Paz_Plugin
         $plugin_dir = plugin_dir_path(__FILE__);
         $plugin_url = plugin_dir_url(__FILE__);
 
+        // Google Fonts Preconnect
+        add_action('wp_head', function () {
+            echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . PHP_EOL;
+            echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . PHP_EOL;
+        });
+
+        // Enqueue Google Fonts
+        wp_enqueue_style(
+            'hp-google-fonts',
+            'https://fonts.googleapis.com/css2?family=Lacquer&family=Inter:wght@400;500;600&display=swap',
+            [],
+            null
+        );
+
         $css_path = $plugin_dir . 'assets/app.css';
         $js_path = $plugin_dir . 'assets/app.js';
 
         $css_ver = file_exists($css_path) ? (string) filemtime($css_path) : '1.0.0';
         $js_ver = file_exists($js_path) ? (string) filemtime($js_path) : '1.0.0';
 
-        wp_enqueue_style(self::STYLE_HANDLE, $plugin_url . 'assets/app.css', [], $css_ver);
+        wp_enqueue_style(self::STYLE_HANDLE, $plugin_url . 'assets/app.css', ['hp-google-fonts'], $css_ver);
         wp_enqueue_script(self::SCRIPT_HANDLE, $plugin_url . 'assets/app.js', [], $js_ver, true);
 
         if ($layout === 'fullbleed') {

@@ -221,19 +221,26 @@
               const hasProfile = e.profile && (e.profile.mode === 'modal' || e.profile.mode === 'link');
               const btn = hasProfile
                 ? '<button type="button" class="hp-button" data-hp-open-profile="' +
-                  escapeHtml(id) +
-                  '">Ver perfil completo</button>'
+                escapeHtml(id) +
+                '">Ver perfil completo</button>'
                 : '';
 
               const img = photoSrc
                 ? '<img class="hp-photo" loading="lazy" src="' +
-                  escapeHtml(photoSrc) +
-                  '" alt="' +
-                  escapeHtml(photoAlt) +
-                  '">'
+                escapeHtml(photoSrc) +
+                '" alt="' +
+                escapeHtml(photoAlt) +
+                '">'
                 : '';
 
               const noPhotoClass = img ? '' : ' hp-event--no-photo';
+
+              const categories = Array.isArray(e.category) ? e.category : [];
+              const tagsHtml = categories.length
+                ? '<div class="hp-tags">' +
+                categories.map((cat) => '<span class="hp-tag">' + escapeHtml(cat) + '</span>').join('') +
+                '</div>'
+                : '';
 
               return (
                 '<article class="hp-event hp-reveal' +
@@ -244,6 +251,7 @@
                 '  <span class="hp-marker" aria-hidden="true"></span>' +
                 '  <div class="hp-event-text">' +
                 '    <header class="hp-event-header">' +
+                tagsHtml +
                 '      <h3 class="hp-event-name">' +
                 escapeHtml(name) +
                 '</h3>' +
@@ -252,8 +260,8 @@
                 (context ? '<p class="hp-event-context">' + escapeHtml(context) + '</p>' : '') +
                 (contrast
                   ? '<p class="hp-event-contrast"><strong>Versión oficial:</strong> ' +
-                    escapeHtml(contrast) +
-                    '</p>'
+                  escapeHtml(contrast) +
+                  '</p>'
                   : '') +
                 (btn ? '<div class="hp-event-cta">' + btn + '</div>' : '') +
                 '  </div>' +
@@ -417,15 +425,15 @@
 
       const sourcesHtml = sources.length
         ? '<div class="hp-section"><h3>Fuentes</h3><ul class="hp-sources">' +
-          sources
-            .map((s) => {
-              const label = s && s.label ? String(s.label) : 'Fuente';
-              const url = s && s.url ? String(s.url) : '';
-              if (!url) return '<li>' + escapeHtml(label) + '</li>';
-              return '<li><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a></li>';
-            })
-            .join('') +
-          '</ul></div>'
+        sources
+          .map((s) => {
+            const label = s && s.label ? String(s.label) : 'Fuente';
+            const url = s && s.url ? String(s.url) : '';
+            if (!url) return '<li>' + escapeHtml(label) + '</li>';
+            return '<li><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a></li>';
+          })
+          .join('') +
+        '</ul></div>'
         : '';
 
       const html =
