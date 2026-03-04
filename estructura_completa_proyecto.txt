@@ -1,0 +1,16 @@
+.
+./assets
+./assets/app.css
+./assets/app.js
+./data
+./data/heroes.json
+./images
+./images/.keep
+./templates
+./templates/app-shell.php
+./templates/seo-fallback.php
+./divergentes-heroes-paz.php
+./estructura_completa_proyecto.txt
+./readme.txt
+
+5 directories, 9 files

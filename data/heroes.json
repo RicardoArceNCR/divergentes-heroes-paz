@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "title": "Los “Héroes de la Paz”",
+    "subtitle": "Quiénes son en realidad los sandinistas que el régimen Ortega-Murillo glorifica",
+    "total": 3,
+    "updated_at": "2026-03-03"
+  },
+  "months": [
+    {
+      "id": "2018-04",
+      "label": "Abril 2018",
+      "chapter": "Inicio de las protestas"
+    },
+    {
+      "id": "2018-05",
+      "label": "Mayo 2018",
+      "chapter": "Escalada de violencia"
+    },
+    {
+      "id": "2018-06",
+      "label": "Junio 2018",
+      "chapter": "Represión y tranques"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-2018-04-20-cadenas",
+      "date": "2018-04-20",
+      "month_id": "2018-04",
+      "display_date": "20 de abril",
+      "name": "Cristhiam Emilio Cadenas",
+      "place": "León",
+      "category": ["estudiante", "movimiento estudiantil"],
+      "context": "Estudiante y miembro histórico del Movimiento Estudiantil de la UNAN-León; falleció calcinado en el incendio del Centro Universitario.",
+      "contrast": "El régimen atribuyó el incendio a “grupos golpistas”, pero la familia cuestiona la versión; se reportaron inconsistencias forenses.",
+      "photo": {
+        "src": "",
+        "alt": "Retrato de Cristhiam Emilio Cadenas"
+      },
+      "profile": {
+        "mode": "modal",
+        "body": "Texto completo del perfil…",
+        "sources": [
+          { "label": "CIDH Informe 2018", "url": "https://example.com" }
+        ]
+      }
+    },
+    {
+      "id": "evt-2018-05-11-miranda",
+      "date": "2018-05-11",
+      "month_id": "2018-05",
+      "display_date": "11 de mayo",
+      "name": "Carlos Alberto Miranda",
+      "place": "Managua",
+      "category": ["juventud sandinista"],
+      "context": "Miembro de estructuras partidarias; el fallecimiento fue incorporado a la narrativa institucional como símbolo de “paz y seguridad”.",
+      "contrast": "Diversas reconstrucciones del contexto difieren de la narrativa oficial y hay vacíos de información pública verificable.",
+      "photo": {
+        "src": "",
+        "alt": "Retrato de Carlos Alberto Miranda"
+      },
+      "profile": {
+        "mode": "modal",
+        "body": "Texto completo del perfil…",
+        "sources": []
+      }
+    },
+    {
+      "id": "evt-2018-06-15-ejemplo",
+      "date": "2018-06-15",
+      "month_id": "2018-06",
+      "display_date": "15 de junio",
+      "name": "Nombre Apellido (Ejemplo)",
+      "place": "Masaya",
+      "category": ["policía"],
+      "context": "Descripción breve verificable del caso (qué se sabe, desde qué fuentes).",
+      "contrast": "Cómo difiere la narrativa oficial o qué puntos están en disputa (si aplica).",
+      "photo": {
+        "src": "",
+        "alt": "Retrato de Nombre Apellido"
+      },
+      "profile": {
+        "mode": "modal",
+        "body": "Dossier largo del caso. Puedes usar párrafos con saltos de línea.\n\nIncluye secciones: Contexto / Versión oficial / Uso político / Fuentes.",
+        "sources": [
+          { "label": "Fuente 1", "url": "" },
+          { "label": "Fuente 2", "url": "" }
+        ]
+      }
+    }
+  ]
+}
