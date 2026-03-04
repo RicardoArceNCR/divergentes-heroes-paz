@@ -24,6 +24,20 @@
     return str.replace(/[^a-zA-Z0-9_\-]/g, '\\$&');
   }
 
+  function resolveAssetUrl(src, imagesBaseUrl) {
+    const raw = String(src == null ? '' : src).trim();
+    if (!raw) return '';
+    if (/^https?:\/\//i.test(raw)) return raw;
+    if (/^data:/i.test(raw)) return raw;
+    if (/^\//.test(raw)) return raw;
+    if (!imagesBaseUrl) return raw;
+    if (/^\.\/?images\//i.test(raw)) {
+      const rel = raw.replace(/^\.\/?images\//i, '');
+      return String(imagesBaseUrl).replace(/\/+$/, '') + '/' + rel;
+    }
+    return raw;
+  }
+
   function groupByMonth(events) {
     const map = new Map();
     for (const e of events) {
@@ -146,9 +160,11 @@
     return { open, close };
   }
 
-  function renderApp(root, data) {
+  function renderApp(root, data, config) {
     const months = Array.isArray(data.months) ? data.months : [];
     const events = Array.isArray(data.events) ? data.events : [];
+
+    const imagesBaseUrl = config && config.imagesBaseUrl ? String(config.imagesBaseUrl) : '';
 
     const monthsById = new Map();
     for (const m of months) {
@@ -199,7 +215,7 @@
               const meta = formatMeta(e);
               const context = e.context || '';
               const contrast = e.contrast || '';
-              const photoSrc = e.photo && e.photo.src ? String(e.photo.src) : '';
+              const photoSrc = e.photo && e.photo.src ? resolveAssetUrl(String(e.photo.src), imagesBaseUrl) : '';
               const photoAlt = e.photo && e.photo.alt ? String(e.photo.alt) : '';
 
               const hasProfile = e.profile && (e.profile.mode === 'modal' || e.profile.mode === 'link');
@@ -462,7 +478,7 @@
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
 
-        const renderState = renderApp(root, data);
+        const renderState = renderApp(root, data, config);
         hideFallback(root);
         const navApi = setupStickyNav(root);
         setupActiveStep(root, navApi);

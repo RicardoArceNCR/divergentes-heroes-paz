@@ -15,6 +15,7 @@ final class Divergentes_Heroes_Paz_Plugin
     const SHORTCODE = 'heroes_paz';
     const SCRIPT_HANDLE = 'divergentes-heroes-paz-app';
     const STYLE_HANDLE = 'divergentes-heroes-paz-app';
+    const PAGE_STYLE_HANDLE = 'divergentes-heroes-paz-page';
 
     public static function init(): void
     {
@@ -48,14 +49,18 @@ final class Divergentes_Heroes_Paz_Plugin
             $layout = 'contained';
         }
 
+        $page_id = (int) get_queried_object_id();
+
         $root_id = 'heroesPazApp';
 
         $data_url = plugins_url('data/heroes.json', __FILE__);
+        $images_base_url = plugins_url('images/', __FILE__);
 
-        self::enqueue_assets();
+        self::enqueue_assets($page_id, $layout);
 
         $config = [
             'dataUrl' => $data_url,
+            'imagesBaseUrl' => $images_base_url,
             'rootId' => $root_id,
             'slug' => $slug,
             'basePath' => home_url('/'),
@@ -113,7 +118,7 @@ final class Divergentes_Heroes_Paz_Plugin
         return (string) ob_get_clean();
     }
 
-    private static function enqueue_assets(): void
+    private static function enqueue_assets(int $page_id, string $layout): void
     {
         $plugin_dir = plugin_dir_path(__FILE__);
         $plugin_url = plugin_dir_url(__FILE__);
@@ -126,6 +131,19 @@ final class Divergentes_Heroes_Paz_Plugin
 
         wp_enqueue_style(self::STYLE_HANDLE, $plugin_url . 'assets/app.css', [], $css_ver);
         wp_enqueue_script(self::SCRIPT_HANDLE, $plugin_url . 'assets/app.js', [], $js_ver, true);
+
+        if ($layout === 'fullbleed') {
+            $page_css_path = $plugin_dir . 'assets/page-heroes-paz.css';
+            if (file_exists($page_css_path)) {
+                $page_css_ver = (string) filemtime($page_css_path);
+                wp_enqueue_style(
+                    self::PAGE_STYLE_HANDLE,
+                    $plugin_url . 'assets/page-heroes-paz.css',
+                    [self::STYLE_HANDLE],
+                    $page_css_ver
+                );
+            }
+        }
     }
 }
 
