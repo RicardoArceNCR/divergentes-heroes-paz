@@ -34,7 +34,7 @@
       "context": "Estudiante y miembro histórico del Movimiento Estudiantil de la UNAN-León; falleció calcinado en el incendio del Centro Universitario.",
       "contrast": "El régimen atribuyó el incendio a “grupos golpistas”, pero la familia cuestiona la versión; se reportaron inconsistencias forenses.",
       "photo": {
-        "src": "",
+        "src": "./images/img-1.webp",
         "alt": "Retrato de Cristhiam Emilio Cadenas"
       },
       "profile": {
@@ -56,7 +56,7 @@
       "context": "Miembro de estructuras partidarias; el fallecimiento fue incorporado a la narrativa institucional como símbolo de “paz y seguridad”.",
       "contrast": "Diversas reconstrucciones del contexto difieren de la narrativa oficial y hay vacíos de información pública verificable.",
       "photo": {
-        "src": "",
+        "src": "./images/img-1.webp",
         "alt": "Retrato de Carlos Alberto Miranda"
       },
       "profile": {
@@ -76,7 +76,7 @@
       "context": "Descripción breve verificable del caso (qué se sabe, desde qué fuentes).",
       "contrast": "Cómo difiere la narrativa oficial o qué puntos están en disputa (si aplica).",
       "photo": {
-        "src": "",
+        "src": "./images/img-1.webp",
         "alt": "Retrato de Nombre Apellido"
       },
       "profile": {

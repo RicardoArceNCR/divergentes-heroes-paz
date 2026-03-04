@@ -24,6 +24,20 @@
     return str.replace(/[^a-zA-Z0-9_\-]/g, '\\$&');
   }
 
+  function resolveAssetUrl(src, imagesBaseUrl) {
+    const raw = String(src == null ? '' : src).trim();
+    if (!raw) return '';
+    if (/^https?:\/\//i.test(raw)) return raw;
+    if (/^data:/i.test(raw)) return raw;
+    if (/^\//.test(raw)) return raw;
+    if (!imagesBaseUrl) return raw;
+    if (/^\.\/?images\//i.test(raw)) {
+      const rel = raw.replace(/^\.\/?images\//i, '');
+      return String(imagesBaseUrl).replace(/\/+$/, '') + '/' + rel;
+    }
+    return raw;
+  }
+
   function groupByMonth(events) {
     const map = new Map();
     for (const e of events) {
@@ -49,7 +63,7 @@
     );
   }
 
-  function createModal() {
+  function createModal(mountEl) {
     const backdrop = document.createElement('div');
     backdrop.className = 'hp-modal-backdrop';
     backdrop.setAttribute('role', 'dialog');
@@ -68,7 +82,8 @@
       '  <div class="hp-modal-body" id="hpModalBody"></div>' +
       '</div>';
 
-    document.body.appendChild(backdrop);
+    const mount = mountEl && mountEl.appendChild ? mountEl : document.body;
+    mount.appendChild(backdrop);
 
     const modal = backdrop.querySelector('.hp-modal');
     const btnClose = backdrop.querySelector('[data-hp-close]');
@@ -145,9 +160,11 @@
     return { open, close };
   }
 
-  function renderApp(root, data) {
+  function renderApp(root, data, config) {
     const months = Array.isArray(data.months) ? data.months : [];
     const events = Array.isArray(data.events) ? data.events : [];
+
+    const imagesBaseUrl = config && config.imagesBaseUrl ? String(config.imagesBaseUrl) : '';
 
     const monthsById = new Map();
     for (const m of months) {
@@ -198,28 +215,35 @@
               const meta = formatMeta(e);
               const context = e.context || '';
               const contrast = e.contrast || '';
-              const photoSrc = e.photo && e.photo.src ? String(e.photo.src) : '';
+              const photoSrc = e.photo && e.photo.src ? resolveAssetUrl(String(e.photo.src), imagesBaseUrl) : '';
               const photoAlt = e.photo && e.photo.alt ? String(e.photo.alt) : '';
 
               const hasProfile = e.profile && (e.profile.mode === 'modal' || e.profile.mode === 'link');
               const btn = hasProfile
                 ? '<button type="button" class="hp-button" data-hp-open-profile="' +
-                  escapeHtml(id) +
-                  '">Ver perfil completo</button>'
+                escapeHtml(id) +
+                '">Ver perfil completo</button>'
                 : '';
 
               const img = photoSrc
                 ? '<img class="hp-photo" loading="lazy" src="' +
-                  escapeHtml(photoSrc) +
-                  '" alt="' +
-                  escapeHtml(photoAlt) +
-                  '">'
+                escapeHtml(photoSrc) +
+                '" alt="' +
+                escapeHtml(photoAlt) +
+                '">'
                 : '';
 
               const noPhotoClass = img ? '' : ' hp-event--no-photo';
 
+              const categories = Array.isArray(e.category) ? e.category : [];
+              const tagsHtml = categories.length
+                ? '<div class="hp-tags">' +
+                categories.map((cat) => '<span class="hp-tag">' + escapeHtml(cat) + '</span>').join('') +
+                '</div>'
+                : '';
+
               return (
-                '<article class="hp-event' +
+                '<article class="hp-event hp-reveal' +
                 noPhotoClass +
                 '" id="' +
                 escapeHtml(id) +
@@ -227,6 +251,7 @@
                 '  <span class="hp-marker" aria-hidden="true"></span>' +
                 '  <div class="hp-event-text">' +
                 '    <header class="hp-event-header">' +
+                tagsHtml +
                 '      <h3 class="hp-event-name">' +
                 escapeHtml(name) +
                 '</h3>' +
@@ -235,8 +260,8 @@
                 (context ? '<p class="hp-event-context">' + escapeHtml(context) + '</p>' : '') +
                 (contrast
                   ? '<p class="hp-event-contrast"><strong>Versión oficial:</strong> ' +
-                    escapeHtml(contrast) +
-                    '</p>'
+                  escapeHtml(contrast) +
+                  '</p>'
                   : '') +
                 (btn ? '<div class="hp-event-cta">' + btn + '</div>' : '') +
                 '  </div>' +
@@ -247,7 +272,7 @@
             .join('');
 
           return (
-            '<section class="hp-month" id="' +
+            '<section class="hp-month hp-reveal" id="' +
             escapeHtml(monthAnchorId) +
             '" data-hp-month-section="' +
             escapeHtml(mid) +
@@ -303,15 +328,23 @@
   function setupActiveStep(root, navApi) {
     const events = Array.from(root.querySelectorAll('[data-hp-event="true"]'));
     const monthSections = Array.from(root.querySelectorAll('[data-hp-month-section]'));
+    const revealEls = Array.from(root.querySelectorAll('.hp-reveal'));
 
     const io = new IntersectionObserver(
       (entries) => {
         let best = null;
         for (const e of entries) {
+          // Reveal handling
+          if (e.isIntersecting && e.target.classList.contains('hp-reveal')) {
+            e.target.classList.add('is-inview');
+          }
+
+          // Active state handling
           if (!e.isIntersecting) continue;
           if (!best || e.intersectionRatio > best.intersectionRatio) best = e;
         }
-        if (best && best.target) {
+
+        if (best && best.target && best.target.hasAttribute('data-hp-event')) {
           for (const el of events) el.classList.toggle('is-active', el === best.target);
         }
 
@@ -322,10 +355,10 @@
           if (mid) navApi.setActive(mid);
         }
       },
-      { threshold: [0.25, 0.45, 0.65] }
+      { threshold: [0.15, 0.45, 0.75] }
     );
 
-    events.forEach((el) => io.observe(el));
+    revealEls.forEach((el) => io.observe(el));
     monthSections.forEach((el) => io.observe(el));
 
     return io;
@@ -347,7 +380,8 @@
       const progressPx = referenceY - rect.top;
       const clamped = Math.max(0, Math.min(1, progressPx / Math.max(1, total)));
 
-      fill.style.height = (clamped * total).toFixed(1) + 'px';
+      // Using scaleY for better performance (paints only, no layouts)
+      fill.style.transform = 'scaleY(' + clamped.toFixed(3) + ')';
     }
 
     function onScroll() {
@@ -364,7 +398,8 @@
   }
 
   function setupProfiles(root, data) {
-    const modal = createModal();
+    const shell = root && root.closest ? root.closest('.hp-shell') : null;
+    const modal = createModal(shell);
     const byId = new Map();
     for (const e of data.events) {
       if (e && e.id) byId.set(String(e.id), e);
@@ -390,15 +425,15 @@
 
       const sourcesHtml = sources.length
         ? '<div class="hp-section"><h3>Fuentes</h3><ul class="hp-sources">' +
-          sources
-            .map((s) => {
-              const label = s && s.label ? String(s.label) : 'Fuente';
-              const url = s && s.url ? String(s.url) : '';
-              if (!url) return '<li>' + escapeHtml(label) + '</li>';
-              return '<li><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a></li>';
-            })
-            .join('') +
-          '</ul></div>'
+        sources
+          .map((s) => {
+            const label = s && s.label ? String(s.label) : 'Fuente';
+            const url = s && s.url ? String(s.url) : '';
+            if (!url) return '<li>' + escapeHtml(label) + '</li>';
+            return '<li><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a></li>';
+          })
+          .join('') +
+        '</ul></div>'
         : '';
 
       const html =
@@ -460,7 +495,7 @@
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
 
-        const renderState = renderApp(root, data);
+        const renderState = renderApp(root, data, config);
         hideFallback(root);
         const navApi = setupStickyNav(root);
         setupActiveStep(root, navApi);
