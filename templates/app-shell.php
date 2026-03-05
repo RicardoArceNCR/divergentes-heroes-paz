@@ -38,13 +38,28 @@ if (!defined('ABSPATH')) {
 
                 <div class="hp-fallback-wrap" data-hp-fallback>
                     <?php
-                    $plugin_dir = plugin_dir_path(__FILE__);
-                    $json_path = dirname($plugin_dir) . '/data/heroes.json';
-                    $data = null;
-                    if (file_exists($json_path)) {
-                        $raw = file_get_contents($json_path);
-                        $data = json_decode($raw, true);
+                    $json_data = null;
+                    $local_path = '';
+
+                    // Try to resolve data_url to a local path
+                    if (strpos($data_url, content_url()) !== false) {
+                        $local_path = str_replace(content_url(), WP_CONTENT_DIR, $data_url);
                     }
+
+                    if ($local_path && file_exists($local_path)) {
+                        $json_data = json_decode(file_get_contents($local_path), true);
+                    }
+
+                    // Fallback to internal if still null
+                    if (!$json_data) {
+                        $internal_path = dirname(plugin_dir_path(__FILE__)) . '/data/heroes.json';
+                        if (file_exists($internal_path)) {
+                            $json_data = json_decode(file_get_contents($internal_path), true);
+                        }
+                    }
+
+                    // For the seo-fallback.php inclusion, it expects $data variable
+                    $data = $json_data;
                     include dirname(__FILE__) . '/seo-fallback.php';
                     ?>
                 </div>

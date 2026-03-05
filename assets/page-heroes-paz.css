@@ -1,79 +1,10 @@
-body.page-id-102 .wp-site-blocks{
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-body:has(.hp-shell[data-layout="fullbleed"]) .wp-site-blocks{
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-body.page-id-102 main.wp-block-group.has-global-padding{
-  margin-top: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  max-width: none !important;
-}
-
-body:has(.hp-shell[data-layout="fullbleed"]) main.wp-block-group.has-global-padding{
-  margin-top: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  max-width: none !important;
-}
-
-body.page-id-102 main.wp-block-group > .wp-block-group.alignfull.has-global-padding{
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  margin-block-start: 0 !important;
-}
-
-body:has(.hp-shell[data-layout="fullbleed"]) main.wp-block-group > .wp-block-group.alignfull.has-global-padding{
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  margin-block-start: 0 !important;
-}
-
-body.page-id-102 .entry-content.wp-block-post-content.has-global-padding{
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-body:has(.hp-shell[data-layout="fullbleed"]) .entry-content.wp-block-post-content.has-global-padding{
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-body.page-id-102 .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){
-  max-width: none !important;
-}
-
-body:has(.hp-shell[data-layout="fullbleed"]) .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){
-  max-width: none !important;
-}
-
-body.page-id-102 .wp-site-blocks > *{
-  margin-block-start: 0 !important;
-}
-
-body:has(.hp-shell[data-layout="fullbleed"]) .wp-site-blocks > *{
-  margin-block-start: 0 !important;
-}
-
-body.page-id-102{
-  overflow-x: clip;
-}
-
-body:has(.hp-shell[data-layout="fullbleed"]) {
-  overflow-x: clip;
-}
-
-body.page-id-102.admin-bar .hp-shell{
+/* Admin bar support for the shell */
+body.admin-bar .hp-shell {
   --hp-adminbar: 32px;
 }
 
-@media (max-width: 782px){
-  body.page-id-102.admin-bar .hp-shell{
+@media (max-width: 782px) {
+  body.admin-bar .hp-shell {
     --hp-adminbar: 46px;
   }
 }

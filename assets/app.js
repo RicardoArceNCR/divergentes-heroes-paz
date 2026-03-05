@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  const dataCache = new Map(); // url -> Promise<data>
+
   function safeJsonParse(raw) {
     try {
       return JSON.parse(raw);
@@ -127,6 +129,10 @@
       if (e.key === 'Escape') {
         e.preventDefault();
         close();
+        // Clear hash on escape if it was set
+        if (window.location.hash) {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
         return;
       }
 
@@ -148,11 +154,19 @@
     }
 
     backdrop.addEventListener('click', function (e) {
-      if (e.target === backdrop) close();
+      if (e.target === backdrop) {
+        close();
+        if (window.location.hash) {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+      }
     });
 
     btnClose.addEventListener('click', function () {
       close();
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
     });
 
     document.addEventListener('keydown', onKeydown);
@@ -425,6 +439,59 @@
     window.addEventListener('resize', onScroll);
   }
 
+  function openEventModal(id, byId, modal) {
+    const e = byId.get(String(id));
+    if (!e || !e.profile) return;
+
+    if (e.profile.mode === 'link' && e.profile.url) {
+      window.location.href = String(e.profile.url);
+      return;
+    }
+
+    const bodyText = e.profile.body ? String(e.profile.body) : '';
+    const sources = Array.isArray(e.profile.sources) ? e.profile.sources : [];
+
+    const sourcesHtml = sources.length
+      ? '<div class="hp-section"><h3>Fuentes</h3><ul class="hp-sources">' +
+      sources
+        .map((s) => {
+          const label = s && s.label ? String(s.label) : 'Fuente';
+          const url = s && s.url ? String(s.url) : '';
+          if (!url) return '<li>' + escapeHtml(label) + '</li>';
+          return '<li><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a></li>';
+        })
+        .join('') +
+      '</ul></div>'
+      : '';
+
+    const html =
+      (e.context ? '<div class="hp-section"><h3>Contexto</h3><p>' + escapeHtml(String(e.context)) + '</p></div>' : '') +
+      (e.contrast ? '<div class="hp-section"><h3>Versión oficial</h3><p>' + escapeHtml(String(e.contrast)) + '</p></div>' : '') +
+      (bodyText ? '<div class="hp-section"><h3>Perfil</h3><p>' + escapeHtml(bodyText).replaceAll('\n', '<br>') + '</p></div>' : '') +
+      sourcesHtml;
+
+    modal.open(
+      {
+        title: e.name || 'Perfil',
+        meta: formatMeta(e),
+        html: html || '<p>Sin información.</p>',
+      },
+      document.getElementById(id)
+    );
+
+    // Update hash
+    history.replaceState(null, '', '#' + id);
+
+    window.dispatchEvent(
+      new CustomEvent('profile_open', {
+        detail: {
+          eventId: String(id),
+          monthId: String(e.month_id || ''),
+        },
+      })
+    );
+  }
+
   function setupProfiles(root, data) {
     const shell = root && root.closest ? root.closest('.hp-shell') : null;
     const modal = createModal(shell);
@@ -440,53 +507,7 @@
       if (!btn) return;
 
       const id = btn.getAttribute('data-hp-open-profile') || '';
-      const e = byId.get(String(id));
-      if (!e || !e.profile) return;
-
-      if (e.profile.mode === 'link' && e.profile.url) {
-        window.location.href = String(e.profile.url);
-        return;
-      }
-
-      const bodyText = e.profile.body ? String(e.profile.body) : '';
-      const sources = Array.isArray(e.profile.sources) ? e.profile.sources : [];
-
-      const sourcesHtml = sources.length
-        ? '<div class="hp-section"><h3>Fuentes</h3><ul class="hp-sources">' +
-        sources
-          .map((s) => {
-            const label = s && s.label ? String(s.label) : 'Fuente';
-            const url = s && s.url ? String(s.url) : '';
-            if (!url) return '<li>' + escapeHtml(label) + '</li>';
-            return '<li><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a></li>';
-          })
-          .join('') +
-        '</ul></div>'
-        : '';
-
-      const html =
-        (e.context ? '<div class="hp-section"><h3>Contexto</h3><p>' + escapeHtml(String(e.context)) + '</p></div>' : '') +
-        (e.contrast ? '<div class="hp-section"><h3>Versión oficial</h3><p>' + escapeHtml(String(e.contrast)) + '</p></div>' : '') +
-        (bodyText ? '<div class="hp-section"><h3>Perfil</h3><p>' + escapeHtml(bodyText).replaceAll('\n', '<br>') + '</p></div>' : '') +
-        sourcesHtml;
-
-      modal.open(
-        {
-          title: e.name || 'Perfil',
-          meta: formatMeta(e),
-          html: html || '<p>Sin información.</p>',
-        },
-        btn
-      );
-
-      window.dispatchEvent(
-        new CustomEvent('profile_open', {
-          detail: {
-            eventId: String(id),
-            monthId: String(e.month_id || ''),
-          },
-        })
-      );
+      openEventModal(id, byId, modal);
     });
 
     root.addEventListener('click', function (ev) {
@@ -502,6 +523,10 @@
         })
       );
     });
+
+    return {
+      openById: (id) => openEventModal(id, byId, modal)
+    };
   }
 
   function hideFallback(root) {
@@ -519,22 +544,40 @@
       if (!config || !config.dataUrl) continue;
 
       try {
-        const res = await fetch(config.dataUrl, { credentials: 'same-origin' });
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const data = await res.json();
+        let dataPromise = dataCache.get(config.dataUrl);
+        if (!dataPromise) {
+          dataPromise = fetch(config.dataUrl, { credentials: 'same-origin' })
+            .then(res => {
+              if (!res.ok) throw new Error('HTTP ' + res.status);
+              return res.json();
+            });
+          dataCache.set(config.dataUrl, dataPromise);
+        }
+
+        const data = await dataPromise;
 
         const renderState = renderApp(root, data, config);
         hideFallback(root);
         const navApi = setupStickyNav(root);
         setupActiveStep(root, navApi);
         setupLineFill(root);
-        setupProfiles(root, renderState);
+        const profilesApi = setupProfiles(root, renderState);
 
         // Dynamic line calibration
         setLineToCardLeft();
         window.addEventListener('resize', function () {
           window.requestAnimationFrame(setLineToCardLeft);
         });
+
+        // Deep-linking check
+        const initialHash = window.location.hash.replace(/^#/, '');
+        if (initialHash) {
+          const targetEvent = root.querySelector('#' + cssEscape(initialHash));
+          if (targetEvent) {
+            targetEvent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            profilesApi.openById(initialHash);
+          }
+        }
 
         if (renderState.monthIds && renderState.monthIds[0]) {
           window.dispatchEvent(
@@ -560,3 +603,4 @@
     boot();
   }
 })();
+
