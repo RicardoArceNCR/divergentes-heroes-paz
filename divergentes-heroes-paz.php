@@ -16,10 +16,13 @@ final class Divergentes_Heroes_Paz_Plugin
     const SCRIPT_HANDLE = 'divergentes-heroes-paz-app';
     const STYLE_HANDLE = 'divergentes-heroes-paz-app';
     const PAGE_STYLE_HANDLE = 'divergentes-heroes-paz-page';
+    protected static $has_fullbleed = false;
 
     public static function init(): void
     {
         add_shortcode(self::SHORTCODE, [self::class, 'shortcode']);
+        add_filter('wp_resource_hints', [self::class, 'resource_hints'], 10, 2);
+        add_filter('body_class', [self::class, 'add_body_class']);
     }
 
     public static function shortcode($atts = []): string
@@ -35,6 +38,7 @@ final class Divergentes_Heroes_Paz_Plugin
             'event_photo_w' => '',
             'font_body' => '',
             'font_title' => '',
+            'data_url' => '',
         ], $atts, self::SHORTCODE);
 
         $slug = sanitize_title($atts['slug'] ?? 'heroes-de-la-paz');
@@ -51,14 +55,22 @@ final class Divergentes_Heroes_Paz_Plugin
 
         $page_id = (int) get_queried_object_id();
 
-        $root_id = 'heroesPazApp';
+        $instance = wp_generate_uuid4();
+        $root_id = 'heroesPazApp-' . $instance;
 
-        $data_url = plugins_url('data/heroes.json', __FILE__);
+        $data_url_attr = trim((string) ($atts['data_url'] ?? ''));
+        if ($data_url_attr === '') {
+            $data_url = plugins_url('data/heroes.json', __FILE__);
+        } else {
+            $data_url = esc_url_raw($data_url_attr);
+        }
+
         $images_base_url = plugins_url('images/', __FILE__);
 
         self::enqueue_assets($page_id, $layout);
 
         $config = [
+            'instanceId' => $instance,
             'dataUrl' => $data_url,
             'imagesBaseUrl' => $images_base_url,
             'rootId' => $root_id,
@@ -67,39 +79,24 @@ final class Divergentes_Heroes_Paz_Plugin
         ];
 
         $css_vars = [];
-        $max = trim((string) ($atts['max'] ?? ''));
-        if ($max !== '') {
-            $css_vars['--hp-max'] = $max;
-        }
+        $vars_to_check = [
+            'max' => '--hp-max',
+            'rail_w' => '--hp-rail-w',
+            'rail_gap' => '--hp-rail-gap',
+            'sticky_top' => '--hp-sticky-top',
+            'event_photo_w' => '--hp-event-photo-w',
+            'font_body' => '--hp-font-body',
+            'font_title' => '--hp-font-title'
+        ];
 
-        $rail_w = trim((string) ($atts['rail_w'] ?? ''));
-        if ($rail_w !== '') {
-            $css_vars['--hp-rail-w'] = $rail_w;
-        }
-
-        $rail_gap = trim((string) ($atts['rail_gap'] ?? ''));
-        if ($rail_gap !== '') {
-            $css_vars['--hp-rail-gap'] = $rail_gap;
-        }
-
-        $sticky_top = trim((string) ($atts['sticky_top'] ?? ''));
-        if ($sticky_top !== '') {
-            $css_vars['--hp-sticky-top'] = $sticky_top;
-        }
-
-        $event_photo_w = trim((string) ($atts['event_photo_w'] ?? ''));
-        if ($event_photo_w !== '') {
-            $css_vars['--hp-event-photo-w'] = $event_photo_w;
-        }
-
-        $font_body = trim((string) ($atts['font_body'] ?? ''));
-        if ($font_body !== '') {
-            $css_vars['--hp-font-body'] = $font_body;
-        }
-
-        $font_title = trim((string) ($atts['font_title'] ?? ''));
-        if ($font_title !== '') {
-            $css_vars['--hp-font-title'] = $font_title;
+        foreach ($vars_to_check as $attr_key => $var_name) {
+            $val = trim((string) ($atts[$attr_key] ?? ''));
+            if ($val !== '') {
+                // For fonts, we allow strings, for others we validate units
+                if (strpos($attr_key, 'font_') === 0 || self::is_valid_css_value($val)) {
+                    $css_vars[$var_name] = $val;
+                }
+            }
         }
 
         $shell_style_attr = '';
@@ -115,8 +112,14 @@ final class Divergentes_Heroes_Paz_Plugin
         $plugin_dir = plugin_dir_path(__FILE__);
         $config_json = wp_json_encode($config, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
+        if ($layout === 'fullbleed') {
+            self::$has_fullbleed = true;
+        }
+
+        echo '<div class="hp-wp-wrap ' . ($layout === 'fullbleed' ? 'hp-wp-wrap--fullbleed' : '') . '">';
         echo '<div class="hp-mount ' . ($layout === 'fullbleed' ? 'hp-fullbleed' : '') . '">';
         include $plugin_dir . 'templates/app-shell.php';
+        echo '</div>';
         echo '</div>';
 
         return (string) ob_get_clean();
@@ -124,14 +127,14 @@ final class Divergentes_Heroes_Paz_Plugin
 
     private static function enqueue_assets(int $page_id, string $layout): void
     {
+        static $enqueued = false;
+        if ($enqueued) {
+            return;
+        }
+        $enqueued = true;
+
         $plugin_dir = plugin_dir_path(__FILE__);
         $plugin_url = plugin_dir_url(__FILE__);
-
-        // Google Fonts Preconnect
-        add_action('wp_head', function () {
-            echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . PHP_EOL;
-            echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . PHP_EOL;
-        });
 
         // Enqueue Google Fonts
         wp_enqueue_style(
@@ -162,6 +165,32 @@ final class Divergentes_Heroes_Paz_Plugin
                 );
             }
         }
+    }
+
+    public static function resource_hints($urls, $relation_type)
+    {
+        if ($relation_type === 'preconnect') {
+            $urls[] = 'https://fonts.googleapis.com';
+            $urls[] = [
+                'href' => 'https://fonts.gstatic.com',
+                'crossorigin' => 'anonymous',
+            ];
+        }
+        return $urls;
+    }
+
+    public static function add_body_class($classes)
+    {
+        if (self::$has_fullbleed) {
+            $classes[] = 'hp-has-fullbleed';
+        }
+        return $classes;
+    }
+
+    private static function is_valid_css_value(string $value): bool
+    {
+        // Simple regex for px, rem, em, vw, vh, %
+        return (bool) preg_match('/^\d+(\.\d+)?(px|rem|em|vw|vh|%)$/', $value);
     }
 }
 
