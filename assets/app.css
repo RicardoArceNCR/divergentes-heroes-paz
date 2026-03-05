@@ -98,6 +98,20 @@
   overflow-x: clip;
 }
 
+/* DOT PRESETS */
+.hp-shell[data-layout="contained"] {
+  --hp-dot-x: -32px;
+}
+
+.hp-shell[data-layout="fullbleed"] {
+  --hp-dot-x: -40px;
+}
+
+.hp-shell[data-theme="divergentes"] {
+  --hp-dot-x: -22px;
+  /* Alinear con la línea roja en desktop */
+}
+
 /* ==========================================================================
    HERO
    ========================================================================== */

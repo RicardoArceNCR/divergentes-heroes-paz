@@ -39,6 +39,10 @@ final class Divergentes_Heroes_Paz_Plugin
             'font_body' => '',
             'font_title' => '',
             'data_url' => '',
+            'dot_x' => '',
+            'dot_size' => '',
+            'dot_top' => '',
+            'rail_dot_top' => '',
         ], $atts, self::SHORTCODE);
 
         $slug = sanitize_title($atts['slug'] ?? 'heroes-de-la-paz');
@@ -86,7 +90,11 @@ final class Divergentes_Heroes_Paz_Plugin
             'sticky_top' => '--hp-sticky-top',
             'event_photo_w' => '--hp-event-photo-w',
             'font_body' => '--hp-font-body',
-            'font_title' => '--hp-font-title'
+            'font_title' => '--hp-font-title',
+            'dot_x' => '--hp-dot-x',
+            'dot_size' => '--hp-dot-size',
+            'dot_top' => '--hp-dot-top',
+            'rail_dot_top' => '--hp-rail-dot-top',
         ];
 
         foreach ($vars_to_check as $attr_key => $var_name) {

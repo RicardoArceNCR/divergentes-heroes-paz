@@ -392,6 +392,8 @@
     const monthSections = Array.from(root.querySelectorAll('[data-hp-month-section]'));
     const revealEls = Array.from(root.querySelectorAll('.hp-reveal'));
 
+    let activeEl = null;
+
     const io = new IntersectionObserver(
       (entries) => {
         let best = null;
@@ -407,7 +409,14 @@
         }
 
         if (best && best.target && best.target.hasAttribute('data-hp-event')) {
-          for (const el of events) el.classList.toggle('is-active', el === best.target);
+          const nextActive = best.target;
+          if (nextActive !== activeEl) {
+            activeEl = nextActive;
+            for (const el of events) el.classList.toggle('is-active', el === activeEl);
+
+            // Recalibrate line to active marker
+            window.requestAnimationFrame(() => setLineToMarker(root));
+          }
         }
 
         for (const me of entries) {
@@ -426,19 +435,28 @@
     return io;
   }
 
-  function setLineToCardLeft(ctx) {
-    if (!ctx || !ctx.shell || !ctx.track) return;
+  function setLineToMarker(root) {
+    if (!root) return;
 
-    // Selector of the card component within this instance
-    const card = ctx.root.querySelector('.hp-event');
-    if (!card) return;
+    const shell = root.closest('.hp-shell');
+    const track = shell ? shell.querySelector('[data-hp-track]') : null;
+    const inner = track ? track.querySelector('.hp-track-inner') : null;
+    if (!shell || !track) return;
 
-    // Position relative to track or inner
-    const base = (ctx.trackInner || ctx.track).getBoundingClientRect();
-    const c = card.getBoundingClientRect();
+    // Marker del evento activo (si existe)
+    const activeMarker = root.querySelector('.hp-event.is-active .hp-marker');
 
-    const x = c.left - base.left;
-    ctx.shell.style.setProperty('--hp-line-x', x + 'px');
+    // Fallback: primer marker disponible
+    const marker = activeMarker || root.querySelector('.hp-event .hp-marker');
+    if (!marker) return;
+
+    const base = (inner || track).getBoundingClientRect();
+    const m = marker.getBoundingClientRect();
+
+    // Centro del punto
+    const x = (m.left + (m.width / 2)) - base.left;
+
+    shell.style.setProperty('--hp-line-x', x.toFixed(2) + 'px');
   }
 
   function setupLineFill(ctx) {
@@ -447,11 +465,13 @@
     let rafId = 0;
 
     function update() {
+      if (!ctx.fill || !ctx.track || !ctx.shell) return;
+
       const trackRect = ctx.track.getBoundingClientRect();
       const viewportH = window.innerHeight || document.documentElement.clientHeight;
 
-      // Draw point (55% of viewport)
-      const referenceY = viewportH * 0.55;
+      // Draw point (60% of viewport per enterprise guide)
+      const referenceY = viewportH * 0.6;
 
       // Start: if exists startEl, use it. Otherwise track top.
       const startRect = ctx.startEl ? ctx.startEl.getBoundingClientRect() : trackRect;
@@ -624,8 +644,8 @@
         const profilesApi = setupProfiles(root, renderState, config);
 
         // Dynamic line calibration
-        setLineToCardLeft(ctx);
-        const onResizeLine = () => window.requestAnimationFrame(() => setLineToCardLeft(ctx));
+        setLineToMarker(root);
+        const onResizeLine = () => window.requestAnimationFrame(() => setLineToMarker(root));
         window.addEventListener('resize', onResizeLine);
         registerDestroy(root, () => window.removeEventListener('resize', onResizeLine));
 
