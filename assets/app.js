@@ -197,8 +197,6 @@
 
     const timelineHtml =
       '<div class="hp-timeline" data-hp-timeline>' +
-      '  <div class="hp-line" aria-hidden="true"></div>' +
-      '  <div class="hp-line-fill" aria-hidden="true" data-hp-line-fill></div>' +
       orderedMonthIds
         .map((mid) => {
           const m = monthsById.get(mid) || {};
@@ -364,24 +362,54 @@
     return io;
   }
 
+  function setLineToCardLeft() {
+    const shell = document.querySelector('.hp-shell');
+    const track = document.querySelector('[data-hp-track]');
+    const inner = track ? track.querySelector('.hp-track-inner') : null;
+    if (!shell || !track) return;
+
+    // Selector of the card component
+    const card = document.querySelector('.hp-event');
+    if (!card) return;
+
+    // Position relative to track or inner
+    const base = (inner || track).getBoundingClientRect();
+    const c = card.getBoundingClientRect();
+
+    const x = c.left - base.left;
+    shell.style.setProperty('--hp-line-x', x + 'px');
+  }
+
   function setupLineFill(root) {
-    const timeline = root.querySelector('[data-hp-timeline]');
-    const fill = root.querySelector('[data-hp-line-fill]');
-    if (!timeline || !fill) return;
+    const shell = root && root.closest ? root.closest('.hp-shell') : document.querySelector('.hp-shell');
+    const track = shell ? shell.querySelector('[data-hp-track]') : null;
+    const fill = shell ? shell.querySelector('[data-hp-track-fill]') : null;
+    const startEl = shell ? shell.querySelector('[data-hp-line-start]') : null;
+
+    if (!track || !fill) return;
 
     let rafId = 0;
 
     function update() {
-      const rect = timeline.getBoundingClientRect();
+      const trackRect = track.getBoundingClientRect();
       const viewportH = window.innerHeight || document.documentElement.clientHeight;
-      const total = rect.height;
 
+      // Draw point (55% of viewport)
       const referenceY = viewportH * 0.55;
-      const progressPx = referenceY - rect.top;
-      const clamped = Math.max(0, Math.min(1, progressPx / Math.max(1, total)));
 
-      // Using scaleY for better performance (paints only, no layouts)
-      fill.style.transform = 'scaleY(' + clamped.toFixed(3) + ')';
+      // Start: if exists startEl, use it. Otherwise track top.
+      const startRect = startEl ? startEl.getBoundingClientRect() : trackRect;
+      const startY = startRect.top;
+
+      // End: bottom of the track
+      const endY = trackRect.bottom;
+
+      const total = Math.max(1, endY - startY);
+      const progressPx = referenceY - startY;
+
+      const progress = Math.max(0, Math.min(1, progressPx / total));
+
+      fill.style.transform = 'scaleY(' + progress.toFixed(4) + ')';
     }
 
     function onScroll() {
@@ -501,6 +529,12 @@
         setupActiveStep(root, navApi);
         setupLineFill(root);
         setupProfiles(root, renderState);
+
+        // Dynamic line calibration
+        setLineToCardLeft();
+        window.addEventListener('resize', function () {
+          window.requestAnimationFrame(setLineToCardLeft);
+        });
 
         if (renderState.monthIds && renderState.monthIds[0]) {
           window.dispatchEvent(

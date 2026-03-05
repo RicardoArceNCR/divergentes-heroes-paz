@@ -19,6 +19,12 @@
   --hp-sticky-top: 64px;
   --hp-adminbar: 0px;
   --hp-container-pad: 16px;
+  --hp-container-max: 1200px;
+  --hp-line-x: 22px;
+  /* Default for mobile */
+  --hp-line-w: 6px;
+  --hp-line-top: 0px;
+  --hp-line-bottom: 0px;
 
   /* Component Specific */
   --hp-event-photo-w: 240px;
@@ -196,34 +202,47 @@
   padding: 18px 0 64px 0;
 }
 
-.hp-shell .hp-timeline {
+.hp-shell .hp-track {
   position: relative;
-  padding: 22px 0;
 }
 
-.hp-shell .hp-line {
+.hp-shell .hp-track-inner {
   position: absolute;
-  left: calc(var(--hp-shell-pad-left) + var(--hp-rail-w) - 9px);
-  top: 0;
-  bottom: 0;
-  width: var(--hp-line);
-  background: var(--hp-gray);
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  max-width: var(--hp-container-max);
+  margin: 0 auto;
+  padding-inline: clamp(16px, 5vw, 48px);
+}
+
+.hp-shell .hp-track-line,
+.hp-shell .hp-track-fill {
+  position: absolute;
+  left: var(--hp-line-x);
+  top: var(--hp-line-top);
+  bottom: var(--hp-line-bottom);
+  width: var(--hp-line-w);
+  transform: translateX(-50%);
   border-radius: 999px;
+  pointer-events: none;
 }
 
-.hp-shell .hp-line-fill {
-  position: absolute;
-  left: calc(var(--hp-shell-pad-left) + var(--hp-rail-w) - 9px);
-  top: 0;
-  width: var(--hp-line);
-  height: 100% !important;
-  /* Managed via scaleY in JS */
+.hp-shell .hp-track-line {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.hp-shell .hp-track-fill {
   background: var(--hp-red);
-  border-radius: 999px;
   box-shadow: 0 0 18px rgba(225, 6, 0, .18);
   transform: scaleY(0);
   transform-origin: top;
   will-change: transform;
+}
+
+.hp-shell .hp-timeline {
+  position: relative;
+  padding: 22px 0;
 }
 
 .hp-shell .hp-month {
@@ -510,7 +529,7 @@
    ========================================================================== */
 .hp-shell[data-theme="divergentes"] {
   --hp-red: #e10600;
-  --hp-max: 1180px;
+  --hp-max: 100%;
   --hp-radius: 18px;
   --hp-rail-w: 160px;
   --hp-rail-gap: 28px;
@@ -523,6 +542,9 @@
   --hp-font-body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --hp-font-title: 'Lacquer', var(--hp-font-body);
   --hp-subtitle-max: 55ch;
+  --hp-container-max: 1180px;
+  --hp-line-x: 56px;
+  /* Optimized for Divergentes theme on Desktop */
 }
 
 .hp-shell[data-theme="divergentes"] .hp-hero {
@@ -631,10 +653,11 @@
    ========================================================================== */
 @media (max-width: 860px) {
 
-  .hp-shell .hp-line,
-  .hp-shell .hp-line-fill {
-    left: 14px;
+  .hp-shell {
+    --hp-line-x: 22px;
   }
+
+  /* .hp-track-line/fill already use var(--hp-line-x) */
 
   .hp-shell .hp-month {
     grid-template-columns: 1fr;
