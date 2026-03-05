@@ -57,6 +57,23 @@
     return parts.join(' — ');
   }
 
+  function getInstanceCtx(root) {
+    const shell = root && root.closest ? root.closest('.hp-shell') : null;
+    if (!shell) return null;
+
+    const track = shell.querySelector('[data-hp-track]');
+    const trackInner = track ? track.querySelector('.hp-track-inner') : null;
+
+    return {
+      root,
+      shell,
+      track,
+      trackInner,
+      fill: shell.querySelector('[data-hp-track-fill]'),
+      startEl: shell.querySelector('[data-hp-line-start]'),
+    };
+  }
+
   function getFocusable(container) {
     return Array.from(
       container.querySelectorAll(
@@ -65,7 +82,12 @@
     );
   }
 
-  function createModal(mountEl) {
+  function createModal(mountEl, instanceId) {
+    const uid = 'hp-' + String(instanceId || 'x');
+    const titleId = uid + '-modal-title';
+    const metaId = uid + '-modal-meta';
+    const bodyId = uid + '-modal-body';
+
     const backdrop = document.createElement('div');
     backdrop.className = 'hp-modal-backdrop';
     backdrop.setAttribute('role', 'dialog');
@@ -76,12 +98,12 @@
       '<div class="hp-modal" role="document">' +
       '  <div class="hp-modal-header">' +
       '    <div>' +
-      '      <h2 class="hp-modal-title" id="hpModalTitle"></h2>' +
-      '      <p class="hp-kv" id="hpModalMeta"></p>' +
+      '      <h2 class="hp-modal-title" id="' + titleId + '"></h2>' +
+      '      <p class="hp-kv" id="' + metaId + '"></p>' +
       '    </div>' +
       '    <button type="button" class="hp-modal-close" data-hp-close>Salir</button>' +
       '  </div>' +
-      '  <div class="hp-modal-body" id="hpModalBody"></div>' +
+      '  <div class="hp-modal-body" id="' + bodyId + '"></div>' +
       '</div>';
 
     const mount = mountEl && mountEl.appendChild ? mountEl : document.body;
@@ -89,13 +111,13 @@
 
     const modal = backdrop.querySelector('.hp-modal');
     const btnClose = backdrop.querySelector('[data-hp-close]');
-    const titleEl = backdrop.querySelector('#hpModalTitle');
-    const metaEl = backdrop.querySelector('#hpModalMeta');
-    const bodyEl = backdrop.querySelector('#hpModalBody');
+    const titleEl = backdrop.querySelector('#' + cssEscape(titleId));
+    const metaEl = backdrop.querySelector('#' + cssEscape(metaId));
+    const bodyEl = backdrop.querySelector('#' + cssEscape(bodyId));
 
     if (modal) {
-      modal.setAttribute('aria-labelledby', 'hpModalTitle');
-      modal.setAttribute('aria-describedby', 'hpModalBody');
+      modal.setAttribute('aria-labelledby', titleId);
+      modal.setAttribute('aria-describedby', bodyId);
     }
 
     let lastActive = null;
@@ -222,7 +244,9 @@
 
           const eventsHtml = evts
             .map((e) => {
-              const id = e.id ? String(e.id) : '';
+              const logicalId = e.id ? String(e.id) : '';
+              const domId = (config && config.instanceId ? ('hp-' + config.instanceId + '-') : '') + logicalId;
+
               const name = e.name || '';
               const meta = formatMeta(e);
               const context = e.context || '';
@@ -233,7 +257,7 @@
               const hasProfile = e.profile && (e.profile.mode === 'modal' || e.profile.mode === 'link');
               const btn = hasProfile
                 ? '<button type="button" class="hp-button" data-hp-open-profile="' +
-                escapeHtml(id) +
+                escapeHtml(logicalId) +
                 '">Ver perfil completo</button>'
                 : '';
 
@@ -258,8 +282,8 @@
                 '<article class="hp-event hp-reveal' +
                 noPhotoClass +
                 '" id="' +
-                escapeHtml(id) +
-                '" data-hp-event="true">' +
+                escapeHtml(domId) +
+                '" data-hp-event="true" data-hp-event-id="' + escapeHtml(logicalId) + '">' +
                 '  <span class="hp-marker" aria-hidden="true"></span>' +
                 '  <div class="hp-event-text">' +
                 '    <header class="hp-event-header">' +
@@ -376,43 +400,35 @@
     return io;
   }
 
-  function setLineToCardLeft() {
-    const shell = document.querySelector('.hp-shell');
-    const track = document.querySelector('[data-hp-track]');
-    const inner = track ? track.querySelector('.hp-track-inner') : null;
-    if (!shell || !track) return;
+  function setLineToCardLeft(ctx) {
+    if (!ctx || !ctx.shell || !ctx.track) return;
 
-    // Selector of the card component
-    const card = document.querySelector('.hp-event');
+    // Selector of the card component within this instance
+    const card = ctx.root.querySelector('.hp-event');
     if (!card) return;
 
     // Position relative to track or inner
-    const base = (inner || track).getBoundingClientRect();
+    const base = (ctx.trackInner || ctx.track).getBoundingClientRect();
     const c = card.getBoundingClientRect();
 
     const x = c.left - base.left;
-    shell.style.setProperty('--hp-line-x', x + 'px');
+    ctx.shell.style.setProperty('--hp-line-x', x + 'px');
   }
 
-  function setupLineFill(root) {
-    const shell = root && root.closest ? root.closest('.hp-shell') : document.querySelector('.hp-shell');
-    const track = shell ? shell.querySelector('[data-hp-track]') : null;
-    const fill = shell ? shell.querySelector('[data-hp-track-fill]') : null;
-    const startEl = shell ? shell.querySelector('[data-hp-line-start]') : null;
-
-    if (!track || !fill) return;
+  function setupLineFill(ctx) {
+    if (!ctx || !ctx.track || !ctx.fill) return () => { };
 
     let rafId = 0;
 
     function update() {
-      const trackRect = track.getBoundingClientRect();
+      const trackRect = ctx.track.getBoundingClientRect();
       const viewportH = window.innerHeight || document.documentElement.clientHeight;
 
       // Draw point (55% of viewport)
       const referenceY = viewportH * 0.55;
 
       // Start: if exists startEl, use it. Otherwise track top.
-      const startRect = startEl ? startEl.getBoundingClientRect() : trackRect;
+      const startRect = ctx.startEl ? ctx.startEl.getBoundingClientRect() : trackRect;
       const startY = startRect.top;
 
       // End: bottom of the track
@@ -423,7 +439,7 @@
 
       const progress = Math.max(0, Math.min(1, progressPx / total));
 
-      fill.style.transform = 'scaleY(' + progress.toFixed(4) + ')';
+      ctx.fill.style.transform = 'scaleY(' + progress.toFixed(4) + ')';
     }
 
     function onScroll() {
@@ -437,9 +453,14 @@
     update();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }
 
-  function openEventModal(id, byId, modal) {
+  function openEventModal(id, byId, modal, root, config) {
     const e = byId.get(String(id));
     if (!e || !e.profile) return;
 
@@ -470,17 +491,20 @@
       (bodyText ? '<div class="hp-section"><h3>Perfil</h3><p>' + escapeHtml(bodyText).replaceAll('\n', '<br>') + '</p></div>' : '') +
       sourcesHtml;
 
+    const triggerEl = root.querySelector('[data-hp-event-id="' + cssEscape(String(id)) + '"]');
+
     modal.open(
       {
         title: e.name || 'Perfil',
         meta: formatMeta(e),
         html: html || '<p>Sin información.</p>',
       },
-      document.getElementById(id)
+      triggerEl
     );
 
-    // Update hash
-    history.replaceState(null, '', '#' + id);
+    // Update hash with unique DOM id
+    const domId = (config && config.instanceId ? ('hp-' + config.instanceId + '-') : '') + String(id);
+    history.replaceState(null, '', '#' + domId);
 
     window.dispatchEvent(
       new CustomEvent('profile_open', {
@@ -492,9 +516,9 @@
     );
   }
 
-  function setupProfiles(root, data) {
+  function setupProfiles(root, data, config) {
     const shell = root && root.closest ? root.closest('.hp-shell') : null;
-    const modal = createModal(shell);
+    const modal = createModal(shell, config && config.instanceId ? config.instanceId : '');
     const byId = new Map();
     for (const e of data.events) {
       if (e && e.id) byId.set(String(e.id), e);
@@ -507,7 +531,7 @@
       if (!btn) return;
 
       const id = btn.getAttribute('data-hp-open-profile') || '';
-      openEventModal(id, byId, modal);
+      openEventModal(id, byId, modal, root, config);
     });
 
     root.addEventListener('click', function (ev) {
@@ -525,7 +549,7 @@
     });
 
     return {
-      openById: (id) => openEventModal(id, byId, modal)
+      openById: (id) => openEventModal(id, byId, modal, root, config)
     };
   }
 
@@ -558,15 +582,21 @@
 
         const renderState = renderApp(root, data, config);
         hideFallback(root);
+
+        const ctx = getInstanceCtx(root);
+        if (!ctx) continue;
+
         const navApi = setupStickyNav(root);
         setupActiveStep(root, navApi);
-        setupLineFill(root);
-        const profilesApi = setupProfiles(root, renderState);
+        setupLineFill(ctx);
+        const profilesApi = setupProfiles(root, renderState, config);
 
         // Dynamic line calibration
-        setLineToCardLeft();
+        setLineToCardLeft(ctx);
         window.addEventListener('resize', function () {
-          window.requestAnimationFrame(setLineToCardLeft);
+          window.requestAnimationFrame(function () {
+            setLineToCardLeft(ctx);
+          });
         });
 
         // Deep-linking check
@@ -575,7 +605,8 @@
           const targetEvent = root.querySelector('#' + cssEscape(initialHash));
           if (targetEvent) {
             targetEvent.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            profilesApi.openById(initialHash);
+            const logicalId = targetEvent.getAttribute('data-hp-event-id') || '';
+            if (logicalId) profilesApi.openById(logicalId);
           }
         }
 
