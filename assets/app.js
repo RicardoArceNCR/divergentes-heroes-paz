@@ -2,6 +2,23 @@
   'use strict';
 
   const dataCache = new Map(); // url -> Promise<data>
+  const instanceState = new WeakMap(); // root -> { destroyFns: [] }
+
+  function registerDestroy(root, fn) {
+    if (!root || typeof fn !== 'function') return;
+    const s = instanceState.get(root) || { destroyFns: [] };
+    s.destroyFns.push(fn);
+    instanceState.set(root, s);
+  }
+
+  function destroyInstance(root) {
+    const s = instanceState.get(root);
+    if (!s) return;
+    for (const fn of s.destroyFns) {
+      try { fn(); } catch (_) { }
+    }
+    instanceState.delete(root);
+  }
 
   function safeJsonParse(raw) {
     try {
@@ -121,6 +138,7 @@
     }
 
     let lastActive = null;
+    let onDocKeydown = null;
 
     function close() {
       backdrop.classList.remove('is-open');
@@ -129,6 +147,11 @@
       if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
       lastActive = null;
       document.documentElement.style.overflow = '';
+
+      if (onDocKeydown) {
+        document.removeEventListener('keydown', onDocKeydown);
+        onDocKeydown = null;
+      }
     }
 
     function open(payload, triggerEl) {
@@ -139,6 +162,11 @@
 
       backdrop.classList.add('is-open');
       document.documentElement.style.overflow = 'hidden';
+
+      if (!onDocKeydown) {
+        onDocKeydown = onKeydown;
+        document.addEventListener('keydown', onDocKeydown);
+      }
 
       const focusable = getFocusable(backdrop);
       const first = focusable[0] || btnClose || titleEl;
@@ -190,8 +218,6 @@
         history.replaceState(null, '', window.location.pathname + window.location.search);
       }
     });
-
-    document.addEventListener('keydown', onKeydown);
 
     return { open, close };
   }
@@ -568,6 +594,8 @@
       if (!config || !config.dataUrl) continue;
 
       try {
+        destroyInstance(root); // Cleanup if re-running
+
         let dataPromise = dataCache.get(config.dataUrl);
         if (!dataPromise) {
           dataPromise = fetch(config.dataUrl, { credentials: 'same-origin' })
@@ -587,26 +615,31 @@
         if (!ctx) continue;
 
         const navApi = setupStickyNav(root);
-        setupActiveStep(root, navApi);
-        setupLineFill(ctx);
+        const io = setupActiveStep(root, navApi);
+        registerDestroy(root, () => io && typeof io.disconnect === 'function' && io.disconnect());
+
+        const stopLine = setupLineFill(ctx);
+        registerDestroy(root, stopLine);
+
         const profilesApi = setupProfiles(root, renderState, config);
 
         // Dynamic line calibration
         setLineToCardLeft(ctx);
-        window.addEventListener('resize', function () {
-          window.requestAnimationFrame(function () {
-            setLineToCardLeft(ctx);
-          });
-        });
+        const onResizeLine = () => window.requestAnimationFrame(() => setLineToCardLeft(ctx));
+        window.addEventListener('resize', onResizeLine);
+        registerDestroy(root, () => window.removeEventListener('resize', onResizeLine));
 
         // Deep-linking check
         const initialHash = window.location.hash.replace(/^#/, '');
         if (initialHash) {
-          const targetEvent = root.querySelector('#' + cssEscape(initialHash));
-          if (targetEvent) {
-            targetEvent.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            const logicalId = targetEvent.getAttribute('data-hp-event-id') || '';
-            if (logicalId) profilesApi.openById(logicalId);
+          const prefix = config.instanceId ? ('hp-' + config.instanceId + '-') : '';
+          if (!prefix || initialHash.startsWith(prefix)) {
+            const targetEvent = root.querySelector('#' + cssEscape(initialHash));
+            if (targetEvent) {
+              targetEvent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              const logicalId = targetEvent.getAttribute('data-hp-event-id') || '';
+              if (logicalId) profilesApi.openById(logicalId);
+            }
           }
         }
 
