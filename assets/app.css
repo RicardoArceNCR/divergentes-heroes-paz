@@ -606,7 +606,6 @@ body.hp-has-fullbleed .entry-content.wp-block-post-content.has-global-padding {
   position: relative;
   overflow: hidden;
   padding: clamp(60px, 10vh, 120px) 0;
-  border-bottom: 4px solid var(--hp-red);
 }
 
 /* Grunge Overlays */
@@ -763,4 +762,214 @@ body.hp-has-fullbleed .entry-content.wp-block-post-content.has-global-padding {
   border-radius: var(--hp-radius);
   background: #fafafa;
   margin-top: 14px;
+}
+
+/* ==========================================
+   HERO INTRO SIMPLE Y ESTABLE
+   ========================================== */
+
+.hp-shell[data-theme="divergentes"] .hp-hero .hp-container {
+  position: relative;
+  z-index: 2;
+  width: min(1100px, 100%);
+}
+
+.hp-shell[data-theme="divergentes"] .hp-hero {
+  text-align: left;
+  align-items: start;
+}
+
+.hp-shell[data-theme="divergentes"] .hp-hero-kicker {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 14px 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hp-shell[data-theme="divergentes"] .hp-hero-kicker span {
+  display: inline-block;
+}
+
+.hp-shell[data-theme="divergentes"] .hp-hero-sep {
+  width: 72px;
+  height: 4px;
+  background: var(--hp-red);
+  margin: 0 0 18px 0;
+}
+
+.hp-shell[data-theme="divergentes"] .hp-hero .hp-subtitle {
+  margin: 0 0 28px 0;
+  max-width: 34ch;
+}
+
+.hp-shell[data-theme="divergentes"] .hp-hero-rail {
+  position: absolute;
+  top: 220px;
+  left: 250px;
+  width: 140px;
+  height: auto;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hp-shell[data-theme="divergentes"] .hp-hero-intro {
+  position: relative;
+  z-index: 3;
+  max-width: 540px;
+  margin-top: 24px;
+}
+
+.hp-shell[data-theme="divergentes"] .hp-hero-intro .hp-lede {
+  margin: 0 0 22px 0;
+  max-width: 52ch;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+}
+
+.hp-shell[data-theme="divergentes"] .hp-hero-intro .hp-lede strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.hp-shell[data-theme="divergentes"] .hp-byline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hp-shell[data-theme="divergentes"] .hp-byline span {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hp-shell[data-theme="divergentes"] .hp-byline img {
+  display: block;
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* espacio para que el app no se pegue al hero */
+.hp-shell .hp-app {
+  padding-top: 24px;
+}
+
+/* mobile */
+@media (max-width: 782px) {
+  .hp-shell[data-theme="divergentes"] .hp-hero-rail {
+    left: 45px;
+    top: 260px;
+    width: 110px;
+    opacity: 0.95;
+  }
+
+  .hp-shell[data-theme="divergentes"] .hp-hero-intro {
+    max-width: 100%;
+    margin-top: 22px;
+  }
+
+  .hp-shell[data-theme="divergentes"] .hp-hero-intro .hp-lede {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .hp-shell[data-theme="divergentes"] .hp-byline img {
+    width: 130px;
+  }
+}
+
+/* ==========================================
+   INTRO EDITORIAL SIMPLE Y ESTABLE
+   ========================================== */
+
+.hp-intro {
+  position: relative;
+  z-index: 2;
+}
+
+.hp-intro-container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  min-height: 520px;
+}
+
+.hp-intro-rail-art {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 120px;
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hp-intro-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+  margin-left: 150px;
+  padding-top: 40px;
+}
+
+.hp-intro .hp-lede {
+  margin: 0 0 24px 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.hp-intro .hp-lede strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.hp-byline {
+  margin-top: 8px;
+}
+
+.hp-byline img {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* mobile */
+@media (max-width: 782px) {
+  .hp-intro-container {
+    min-height: auto;
+    display: block;
+  }
+
+  .hp-intro-rail-art {
+    top: -20px;
+    left: 0;
+    width: 90px;
+  }
+
+  .hp-intro-copy {
+    margin-left: 0;
+    padding-top: 180px;
+    max-width: 100%;
+  }
+
+  .hp-intro .hp-lede {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .hp-byline img {
+    width: 180px;
+  }
 }

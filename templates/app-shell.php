@@ -23,11 +23,34 @@ if (!defined('ABSPATH')) {
         </div>
 
         <section class="hp-intro">
-            <div class="hp-container">
-                <p class="hp-lede" data-hp-line-start>Esta línea de tiempo presenta casos y contexto, con perfiles
-                    ampliados por persona.</p>
+            <div class="hp-container hp-intro-container">
+                <img class="hp-intro-rail-art"
+                    src="<?php echo esc_url(plugins_url('images/hero-connector.png', dirname(__FILE__))); ?>" alt=""
+                    aria-hidden="true" decoding="async" loading="lazy" />
+
+                <div class="hp-intro-copy">
+                    <p class="hp-lede" data-hp-line-start>
+                        <strong>Tras la crisis sociopolítica de abril de 2018</strong> en Nicaragua, el régimen
+                        Ortega-Murillo elevó a ciertos civiles armados y policías fallecidos durante las
+                        protestas a la categoría de “héroes de la paz”. Entre ellos figuran militantes
+                        sandinistas, trabajadores del Estado y miembros de la Policía Nacional que
+                        participaron en operativos de represión contra manifestantes y en el
+                        desmantelamiento de tranques.
+                        <br><br>
+                        El relato oficial justifica estas muertes como actos de lealtad y defensa de la paz,
+                        mientras documentos de organismos internacionales como la CIDH y el GIEI evidencian
+                        sus responsabilidades en la violencia letal, tortura y represión sistemática contra
+                        manifestantes.
+                    </p>
+
+                    <div class="hp-byline">
+                        <img src="<?php echo esc_url(plugins_url('images/por-divergentes.png', dirname(__FILE__))); ?>"
+                            alt="Por Divergentes" decoding="async" loading="lazy" />
+                    </div>
+                </div>
             </div>
         </section>
+
 
         <section class="hp-app">
             <div class="hp-container">
