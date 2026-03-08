@@ -11,8 +11,11 @@ if (!defined('ABSPATH')) {
     data-layout="<?php echo esc_attr($layout ?? 'contained'); ?>" <?php echo !empty($shell_style_attr) ? ' style="' . esc_attr($shell_style_attr) . '"' : ''; ?>>
     <section class="hp-hero" aria-label="Héroes de la Paz">
         <div class="hp-container">
-            <h1 class="hp-title">Los “Héroes de la Paz”</h1>
-            <p class="hp-subtitle">Quiénes son en realidad los sandinistas que el régimen Ortega-Murillo glorifica</p>
+            <div class="hp-hero-copy">
+                <h1 class="hp-title">Los “Héroes de la Paz”</h1>
+                <p class="hp-subtitle">Quiénes son en realidad los sandinistas que el régimen Ortega-Murillo glorifica
+                </p>
+            </div>
         </div>
     </section>
 

@@ -5,6 +5,7 @@
   /* Colors */
   --hp-red: #e10600;
   --hp-black: #0b0b0c;
+  --hp-dark-gray: #150504;
   --hp-white: #ffffff;
   --hp-gray: #e9e9eb;
   --hp-text: #121214;
@@ -131,33 +132,53 @@ body.hp-has-fullbleed .entry-content.wp-block-post-content.has-global-padding {
 }
 
 .hp-shell .hp-hero {
-  background: linear-gradient(90deg, var(--hp-black), #1a1a1d);
+  /* background: linear-gradient(90deg, var(--hp-black), #1a1a1d); */
   min-height: clamp(320px, 55vh, 720px);
   color: var(--hp-white);
   padding-block: clamp(48px, 8vh, 120px);
-  display: grid;
-  place-items: center;
+  position: relative;
+}
+
+.hp-hero .hp-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+.hp-hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .hp-shell .hp-title {
-  margin: 0 0 16px 0;
+  margin: 0;
   font-size: 36px;
   line-height: 1.1;
   font-family: var(--hp-font-title);
-  text-align: center;
+  text-align: inherit;
 }
 
 .hp-shell .hp-subtitle {
-  margin: 0 auto;
+  margin: 0;
   opacity: .9;
-  max-width: var(--hp-subtitle-max, 52ch);
+  max-width: 560px;
   padding-inline: clamp(12px, 3vw, 24px);
   text-wrap: balance;
+  text-align: inherit;
 }
 
 .hp-shell .hp-intro {
   padding: 18px 0 8px 0;
+  background-color: var(--hp-dark-gray);
 }
 
 .hp-shell .hp-lede {
@@ -606,6 +627,7 @@ body.hp-has-fullbleed .entry-content.wp-block-post-content.has-global-padding {
   position: relative;
   overflow: hidden;
   padding: clamp(60px, 10vh, 120px) 0;
+  text-align: center;
 }
 
 /* Grunge Overlays */
@@ -624,7 +646,7 @@ body.hp-has-fullbleed .entry-content.wp-block-post-content.has-global-padding {
 .hp-shell[data-theme="divergentes"] .hp-hero .hp-container {
   position: relative;
   z-index: 2;
-  width: min(1100px, 100%);
+  width: 100%;
 }
 
 .hp-shell[data-theme="divergentes"] .hp-hero .hp-title {
@@ -775,8 +797,12 @@ body.hp-has-fullbleed .entry-content.wp-block-post-content.has-global-padding {
 }
 
 .hp-shell[data-theme="divergentes"] .hp-hero {
-  text-align: left;
-  align-items: start;
+  text-align: center;
+}
+
+.hp-shell[data-theme="divergentes"] .hp-hero-copy {
+  align-items: center;
+  max-width: 760px;
 }
 
 .hp-shell[data-theme="divergentes"] .hp-hero-kicker {
@@ -906,18 +932,19 @@ body.hp-has-fullbleed .entry-content.wp-block-post-content.has-global-padding {
 .hp-intro-rail-art {
   position: absolute;
   top: -40px;
-  left: 0;
+  left: 215px;
   width: 120px;
   height: auto;
   pointer-events: none;
   z-index: 1;
+  width: 77px;
 }
 
 .hp-intro-copy {
   position: relative;
   z-index: 2;
-  max-width: 620px;
-  margin-left: 150px;
+  max-width: 690px;
+  margin-left: 280px;
   padding-top: 40px;
 }
 
