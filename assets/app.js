@@ -341,59 +341,51 @@
               const logicalId = e.id ? String(e.id) : '';
               const domId = (config && config.instanceId ? ('hp-' + config.instanceId + '-') : '') + logicalId;
 
+              // --- Datos limpios ---
               const name = e.name || '';
               const meta = formatMeta(e);
-              const context = e.context || '';
-              const contrast = e.contrast || '';
+              const summary = e.summary || e.context || '';
+              const official = e.official_version || '';
               const photoSrc = e.photo && e.photo.src ? resolveAssetUrl(String(e.photo.src), imagesBaseUrl) : '';
-              const photoAlt = e.photo && e.photo.alt ? String(e.photo.alt) : '';
+              const photoAlt = e.photo && e.photo.alt ? String(e.photo.alt) : (name ? 'Retrato de ' + name : '');
 
               const hasProfile = e.profile && (e.profile.mode === 'modal' || e.profile.mode === 'link');
               const btn = hasProfile
                 ? '<button type="button" class="hp-button" data-hp-open-profile="' +
-                escapeHtml(logicalId) +
-                '">Ver perfil completo</button>'
+                escapeHtml(logicalId) + '">Ver perfil completo</button>'
                 : '';
 
               const img = photoSrc
                 ? '<img class="hp-photo" loading="lazy" src="' +
-                escapeHtml(photoSrc) +
-                '" alt="' +
-                escapeHtml(photoAlt) +
-                '">'
+                escapeHtml(photoSrc) + '" alt="' + escapeHtml(photoAlt) + '">'
                 : '';
 
               const noPhotoClass = img ? '' : ' hp-event--no-photo';
 
-              const categories = Array.isArray(e.category) ? e.category : [];
-              const tagsHtml = categories.length
-                ? '<div class="hp-tags">' +
-                categories.map((cat) => '<span class="hp-tag">' + escapeHtml(cat) + '</span>').join('') +
+              // Chip: rol aparece UNA SOLA VEZ (chip negro)
+              const chipHtml = e.role
+                ? '<div class="hp-event-chip"><span class="hp-chip">' + escapeHtml(e.role) + '</span></div>'
+                : '';
+
+              // Caja oficial: usa official_version, NO repite el summary
+              const officialHtml = official
+                ? '<div class="hp-event-official">' +
+                '<span class="hp-event-official-label">Versión oficial</span>' +
+                '<p class="hp-event-official-text">' + escapeHtml(official) + '</p>' +
                 '</div>'
                 : '';
 
               return (
-                '<article class="hp-event hp-reveal' +
-                noPhotoClass +
-                '" id="' +
-                escapeHtml(domId) +
+                '<article class="hp-event hp-reveal' + noPhotoClass +
+                '" id="' + escapeHtml(domId) +
                 '" data-hp-event="true" data-hp-event-id="' + escapeHtml(logicalId) + '">' +
                 '  <span class="hp-marker" aria-hidden="true"></span>' +
                 '  <div class="hp-event-text">' +
-                '    <header class="hp-event-header">' +
-                tagsHtml +
-                '      <h3 class="hp-event-name">' +
-                escapeHtml(name) +
-                '</h3>' +
-                (e.role ? '<p class="hp-event-role">' + escapeHtml(e.role) + '</p>' : '') +
+                chipHtml +
+                '    <h3 class="hp-event-name">' + escapeHtml(name) + '</h3>' +
                 (meta ? '<p class="hp-meta">' + escapeHtml(meta) + '</p>' : '') +
-                '    </header>' +
-                (context ? '<p class="hp-event-context">' + escapeHtml(context) + '</p>' : '') +
-                (contrast
-                  ? '<p class="hp-event-contrast"><strong>Versión oficial:</strong> ' +
-                  escapeHtml(contrast) +
-                  '</p>'
-                  : '') +
+                (summary ? '<p class="hp-event-summary">' + escapeHtml(summary) + '</p>' : '') +
+                officialHtml +
                 (btn ? '<div class="hp-event-cta">' + btn + '</div>' : '') +
                 '  </div>' +
                 (img ? '<div class="hp-event-photo">' + img + '</div>' : '') +
@@ -401,6 +393,7 @@
               );
             })
             .join('');
+
 
           return (
             '<section class="hp-month hp-reveal" id="' +
@@ -604,7 +597,7 @@
     let bodyHtml = '';
     if (bodyText) {
       const paragraphs = bodyText.split('\n\n');
-      bodyHtml = '<div class="hp-section"><h3>Perfil</h3>' +
+      bodyHtml = '<div class="hp-section">' +
         paragraphs.map(function (p) { return '<p>' + escapeHtml(p.trim()) + '</p>'; }).join('') +
         '</div>';
     }
@@ -612,9 +605,22 @@
     // Role subtitle for modal header
     const roleHtml = e.role ? '<p class="hp-modal-role">' + escapeHtml(e.role) + '</p>' : '';
 
+    // Summary (editorial brief) — separate from official_version
+    const summaryText = e.summary || e.context || '';
+    const summaryHtml = summaryText
+      ? '<div class="hp-section"><h3>Resumen</h3><p>' + escapeHtml(summaryText) + '</p></div>'
+      : '';
+
+    // Official version — voice of the regime, visually differentiated
+    const officialText = e.official_version || '';
+    const officialHtml = officialText
+      ? '<div class="hp-section hp-section--official"><h3>Versión oficial</h3><p>' + escapeHtml(officialText) + '</p></div>'
+      : '';
+
     const html =
       roleHtml +
-      (e.context ? '<div class="hp-section"><h3>Contexto</h3><p>' + escapeHtml(String(e.context)) + '</p></div>' : '') +
+      summaryHtml +
+      officialHtml +
       bodyHtml +
       sourcesHtml;
 

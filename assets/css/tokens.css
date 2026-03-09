@@ -1,0 +1,61 @@
+/* ===== Design System Tokens ===== */
+:root {
+  /* Fonts */
+  --font-family-display: "Staatliches", sans-serif;
+  --font-family-ui: "Inter", sans-serif;
+  --font-family-body: "Inter", sans-serif;
+
+  /* Font sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+
+  /* Font weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Letter spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.04em;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+
+  /* Colors */
+  --color-bg: #f3f3f3;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f7efef;
+  --color-border: #d9d9d9;
+  --color-border-strong: #bdbdbd;
+  --color-text: #111111;
+  --color-text-muted: #5c5c5c;
+  --color-accent: #ef1b1b;
+  --color-accent-soft: #f8dede;
+  --color-accent-strong: #c91414;
+  --color-black: #000000;
+  --color-white: #ffffff;
+}

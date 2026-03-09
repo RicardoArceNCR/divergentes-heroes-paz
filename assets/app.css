@@ -13,7 +13,7 @@
   /* Spacing & Sizing */
   --hp-radius: 14px;
   --hp-line: 6px;
-  --hp-max: 100%;
+  --hp-max: 85%;
   --hp-shell-pad-left: 44px;
   --hp-rail-w: 180px;
   --hp-rail-gap: 22px;
@@ -28,7 +28,7 @@
   --hp-line-bottom: 0px;
 
   /* Component Specific */
-  --hp-event-photo-w: 240px;
+  --hp-event-photo-w: 320px;
   --hp-card-pad-y: 14px;
   --hp-card-pad-x: 16px;
 
@@ -54,12 +54,15 @@
 /* ==========================================================================
    RESET & BASE
    ========================================================================== */
+@import url('./css/tokens.css');
+@import url('./css/theme-editorial.css');
+
 .hp-shell,
 .hp-shell * {
   box-sizing: border-box;
 }
 
-.hp-shell img {
+.hp-shell img{
   max-width: 100%;
   height: auto;
 }
@@ -338,13 +341,13 @@ body.hp-has-fullbleed .entry-content.wp-block-post-content.has-global-padding {
   position: relative;
   display: grid;
   grid-template-columns: 1fr var(--hp-event-photo-w);
-  gap: 10px;
+  gap: var(--space-3);
   padding: var(--hp-card-pad-y) var(--hp-card-pad-x);
-  border: 1px solid var(--hp-gray);
-  border-radius: var(--hp-radius);
-  background: var(--hp-white);
-  margin: 10px 0;
-  box-shadow: var(--hp-shadow);
+  border: 1px solid var(--hp-card-border);
+  border-radius: var(--hp-radius-card);
+  background: var(--hp-card-bg);
+  margin: var(--space-3) 0;
+  box-shadow: var(--hp-card-shadow);
   transition: border-color var(--hp-dur-2) var(--hp-ease), box-shadow var(--hp-dur-2) var(--hp-ease);
 }
 
@@ -398,43 +401,108 @@ body.hp-has-fullbleed .entry-content.wp-block-post-content.has-global-padding {
   transform: scale(1.1);
 }
 
-.hp-shell .hp-event-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 10px;
+/* --- Chip: rol único (una sola aparición visual) --- */
+.hp-shell .hp-chips {
+  margin-bottom: var(--sp-2, 8px);
 }
 
+.hp-shell .hp-chip {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  background: var(--hp-chip-bg);
+  color: var(--hp-chip-text);
+  border-radius: var(--radius-pill);
+  font-family: var(--hp-font-ui);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+/* --- Nombre: línea propia, protagonismo de titular --- */
 .hp-shell .hp-event-name {
-  margin: 0;
-  font-size: 18px;
-  font-family: var(--hp-font-title);
-}
-
-.hp-shell .hp-meta {
-  margin: 0;
-  opacity: .8;
-}
-
-/* Role subtitle (editorial) */
-.hp-shell .hp-event-role {
+  margin: 0 0 var(--sp-1, 4px) 0;
   width: 100%;
-  margin: 2px 0 6px 0;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--hp-red);
-  opacity: .9;
+  font-size: var(--text-lg, 1.125rem);
+  font-family: var(--hp-font-title);
+  line-height: 1.1;
+  letter-spacing: var(--tracking-tight, -0.02em);
 }
 
-.hp-shell .hp-modal-role {
-  margin: 0 0 12px 0;
-  font-size: 13px;
-  font-weight: 600;
+/* --- Meta: fecha y lugar --- */
+.hp-shell .hp-meta {
+  margin: 0 0 var(--sp-3, 12px) 0;
+  font-family: var(--hp-font-ui, var(--hp-font-title));
+  font-size: var(--text-sm, 0.813rem);
+  font-weight: var(--fw-medium, 500);
+  opacity: .75;
+}
+
+/* --- Resumen editorial --- */
+.hp-shell .hp-event-summary {
+  margin: 0 0 var(--sp-4, 16px) 0;
+  font-family: var(--hp-font-body, var(--hp-font-title));
+  font-size: var(--text-md, 1rem);
+  line-height: 1.55;
+  color: var(--hp-text);
+}
+
+/* --- Caja: versión oficial --- */
+.hp-shell .hp-event-official {
+  margin: 0 0 var(--sp-4, 16px) 0;
+  padding: var(--sp-3, 12px) var(--sp-4, 16px);
+  background: var(--hp-official-bg, #f7efef);
+  border-left: 3px solid var(--hp-official-border, var(--hp-red));
+  border-radius: 0 var(--radius-sm, 8px) var(--radius-sm, 8px) 0;
+}
+
+.hp-shell .hp-event-official-label {
+  display: block;
+  margin-bottom: var(--sp-1, 4px);
+  font-family: var(--hp-font-ui, var(--hp-font-title));
+  font-size: var(--text-xs, 0.70rem);
+  font-weight: var(--fw-bold, 700);
+  letter-spacing: var(--tracking-wider, 0.08em);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
   color: var(--hp-red);
+}
+
+.hp-shell .hp-event-official-text {
+  margin: 0;
+  font-family: var(--hp-font-body, var(--hp-font-title));
+  font-size: var(--text-sm, 0.813rem);
+  line-height: 1.5;
+  color: var(--hp-text);
+  font-style: italic;
+}
+
+/* --- Modal: rol como subtítulo --- */
+.hp-shell .hp-modal-role {
+  margin: 0 0 var(--sp-3, 12px) 0;
+  font-family: var(--hp-font-ui, var(--hp-font-title));
+  font-size: var(--text-xs, 0.70rem);
+  font-weight: var(--fw-bold, 700);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide, 0.05em);
+  color: var(--hp-red);
+}
+
+/* --- Modal: sección versión oficial --- */
+.hp-shell .hp-section--official {
+  border-left: 3px solid var(--hp-red);
+  padding-left: var(--sp-4, 16px);
+  background: var(--hp-official-bg, #f7efef);
+  border-radius: 0 var(--radius-sm, 8px) var(--radius-sm, 8px) 0;
+  padding: var(--sp-3, 12px) var(--sp-4, 16px);
+  margin-bottom: var(--sp-4, 16px);
+}
+
+.hp-shell .hp-section--official h3 {
+  color: var(--hp-red);
+}
+
+.hp-shell .hp-section--official p {
+  font-style: italic;
 }
 
 .hp-shell .hp-button {
@@ -588,24 +656,36 @@ body.hp-has-fullbleed .entry-content.wp-block-post-content.has-global-padding {
 /* ==========================================================================
    THEME: DIVERGENTES
    ========================================================================== */
-.hp-shell[data-theme="divergentes"] {
+.hp-shell{
   --hp-red: #e10600;
-  --hp-max: 100%;
-  --hp-radius: 18px;
-  --hp-rail-w: 160px;
-  --hp-rail-gap: 28px;
-  --hp-sticky-top: 72px;
-  --hp-event-photo-w: 260px;
-  --hp-card-pad-y: 18px;
-  --hp-card-pad-x: 18px;
-  --hp-shadow: 0 10px 28px rgba(0, 0, 0, .10);
-  --hp-shadow-active: 0 16px 42px rgba(0, 0, 0, .18);
-  --hp-font-body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  --hp-font-title: 'Lacquer', var(--hp-font-body);
-  --hp-subtitle-max: 55ch;
-  --hp-container-max: 1180px;
-  --hp-line-x: 56px;
-  /* Optimized for Divergentes theme on Desktop */
+  --hp-black: #0b0b0c;
+  --hp-white: #ffffff;
+  --hp-gray: #e9e9eb;
+  --hp-text: #121214;
+
+  --hp-radius: var(--radius-md);
+  --hp-line: 6px;
+  --hp-max: 85%;
+
+  --hp-shell-pad-left: var(--space-6);
+  --hp-rail-w: 180px;
+  --hp-rail-gap: var(--space-5);
+  --hp-sticky-top: var(--space-5);
+  --hp-adminbar: 0px;
+
+  --hp-event-photo-w: 300px;
+  --hp-card-pad-y: var(--space-4);
+  --hp-card-pad-x: var(--space-4);
+
+  --hp-shadow: var(--shadow-sm);
+  --hp-shadow-active: var(--shadow-md);
+
+  --hp-font-body: var(--hp-font-body);
+  --hp-font-title: var(--hp-font-title);
+
+  color: var(--hp-text);
+  background: var(--hp-bg);
+  font-family: var(--hp-font-body);
 }
 
 /* --- THEME PRESETS --- */
@@ -731,7 +811,7 @@ body.hp-has-fullbleed .entry-content.wp-block-post-content.has-global-padding {
 
 .hp-shell[data-theme="divergentes"] .hp-event-photo {
   width: var(--hp-event-photo-w);
-  height: 150px;
+  height: 310px;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

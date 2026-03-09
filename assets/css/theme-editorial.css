@@ -1,0 +1,24 @@
+/* ===== Theme Editorial: mapeo de tokens al componente ===== */
+.hp-shell {
+  --hp-font-title: var(--font-family-display);
+  --hp-font-ui: var(--font-family-ui);
+  --hp-font-body: var(--font-family-body);
+
+  --hp-text-title-size: var(--font-size-xl);
+  --hp-text-meta-size: var(--font-size-sm);
+  --hp-text-body-size: var(--font-size-md);
+  --hp-text-summary-size: var(--font-size-lg);
+
+  --hp-bg: var(--color-bg);
+  --hp-card-bg: var(--color-surface);
+  --hp-card-border: var(--color-border-strong);
+  --hp-text: var(--color-text);
+  --hp-text-muted: var(--color-text-muted);
+  --hp-accent: var(--color-accent);
+  --hp-accent-soft: var(--color-accent-soft);
+  --hp-chip-bg: var(--color-black);
+  --hp-chip-text: var(--color-white);
+  --hp-radius-card: var(--radius-lg);
+  --hp-radius-pill: var(--radius-xl);
+  --hp-card-shadow: var(--shadow-sm);
+}
