@@ -54,13 +54,72 @@
       const rel = raw.replace(/^\.\/?images\//i, '');
       return String(imagesBaseUrl).replace(/\/+$/, '') + '/' + rel;
     }
+    // Bare filename (no slashes) — resolve against imagesBaseUrl
+    if (!/\//.test(raw)) {
+      return String(imagesBaseUrl).replace(/\/+$/, '') + '/' + raw;
+    }
     return raw;
+  }
+
+  /* ---- Spanish date formatter (e.g. "16 de mayo") ---- */
+  const MONTH_NAMES_ES = [
+    'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+    'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+  ];
+  function spanishDisplayDate(isoDate) {
+    if (!isoDate) return '';
+    const parts = String(isoDate).split('-');
+    if (parts.length < 3) return String(isoDate);
+    const day = parseInt(parts[2], 10);
+    const monthIdx = parseInt(parts[1], 10) - 1;
+    const monthName = MONTH_NAMES_ES[monthIdx] || '';
+    return day + ' de ' + monthName;
+  }
+
+  /**
+   * Normalize an event from the new JSON schema to the format
+   * that the renderer expects (legacy schema).
+   */
+  function normalizeEvent(e, imagesBaseUrl) {
+    if (!e) return e;
+    // month_id: support both monthId and month_id
+    if (!e.month_id && e.monthId) e.month_id = e.monthId;
+    // display_date: derive from date if missing
+    if (!e.display_date && e.date) e.display_date = spanishDisplayDate(e.date);
+    // place: support location fallback
+    if (!e.place && e.location) e.place = e.location;
+    // context: map summary -> context
+    if (!e.context && e.summary) e.context = e.summary;
+    // contrast: map description -> contrast
+    if (!e.contrast && e.description) e.contrast = e.description;
+    // photo: resolve from flat image string
+    if (!e.photo || (!e.photo.src && e.image)) {
+      const imgSrc = e.image || 'img-1.webp';
+      const resolvedSrc = resolveAssetUrl(imgSrc, imagesBaseUrl);
+      e.photo = {
+        src: resolvedSrc,
+        alt: e.name ? 'Retrato de ' + e.name : ''
+      };
+    }
+    // profile: build from body[] array
+    if (!e.profile && Array.isArray(e.body) && e.body.length) {
+      e.profile = {
+        mode: 'modal',
+        body: e.body.join('\n\n'),
+        sources: []
+      };
+    }
+    // category: map role to category if missing
+    if ((!e.category || !e.category.length) && e.role) {
+      e.category = [e.role];
+    }
+    return e;
   }
 
   function groupByMonth(events) {
     const map = new Map();
     for (const e of events) {
-      const key = String(e.month_id || '');
+      const key = String(e.month_id || e.monthId || '');
       if (!map.has(key)) map.set(key, []);
       map.get(key).push(e);
     }
@@ -224,9 +283,18 @@
 
   function renderApp(root, data, config) {
     const months = Array.isArray(data.months) ? data.months : [];
-    const events = Array.isArray(data.events) ? data.events : [];
-
     const imagesBaseUrl = config && config.imagesBaseUrl ? String(config.imagesBaseUrl) : '';
+
+    // Normalize events from new schema to legacy format
+    const rawEvents = Array.isArray(data.events) ? data.events : [];
+    const events = rawEvents.map(function (e) { return normalizeEvent(e, imagesBaseUrl); });
+
+    // Sort chronologically by date (ascending)
+    events.sort(function (a, b) {
+      const da = a.date || '';
+      const db = b.date || '';
+      return da < db ? -1 : da > db ? 1 : 0;
+    });
 
     const monthsById = new Map();
     for (const m of months) {
@@ -317,6 +385,7 @@
                 '      <h3 class="hp-event-name">' +
                 escapeHtml(name) +
                 '</h3>' +
+                (e.role ? '<p class="hp-event-role">' + escapeHtml(e.role) + '</p>' : '') +
                 (meta ? '<p class="hp-meta">' + escapeHtml(meta) + '</p>' : '') +
                 '    </header>' +
                 (context ? '<p class="hp-event-context">' + escapeHtml(context) + '</p>' : '') +
@@ -531,10 +600,22 @@
       '</ul></div>'
       : '';
 
+    // Render body as separate paragraphs (supports body[] array via normalize)
+    let bodyHtml = '';
+    if (bodyText) {
+      const paragraphs = bodyText.split('\n\n');
+      bodyHtml = '<div class="hp-section"><h3>Perfil</h3>' +
+        paragraphs.map(function (p) { return '<p>' + escapeHtml(p.trim()) + '</p>'; }).join('') +
+        '</div>';
+    }
+
+    // Role subtitle for modal header
+    const roleHtml = e.role ? '<p class="hp-modal-role">' + escapeHtml(e.role) + '</p>' : '';
+
     const html =
+      roleHtml +
       (e.context ? '<div class="hp-section"><h3>Contexto</h3><p>' + escapeHtml(String(e.context)) + '</p></div>' : '') +
-      (e.contrast ? '<div class="hp-section"><h3>Versión oficial</h3><p>' + escapeHtml(String(e.contrast)) + '</p></div>' : '') +
-      (bodyText ? '<div class="hp-section"><h3>Perfil</h3><p>' + escapeHtml(bodyText).replaceAll('\n', '<br>') + '</p></div>' : '') +
+      bodyHtml +
       sourcesHtml;
 
     const triggerEl = root.querySelector('[data-hp-event-id="' + cssEscape(String(id)) + '"]');

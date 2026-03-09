@@ -416,6 +416,27 @@ body.hp-has-fullbleed .entry-content.wp-block-post-content.has-global-padding {
   opacity: .8;
 }
 
+/* Role subtitle (editorial) */
+.hp-shell .hp-event-role {
+  width: 100%;
+  margin: 2px 0 6px 0;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--hp-red);
+  opacity: .9;
+}
+
+.hp-shell .hp-modal-role {
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--hp-red);
+}
+
 .hp-shell .hp-button {
   display: inline-flex;
   align-items: center;
