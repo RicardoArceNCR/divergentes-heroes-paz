@@ -68,7 +68,8 @@
 }
 
 .hp-shell img {
-  max-width: 11%;
+  display: block;
+  max-width: 100%;
   height: auto;
 }
 
@@ -81,11 +82,18 @@
 
 .hp-shell .hp-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--hp-container-max);
   margin-left: auto;
   margin-right: auto;
   padding-left: 24px;
   padding-right: 24px;
+}
+
+@media (max-width: 767px) {
+  .hp-shell .hp-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 
@@ -110,7 +118,7 @@
 .hp-shell .hp-hero {
   position: relative;
   width: 100%;
-  min-height: clamp(420px, 72vh, 860px);
+  min-height: 72vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -122,13 +130,9 @@
   overflow: hidden;
 }
 
-.hp-shell .hp-hero-container,
-.hp-shell .hp-hero .hp-container {
+.hp-shell .hp-hero-container {
   position: relative;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-inline: clamp(20px, 4vw, 40px);
 }
 
 .hp-shell .hp-hero-copy {
@@ -150,9 +154,9 @@
   letter-spacing: -0.03em;
   font-family: var(--hp-font-title);
   text-align: center;
-  max-width: 14ch;
   margin-left: auto;
   margin-right: auto;
+  max-width: 12ch;
 }
 
 .hp-shell .hp-subtitle {

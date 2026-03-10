@@ -1,10 +1,9 @@
 /* ==========================================================================
    PAGE / WORDPRESS INTEGRATION LAYER
-   Especial editorial dentro de Gutenberg
    ========================================================================== */
 
 /* ----------------------------------
-   1. Admin bar
+   1. Admin bar offset
 ---------------------------------- */
 
 html {
@@ -18,7 +17,7 @@ html {
 }
 
 /* ----------------------------------
-   2. Body marker
+   2. Body safety
 ---------------------------------- */
 
 body.hp-has-fullbleed {
@@ -26,7 +25,7 @@ body.hp-has-fullbleed {
 }
 
 /* ----------------------------------
-   3. WordPress wrapper normalization
+   3. Root wrapper
 ---------------------------------- */
 
 .hp-wp-wrap {
@@ -48,8 +47,6 @@ body.hp-has-fullbleed {
    4. Entry point protection
 ---------------------------------- */
 
-/* Si hp-wp-wrap cae dentro de un contenedor Gutenberg constrained,
-   debe comportarse como fullbleed y no como content-width */
 .entry-content > .hp-wp-wrap,
 .wp-block-post-content > .hp-wp-wrap,
 .is-layout-constrained > .hp-wp-wrap {
@@ -64,10 +61,9 @@ body.hp-has-fullbleed {
 }
 
 /* ----------------------------------
-   5. Template-specific fixes
+   5. Neutralize page template spacing
 ---------------------------------- */
 
-/* Neutraliza márgenes del template que afectan el especial */
 body.page-id-102 main.wp-block-group.has-global-padding.is-layout-constrained {
     margin-top: 0 !important;
 }
@@ -76,6 +72,10 @@ body.page-id-102 .wp-block-group.alignfull.has-global-padding.is-layout-constrai
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
+
+/* ----------------------------------
+   6. Neutralize content padding around the special
+---------------------------------- */
 
 body.page-id-102 .entry-content.has-global-padding {
     padding-left: 0 !important;
@@ -88,17 +88,7 @@ body.page-id-102 .entry-content > .alignfull {
 }
 
 /* ----------------------------------
-   6. Safety guards
----------------------------------- */
-
-/* evita que Gutenberg meta márgenes a hijos directos del especial */
-.hp-wp-wrap > * {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-/* ----------------------------------
-   7. Box model consistency
+   7. Box sizing safety
 ---------------------------------- */
 
 .hp-wp-wrap,
