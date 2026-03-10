@@ -39,6 +39,13 @@
   --hp-card-pad-y: 14px;
   --hp-card-pad-x: 16px;
 
+  /* Intro Variables */
+  --hp-intro-art-left: 180px;
+  --hp-intro-art-width: 93px;
+  --hp-intro-copy-offset: 300px;
+  --hp-intro-mobile-art-width: 90px;
+  --hp-intro-mobile-top-space: 140px;
+
   /* Shadows */
   --hp-shadow: none;
   --hp-shadow-active: 0 8px 24px rgba(0, 0, 0, .08);
@@ -184,6 +191,7 @@
   padding: clamp(32px, 6vw, 72px) 0 clamp(12px, 2vw, 20px);
   background-color: var(--hp-dark-gray);
   overflow: hidden;
+  z-index: 2;
 }
 
 .hp-shell .hp-lede {
@@ -889,11 +897,32 @@
 /* Fallback & Loading */
 .hp-shell .hp-fallback,
 .hp-shell .hp-loading {
-  padding: 16px;
-  border: 1px solid var(--hp-gray);
-  border-radius: var(--hp-radius);
-  background: #fafafa;
   margin-top: 14px;
+  padding: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  background: #fafafa;
+}
+
+.hp-shell .hp-fallback h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-family: var(--hp-font-title);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.hp-shell .hp-fallback ol {
+  margin: 0 0 24px;
+  padding-left: 20px;
+}
+
+.hp-shell .hp-fallback li + li {
+  margin-top: 12px;
+}
+
+.hp-shell .hp-fallback p {
+  margin-top: 8px;
 }
 
 
@@ -901,15 +930,6 @@
 /* ==========================================
    INTRO EDITORIAL SIMPLE Y ESTABLE
    ========================================== */
-
-.hp-intro {
-  position: relative;
-  z-index: 2;
-}
-
-img.hp-intro-rail-art {
-    max-width: 90px;
-}
 
 .hp-intro-container {
   position: relative;
@@ -921,16 +941,13 @@ img.hp-intro-rail-art {
 .hp-intro-rail-art {
   position: absolute;
   top: 0;
-  left: 179px;
-
+  left: var(--hp-intro-art-left);
   display: block;
-  width: 100%;
-  max-width: 93px;
+  width: var(--hp-intro-art-width);
+  max-width: 100%;
   height: auto;
-
   pointer-events: none;
   user-select: none;
-
   opacity: 0.95;
   z-index: 1;
 }
@@ -938,7 +955,7 @@ img.hp-intro-rail-art {
 .hp-intro-copy {
   position: relative;
   z-index: 2;
-  padding-left: 299px;
+  padding-left: var(--hp-intro-copy-offset);
   max-width: 85ch;
 }
 
@@ -978,15 +995,13 @@ img.hp-intro-rail-art {
 
 /* Responsive Hero + Intro */
 @media (max-width: 900px) {
-  .hp-shell .hp-hero-container,
-  .hp-shell .hp-hero .hp-container {
-    grid-template-columns: 1fr;
-    gap: 28px;
+  .hp-shell {
+    --hp-intro-art-left: 0px;
+    --hp-intro-art-width: 80px;
+    --hp-intro-copy-offset: 92px;
   }
 
   .hp-shell .hp-hero-copy {
-    align-items: center;
-    text-align: center;
     max-width: 100%;
   }
 
@@ -998,18 +1013,8 @@ img.hp-intro-rail-art {
     max-width: 28ch;
   }
 
-  
   .hp-intro-container {
     min-height: 110px;
-  }
-
-  .hp-intro-rail-art {
-    max-width: 80px;
-  }
-
-  .hp-intro-copy {
-    padding-left: 92px;
-    max-width: 64ch;
   }
 }
 
@@ -1022,20 +1027,25 @@ img.hp-intro-rail-art {
 
 /* mobile */
 @media (max-width: 782px) {
+  .hp-shell {
+    --hp-intro-art-left: 0px;
+    --hp-intro-art-width: var(--hp-intro-mobile-art-width);
+    --hp-intro-copy-offset: 0px;
+  }
+
   .hp-intro-container {
     min-height: auto;
     display: block;
   }
 
   .hp-intro-rail-art {
-    top: -20px;
+    top: 0;
     left: 0;
-    width: 90px;
   }
 
   .hp-intro-copy {
-    margin-left: 0;
-    padding-top: 180px;
+    padding-left: 0;
+    padding-top: var(--hp-intro-mobile-top-space);
     max-width: 100%;
   }
 
@@ -1045,6 +1055,9 @@ img.hp-intro-rail-art {
   }
 
   .hp-byline img {
-    width: 180px;
+    display: block;
+    width: 100%;
+    max-width: 180px;
+    height: auto;
   }
 }

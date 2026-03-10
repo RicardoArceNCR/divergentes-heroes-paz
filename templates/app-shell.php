@@ -27,7 +27,7 @@ $theme = $config['theme'] ?? 'editorial';
              data-layout="<?php echo dhp_esc_attr($layout); ?>">
 
         <!-- PORTADA -->
-        <section class="hp-hero" aria-label="Héroes de la Paz">
+        <section class="hp-hero" aria-label="<?php echo dhp_esc_attr($title ?: 'Especial editorial'); ?>">
             <div class="hp-container hp-hero-container">
                 <div class="hp-hero-copy">
                     <?php if ($title): ?>
