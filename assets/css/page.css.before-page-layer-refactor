@@ -1,0 +1,10 @@
+/* Admin bar support for the shell */
+body.admin-bar .hp-shell {
+  --hp-adminbar: 32px;
+}
+
+@media (max-width: 782px) {
+  body.admin-bar .hp-shell {
+    --hp-adminbar: 46px;
+  }
+}
