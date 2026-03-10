@@ -1,200 +1,109 @@
 /* ==========================================================================
-   DHP / page.css
-   WordPress integration layer
-
-   Responsabilidad:
-   - proteger el especial editorial dentro del entorno WordPress
-   - neutralizar restricciones de block themes
-   - preservar fullbleed, spacing y wrappers del componente
-   - NO contiene diseño visual del especial
-
-   Este archivo no debe definir hero, intro, cards ni timeline visual.
-   Solo debe encargarse de la convivencia con WordPress.
+   PAGE / WORDPRESS INTEGRATION LAYER
+   Especial editorial dentro de Gutenberg
    ========================================================================== */
 
+/* ----------------------------------
+   1. Admin bar
+---------------------------------- */
 
-/* ==========================================================================
-   1. Environment variables
-   --------------------------------------------------------------------------
-   Variables ligadas al entorno WordPress, no al componente.
-   Aquí vive el offset del admin bar y otras condiciones de integración.
-   ========================================================================== */
-
-body.hp-has-fullbleed {
-  --hp-adminbar-offset: 0px;
-}
-
-body.admin-bar.hp-has-fullbleed {
-  --hp-adminbar-offset: 32px;
+html {
+    scroll-padding-top: 32px;
 }
 
 @media (max-width: 782px) {
-  body.admin-bar.hp-has-fullbleed {
-    --hp-adminbar-offset: 46px;
-  }
+    html {
+        scroll-padding-top: 46px;
+    }
 }
 
+/* ----------------------------------
+   2. Body marker
+---------------------------------- */
 
-/* ==========================================================================
-   2. Root wrapper guards
-   --------------------------------------------------------------------------
-   Asegura que el wrapper raíz del especial no herede max-width, márgenes
-   o paddings indeseados del theme o del editor de bloques.
-   ========================================================================== */
-
-body.hp-has-fullbleed .hp-wp-wrap {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  margin-block-start: 0 !important;
-  margin-block-end: 0 !important;
-  box-sizing: border-box;
+body.hp-has-fullbleed {
+    overflow-x: clip;
 }
 
-body.hp-has-fullbleed .hp-shell {
-  position: relative;
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  box-sizing: border-box;
+/* ----------------------------------
+   3. WordPress wrapper normalization
+---------------------------------- */
+
+.hp-wp-wrap {
+    position: relative;
+    margin: 0;
+    padding: 0;
 }
 
-
-/* ==========================================================================
-   3. Fullbleed integration
-   --------------------------------------------------------------------------
-   Convierte el wrapper fullbleed en una superficie real de viewport,
-   incluso cuando vive dentro de contenedores centrados del theme.
-   ========================================================================== */
-
-body.hp-has-fullbleed .hp-wp-wrap--fullbleed {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: 50%;
-  margin-right: 0;
-  transform: translateX(-50%);
+.hp-wp-wrap--fullbleed {
+    position: relative;
+    width: 100vw;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    padding: 0;
 }
 
+/* ----------------------------------
+   4. Entry point protection
+---------------------------------- */
 
-/* ==========================================================================
-   4. Block theme compatibility
-   --------------------------------------------------------------------------
-   Compatibilidad con wrappers típicos de block themes:
-   - .wp-site-blocks
-   - .entry-content
-   - .wp-block-post-content
-
-   La intención aquí es impedir que estos wrappers vuelvan a encerrar el
-   especial después de que el shell ya fue abierto a fullbleed.
-   ========================================================================== */
-
-body.hp-has-fullbleed .wp-site-blocks .hp-wp-wrap,
-body.hp-has-fullbleed .wp-site-blocks .hp-shell,
-body.hp-has-fullbleed .entry-content .hp-wp-wrap,
-body.hp-has-fullbleed .entry-content .hp-shell,
-body.hp-has-fullbleed .wp-block-post-content .hp-wp-wrap,
-body.hp-has-fullbleed .wp-block-post-content .hp-shell {
-  max-width: none;
+/* Si hp-wp-wrap cae dentro de un contenedor Gutenberg constrained,
+   debe comportarse como fullbleed y no como content-width */
+.entry-content > .hp-wp-wrap,
+.wp-block-post-content > .hp-wp-wrap,
+.is-layout-constrained > .hp-wp-wrap {
+    max-width: none !important;
 }
 
-
-/* ==========================================================================
-   5. is-layout-constrained protection
-   --------------------------------------------------------------------------
-   Esta es una de las protecciones más importantes.
-
-   WordPress aplica max-width y centramiento automático a hijos de
-   .is-layout-constrained. Si tu wrapper cae allí, el especial se encierra.
-
-   Aquí neutralizamos esa restricción SOLO para nuestro wrapper.
-   ========================================================================== */
-
-body.hp-has-fullbleed .is-layout-constrained > .hp-wp-wrap,
-body.hp-has-fullbleed .is-layout-constrained > .hp-shell,
-body.hp-has-fullbleed .is-layout-constrained > .alignfull.hp-wp-wrap,
-body.hp-has-fullbleed .is-layout-constrained > .alignfull.hp-shell {
-  width: 100%;
-  max-width: none !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+.entry-content > .hp-wp-wrap.alignfull,
+.wp-block-post-content > .hp-wp-wrap.alignfull,
+.is-layout-constrained > .hp-wp-wrap.alignfull {
+    max-width: none !important;
+    width: 100vw !important;
 }
 
-body.hp-has-fullbleed .is-layout-constrained > .hp-wp-wrap--fullbleed,
-body.hp-has-fullbleed .is-layout-constrained > .alignfull.hp-wp-wrap--fullbleed {
-  width: 100vw;
-  max-width: 100vw !important;
-  margin-left: 50% !important;
-  margin-right: 0 !important;
-  transform: translateX(-50%);
+/* ----------------------------------
+   5. Template-specific fixes
+---------------------------------- */
+
+/* Neutraliza márgenes del template que afectan el especial */
+body.page-id-102 main.wp-block-group.has-global-padding.is-layout-constrained {
+    margin-top: 0 !important;
 }
 
-
-/* ==========================================================================
-   6. Global padding protection
-   --------------------------------------------------------------------------
-   Los block themes usan .has-global-padding para empujar contenido hacia
-   adentro. No queremos romper el sitio; solo evitar que ese padding
-   distorsione el wrapper fullbleed del especial.
-   ========================================================================== */
-
-body.hp-has-fullbleed .has-global-padding .hp-wp-wrap,
-body.hp-has-fullbleed .has-global-padding .hp-shell {
-  box-sizing: border-box;
+body.page-id-102 .wp-block-group.alignfull.has-global-padding.is-layout-constrained {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
-body.hp-has-fullbleed .has-global-padding .hp-wp-wrap--fullbleed {
-  padding-left: 0;
-  padding-right: 0;
+body.page-id-102 .entry-content.has-global-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
-
-/* ==========================================================================
-   7. Vertical rhythm neutralization
-   --------------------------------------------------------------------------
-   WordPress y el theme inyectan márgenes verticales automáticos mediante
-   reglas tipo:
-     :where(.wp-site-blocks) > *
-     .is-layout-flow > *
-     .is-layout-constrained > *
-
-   Aquí evitamos que esos márgenes empujen visualmente el especial.
-   ========================================================================== */
-
-body.hp-has-fullbleed .hp-wp-wrap,
-body.hp-has-fullbleed .hp-shell {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+body.page-id-102 .entry-content > .alignfull {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
-body.hp-has-fullbleed .entry-content > .hp-wp-wrap:first-child,
-body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap:first-child {
-  margin-top: 0 !important;
+/* ----------------------------------
+   6. Safety guards
+---------------------------------- */
+
+/* evita que Gutenberg meta márgenes a hijos directos del especial */
+.hp-wp-wrap > * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }
 
+/* ----------------------------------
+   7. Box model consistency
+---------------------------------- */
 
-/* ==========================================================================
-   8. alignfull / alignwide safety
-   --------------------------------------------------------------------------
-   Protección extra si el especial vive dentro de un contexto alignfull
-   o alignwide o si WordPress decide reenvolver contenido.
-   ========================================================================== */
-
-body.hp-has-fullbleed .alignfull .hp-wp-wrap,
-body.hp-has-fullbleed .alignwide .hp-wp-wrap,
-body.hp-has-fullbleed .alignfull .hp-shell,
-body.hp-has-fullbleed .alignwide .hp-shell {
-  max-width: none;
+.hp-wp-wrap,
+.hp-wp-wrap *,
+.hp-wp-wrap *::before,
+.hp-wp-wrap *::after {
+    box-sizing: border-box;
 }
-
-
-/* ==========================================================================
-   9. Admin bar / viewport quirks
-   --------------------------------------------------------------------------
-   Espacio para futuros ajustes relacionados al admin bar o al viewport
-   cuando estés logueado en escritorio/móvil.
-
-   Mantener esta sección aunque hoy sea mínima ayuda a escalar el archivo.
-   ========================================================================== */
-
-/* Placeholder intentionally kept for future WordPress viewport quirks */
