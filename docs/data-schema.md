@@ -33,7 +33,6 @@ Contenido introductorio del especial.
 
 - `paragraphs` (array, required): Array de párrafos en orden
 - `byline_label` (string): Firma del autor (ej: "Por Divergentes")
-- `hero_image` (string): Nombre del archivo de imagen principal
 - `byline_image` (string): Nombre del archivo de imagen de firma
 
 ### months

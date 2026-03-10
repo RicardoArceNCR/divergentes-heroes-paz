@@ -17,7 +17,6 @@ $title = $meta['title'] ?? '';
 $subtitle = $meta['subtitle'] ?? '';
 $paragraphs = $intro['paragraphs'] ?? [];
 $byline_label = $intro['byline_label'] ?? 'Por Divergentes';
-$hero_image = $intro['hero_image'] ?? '';
 $layout = $config['layout'] ?? 'fullbleed';
 $theme = $config['theme'] ?? 'editorial';
 ?>
