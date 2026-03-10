@@ -60,8 +60,8 @@
   box-sizing: border-box;
 }
 
-.hp-shell img{
-  max-width: 10%;
+.hp-shell img {
+  max-width: 11%;
   height: auto;
 }
 
@@ -146,7 +146,7 @@ body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap .hp-shell {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-block: clamp(72px, 10vh, 136px);
+  padding: clamp(60px, 10vh, 120px) 0;
   text-align: center;
   color: var(--hp-white);
   background-color: var(--hp-dark-gray);
@@ -156,8 +156,11 @@ body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap .hp-shell {
 
 .hp-shell .hp-hero-container,
 .hp-shell .hp-hero .hp-container {
+  position: relative;
+  z-index: 2;
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -173,7 +176,6 @@ body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap .hp-shell {
   width: 100%;
   max-width: 860px;
   margin-inline: auto;
-  z-index: 2;
 }
 
 .hp-shell .hp-title {
@@ -206,20 +208,6 @@ body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap .hp-shell {
   opacity: 0.82;
 }
 
-.hp-shell .hp-hero-image {
-  width: 100%;
-  max-width: 460px;
-  justify-self: end;
-  position: relative;
-  z-index: 1;
-}
-
-.hp-shell .hp-hero-image img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
 
 .hp-intro {
   position: relative;
@@ -709,7 +697,7 @@ body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap .hp-shell {
 
   --hp-radius: var(--radius-md);
   --hp-line: 6px;
-  --hp-max: 85%;
+  --hp-max: 100%;
 
   --hp-shell-pad-left: var(--space-6);
   --hp-rail-w: 180px;
@@ -768,11 +756,16 @@ body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap .hp-shell {
 }
 
 .hp-shell[data-theme="divergentes"] .hp-hero {
-  background: url("../images/portada.webp") top center/cover no-repeat;
-  position: relative;
-  overflow: hidden;
+  min-height: clamp(420px, 72vh, 860px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: clamp(60px, 10vh, 120px) 0;
   text-align: center;
+  color: var(--hp-white);
+  background: url("../images/portada.webp") center top / cover no-repeat;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Grunge Overlays */
@@ -795,18 +788,20 @@ body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap .hp-shell {
 }
 
 .hp-shell[data-theme="divergentes"] .hp-hero .hp-title {
-  font-size: clamp(90px, 9vw, 164px);
+  margin: 0;
+  font-size: clamp(56px, 8vw, 164px);
   line-height: 0.95;
   letter-spacing: -0.02em;
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  max-width: 14ch;
-  margin-bottom: 20px;
+  max-width: 10ch;
+  margin-inline: auto;
 }
 
 .hp-shell[data-theme="divergentes"] .hp-hero .hp-subtitle {
+  margin: 0;
   font-size: clamp(16px, 2vw, 22px);
   line-height: 1.4;
-  opacity: 1;
+  max-width: 34ch;
   font-weight: 500;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
@@ -931,131 +926,7 @@ body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap .hp-shell {
   margin-top: 14px;
 }
 
-/* ==========================================
-   HERO INTRO SIMPLE Y ESTABLE
-   ========================================== */
 
-.hp-shell[data-theme="divergentes"] .hp-hero .hp-container {
-  position: relative;
-  z-index: 2;
-  width: min(1100px, 100%);
-}
-
-.hp-shell[data-theme="divergentes"] .hp-hero {
-  text-align: center;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-hero-copy {
-  align-items: center;
-  max-width: 760px;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-hero-kicker {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 0 0 14px 0;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-hero-kicker span {
-  display: inline-block;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-hero-sep {
-  width: 72px;
-  height: 4px;
-  background: var(--hp-red);
-  margin: 0 0 18px 0;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-hero .hp-subtitle {
-  margin: 0 0 28px 0;
-  max-width: 34ch;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-hero-rail {
-  position: absolute;
-  top: 220px;
-  left: 250px;
-  width: 140px;
-  height: auto;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-hero-intro {
-  position: relative;
-  z-index: 3;
-  max-width: 540px;
-  margin-top: 24px;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-hero-intro .hp-lede {
-  margin: 0 0 22px 0;
-  max-width: 52ch;
-  font-size: 16px;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.96);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
-}
-
-.hp-shell[data-theme="divergentes"] .hp-hero-intro .hp-lede strong {
-  color: #fff;
-  font-weight: 700;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-byline {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-byline span {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-byline img {
-  display: block;
-  width: 150px;
-  max-width: 100%;
-  height: auto;
-}
-
-/* espacio para que el app no se pegue al hero */
-.hp-shell .hp-app {
-  padding-top: 24px;
-}
-
-/* mobile */
-@media (max-width: 782px) {
-  .hp-shell[data-theme="divergentes"] .hp-hero-rail {
-    left: 45px;
-    top: 260px;
-    width: 110px;
-    opacity: 0.95;
-  }
-
-  .hp-shell[data-theme="divergentes"] .hp-hero-intro {
-    max-width: 100%;
-    margin-top: 22px;
-  }
-
-  .hp-shell[data-theme="divergentes"] .hp-hero-intro .hp-lede {
-    font-size: 15px;
-    line-height: 1.65;
-  }
-
-  .hp-shell[data-theme="divergentes"] .hp-byline img {
-    width: 130px;
-  }
-}
 
 /* ==========================================
    INTRO EDITORIAL SIMPLE Y ESTABLE
@@ -1076,7 +947,7 @@ body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap .hp-shell {
 .hp-intro-rail-art {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 179px;
 
   display: block;
   width: 100%;
@@ -1093,8 +964,8 @@ body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap .hp-shell {
 .hp-intro-copy {
   position: relative;
   z-index: 2;
-  padding-left: 136px;
-  max-width: 68ch;
+  padding-left: 299px;
+  max-width: 85ch;
 }
 
 .hp-intro .hp-lede {
@@ -1153,11 +1024,7 @@ body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap .hp-shell {
     max-width: 28ch;
   }
 
-  .hp-shell .hp-hero-image {
-    justify-self: center;
-    max-width: 340px;
-  }
-
+  
   .hp-intro-container {
     min-height: 110px;
   }

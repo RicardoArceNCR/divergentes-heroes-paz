@@ -45,15 +45,6 @@ $theme = $config['theme'] ?? 'editorial';
                         </div>
                     <?php endif; ?>
                 </div>
-
-                <?php if ($hero_image): ?>
-                    <div class="hp-hero-image">
-                        <img src="<?php echo dhp_asset_image_url($hero_image); ?>"
-                             alt="<?php echo dhp_esc_attr($title); ?>"
-                             loading="eager"
-                             decoding="async">
-                    </div>
-                <?php endif; ?>
             </div>
         </section>
 
