@@ -9,17 +9,7 @@
    - NO contiene integración con WordPress/block theme
    ========================================================================== */
 .hp-shell {
-  /* Colors */
-  --hp-red: #e10600;
-  --hp-black: #0b0b0c;
-  --hp-dark-gray: #150504;
-  --hp-white: #ffffff;
-  --hp-gray: #e9e9eb;
-  --hp-text: #121214;
-
-  /* Spacing & Sizing */
-  --hp-radius: 14px;
-  --hp-line: 6px;
+  /* Layout & Structural Variables */
   --hp-max: 85%;
   --hp-shell-pad-left: 44px;
   --hp-rail-w: 180px;
@@ -27,7 +17,6 @@
   --hp-sticky-top: 64px;
   --hp-adminbar: 0px;
   --hp-container-pad: 16px;
-  --hp-container-max: 1200px;
   --hp-line-x: 22px;
   /* Default for mobile */
   --hp-line-w: 6px;
@@ -50,18 +39,8 @@
   --hp-shadow: none;
   --hp-shadow-active: 0 8px 24px rgba(0, 0, 0, .08);
 
-  /* Typography fallback */
-  --hp-font-body: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --hp-font-title: 'Staatliches', var(--hp-font-body);
-
-  /* Motion Tokens */
-  --hp-ease: cubic-bezier(0.4, 0, 0.2, 1);
-  --hp-dur-1: 180ms;
-  --hp-dur-2: 320ms;
-  --hp-reveal-y: 20px;
-
   color: var(--hp-text);
-  background: var(--hp-white);
+  background: var(--color-white);
   font-family: var(--hp-font-body);
 }
 
@@ -88,19 +67,35 @@
 }
 
 .hp-shell .hp-container {
-  width: 100%;
-  max-width: var(--hp-container-max);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  width: min(100% - 32px, var(--hp-container-max));
+  margin-inline: auto;
+}
+
+.hp-shell .hp-reading {
+  width: min(100%, var(--hp-reading-max));
+  margin-inline: auto;
 }
 
 @media (max-width: 767px) {
   .hp-shell .hp-container {
-    padding-left: 16px;
-    padding-right: 16px;
+    width: min(100% - 24px, var(--hp-container-max));
   }
+
+  .hp-shell .hp-reading {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   LAYOUT UTILITIES
+   ========================================================================== */
+
+.hp-section {
+  padding-block: var(--hp-section-space);
+}
+
+.hp-stack > * + * {
+  margin-top: var(--hp-block-space);
 }
 
 
@@ -119,25 +114,8 @@
 }
 
 /* ==========================================================================
-   HERO
+   HERO LAYOUT
    ========================================================================== */
-
-/* =========================================
-   HERO
-   ========================================= */
-
-.hp-shell[data-theme="divergentes"] .hp-hero {
-  background-image:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.42)
-    ),
-    url("../images/portada-desktop.webp");
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 .hp-hero {
   position: relative;
@@ -146,22 +124,6 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  color: #ffffff;
-}
-
-.hp-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.16) 0%,
-      rgba(0, 0, 0, 0.38) 55%,
-      rgba(0, 0, 0, 0.58) 100%
-    );
-  z-index: 0;
-  pointer-events: none;
 }
 
 .hp-hero-container {
@@ -174,13 +136,10 @@
   align-items: center;
 }
 
-.hp-hero .hp-container {
-  width: min(100% - 40px, 1320px);
-}
-
-.hp-hero-copy {
+.hp-hero-copy,
+.hp-hero__copy {
   width: 100%;
-  max-width: 980px;
+  max-width: var(--hp-hero-max);
   margin: 0 auto;
   padding: clamp(64px, 10vw, 120px) 0;
   text-align: center;
@@ -190,76 +149,16 @@
   gap: 18px;
 }
 
-.hp-hero .hp-title {
-  margin: 0;
-  max-width: 14ch;
-  font-family: var(--hp-font-title);
-  font-size: clamp(3rem, 7vw, 6.8rem);
-  line-height: 0.92;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  text-wrap: balance;
-}
-
-.hp-hero .hp-subtitle {
-  margin: 0;
-  max-width: 34ch;
-  font-family: var(--hp-font-body);
-  font-size: clamp(1rem, 1.6vw, 1.32rem);
-  line-height: 1.45;
-  font-weight: 500;
-  text-wrap: balance;
-  opacity: 0.98;
-}
-
-.hp-hero-byline-text {
-  margin-top: 8px;
-  font-family: var(--hp-font-body);
-  font-size: 0.84rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  opacity: 0.9;
-}
-
-.hp-hero-byline-text span {
-  display: inline-block;
-}
-
 @media (max-width: 900px) {
-  .hp-shell[data-theme="divergentes"] .hp-hero {
-    background-image:
-      linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.30),
-        rgba(0, 0, 0, 0.48)
-      ),
-      url("../images/portada-mobile.webp");
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
   .hp-hero {
     min-height: clamp(460px, 68vh, 720px);
   }
 
-  .hp-hero-copy {
+  .hp-hero-copy,
+  .hp-hero__copy {
     max-width: 100%;
     padding: 72px 0 64px;
     gap: 14px;
-  }
-
-  .hp-hero .hp-title {
-    max-width: 12ch;
-    font-size: clamp(2.4rem, 11vw, 4.6rem);
-    line-height: 0.95;
-  }
-
-  .hp-hero .hp-subtitle {
-    max-width: 30ch;
-    font-size: 1rem;
-    line-height: 1.42;
   }
 }
 
@@ -268,24 +167,10 @@
     min-height: 78svh;
   }
 
-  .hp-hero-copy {
+  .hp-hero-copy,
+  .hp-hero__copy {
     padding: 88px 0 56px;
     gap: 12px;
-  }
-
-  .hp-hero .hp-title {
-    max-width: 11ch;
-    font-size: clamp(2.2rem, 12vw, 3.7rem);
-  }
-
-  .hp-hero .hp-subtitle {
-    max-width: 26ch;
-    font-size: 0.98rem;
-  }
-
-  .hp-hero-byline-text {
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
   }
 }
 
@@ -1004,17 +889,19 @@
   z-index: 1;
 }
 
-.hp-intro-copy {
+.hp-intro-copy,
+.hp-intro__copy {
   position: relative;
   z-index: 2;
   padding-left: var(--hp-intro-copy-offset);
   max-width: 85ch;
 }
 
-.hp-intro .hp-lede {
+.hp-intro .hp-lede,
+.hp-intro .hp-intro__lede {
   margin: 0;
   max-width: 72ch;
-  color: var(--hp-white);
+  color: var(--hp-text);
   font-size: clamp(18px, 2.1vw, 28px);
   line-height: 1.55;
 }
@@ -1024,10 +911,11 @@
   font-weight: 700;
 }
 
-.hp-intro .hp-intro-paragraph {
+.hp-intro .hp-intro-paragraph,
+.hp-intro .hp-intro__paragraph {
   margin: 18px 0 0;
   max-width: 70ch;
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--hp-text);
   font-size: clamp(15px, 1.3vw, 18px);
   line-height: 1.7;
 }
@@ -1091,13 +979,15 @@
     left: 0;
   }
 
-  .hp-intro-copy {
+  .hp-intro-copy,
+  .hp-intro__copy {
     padding-left: 0;
     padding-top: var(--hp-intro-mobile-top-space);
     max-width: 100%;
   }
 
-  .hp-intro .hp-lede {
+  .hp-intro .hp-lede,
+  .hp-intro .hp-intro__lede {
     font-size: 15px;
     line-height: 1.7;
   }

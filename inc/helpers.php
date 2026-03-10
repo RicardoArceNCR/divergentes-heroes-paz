@@ -42,5 +42,25 @@ function dhp_asset_image_url($filename = '') {
  * Safe array get with fallback
  */
 function dhp_array_get($array, $key, $default = '') {
-    return isset($array[$key]) ? $array[$key] : $default;
+    if (!is_array($array)) {
+        return $default;
+    }
+
+    return array_key_exists($key, $array) ? $array[$key] : $default;
+}
+
+/**
+ * Safe array get for strings with trimming
+ */
+function dhp_array_get_string($array, $key, $default = '') {
+    $value = dhp_array_get($array, $key, $default);
+    return is_string($value) ? trim($value) : $default;
+}
+
+/**
+ * Safe array get for arrays
+ */
+function dhp_array_get_array($array, $key, $default = []) {
+    $value = dhp_array_get($array, $key, $default);
+    return is_array($value) ? $value : $default;
 }

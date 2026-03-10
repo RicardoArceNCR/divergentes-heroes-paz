@@ -21,4 +21,134 @@
   --hp-radius-card: var(--radius-lg);
   --hp-radius-pill: var(--radius-xl);
   --hp-card-shadow: var(--shadow-sm);
+
+  --hp-container-max: var(--container-max);
+  --hp-reading-max: var(--reading-max);
+  --hp-hero-max: var(--hero-max);
+
+  --hp-section-space: var(--section-space-desktop);
+  --hp-block-space: var(--block-space);
+  --hp-text-space: var(--text-space);
+
+  --hp-ease: var(--ease-standard);
+  --hp-dur-1: var(--dur-fast);
+  --hp-dur-2: var(--dur-base);
+}
+
+/* ===== Hero Visual Layer ===== */
+.hp-shell[data-theme="divergentes"] .hp-hero {
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.42)
+    ),
+    url("../images/portada-desktop.webp");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--color-white);
+}
+
+.hp-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.16) 0%,
+      rgba(0, 0, 0, 0.38) 55%,
+      rgba(0, 0, 0, 0.58) 100%
+    );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hp-hero__title,
+.hp-hero .hp-title {
+  margin: 0;
+  max-width: 14ch;
+  font-family: var(--hp-font-title);
+  font-size: clamp(3rem, 7vw, 6.8rem);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.hp-hero__subtitle,
+.hp-hero .hp-subtitle {
+  margin: 0;
+  max-width: 34ch;
+  font-family: var(--hp-font-body);
+  font-size: clamp(1rem, 1.6vw, 1.32rem);
+  line-height: 1.45;
+  font-weight: 500;
+  text-wrap: balance;
+  opacity: 0.98;
+}
+
+.hp-hero__byline,
+.hp-hero-byline-text {
+  margin-top: 8px;
+  font-family: var(--hp-font-body);
+  font-size: 0.84rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.hp-hero__byline span,
+.hp-hero-byline-text span {
+  display: inline-block;
+}
+
+/* Responsive visual adjustments */
+@media (max-width: 900px) {
+  .hp-shell[data-theme="divergentes"] .hp-hero {
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.32),
+        rgba(0, 0, 0, 0.46)
+      ),
+      url("../images/portada-mobile.webp");
+    background-size: cover;
+  }
+
+  .hp-hero__title,
+  .hp-hero .hp-title {
+    max-width: 12ch;
+    font-size: clamp(2.4rem, 11vw, 4.6rem);
+    line-height: 0.95;
+  }
+
+  .hp-hero__subtitle,
+  .hp-hero .hp-subtitle {
+    max-width: 30ch;
+    font-size: 1rem;
+    line-height: 1.42;
+  }
+}
+
+@media (max-width: 640px) {
+  .hp-hero__byline,
+  .hp-hero-byline-text {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+  }
+
+  .hp-hero__title,
+  .hp-hero .hp-title {
+    max-width: 11ch;
+    font-size: clamp(2.2rem, 12vw, 3.7rem);
+  }
+
+  .hp-hero__subtitle,
+  .hp-hero .hp-subtitle {
+    max-width: 26ch;
+    font-size: 0.98rem;
+  }
 }

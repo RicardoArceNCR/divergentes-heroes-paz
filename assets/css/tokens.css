@@ -34,6 +34,31 @@
   --space-8: 32px;
   --space-10: 40px;
   --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* Layout */
+  --container-max: 1200px;
+  --reading-max: 760px;
+  --hero-max: 980px;
+
+  /* Special spacing */
+  --section-space-desktop: 64px;
+  --section-space-mobile: 40px;
+  --block-space: 24px;
+  --text-space: 16px;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 180ms;
+  --dur-base: 320ms;
+
+  /* Timeline */
+  --timeline-line-width: 6px;
+  --timeline-dot-offset-contained: -32px;
+  --timeline-dot-offset-fullbleed: -40px;
+  --timeline-dot-offset-divergentes: -22px;
 
   /* Radius */
   --radius-sm: 8px;
