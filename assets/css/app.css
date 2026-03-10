@@ -907,6 +907,10 @@
   z-index: 2;
 }
 
+img.hp-intro-rail-art {
+    max-width: 90px;
+}
+
 .hp-intro-container {
   position: relative;
   max-width: 980px;
@@ -921,7 +925,7 @@
 
   display: block;
   width: 100%;
-  max-width: 120px;
+  max-width: 93px;
   height: auto;
 
   pointer-events: none;

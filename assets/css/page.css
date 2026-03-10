@@ -2,9 +2,9 @@
    PAGE / WORDPRESS INTEGRATION LAYER
    ========================================================================== */
 
-/* ----------------------------------
-   1. Admin bar offset
----------------------------------- */
+/* =========================================================
+   1. Admin bar / offsets globales
+   ========================================================= */
 
 html {
     scroll-padding-top: 32px;
@@ -16,17 +16,17 @@ html {
     }
 }
 
-/* ----------------------------------
-   2. Body safety
----------------------------------- */
+/* =========================================================
+   2. Seguridad contra overflow horizontal
+   ========================================================= */
 
 body.hp-has-fullbleed {
     overflow-x: clip;
 }
 
-/* ----------------------------------
-   3. Root wrapper
----------------------------------- */
+/* =========================================================
+   3. Fullbleed wrapper del especial
+   ========================================================= */
 
 .hp-wp-wrap {
     position: relative;
@@ -43,9 +43,9 @@ body.hp-has-fullbleed {
     padding: 0;
 }
 
-/* ----------------------------------
-   4. Entry point protection
----------------------------------- */
+/* =========================================================
+   4. Neutralización de contenedores WordPress
+   ========================================================= */
 
 .entry-content > .hp-wp-wrap,
 .wp-block-post-content > .hp-wp-wrap,
@@ -60,36 +60,40 @@ body.hp-has-fullbleed {
     width: 100vw !important;
 }
 
-/* ----------------------------------
-   5. Neutralize page template spacing
----------------------------------- */
+/* =========================================================
+   5. Correcciones de .wp-site-blocks y layout constrained
+   ========================================================= */
 
-body.page-id-102 main.wp-block-group.has-global-padding.is-layout-constrained {
+/* Neutralize page template spacing */
+body.hp-has-fullbleed main.wp-block-group.has-global-padding.is-layout-constrained {
     margin-top: 0 !important;
 }
 
-body.page-id-102 .wp-block-group.alignfull.has-global-padding.is-layout-constrained {
+body.hp-has-fullbleed .wp-block-group.alignfull.has-global-padding.is-layout-constrained {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
 
-/* ----------------------------------
-   6. Neutralize content padding around the special
----------------------------------- */
-
-body.page-id-102 .entry-content.has-global-padding {
+/* Neutralize content padding around the special */
+body.hp-has-fullbleed .entry-content.has-global-padding {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
 
-body.page-id-102 .entry-content > .alignfull {
+body.hp-has-fullbleed .entry-content > .alignfull {
     margin-left: 0 !important;
     margin-right: 0 !important;
 }
 
-/* ----------------------------------
+/* =========================================================
+   6. Ajustes responsive de integración
+   ========================================================= */
+
+/* (Actualmente no hay ajustes responsive específicos para WordPress) */
+
+/* =========================================================
    7. Box sizing safety
----------------------------------- */
+   ========================================================= */
 
 .hp-wp-wrap,
 .hp-wp-wrap *,
