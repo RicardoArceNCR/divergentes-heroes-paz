@@ -122,86 +122,177 @@
    HERO
    ========================================================================== */
 
-.hp-shell .hp-hero {
+/* =========================================
+   HERO
+   ========================================= */
+
+.hp-shell[data-theme="divergentes"] .hp-hero {
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.42)
+    ),
+    url("../images/portada-desktop.webp");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hp-hero {
   position: relative;
-  width: 100%;
-  min-height: 72vh;
+  isolation: isolate;
+  min-height: clamp(520px, 72vh, 860px);
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: clamp(60px, 10vh, 120px) 0;
-  text-align: center;
-  color: var(--hp-white);
-  background-color: var(--hp-dark-gray);
-  position: relative;
   overflow: hidden;
+  color: #ffffff;
 }
 
-.hp-shell .hp-hero-container {
+.hp-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.16) 0%,
+      rgba(0, 0, 0, 0.38) 55%,
+      rgba(0, 0, 0, 0.58) 100%
+    );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hp-hero-container {
   position: relative;
+  z-index: 1;
   width: 100%;
+  min-height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.hp-shell .hp-hero-copy {
+.hp-hero .hp-container {
+  width: min(100% - 40px, 1320px);
+}
+
+.hp-hero-copy {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: clamp(64px, 10vw, 120px) 0;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 14px;
-  width: 100%;
-  max-width: 880px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 18px;
 }
 
-.hp-shell .hp-title {
+.hp-hero .hp-title {
   margin: 0;
-  font-size: clamp(42px, 6.8vw, 108px);
-  line-height: 0.94;
-  letter-spacing: -0.03em;
+  max-width: 14ch;
   font-family: var(--hp-font-title);
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 12ch;
+  font-size: clamp(3rem, 7vw, 6.8rem);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-wrap: balance;
 }
 
-.hp-shell .hp-subtitle {
+.hp-hero .hp-subtitle {
   margin: 0;
-  font-size: clamp(18px, 2.2vw, 24px);
-  line-height: 1.32;
-  max-width: 26ch;
-  opacity: 0.96;
+  max-width: 34ch;
+  font-family: var(--hp-font-body);
+  font-size: clamp(1rem, 1.6vw, 1.32rem);
+  line-height: 1.45;
+  font-weight: 500;
+  text-wrap: balance;
+  opacity: 0.98;
 }
 
 .hp-hero-byline-text {
-  margin-top: 18px;
+  margin-top: 8px;
+  font-family: var(--hp-font-body);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.9;
 }
 
 .hp-hero-byline-text span {
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  opacity: 0.82;
+  display: inline-block;
 }
 
+@media (max-width: 900px) {
+  .hp-shell[data-theme="divergentes"] .hp-hero {
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.30),
+        rgba(0, 0, 0, 0.48)
+      ),
+      url("../images/portada-mobile.webp");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
-.hp-intro {
-  position: relative;
-  padding: clamp(32px, 6vw, 72px) 0 clamp(12px, 2vw, 20px);
-  background-color: var(--hp-dark-gray);
-  overflow: hidden;
-  z-index: 2;
+  .hp-hero {
+    min-height: clamp(460px, 68vh, 720px);
+  }
+
+  .hp-hero-copy {
+    max-width: 100%;
+    padding: 72px 0 64px;
+    gap: 14px;
+  }
+
+  .hp-hero .hp-title {
+    max-width: 12ch;
+    font-size: clamp(2.4rem, 11vw, 4.6rem);
+    line-height: 0.95;
+  }
+
+  .hp-hero .hp-subtitle {
+    max-width: 30ch;
+    font-size: 1rem;
+    line-height: 1.42;
+  }
 }
 
-.hp-shell .hp-lede {
-  margin: 0;
-  max-width: 85ch;
+@media (max-width: 640px) {
+  .hp-hero {
+    min-height: 78svh;
+  }
+
+  .hp-hero-copy {
+    padding: 88px 0 56px;
+    gap: 12px;
+  }
+
+  .hp-hero .hp-title {
+    max-width: 11ch;
+    font-size: clamp(2.2rem, 12vw, 3.7rem);
+  }
+
+  .hp-hero .hp-subtitle {
+    max-width: 26ch;
+    font-size: 0.98rem;
+  }
+
+  .hp-hero-byline-text {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+  }
 }
 
 /* ==========================================================================
    STICKY NAV (PILLS)
    ========================================================================== */
+
 .hp-shell .hp-sticky-nav {
   position: sticky;
   top: 0;
@@ -652,7 +743,7 @@
   .hp-reveal,
   .hp-modal,
   .hp-modal-backdrop,
-  .hp-line-fill,
+  .hp-track-fill,
   .hp-shell .hp-pill {
     transition: none !important;
     transform: none !important;
@@ -689,9 +780,6 @@
 
   --hp-shadow: var(--shadow-sm);
   --hp-shadow-active: var(--shadow-md);
-
-  --hp-font-body: var(--hp-font-body);
-  --hp-font-title: var(--hp-font-title);
 
   color: var(--hp-text);
   background: var(--hp-bg);
@@ -746,43 +834,7 @@
   overflow: hidden;
 }
 
-/* Grunge Overlays */
-.hp-shell[data-theme="divergentes"] .hp-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(225, 6, 0, 0.15), transparent 70%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%),
-    url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC42IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI24pIiBvcGFjaXR5PSIwLjA1Ii8+PC9zdmc+');
-  pointer-events: none;
-  z-index: 1;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-hero .hp-container {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-hero .hp-title {
-  margin: 0;
-  font-size: clamp(56px, 8vw, 164px);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  max-width: 10ch;
-  margin-inline: auto;
-}
-
-.hp-shell[data-theme="divergentes"] .hp-hero .hp-subtitle {
-  margin: 0;
-  font-size: clamp(16px, 2vw, 22px);
-  line-height: 1.4;
-  max-width: 34ch;
-  font-weight: 500;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
+/* Grunge Overlays - Eliminado, reemplazado por nueva implementación */
 
 /* TAGS & CHIPS */
 .hp-tags {
@@ -999,10 +1051,6 @@
     --hp-intro-art-left: 0px;
     --hp-intro-art-width: 80px;
     --hp-intro-copy-offset: 92px;
-  }
-
-  .hp-shell .hp-hero-copy {
-    max-width: 100%;
   }
 
   .hp-shell .hp-title {
