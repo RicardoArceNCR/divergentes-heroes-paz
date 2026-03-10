@@ -1,5 +1,12 @@
 /* ==========================================================================
-   TOKENS
+   DHP / app.css
+   Core UI del especial editorial
+   --------------------------------------------------------------------------
+   Responsabilidad:
+   - layout y componentes del especial
+   - hero, intro, track, nav, cards, markers, profiles
+   - responsive del componente
+   - NO contiene integración con WordPress/block theme
    ========================================================================== */
 .hp-shell {
   /* Colors */
@@ -78,24 +85,6 @@
   padding-inline: clamp(16px, 5vw, 48px);
 }
 
-/* Portable Fullbleed Shell */
-.hp-wp-wrap--fullbleed {
-  margin-left: calc(var(--wp--style--root--padding-left, 0px) * -1);
-  margin-right: calc(var(--wp--style--root--padding-right, 0px) * -1);
-  margin-top: calc((var(--wp--style--root--padding-top, 0px) + var(--wp--preset--spacing--60, 0px)) * -1);
-  width: auto;
-  max-width: none;
-}
-
-.hp-shell[data-layout="fullbleed"] {
-  width: 100vw;
-  width: 100dvw;
-  max-width: none;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  overflow-x: clip;
-  position: relative;
-}
 
 /* DOT PRESETS */
 .hp-shell[data-layout="contained"] {
@@ -114,32 +103,6 @@
 /* ==========================================================================
    HERO
    ========================================================================== */
-/* Neutralización de wrappers de WordPress para layouts Fullbleed */
-body.hp-has-fullbleed main.wp-block-group.has-global-padding.wp-block-group-is-layout-constrained {
-  margin-top: 0 !important;
-}
-
-body.hp-has-fullbleed .wp-block-group.alignfull.has-global-padding.wp-block-group-is-layout-constrained {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-body.hp-has-fullbleed .entry-content.wp-block-post-content.has-global-padding {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-body.hp-has-fullbleed .entry-content > .hp-wp-wrap,
-body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  max-width: none !important;
-}
-
-body.hp-has-fullbleed .entry-content > .hp-wp-wrap .hp-shell,
-body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap .hp-shell {
-  margin-top: 0 !important;
-}
 
 .hp-shell .hp-hero {
   min-height: clamp(420px, 72vh, 860px);
