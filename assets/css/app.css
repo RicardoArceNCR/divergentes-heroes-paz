@@ -27,7 +27,7 @@
 }
 
 /* ==========================================================================
-   RESET & BASE
+   BLINDAJE ANTI-DESBORDE
    ========================================================================== */
 
 .hp-shell,
@@ -36,10 +36,65 @@
 }
 
 .hp-shell img {
-  display: block;
   max-width: 100%;
   height: auto;
+  display: block;
 }
+
+/* Cards y media del timeline */
+.hp-shell .hp-card,
+.hp-shell .hp-card-media,
+.hp-shell .hp-card-content,
+.hp-shell .hp-card-image-wrap,
+.hp-shell .hp-card img,
+.hp-shell .hp-panel,
+.hp-shell .hp-event-card {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Sticky nav mobile */
+.hp-shell .hp-sticky-nav,
+.hp-shell .hp-sticky-nav-inner {
+  width: 100%;
+  max-width: 100%;
+}
+
+.hp-shell .hp-sticky-nav-inner {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.hp-shell .hp-sticky-nav-inner::-webkit-scrollbar {
+  display: none;
+}
+
+/* Chips del nav no se comprimen */
+.hp-shell .hp-sticky-nav-inner > * {
+  flex: 0 0 auto;
+}
+
+/* Textos largos que pueden abrir mobile */
+.hp-shell .hp-card,
+.hp-shell .hp-card * {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Nombres raros no rompen */
+.hp-shell .hp-card h2,
+.hp-shell .hp-card h3,
+.hp-shell .hp-card p,
+.hp-shell .hp-card .hp-card-title,
+.hp-shell .hp-card .hp-card-summary {
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   RESET & BASE
+   ========================================================================== */
 
 .hp-shell button,
 .hp-shell input,
@@ -1224,4 +1279,9 @@
     max-width: 180px;
     height: auto;
   }
+}
+
+/* Sticky nav stability */
+.hp-shell .hp-sticky-nav-inner > * {
+  flex: 0 0 auto;
 }

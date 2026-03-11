@@ -26,7 +26,7 @@ $layout = dhp_array_get_string($config, 'layout', 'fullbleed');
 $theme = dhp_array_get_string($config, 'theme', 'editorial');
 ?>
 
-<div class="hp-wp-wrap hp-wp-wrap--<?php echo dhp_esc_attr($layout); ?> alignfull">
+<div class="hp-wp-wrap hp-wp-wrap--<?php echo dhp_esc_attr($layout); ?>">
     <section class="hp-shell hp-shell--editorial"
              data-theme="<?php echo dhp_esc_attr($theme); ?>"
              data-layout="<?php echo dhp_esc_attr($layout); ?>">

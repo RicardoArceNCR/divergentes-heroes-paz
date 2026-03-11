@@ -71,10 +71,24 @@ body.hp-has-fullbleed .hp-wp-wrap.hp-wp-wrap--fullbleed.alignfull {
   padding-left: 0 !important;
   padding-right: 0 !important;
   box-sizing: border-box;
+  overflow-x: clip;
 }
 
 /* ---------------------------------
-   4) Ensure internal sections are not capped by WP
+   4) General overflow protection
+   --------------------------------- */
+body.hp-has-fullbleed {
+  overflow-x: hidden;
+}
+
+body.hp-has-fullbleed .wp-site-blocks,
+body.hp-has-fullbleed main,
+body.hp-has-fullbleed .entry-content {
+  overflow-x: clip;
+}
+
+/* ---------------------------------
+   5) Ensure internal sections are not capped by WP
    --------------------------------- */
 body.hp-has-fullbleed .hp-shell,
 body.hp-has-fullbleed .hp-hero,
