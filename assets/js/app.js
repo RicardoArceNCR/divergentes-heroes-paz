@@ -458,37 +458,58 @@
 
     const io = new IntersectionObserver(
       (entries) => {
+        const viewportCenter = window.innerHeight * 0.5;
         let best = null;
+        let bestDistance = Infinity;
+
         for (const e of entries) {
-          // Reveal handling
           if (e.isIntersecting && e.target.classList.contains('hp-reveal')) {
             e.target.classList.add('is-inview');
           }
 
-          // Active state handling
           if (!e.isIntersecting) continue;
-          if (!best || e.intersectionRatio > best.intersectionRatio) best = e;
+
+          if (e.target.hasAttribute('data-hp-event')) {
+            const rect = e.target.getBoundingClientRect();
+            const eventCenter = rect.top + (rect.height / 2);
+            const distance = Math.abs(eventCenter - viewportCenter);
+
+            if (distance < bestDistance) {
+              best = e;
+              bestDistance = distance;
+            }
+          }
         }
 
         if (best && best.target && best.target.hasAttribute('data-hp-event')) {
           const nextActive = best.target;
+
           if (nextActive !== activeEl) {
             activeEl = nextActive;
-            for (const el of events) el.classList.toggle('is-active', el === activeEl);
 
-            // Recalibrate line to active marker
+            for (const el of events) {
+              el.classList.toggle('is-active', el === activeEl);
+            }
+
             window.requestAnimationFrame(() => setLineToMarker(root));
           }
         }
 
         for (const me of entries) {
-          const sec = me.target && me.target.closest ? me.target.closest('[data-hp-month-section]') : null;
+          const sec = me.target && me.target.closest
+            ? me.target.closest('[data-hp-month-section]')
+            : null;
+
           if (!sec) continue;
+
           const mid = sec.getAttribute('data-hp-month-section');
           if (mid) navApi.setActive(mid);
         }
       },
-      { threshold: [0.15, 0.45, 0.75] }
+      {
+        threshold: 0,
+        rootMargin: '-45% 0px -45% 0px'
+      }
     );
 
     revealEls.forEach((el) => io.observe(el));
@@ -532,8 +553,8 @@
       const trackRect = ctx.track.getBoundingClientRect();
       const viewportH = window.innerHeight || document.documentElement.clientHeight;
 
-      // Draw point (60% of viewport per enterprise guide)
-      const referenceY = viewportH * 0.6;
+      // Draw point (50% of viewport - center exact)
+      const referenceY = viewportH * 0.5;
 
       // Start: if exists startEl, use it. Otherwise track top.
       const startRect = ctx.startEl ? ctx.startEl.getBoundingClientRect() : trackRect;

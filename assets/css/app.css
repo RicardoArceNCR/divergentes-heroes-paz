@@ -20,7 +20,7 @@
   --hp-line-x: 22px;
   /* Default for mobile */
   --hp-line-w: 6px;
-  --hp-line-top: 0px;
+  --hp-line-top: -8px;
   --hp-line-bottom: 0px;
 
   /* Component Specific */
