@@ -1,143 +1,165 @@
-/* ==========================================================================
-   PAGE / WORDPRESS INTEGRATION LAYER
-   ========================================================================== */
+/* =========================================================
+   PAGE INTEGRATION LAYER
+   Fullbleed + WordPress theme containment fixes
+   Scope: only pages marked with .hp-has-fullbleed
+   ========================================================= */
 
-/* ==========================================================================
-   ADMIN BAR & OFFSETS
-   ========================================================================== */
-
-html {
-    scroll-padding-top: 32px;
+/* ---------------------------------
+   1) Admin bar offset
+   --------------------------------- */
+body.admin-bar.hp-has-fullbleed {
+  --hp-adminbar-offset: 32px;
 }
 
 @media (max-width: 782px) {
-    html {
-        scroll-padding-top: 46px;
-    }
+  body.admin-bar.hp-has-fullbleed {
+    --hp-adminbar-offset: 46px;
+  }
 }
-
-/* ==========================================================================
-   OVERFLOW SAFETY
-   ========================================================================== */
 
 body.hp-has-fullbleed {
-    overflow-x: clip;
+  overflow-x: clip;
 }
 
-/* ==========================================================================
-   WordPress shell compatibility
-   Mantiene header/footer del theme
-   y permite fullbleed real en el especial
-   ========================================================================== */
-
-.hp-wp-wrap--fullbleed {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.hp-wp-wrap.hp-wp-wrap--fullbleed.alignfull {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.wp-site-blocks .hp-wp-wrap--fullbleed {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-.is-layout-constrained > .hp-wp-wrap--fullbleed,
-.wp-block-post-content.is-layout-constrained > .hp-wp-wrap--fullbleed,
-.entry-content > .hp-wp-wrap--fullbleed {
-  max-width: none !important;
-}
-
-.entry-content > .hp-wp-wrap--fullbleed {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-main .hp-wp-wrap--fullbleed {
-  position: relative;
-  left: 0;
-  right: 0;
-}
-
-.hp-shell,
-.hp-hero,
-.hp-intro,
-.hp-track,
-.hp-app {
-  max-width: none;
-}
-
-/* ==========================================================================
-   BOX SIZING SAFETY
-   ========================================================================== */
-
-.hp-wp-wrap,
-.hp-wp-wrap *,
-.hp-wp-wrap *::before,
-.hp-wp-wrap *::after {
-    box-sizing: border-box;
-}
-
-/* ==========================================================================
-   HEROES DE LA PAZ - convivencia con FSE
-   Mantiene header/footer, limpia el contenedor
-   ========================================================================== */
-
-body.page-id-102 main.wp-block-group.has-global-padding.is-layout-constrained {
+/* ---------------------------------
+   2) Neutralize top spacing injected by theme
+   --------------------------------- */
+body.hp-has-fullbleed main.wp-block-group.has-global-padding.is-layout-constrained {
   margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
-body.page-id-102 main > .wp-block-group.alignfull.has-global-padding.is-layout-constrained {
+/* wrapper immediately inside main */
+body.hp-has-fullbleed main > .wp-block-group.alignfull.has-global-padding.is-layout-constrained {
+  margin-top: 0 !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-}
-
-body.page-id-102 .entry-content.alignfull.wp-block-post-content.has-global-padding.is-layout-constrained {
   padding-left: 0 !important;
   padding-right: 0 !important;
   max-width: none !important;
 }
 
-body.page-id-102 .entry-content > .hp-wp-wrap--fullbleed {
+/* post content wrapper */
+body.hp-has-fullbleed .entry-content.alignfull.wp-block-post-content.has-global-padding.is-layout-constrained {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: none !important;
+}
+
+/* prevent constrained layout from recentering plugin wrapper */
+body.hp-has-fullbleed .is-layout-constrained > .hp-wp-wrap--fullbleed,
+body.hp-has-fullbleed .wp-block-post-content.is-layout-constrained > .hp-wp-wrap--fullbleed,
+body.hp-has-fullbleed .entry-content > .hp-wp-wrap--fullbleed {
+  max-width: none !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
 
-body.page-id-102 .hp-wp-wrap--fullbleed {
+/* ---------------------------------
+   3) Real fullbleed shell
+   --------------------------------- */
+body.hp-has-fullbleed .hp-wp-wrap--fullbleed,
+body.hp-has-fullbleed .hp-wp-wrap.hp-wp-wrap--fullbleed.alignfull {
   width: 100vw;
   max-width: 100vw;
   margin-left: calc(50% - 50vw) !important;
   margin-right: calc(50% - 50vw) !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
+  box-sizing: border-box;
 }
 
-body.page-id-102 .hp-wp-wrap.hp-wp-wrap--fullbleed.alignfull {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw) !important;
-  margin-right: calc(50% - 50vw) !important;
-}
-
-body.page-id-102 .is-layout-constrained > .hp-wp-wrap--fullbleed,
-body.page-id-102 .wp-block-post-content.is-layout-constrained > .hp-wp-wrap--fullbleed,
-body.page-id-102 .entry-content > .hp-wp-wrap--fullbleed {
+/* ---------------------------------
+   4) Ensure internal sections are not capped by WP
+   --------------------------------- */
+body.hp-has-fullbleed .hp-shell,
+body.hp-has-fullbleed .hp-hero,
+body.hp-has-fullbleed .hp-intro,
+body.hp-has-fullbleed .hp-track,
+body.hp-has-fullbleed .hp-app,
+body.hp-has-fullbleed .hp-timeline,
+body.hp-has-fullbleed .hp-root {
   max-width: none !important;
 }
 
-body.page-id-102 .hp-shell,
-body.page-id-102 .hp-hero,
-body.page-id-102 .hp-intro,
-body.page-id-102 .hp-track,
-body.page-id-102 .hp-app {
-  max-width: none;
+/* ---------------------------------
+   5) Re-create your internal content gutters
+   This is the padding you actually want to see
+   --------------------------------- */
+body.hp-has-fullbleed .hp-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
 }
+
+@media (max-width: 782px) {
+  body.hp-has-fullbleed .hp-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* ---------------------------------
+   6) Safety layer against theme global padding classes
+   Only inside the special wrapper
+   --------------------------------- */
+body.hp-has-fullbleed .hp-wp-wrap--fullbleed .has-global-padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+body.hp-has-fullbleed .hp-wp-wrap--fullbleed .alignfull {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* ---------------------------------
+   7) Remove stray block spacing around first/last child
+   --------------------------------- */
+body.hp-has-fullbleed .hp-wp-wrap--fullbleed > *:first-child,
+body.hp-has-fullbleed .hp-shell > *:first-child {
+  margin-top: 0 !important;
+}
+
+body.hp-has-fullbleed .hp-wp-wrap--fullbleed > *:last-child,
+body.hp-has-fullbleed .hp-shell > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* ---------------------------------
+   8) Intro dark section should read correctly edge-to-edge
+   --------------------------------- */
+body.hp-has-fullbleed .hp-intro--dark {
+  width: 100%;
+}
+
+/* ---------------------------------
+   9) Defensive fix for images/media overflow
+   --------------------------------- */
+body.hp-has-fullbleed img,
+body.hp-has-fullbleed svg,
+body.hp-has-fullbleed video,
+body.hp-has-fullbleed canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------------------------------
+   10) Optional debug helper
+   Uncomment temporarily if needed
+
+body.hp-has-fullbleed .hp-wp-wrap--fullbleed {
+  outline: 2px solid red;
+}
+body.hp-has-fullbleed .hp-container {
+  outline: 2px solid blue;
+}
+   --------------------------------- */
