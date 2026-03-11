@@ -458,7 +458,7 @@
 
     const io = new IntersectionObserver(
       (entries) => {
-        const viewportCenter = window.innerHeight * 0.5;
+        const viewportCenter = (window.innerHeight * 0.5) - 92;
         let best = null;
         let bestDistance = Infinity;
 
@@ -508,7 +508,7 @@
       },
       {
         threshold: 0,
-        rootMargin: '-45% 0px -45% 0px'
+        rootMargin: '-22% 0px -38% 0px'
       }
     );
 
@@ -635,7 +635,7 @@
     if (!markers.length) return;
 
     const triggerY = (window.innerHeight / 2) - 92;
-    const tolerance = 22;
+    const tolerance = 30;
 
     markers.forEach((marker) => {
       const rect = marker.getBoundingClientRect();

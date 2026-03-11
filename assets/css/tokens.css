@@ -1,9 +1,9 @@
 /* ===== Design System Tokens ===== */
 :root {
   /* Fonts */
-  --font-family-display: "Staatliches", sans-serif;
-  --font-family-ui: "Inter", sans-serif;
-  --font-family-body: "Inter", sans-serif;
+  --font-family-display: "Red Hat Mono", monospace;
+  --font-family-ui: "Red Hat Mono", monospace;
+  --font-family-body: "Red Hat Mono", monospace;
 
   /* Font sizes */
   --font-size-xs: 0.75rem;

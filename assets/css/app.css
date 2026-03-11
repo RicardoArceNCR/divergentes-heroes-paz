@@ -39,6 +39,9 @@
   --hp-shadow: none;
   --hp-shadow-active: 0 8px 24px rgba(0, 0, 0, .08);
 
+  /* Reveal Animation */
+  --hp-reveal-y: 18px;
+
   color: var(--hp-text);
   background: var(--color-white);
   font-family: var(--hp-font-body);
