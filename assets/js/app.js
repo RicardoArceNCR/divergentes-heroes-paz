@@ -602,10 +602,17 @@
   function updateTrackScannerVisibility(trackEl) {
     if (!trackEl) return;
 
-    const rect = trackEl.getBoundingClientRect();
-    const viewportH = window.innerHeight;
-    const isVisible = rect.top < viewportH && rect.bottom > 0;
+    const timelineSection = trackEl.querySelector('.hp-timeline');
+    if (!timelineSection) {
+      trackEl.classList.remove('is-in-view');
+      return;
+    }
 
+    const rect = timelineSection.getBoundingClientRect();
+    const triggerTop = window.innerHeight * 0.20;
+    const triggerBottom = window.innerHeight * 0.85;
+
+    const isVisible = rect.top < triggerBottom && rect.bottom > triggerTop;
     trackEl.classList.toggle('is-in-view', isVisible);
   }
 
@@ -627,8 +634,8 @@
     const markers = document.querySelectorAll('.hp-marker');
     if (!markers.length) return;
 
-    const triggerY = window.innerHeight * 0.5;
-    const tolerance = 22;
+    const triggerY = (window.innerHeight / 2) - 42;
+    const tolerance = 18;
 
     markers.forEach((marker) => {
       const rect = marker.getBoundingClientRect();

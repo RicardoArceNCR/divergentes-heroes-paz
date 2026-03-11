@@ -232,7 +232,7 @@
 }
 
 /* =========================================
-   TIMELINE TRACK — base alineada
+   TIMELINE TRACK — versión corregida
    ========================================= */
 
 .hp-track {
@@ -241,40 +241,48 @@
 
 .hp-track-inner {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
   pointer-events: none;
   z-index: 1;
 }
 
-/* Línea base completa */
+/* eje configurable */
+.hp-shell {
+  --hp-line-x: 32px;
+  --hp-track-line-width: 5px;
+  --hp-track-fill-width: 8px;
+  --hp-track-fill-height: 52vh;
+}
+
+/* línea guía completa */
 .hp-track-line {
   position: absolute;
   top: 0;
   bottom: 0;
   left: var(--hp-line-x);
   transform: translateX(-50%);
-  width: 2px;
-  background: rgba(225, 6, 0, 0.12);
+  width: var(--hp-track-line-width);
+  background: rgba(225, 6, 0, 0.14);
+  border-radius: 999px;
   z-index: 1;
 }
 
-/* Scanner rojo activo */
+/* scanner rojo fijo */
 .hp-track-fill {
   position: fixed;
-  top: 50vh;
-  left: 50%;
+  top: calc(50vh - 42px);
+  left: var(--hp-line-x);
   transform: translateX(-50%) translateY(-50%);
-  width: 4px;
-  height: 36vh;
+  width: var(--hp-track-fill-width);
+  height: var(--hp-track-fill-height);
   background: #e10600;
   border-radius: 999px;
   box-shadow:
-    0 0 0 1px rgba(225, 6, 0, 0.04),
-    0 0 18px rgba(225, 6, 0, 0.12);
+    0 0 0 1px rgba(225, 6, 0, 0.10),
+    0 0 22px rgba(225, 6, 0, 0.22),
+    0 0 38px rgba(225, 6, 0, 0.14);
   opacity: 0;
+  visibility: hidden;
   transition: opacity 180ms ease;
   z-index: 20;
   pointer-events: none;
@@ -282,20 +290,24 @@
 
 .hp-track.is-in-view .hp-track-fill {
   opacity: 1;
+  visibility: visible;
 }
 
 .hp-track:not(.is-in-view) .hp-track-fill {
   opacity: 0;
+  visibility: hidden;
 }
 
-@media (max-width: 768px) {
-  .hp-track-fill {
-    width: 3px;
-    height: 24vh;
+@media (max-width: 860px) {
+  .hp-shell {
+    --hp-line-x: 22px;
+    --hp-track-line-width: 4px;
+    --hp-track-fill-width: 6px;
+    --hp-track-fill-height: 34vh;
   }
 
-  .hp-track-line {
-    width: 2px;
+  .hp-track-fill {
+    top: calc(50vh - 28px);
   }
 }
 
@@ -823,13 +835,6 @@
    RESPONSIVE
    ========================================================================== */
 @media (max-width: 860px) {
-
-  .hp-shell {
-    --hp-line-x: 22px;
-  }
-
-  /* .hp-track-line/fill already use var(--hp-line-x) */
-
   .hp-shell .hp-month {
     grid-template-columns: 1fr;
     row-gap: 10px;
