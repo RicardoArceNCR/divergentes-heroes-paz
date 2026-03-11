@@ -36,7 +36,7 @@
 }
 
 /* ===== Hero Visual Layer ===== */
-.hp-shell[data-theme="divergentes"] .hp-hero {
+.hp-shell[data-theme="editorial"] .hp-hero {
   background-image:
     linear-gradient(
       to bottom,
@@ -107,7 +107,7 @@
 
 /* Responsive visual adjustments */
 @media (max-width: 900px) {
-  .hp-shell[data-theme="divergentes"] .hp-hero {
+  .hp-shell[data-theme="editorial"] .hp-hero {
     background-image:
       linear-gradient(
         to bottom,

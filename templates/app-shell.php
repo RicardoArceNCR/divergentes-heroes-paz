@@ -16,7 +16,7 @@ $events = dhp_array_get_array($data, 'events');
 $title = dhp_array_get_string($meta, 'title');
 $subtitle = dhp_array_get_string($meta, 'subtitle');
 $paragraphs = dhp_array_get_array($intro, 'paragraphs');
-$byline_label = dhp_array_get_string($intro, 'byline_label', 'Por Divergentes');
+$byline_label = dhp_array_get_string($intro, 'byline_label', 'Equipo editorial');
 
 $paragraphs = array_values(array_filter($paragraphs, function ($item) {
     return is_string($item) && trim($item) !== '';
@@ -81,7 +81,7 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                             </p>
                         <?php endforeach; ?>
 
-                        <?php if ($byline_label): ?>
+                        <?php if ($byline_label && file_exists(DHP_PATH . 'assets/images/por-divergentes.png')): ?>
                             <div class="hp-byline hp-intro__byline">
                                 <img src="<?php echo esc_url(dhp_asset_image_url('por-divergentes.png')); ?>"
                                      alt="<?php echo dhp_esc_attr($byline_label); ?>"
@@ -107,7 +107,7 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                          class="hp-root hp-timeline__root"
                          data-config="<?php echo esc_attr($config_json); ?>">
                         <div class="hp-loading" role="status" aria-live="polite">
-                            Cargando perfiles...
+                            Cargando contenido...
                         </div>
                     </div>
 

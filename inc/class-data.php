@@ -12,6 +12,39 @@ class DHP_Data {
         return DHP_PATH . 'data/heroes.json';
     }
 
+    public static function get_dataset_path($slug = 'heroes') {
+        $slug = sanitize_key($slug);
+        if (empty($slug)) {
+            $slug = 'heroes';
+        }
+        
+        $path = DHP_PATH . "data/{$slug}.json";
+        
+        // Fallback to heroes.json if requested file doesn't exist
+        if (!file_exists($path)) {
+            $path = self::get_default_data_path();
+        }
+        
+        return $path;
+    }
+
+    public static function get_dataset_url($slug = 'heroes') {
+        $slug = sanitize_key($slug);
+        if (empty($slug)) {
+            $slug = 'heroes';
+        }
+        
+        $path = self::get_dataset_path($slug);
+        $filename = basename($path);
+        
+        return plugins_url("data/{$filename}", DHP_FILE);
+    }
+
+    public static function load_dataset($slug = 'heroes') {
+        $path = self::get_dataset_path($slug);
+        return self::load_data($path);
+    }
+
     public static function load_data($path = '') {
         $path = $path ?: self::get_default_data_path();
 

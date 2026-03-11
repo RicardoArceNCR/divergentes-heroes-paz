@@ -12,6 +12,7 @@ class DHP_Shortcode {
 
     public static function init() {
         add_shortcode('heroes_paz', [__CLASS__, 'render']);
+        add_shortcode('story_engine', [__CLASS__, 'render']);
         add_filter('body_class', [__CLASS__, 'body_class']);
     }
 
@@ -24,13 +25,29 @@ class DHP_Shortcode {
 
     public static function render($atts = []) {
         $atts = shortcode_atts([
+            'demo'     => 'heroes',
             'layout'   => 'fullbleed',
             'theme'    => 'editorial',
+            'slug'     => '',
             'data_url' => '',
-            'slug'     => 'heroes-paz',
-        ], $atts, 'heroes_paz');
+        ], $atts);
 
-        if (($atts['layout'] ?? '') === 'fullbleed') {
+        // Sanitize attributes
+        $demo = sanitize_key($atts['demo']);
+        if (empty($demo)) {
+            $demo = 'heroes';
+        }
+
+        $allowed_layouts = ['fullbleed', 'contained'];
+        $layout = in_array($atts['layout'], $allowed_layouts) ? $atts['layout'] : 'fullbleed';
+
+        $allowed_themes = ['editorial'];
+        $theme = in_array($atts['theme'], $allowed_themes) ? $atts['theme'] : 'editorial';
+
+        $slug = sanitize_key($atts['slug']);
+        $data_url = esc_url_raw($atts['data_url']);
+
+        if ($layout === 'fullbleed') {
             self::$has_fullbleed = true;
         }
 
@@ -42,10 +59,10 @@ class DHP_Shortcode {
         wp_enqueue_style('dhp-page');
         wp_enqueue_script('dhp-app');
 
-        // Load data
-        $data = DHP_Data::load_data();
+        // Load data using resolved dataset
+        $data = DHP_Data::load_dataset($demo);
         if (!$data) {
-            return '<!-- Heroes data not available -->';
+            return '<!-- Story data not available -->';
         }
 
         // Generate IDs and config
@@ -53,13 +70,13 @@ class DHP_Shortcode {
         $root_id = 'heroesPazApp-' . $instance_id;
         
         $config = [
-            'dataUrl'       => $atts['data_url'] ?: plugins_url('data/heroes.json', DHP_FILE),
+            'dataUrl'       => $data_url ?: DHP_Data::get_dataset_url($demo),
             'imagesBaseUrl' => plugins_url('assets/images/', DHP_FILE),
-            'layout'        => $atts['layout'],
-            'theme'         => $atts['theme'],
+            'layout'        => $layout,
+            'theme'         => $theme,
             'instanceId'    => $instance_id,
             'rootId'        => $root_id,
-            'slug'          => $atts['slug'],
+            'slug'          => $slug,
         ];
 
         $config_json = wp_json_encode($config);

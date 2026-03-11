@@ -1,0 +1,123 @@
+{
+  "meta": {
+    "title": "Cronología de una transición",
+    "subtitle": "Hitos clave en la transformación democrática",
+    "dek": "Un recorrido por los momentos decisivos que marcaron el cambio político en la región, desde las primeras manifestaciones hasta la consolidación de nuevas instituciones.",
+    "author": "Equipo editorial",
+    "total": 15
+  },
+  "intro": {
+    "paragraphs": [
+      "La historia de las transformaciones políticas está marcada por momentos decisivos que cambian el curso de las naciones. En esta cronología, exploramos los hitos que definieron un período de transición hacia la democracia.",
+      "Desde las primeras manifestaciones ciudadanas hasta la implementación de reformas estructurales, cada evento representa un paso en el camino hacia la consolidación de instituciones democráticas y el respeto a los derechos humanos.",
+      "Este recorrido nos permite entender cómo los procesos de cambio se construyen día a día, a través de la acción colectiva y la perseverancia de quienes buscan un futuro mejor para sus sociedades."
+    ],
+    "byline_label": "Equipo editorial"
+  },
+  "months": [
+    {
+      "id": "2020-01",
+      "label": "Enero 2020",
+      "chapter": "El despertar cívico"
+    },
+    {
+      "id": "2020-06",
+      "label": "Junio 2020",
+      "chapter": "Primera ola de protestas"
+    },
+    {
+      "id": "2020-12",
+      "label": "Diciembre 2020",
+      "chapter": "Diálogo nacional"
+    },
+    {
+      "id": "2021-03",
+      "label": "Marzo 2021",
+      "chapter": "Acuerdos preliminares"
+    },
+    {
+      "id": "2021-09",
+      "label": "Septiembre 2021",
+      "chapter": "Reformas constitucionales"
+    },
+    {
+      "id": "2022-02",
+      "label": "Febrero 2022",
+      "chapter": "Transición institucional"
+    }
+  ],
+  "events": [
+    {
+      "id": "manifestacion-inicial",
+      "type": "protesta",
+      "date": "2020-01-15",
+      "month": "2020-01",
+      "title": "Primera manifestación masiva",
+      "description": "Miles de ciudadanos se congregan pacíficamente para exigir reformas democráticas y mayor participación ciudadana en las decisiones políticas.",
+      "location": "Plaza Central",
+      "impact": "alto",
+      "participants": 50000,
+      "tags": ["pacífico", "masivo", "ciudadano"]
+    },
+    {
+      "id": "represion-estatal",
+      "type": "conflicto",
+      "date": "2020-06-20",
+      "month": "2020-06",
+      "title": "Respuesta estatal a protestas",
+      "description": "Las autoridades implementan medidas de control que generan tensión entre la sociedad civil y el gobierno.",
+      "location": "Centro gubernamental",
+      "impact": "medio",
+      "participants": 500,
+      "tags": ["tensión", "control", "estatal"]
+    },
+    {
+      "id": "dialogo-nacional",
+      "type": "acuerdo",
+      "date": "2020-12-10",
+      "month": "2020-12",
+      "title": "Inicio del diálogo nacional",
+      "description": "Representantes de diversos sectores sociales inician conversaciones para buscar una salida pacífica a la crisis política.",
+      "location": "Sede de la ONU",
+      "impact": "alto",
+      "participants": 200,
+      "tags": ["diálogo", "paz", "consenso"]
+    },
+    {
+      "id": "acuerdo-preliminar",
+      "type": "acuerdo",
+      "date": "2021-03-25",
+      "month": "2021-03",
+      "title": "Acuerdos de transición",
+      "description": "Las partes llegan a consensos básicos sobre la hoja de ruta para la transición democrática.",
+      "location": "Palacio de convenciones",
+      "impact": "alto",
+      "participants": 150,
+      "tags": ["transición", "acuerdo", "democracia"]
+    },
+    {
+      "id": "reforma-constitucional",
+      "type": "reforma",
+      "date": "2021-09-15",
+      "month": "2021-09",
+      "title": "Aprobación de reformas",
+      "description": "El Congreso aprueba reformas constitucionales que fortalecen los mecanismos de participación ciudadana y control democrático.",
+      "location": "Congreso Nacional",
+      "impact": "alto",
+      "participants": 300,
+      "tags": ["reforma", "constitución", "democracia"]
+    },
+    {
+      "id": "transicion-institucional",
+      "type": "institucional",
+      "date": "2022-02-28",
+      "month": "2022-02",
+      "title": "Transición institucional",
+      "description": "Comienza el proceso de transición de autoridades con la instalación de nuevas instituciones democráticas.",
+      "location": "Centro de gobierno",
+      "impact": "alto",
+      "participants": 1000,
+      "tags": ["instituciones", "transición", "democracia"]
+    }
+  ]
+}
