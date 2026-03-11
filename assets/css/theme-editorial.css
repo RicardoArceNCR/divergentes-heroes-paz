@@ -93,15 +93,25 @@
 
 .hp-hero__title,
 .hp-hero .hp-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.28em;
   margin: 0;
-  max-width: 14ch;
+  text-align: center;
+  max-width: 23ch;
+}
+
+.hp-hero-title-main {
+  display: block;
+  max-width: 100%;
+  text-wrap: balance;
   font-family: var(--hp-font-display);
   font-size: clamp(3rem, 8vw, 6.75rem);
   font-weight: var(--hp-weight-display);
   line-height: 0.9;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  text-wrap: balance;
 }
 
 .hp-hero__subtitle,
@@ -147,8 +157,12 @@
 
   .hp-hero__title,
   .hp-hero .hp-title {
-    max-width: 12ch;
-    font-size: clamp(2.4rem, 11vw, 4.6rem);
+    gap: 0.22em;
+    max-width: 10ch;
+  }
+
+  .hp-hero-title-main {
+    font-size: clamp(2.2rem, 12vw, 3.9rem);
     line-height: 0.95;
   }
 
@@ -169,8 +183,11 @@
 
   .hp-hero__title,
   .hp-hero .hp-title {
-    max-width: 11ch;
-    font-size: clamp(2.2rem, 12vw, 3.7rem);
+    max-width: 10ch;
+  }
+
+  .hp-hero-title-main {
+    font-size: clamp(2.2rem, 12vw, 3.9rem);
   }
 
   .hp-hero__subtitle,

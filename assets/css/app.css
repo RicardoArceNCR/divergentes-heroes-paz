@@ -209,6 +209,85 @@
 }
 
 /* ==========================================================================
+   HERO HIGHLIGHT BADGE
+   ========================================================================== */
+
+.hp-hero-highlight {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0.08em;
+  border: 0.08em solid var(--hp-accent, #e10600);
+  background: transparent;
+  overflow: visible;
+
+  font-family: var(--hp-font-ui, var(--font-family-ui));
+  font-size: 0.44em;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hp-hero-highlight__lead,
+.hp-hero-highlight__text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.42em 0.7em;
+  white-space: nowrap;
+}
+
+.hp-hero-highlight__lead {
+  background: var(--hp-accent, #e10600);
+  color: #fff;
+}
+
+.hp-hero-highlight__text {
+  background: rgba(0, 0, 0, 0.92);
+  color: #fff;
+}
+
+.hp-hero-highlight__corner {
+  position: absolute;
+  width: 0.55em;
+  height: 0.55em;
+  pointer-events: none;
+}
+
+.hp-hero-highlight__corner--tl {
+  top: -0.34em;
+  left: -0.34em;
+  border-top: 0.08em solid var(--hp-accent, #e10600);
+  border-left: 0.08em solid var(--hp-accent, #e10600);
+}
+
+.hp-hero-highlight__corner--tr {
+  top: -0.34em;
+  right: -0.34em;
+  border-top: 0.08em solid var(--hp-accent, #e10600);
+  border-right: 0.08em solid var(--hp-accent, #e10600);
+}
+
+.hp-hero-highlight__corner--bl {
+  bottom: -0.34em;
+  left: -0.34em;
+  border-bottom: 0.08em solid var(--hp-accent, #e10600);
+  border-left: 0.08em solid var(--hp-accent, #e10600);
+}
+
+.hp-hero-highlight__corner--br {
+  bottom: -0.34em;
+  right: -0.34em;
+  border-bottom: 0.08em solid var(--hp-accent, #e10600);
+  border-right: 0.08em solid var(--hp-accent, #e10600);
+}
+
+/* ==========================================================================
    STICKY NAV (PILLS)
    ========================================================================== */
 
@@ -881,6 +960,35 @@
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+}
+
+/* Responsive adjustments for hero badge */
+@media (max-width: 900px) {
+  .hp-hero-copy,
+  .hp-hero__copy {
+    gap: 14px;
+  }
+
+  .hp-hero-highlight {
+    font-size: 0.3em;
+    letter-spacing: 0.1em;
+  }
+
+  .hp-hero-highlight__lead,
+  .hp-hero-highlight__text {
+    padding: 0.38em 0.56em;
+  }
+}
+
+@media (max-width: 640px) {
+  .hp-hero-highlight {
+    font-size: 0.57em;
+    max-width: 92%;
+  }
+
+  .hp-hero-highlight__text {
+    white-space: normal;
+  }
 }
 
 /* ==========================================================================

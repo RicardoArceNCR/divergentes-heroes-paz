@@ -36,7 +36,17 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
             <div class="hp-container hp-hero-container">
                 <div class="hp-hero-copy hp-hero__copy">
                     <?php if ($title): ?>
-                        <h1 class="hp-title hp-hero__title"><?php echo dhp_esc_html($title); ?></h1>
+                        <h1 class="hp-title hp-hero__title">
+                            <span class="hp-hero-title-main">Los "héroes de la paz"</span>
+                            <span class="hp-hero-highlight" aria-label="sin pasamontañas">
+                                <span class="hp-hero-highlight__corner hp-hero-highlight__corner--tl" aria-hidden="true"></span>
+                                <span class="hp-hero-highlight__corner hp-hero-highlight__corner--tr" aria-hidden="true"></span>
+                                <span class="hp-hero-highlight__corner hp-hero-highlight__corner--bl" aria-hidden="true"></span>
+                                <span class="hp-hero-highlight__corner hp-hero-highlight__corner--br" aria-hidden="true"></span>
+                                <span class="hp-hero-highlight__lead">SIN</span>
+                                <span class="hp-hero-highlight__text">PASAMONTAÑAS</span>
+                            </span>
+                        </h1>
                     <?php endif; ?>
 
                     <?php if ($subtitle): ?>
