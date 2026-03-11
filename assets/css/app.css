@@ -1044,13 +1044,12 @@
 .hp-byline {
   position: relative;
   z-index: 2;
-  margin-top: 28px;
+  margin-top: var(--hp-intro-byline-margin-top);
 }
 
 .hp-byline img {
   display: block;
-  width: 100%;
-  max-width: 180px;
+  width: var(--hp-intro-byline-logo-width);
   height: auto;
 }
 
@@ -1112,8 +1111,7 @@
 
   .hp-byline img {
     display: block;
-    width: 100%;
-    max-width: 180px;
+    width: var(--hp-intro-byline-logo-width-mobile);
     height: auto;
   }
 }
