@@ -54,7 +54,7 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
 
         <!-- INTRO EDITORIAL -->
         <?php if (!empty($paragraphs) && is_array($paragraphs)): ?>
-            <section class="hp-intro">
+            <section class="hp-intro hp-intro--dark">
                 <div class="hp-container hp-intro-container">
                     <img class="hp-intro-rail-art"
                          src="<?php echo esc_url(dhp_asset_image_url('hero-connector.png')); ?>"

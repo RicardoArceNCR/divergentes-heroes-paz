@@ -868,25 +868,55 @@
    INTRO EDITORIAL SIMPLE Y ESTABLE
    ========================================== */
 
+.hp-intro,
+.hp-intro--dark {
+  position: relative;
+  padding-block: clamp(56px, 8vw, 104px);
+}
+
+.hp-intro--dark {
+  background: #0f1014;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.hp-intro--dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.02) 0%,
+      rgba(255, 255, 255, 0) 18%,
+      rgba(255, 255, 255, 0) 82%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+  pointer-events: none;
+}
+
 .hp-intro-container {
   position: relative;
   max-width: 980px;
-  margin-inline: auto;
-  min-height: 140px;
+  min-height: 220px;
+}
+
+.hp-intro-container,
+.hp-intro-copy,
+.hp-intro__copy {
+  position: relative;
+  z-index: 1;
 }
 
 .hp-intro-rail-art {
   position: absolute;
   top: 0;
   left: var(--hp-intro-art-left);
-  display: block;
   width: var(--hp-intro-art-width);
-  max-width: 100%;
   height: auto;
   pointer-events: none;
   user-select: none;
   opacity: 0.95;
-  z-index: 1;
 }
 
 .hp-intro-copy,
@@ -901,13 +931,14 @@
 .hp-intro .hp-intro__lede {
   margin: 0;
   max-width: 72ch;
-  color: var(--hp-text);
+  color: #ffffff;
   font-size: clamp(18px, 2.1vw, 28px);
   line-height: 1.55;
 }
 
-.hp-intro .hp-lede strong {
-  color: #fff;
+.hp-intro .hp-lede strong,
+.hp-intro .hp-intro__lede strong {
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -915,7 +946,7 @@
 .hp-intro .hp-intro__paragraph {
   margin: 18px 0 0;
   max-width: 70ch;
-  color: var(--hp-text);
+  color: rgba(255, 255, 255, 0.88);
   font-size: clamp(15px, 1.3vw, 18px);
   line-height: 1.7;
 }
@@ -972,24 +1003,21 @@
   .hp-intro-container {
     min-height: auto;
     display: block;
+    padding-top: var(--hp-intro-mobile-top-space);
   }
 
   .hp-intro-rail-art {
-    top: 0;
-    left: 0;
+    top: 16px;
+    left: 50%;
+    width: var(--hp-intro-mobile-art-width);
+    transform: translateX(-50%);
   }
 
   .hp-intro-copy,
   .hp-intro__copy {
     padding-left: 0;
-    padding-top: var(--hp-intro-mobile-top-space);
+    padding-top: 0;
     max-width: 100%;
-  }
-
-  .hp-intro .hp-lede,
-  .hp-intro .hp-intro__lede {
-    font-size: 15px;
-    line-height: 1.7;
   }
 
   .hp-byline img {
