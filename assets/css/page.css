@@ -25,120 +25,55 @@ body.hp-has-fullbleed {
 }
 
 /* ==========================================================================
-   FULLBLEED WRAPPER
+   WordPress shell compatibility
+   Mantiene header/footer del theme
+   y permite fullbleed real en el especial
    ========================================================================== */
-
-.hp-wp-wrap {
-    position: relative;
-    margin: 0;
-    padding: 0;
-}
 
 .hp-wp-wrap--fullbleed {
-    position: relative;
-    width: 100vw;
-    max-width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
-    padding: 0;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-left: 0;
+  padding-right: 0;
 }
 
-/* ==========================================================================
-   GUTENBERG NEUTRALIZATION
-   ========================================================================== */
-
-.entry-content > .hp-wp-wrap,
-.wp-block-post-content > .hp-wp-wrap,
-.is-layout-constrained > .hp-wp-wrap {
-    max-width: none !important;
+.hp-wp-wrap.hp-wp-wrap--fullbleed.alignfull {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
-.entry-content > .hp-wp-wrap.alignfull,
-.wp-block-post-content > .hp-wp-wrap.alignfull,
-.is-layout-constrained > .hp-wp-wrap.alignfull {
-    max-width: none !important;
-    width: 100vw !important;
+.wp-site-blocks .hp-wp-wrap--fullbleed {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-/* ==========================================================================
-   TWENTY TWENTY-FIVE / BLOCK THEME NEUTRALIZATION
-   ========================================================================== */
-
-/* Neutralize page template spacing */
-body.hp-has-fullbleed main.wp-block-group.has-global-padding.is-layout-constrained {
-    margin-top: 0 !important;
+.is-layout-constrained > .hp-wp-wrap--fullbleed,
+.wp-block-post-content.is-layout-constrained > .hp-wp-wrap--fullbleed,
+.entry-content > .hp-wp-wrap--fullbleed {
+  max-width: none !important;
 }
 
-body.hp-has-fullbleed .wp-block-group.alignfull.has-global-padding.is-layout-constrained {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+.entry-content > .hp-wp-wrap--fullbleed {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-/* Neutralize content padding around the special */
-body.hp-has-fullbleed .entry-content.has-global-padding {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+main .hp-wp-wrap--fullbleed {
+  position: relative;
+  left: 0;
+  right: 0;
 }
 
-body.hp-has-fullbleed .entry-content > .alignfull {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-}
-
-/* Blindaje adicional contra Gutenberg / Twenty Twenty-Five */
-html,
-body.hp-has-fullbleed {
-    max-width: 100%;
-}
-
-body.hp-has-fullbleed .wp-site-blocks {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-}
-
-body.hp-has-fullbleed .wp-site-blocks > * {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-}
-
-body.hp-has-fullbleed .wp-block-post-content {
-    max-width: none !important;
-}
-
-body.hp-has-fullbleed .wp-block-post-content.is-layout-constrained > * {
-    max-width: none !important;
-}
-
-body.hp-has-fullbleed .entry-content.alignfull,
-body.hp-has-fullbleed .entry-content > .alignfull,
-body.hp-has-fullbleed .entry-content > .hp-wp-wrap.alignfull {
-    max-width: none !important;
-}
-
-body.hp-has-fullbleed .wp-block-post-content > .hp-wp-wrap.alignfull,
-body.hp-has-fullbleed .entry-content > .hp-wp-wrap.alignfull,
-body.hp-has-fullbleed .has-global-padding > .alignfull.hp-wp-wrap {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
-}
-
-body.hp-has-fullbleed .entry-content > .hp-wp-wrap {
-    isolation: isolate;
-}
-
-body.hp-has-fullbleed .hp-wp-wrap--fullbleed {
-    overflow-x: clip;
-}
-
-/* ==========================================================================
-   CONTENT PROTECTION
-   ========================================================================== */
-
-body.hp-has-fullbleed .hp-wp-wrap,
-body.hp-has-fullbleed .hp-shell {
-    max-width: none;
+.hp-shell,
+.hp-hero,
+.hp-intro,
+.hp-track,
+.hp-app {
+  max-width: none;
 }
 
 /* ==========================================================================
@@ -150,4 +85,59 @@ body.hp-has-fullbleed .hp-shell {
 .hp-wp-wrap *::before,
 .hp-wp-wrap *::after {
     box-sizing: border-box;
+}
+
+/* ==========================================================================
+   HEROES DE LA PAZ - convivencia con FSE
+   Mantiene header/footer, limpia el contenedor
+   ========================================================================== */
+
+body.page-id-102 main.wp-block-group.has-global-padding.is-layout-constrained {
+  margin-top: 0 !important;
+}
+
+body.page-id-102 main > .wp-block-group.alignfull.has-global-padding.is-layout-constrained {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+body.page-id-102 .entry-content.alignfull.wp-block-post-content.has-global-padding.is-layout-constrained {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: none !important;
+}
+
+body.page-id-102 .entry-content > .hp-wp-wrap--fullbleed {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+body.page-id-102 .hp-wp-wrap--fullbleed {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+body.page-id-102 .hp-wp-wrap.hp-wp-wrap--fullbleed.alignfull {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+
+body.page-id-102 .is-layout-constrained > .hp-wp-wrap--fullbleed,
+body.page-id-102 .wp-block-post-content.is-layout-constrained > .hp-wp-wrap--fullbleed,
+body.page-id-102 .entry-content > .hp-wp-wrap--fullbleed {
+  max-width: none !important;
+}
+
+body.page-id-102 .hp-shell,
+body.page-id-102 .hp-hero,
+body.page-id-102 .hp-intro,
+body.page-id-102 .hp-track,
+body.page-id-102 .hp-app {
+  max-width: none;
 }
