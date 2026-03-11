@@ -9,6 +9,24 @@
    - NO contiene integración con WordPress/block theme
    ========================================================================== */
 .hp-shell {
+  color: var(--hp-text);
+  background: var(--color-white);
+  font-family: var(--hp-font-body);
+}
+
+/* Reset de herencia tipográfica del theme */
+.hp-shell .hp-title,
+.hp-shell .hp-subtitle,
+.hp-shell .hp-lede,
+.hp-shell .hp-intro-paragraph,
+.hp-shell .hp-event-name,
+.hp-shell .hp-meta,
+.hp-shell .hp-event-summary,
+.hp-shell .hp-button {
+  font-synthesis-weight: none;
+}
+
+.hp-shell {
   /* Layout & Structural Variables */
   --hp-max: 85%;
   --hp-shell-pad-left: 44px;
@@ -87,6 +105,58 @@
   .hp-shell .hp-reading {
     width: 100%;
   }
+}
+
+/* ==========================================================================
+   TYPOGRAPHIC COMPONENTS
+   ========================================================================== */
+
+.hp-shell .hp-type-display {
+  font-family: var(--hp-font-display);
+  font-size: var(--hp-text-hero-size);
+  font-weight: var(--hp-weight-display);
+  line-height: var(--hp-leading-display);
+  letter-spacing: var(--hp-tracking-display);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.hp-shell .hp-type-title {
+  font-family: var(--hp-font-ui);
+  font-size: var(--hp-text-title-size);
+  font-weight: var(--hp-weight-ui);
+  line-height: var(--hp-leading-title);
+  letter-spacing: var(--hp-tracking-title);
+  margin: 0;
+}
+
+.hp-shell .hp-type-meta {
+  font-family: var(--hp-font-ui);
+  font-size: var(--hp-text-meta-size);
+  font-weight: var(--hp-weight-medium);
+  line-height: var(--hp-leading-meta);
+  letter-spacing: var(--hp-tracking-meta);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.hp-shell .hp-type-body {
+  font-family: var(--hp-font-body);
+  font-size: var(--hp-text-body-size);
+  font-weight: var(--hp-weight-body);
+  line-height: var(--hp-leading-body);
+  letter-spacing: var(--letter-spacing-normal);
+  margin: 0;
+}
+
+.hp-shell .hp-type-button {
+  font-family: var(--hp-font-ui);
+  font-size: var(--hp-text-button-size);
+  font-weight: var(--hp-weight-bold);
+  line-height: var(--hp-leading-button);
+  letter-spacing: var(--hp-tracking-button);
+  text-transform: uppercase;
+  margin: 0;
 }
 
 /* ==========================================================================
@@ -463,29 +533,35 @@
 
 /* --- Nombre: línea propia, protagonismo de titular --- */
 .hp-shell .hp-event-name {
-  margin: 0 0 var(--sp-1, 4px) 0;
-  width: 100%;
-  font-size: var(--text-lg, 1.125rem);
-  font-family: var(--hp-font-title);
-  line-height: 1.1;
-  letter-spacing: var(--tracking-tight, -0.02em);
+  font-family: var(--hp-font-ui);
+  font-size: var(--hp-text-title-size);
+  font-weight: var(--hp-weight-ui);
+  line-height: var(--hp-leading-title);
+  letter-spacing: var(--hp-tracking-title);
+  margin: 0 0 var(--space-2) 0;
 }
 
 /* --- Meta: fecha y lugar --- */
 .hp-shell .hp-meta {
-  margin: 0 0 var(--sp-3, 12px) 0;
-  font-family: var(--hp-font-ui, var(--hp-font-title));
-  font-size: var(--text-sm, 0.813rem);
-  font-weight: var(--fw-medium, 500);
-  opacity: .75;
+  font-family: var(--hp-font-ui);
+  font-size: var(--hp-text-meta-size);
+  font-weight: var(--hp-weight-medium);
+  line-height: var(--hp-leading-meta);
+  letter-spacing: var(--hp-tracking-meta);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-3) 0;
+  color: var(--hp-text);
+  opacity: 0.78;
 }
 
 /* --- Resumen editorial --- */
 .hp-shell .hp-event-summary {
-  margin: 0 0 var(--sp-4, 16px) 0;
-  font-family: var(--hp-font-body, var(--hp-font-title));
-  font-size: var(--text-md, 1rem);
-  line-height: 1.55;
+  margin: 0 0 var(--space-4) 0;
+  font-family: var(--hp-font-body);
+  font-size: var(--hp-text-body-size);
+  font-weight: var(--hp-weight-body);
+  line-height: var(--hp-leading-body);
+  letter-spacing: var(--letter-spacing-normal);
   color: var(--hp-text);
 }
 
@@ -551,13 +627,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--hp-black);
-  border-radius: 999px;
-  padding: 10px 14px;
+  min-height: 56px;
+  padding: 0.9rem 1.6rem;
+  border: 1px solid var(--hp-accent, #e10600);
   background: var(--hp-black);
   color: var(--hp-white);
   cursor: pointer;
+  text-decoration: none;
   transition: opacity var(--hp-dur-1) var(--hp-ease);
+
+  font-family: var(--hp-font-ui);
+  font-size: var(--hp-text-button-size);
+  font-weight: var(--hp-weight-bold);
+  line-height: var(--hp-leading-button);
+  letter-spacing: var(--hp-tracking-button);
+  text-transform: uppercase;
 }
 
 .hp-shell .hp-button:hover {

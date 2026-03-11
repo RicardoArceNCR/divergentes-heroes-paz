@@ -1,17 +1,19 @@
 /* ===== Design System Tokens ===== */
 :root {
   /* Fonts */
-  --font-family-display: "Red Hat Mono", monospace;
+  --font-family-display: "Lacquer", cursive;
   --font-family-ui: "Red Hat Mono", monospace;
   --font-family-body: "Red Hat Mono", monospace;
 
   /* Font sizes */
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-md: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.5rem;
-  --font-size-2xl: 2rem;
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-md: 1rem;         /* 16px */
+  --font-size-lg: 1.1875rem;    /* 19px */
+  --font-size-xl: 1.5rem;       /* 24px */
+  --font-size-2xl: 2rem;        /* 32px */
+
+  --font-size-hero: clamp(3.25rem, 8vw, 6.75rem);
 
   /* Font weights */
   --font-weight-regular: 400;
@@ -23,14 +25,21 @@
   --letter-spacing-tight: -0.02em;
   --letter-spacing-normal: 0;
   --letter-spacing-wide: 0.04em;
+  --letter-spacing-wider: 0.08em;
+
+  /* Line heights */
+  --line-height-tight: 1.02;
+  --line-height-snug: 1.18;
+  --line-height-normal: 1.45;
+  --line-height-relaxed: 1.6;
 
   /* Spacing */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
   --space-8: 32px;
   --space-10: 40px;
   --space-12: 48px;

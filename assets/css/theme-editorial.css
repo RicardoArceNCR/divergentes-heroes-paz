@@ -1,14 +1,37 @@
 /* ===== Theme Editorial: mapeo de tokens al componente ===== */
-.hp-shell {
-  --hp-font-title: var(--font-family-display);
+.hp-shell,
+.hp-shell--editorial {
+  /* Tipografía semántica */
+  --hp-font-display: var(--font-family-display);
   --hp-font-ui: var(--font-family-ui);
   --hp-font-body: var(--font-family-body);
 
-  --hp-text-title-size: var(--font-size-xl);
+  /* Tamaños semánticos */
+  --hp-text-hero-size: var(--font-size-hero);
+  --hp-text-title-size: var(--font-size-lg);
   --hp-text-meta-size: var(--font-size-sm);
   --hp-text-body-size: var(--font-size-md);
-  --hp-text-summary-size: var(--font-size-lg);
+  --hp-text-button-size: 1.125rem;
 
+  /* Pesos semánticos */
+  --hp-weight-display: var(--font-weight-regular);
+  --hp-weight-ui: var(--font-weight-bold);
+  --hp-weight-body: var(--font-weight-medium);
+
+  /* Line heights semánticos */
+  --hp-leading-display: var(--line-height-tight);
+  --hp-leading-title: var(--line-height-snug);
+  --hp-leading-meta: 1.3;
+  --hp-leading-body: 1.55;
+  --hp-leading-button: 1.1;
+
+  /* Tracking semántico */
+  --hp-tracking-display: var(--letter-spacing-tight);
+  --hp-tracking-title: var(--letter-spacing-tight);
+  --hp-tracking-meta: var(--letter-spacing-wide);
+  --hp-tracking-button: var(--letter-spacing-normal);
+
+  /* Colores y superficies */
   --hp-bg: var(--color-bg);
   --hp-card-bg: var(--color-surface);
   --hp-card-border: var(--color-border-strong);
@@ -22,14 +45,17 @@
   --hp-radius-pill: var(--radius-xl);
   --hp-card-shadow: var(--shadow-sm);
 
+  /* Layout */
   --hp-container-max: var(--container-max);
   --hp-reading-max: var(--reading-max);
   --hp-hero-max: var(--hero-max);
 
+  /* Spacing */
   --hp-section-space: var(--section-space-desktop);
   --hp-block-space: var(--block-space);
   --hp-text-space: var(--text-space);
 
+  /* Motion */
   --hp-ease: var(--ease-standard);
   --hp-dur-1: var(--dur-fast);
   --hp-dur-2: var(--dur-base);
@@ -69,10 +95,11 @@
 .hp-hero .hp-title {
   margin: 0;
   max-width: 14ch;
-  font-family: var(--hp-font-title);
-  font-size: clamp(3rem, 7vw, 6.8rem);
-  line-height: 0.92;
-  letter-spacing: 0.01em;
+  font-family: var(--hp-font-display);
+  font-size: clamp(3rem, 8vw, 6.75rem);
+  font-weight: var(--hp-weight-display);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   text-wrap: balance;
 }
