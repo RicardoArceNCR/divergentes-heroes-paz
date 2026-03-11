@@ -249,9 +249,9 @@
 /* eje configurable */
 .hp-shell {
   --hp-line-x: 32px;
-  --hp-track-line-width: 6px;
-  --hp-track-fill-width: 10px;
-  --hp-track-fill-height: 60vh;
+  --hp-track-line-width: 7px;
+  --hp-track-fill-width: 12px;
+  --hp-track-fill-height: 68vh;
 }
 
 /* línea guía completa */
@@ -270,7 +270,7 @@
 /* scanner rojo fijo */
 .hp-track-fill {
   position: fixed;
-  top: calc(50vh - 72px);
+  top: calc(50vh - 92px);
   left: var(--hp-line-x);
   transform: translateX(-50%) translateY(-50%);
   width: var(--hp-track-fill-width);

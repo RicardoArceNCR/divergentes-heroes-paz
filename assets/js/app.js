@@ -634,8 +634,8 @@
     const markers = document.querySelectorAll('.hp-marker');
     if (!markers.length) return;
 
-    const triggerY = (window.innerHeight / 2) - 72;
-    const tolerance = 18;
+    const triggerY = (window.innerHeight / 2) - 92;
+    const tolerance = 22;
 
     markers.forEach((marker) => {
       const rect = marker.getBoundingClientRect();
