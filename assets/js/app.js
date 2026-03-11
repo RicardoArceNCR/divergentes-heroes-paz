@@ -634,7 +634,7 @@
     const markers = document.querySelectorAll('.hp-marker');
     if (!markers.length) return;
 
-    const triggerY = (window.innerHeight / 2) - 42;
+    const triggerY = (window.innerHeight / 2) - 72;
     const tolerance = 18;
 
     markers.forEach((marker) => {

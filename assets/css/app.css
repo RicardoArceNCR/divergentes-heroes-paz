@@ -249,9 +249,9 @@
 /* eje configurable */
 .hp-shell {
   --hp-line-x: 32px;
-  --hp-track-line-width: 5px;
-  --hp-track-fill-width: 8px;
-  --hp-track-fill-height: 52vh;
+  --hp-track-line-width: 6px;
+  --hp-track-fill-width: 10px;
+  --hp-track-fill-height: 60vh;
 }
 
 /* línea guía completa */
@@ -262,7 +262,7 @@
   left: var(--hp-line-x);
   transform: translateX(-50%);
   width: var(--hp-track-line-width);
-  background: rgba(225, 6, 0, 0.14);
+  background: rgba(225, 6, 0, 0.16);
   border-radius: 999px;
   z-index: 1;
 }
@@ -270,7 +270,7 @@
 /* scanner rojo fijo */
 .hp-track-fill {
   position: fixed;
-  top: calc(50vh - 42px);
+  top: calc(50vh - 72px);
   left: var(--hp-line-x);
   transform: translateX(-50%) translateY(-50%);
   width: var(--hp-track-fill-width);
@@ -278,9 +278,9 @@
   background: #e10600;
   border-radius: 999px;
   box-shadow:
-    0 0 0 1px rgba(225, 6, 0, 0.10),
-    0 0 22px rgba(225, 6, 0, 0.22),
-    0 0 38px rgba(225, 6, 0, 0.14);
+    0 0 0 1px rgba(225, 6, 0, 0.12),
+    0 0 24px rgba(225, 6, 0, 0.24),
+    0 0 42px rgba(225, 6, 0, 0.16);
   opacity: 0;
   visibility: hidden;
   transition: opacity 180ms ease;
@@ -302,12 +302,12 @@
   .hp-shell {
     --hp-line-x: 22px;
     --hp-track-line-width: 4px;
-    --hp-track-fill-width: 6px;
-    --hp-track-fill-height: 34vh;
+    --hp-track-fill-width: 7px;
+    --hp-track-fill-height: 38vh;
   }
 
   .hp-track-fill {
-    top: calc(50vh - 28px);
+    top: calc(50vh - 40px);
   }
 }
 
