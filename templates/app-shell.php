@@ -52,12 +52,6 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                     <?php if ($subtitle): ?>
                         <p class="hp-subtitle hp-hero__subtitle"><?php echo dhp_esc_html($subtitle); ?></p>
                     <?php endif; ?>
-
-                    <?php if ($byline_label): ?>
-                        <div class="hp-hero-byline-text hp-hero__byline">
-                            <span><?php echo dhp_esc_html($byline_label); ?></span>
-                        </div>
-                    <?php endif; ?>
                 </div>
             </div>
         </section>
@@ -90,15 +84,6 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                                 <?php echo dhp_esc_html($paragraph); ?>
                             </p>
                         <?php endforeach; ?>
-
-                        <?php if ($byline_label && file_exists(DHP_PATH . 'assets/images/por-divergentes.png')): ?>
-                            <div class="hp-byline hp-intro__byline">
-                                <img src="<?php echo esc_url(dhp_asset_image_url('por-divergentes.png')); ?>"
-                                     alt="<?php echo dhp_esc_attr($byline_label); ?>"
-                                     decoding="async"
-                                     loading="lazy" />
-                            </div>
-                        <?php endif; ?>
                     </div>
                 </div>
             </section>
