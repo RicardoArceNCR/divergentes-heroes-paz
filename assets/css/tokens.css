@@ -1,9 +1,52 @@
+/* ------------------------------------------------
+   FONTS
+   ------------------------------------------------ */
+
+@font-face {
+  font-family: "RedHatMono";
+  src: url("../../fonts/red-hat-mono/RedHatMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RedHatMono";
+  src: url("../../fonts/red-hat-mono/RedHatMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RedHatMono";
+  src: url("../../fonts/red-hat-mono/RedHatMono-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lacquer";
+  src: url("../../fonts/lacquer/lacquer.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ===== Design System Tokens ===== */
 :root {
-  /* Fonts */
-  --font-family-display: "Lacquer", cursive;
-  --font-family-ui: "Red Hat Mono", monospace;
-  --font-family-body: "Red Hat Mono", monospace;
+  /* =========================
+     FONT FAMILIES
+  ========================= */
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --font-mono: "RedHatMono", monospace;
+  --font-display: "Lacquer", sans-serif;
+
+  /* Legacy mappings - mantener compatibilidad */
+  --font-family-display: var(--font-display);
+  --font-family-ui: var(--font-mono);
+  --font-family-body: var(--font-mono);
 
   /* Font sizes */
   --font-size-xs: 0.75rem;      /* 12px */
@@ -92,4 +135,38 @@
   --color-accent-strong: #c91414;
   --color-black: #000000;
   --color-white: #ffffff;
+
+  /* =========================
+     LAYOUT SYSTEM
+  ========================= */
+  --hp-max: 1280px;
+  --hp-shell-pad-left: clamp(20px, 6vw, 120px);
+  --hp-rail-w: 160px;
+  --hp-rail-gap: 22px;
+  --hp-sticky-top: 64px;
+  --hp-adminbar: 0px;
+  --hp-container-pad: 16px;
+  --hp-line-x: 72px;
+  --hp-line-w: 6px;
+  --hp-line-top: -8px;
+  --hp-line-bottom: 0px;
+
+  /* Component Specific */
+  --hp-event-photo-w: 320px;
+  --hp-card-pad-y: 14px;
+  --hp-card-pad-x: 16px;
+
+  /* Intro Variables */
+  --hp-intro-art-left: 180px;
+  --hp-intro-art-width: 93px;
+  --hp-intro-copy-offset: 300px;
+  --hp-intro-mobile-art-width: 90px;
+  --hp-intro-mobile-top-space: 140px;
+
+  /* Shadows */
+  --hp-shadow: none;
+  --hp-shadow-active: 0 8px 24px rgba(0, 0, 0, .08);
+
+  /* Reveal Animation */
+  --hp-reveal-y: 18px;
 }

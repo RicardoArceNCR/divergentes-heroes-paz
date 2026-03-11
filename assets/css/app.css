@@ -26,45 +26,6 @@
   font-synthesis-weight: none;
 }
 
-.hp-shell {
-  /* Layout & Structural Variables */
-  --hp-max: 85%;
-  --hp-shell-pad-left: 44px;
-  --hp-rail-w: 180px;
-  --hp-rail-gap: 22px;
-  --hp-sticky-top: 64px;
-  --hp-adminbar: 0px;
-  --hp-container-pad: 16px;
-  --hp-line-x: 22px;
-  /* Default for mobile */
-  --hp-line-w: 6px;
-  --hp-line-top: -8px;
-  --hp-line-bottom: 0px;
-
-  /* Component Specific */
-  --hp-event-photo-w: 320px;
-  --hp-card-pad-y: 14px;
-  --hp-card-pad-x: 16px;
-
-  /* Intro Variables */
-  --hp-intro-art-left: 180px;
-  --hp-intro-art-width: 93px;
-  --hp-intro-copy-offset: 300px;
-  --hp-intro-mobile-art-width: 90px;
-  --hp-intro-mobile-top-space: 140px;
-
-  /* Shadows */
-  --hp-shadow: none;
-  --hp-shadow-active: 0 8px 24px rgba(0, 0, 0, .08);
-
-  /* Reveal Animation */
-  --hp-reveal-y: 18px;
-
-  color: var(--hp-text);
-  background: var(--color-white);
-  font-family: var(--hp-font-body);
-}
-
 /* ==========================================================================
    RESET & BASE
    ========================================================================== */
@@ -174,15 +135,15 @@
 
 /* DOT PRESETS */
 .hp-shell[data-layout="contained"] {
-  --hp-dot-x: -32px;
+  --hp-dot-x: var(--hp-dot-x-contained);
 }
 
 .hp-shell[data-layout="fullbleed"] {
-  --hp-dot-x: -40px;
+  --hp-dot-x: var(--hp-dot-x-fullbleed);
 }
 
 .hp-shell[data-theme="divergentes"] {
-  --hp-dot-x: -22px;
+  --hp-dot-x: var(--hp-dot-x-divergentes);
   /* Alinear con la línea roja en desktop */
 }
 
@@ -314,17 +275,21 @@
 
 .hp-track-inner {
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: auto;
   pointer-events: none;
   z-index: 1;
 }
 
 /* eje configurable */
 .hp-shell {
-  --hp-line-x: 32px;
-  --hp-track-line-width: 7px;
-  --hp-track-fill-width: 12px;
-  --hp-track-fill-height: 68vh;
+  --hp-line-x: clamp(80px, 12vw, 140px);
+  --hp-track-line-width: 6px;
+  --hp-track-fill-width: 9px;
+  --hp-track-fill-height: 46vh;
 }
 
 /* línea guía completa */
@@ -374,9 +339,9 @@
 @media (max-width: 860px) {
   .hp-shell {
     --hp-line-x: 22px;
-    --hp-track-line-width: 4px;
-    --hp-track-fill-width: 7px;
-    --hp-track-fill-height: 38vh;
+    --hp-track-line-width: 5px;
+    --hp-track-fill-width: 8px;
+    --hp-track-fill-height: 40vh;
   }
 
   .hp-track-fill {

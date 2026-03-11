@@ -1,6 +1,21 @@
 (function () {
   'use strict';
 
+  // Global Scanner Reference - Nivel 2 Synchronization
+  const HP_SCANNER_OFFSET_Y_DESKTOP = 92;
+  const HP_SCANNER_OFFSET_Y_MOBILE = 40;
+  const HP_MARKER_TOLERANCE = 36;
+
+  function getScannerOffsetY() {
+    return window.innerWidth <= 860
+      ? HP_SCANNER_OFFSET_Y_MOBILE
+      : HP_SCANNER_OFFSET_Y_DESKTOP;
+  }
+
+  function getScannerY() {
+    return (window.innerHeight / 2) - getScannerOffsetY();
+  }
+
   const dataCache = new Map(); // url -> Promise<data>
   const instanceState = new WeakMap(); // root -> { destroyFns: [] }
 
@@ -435,7 +450,7 @@
         const mid = btn.getAttribute('data-hp-month');
         if (!mid) return;
         const section = root.querySelector('[data-hp-month-section="' + cssEscape(mid) + '"]');
-        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
     });
 
@@ -458,7 +473,7 @@
 
     const io = new IntersectionObserver(
       (entries) => {
-        const viewportCenter = (window.innerHeight * 0.5) - 92;
+        const viewportCenter = getScannerY();
         let best = null;
         let bestDistance = Infinity;
 
@@ -508,7 +523,7 @@
       },
       {
         threshold: 0,
-        rootMargin: '-22% 0px -38% 0px'
+        rootMargin: '-18% 0px -42% 0px'
       }
     );
 
@@ -630,17 +645,17 @@
     fill.style.left = `${lineCenterX}px`;
   }
 
-  function updateTimelineMarkers() {
-    const markers = document.querySelectorAll('.hp-marker');
-    if (!markers.length) return;
+function updateTimelineMarkers() {
+const markers = document.querySelectorAll('.hp-marker');
+if (!markers.length) return;
 
-    const triggerY = (window.innerHeight / 2) - 92;
-    const tolerance = 30;
+const triggerY = getScannerY();
+const tolerance = HP_MARKER_TOLERANCE;
 
-    markers.forEach((marker) => {
-      const rect = marker.getBoundingClientRect();
-      const center = rect.top + rect.height / 2;
-      const isActive = Math.abs(center - triggerY) <= tolerance;
+markers.forEach((marker) => {
+const rect = marker.getBoundingClientRect();
+const center = rect.top + rect.height / 2;
+const isActive = Math.abs(center - triggerY) <= tolerance;
 
       marker.classList.toggle('is-active', isActive);
     });
