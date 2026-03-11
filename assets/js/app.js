@@ -491,7 +491,7 @@
               el.classList.toggle('is-active', el === activeEl);
             }
 
-            window.requestAnimationFrame(() => setLineToMarker(root));
+            window.requestAnimationFrame(() => updateProfessionalTimeline());
           }
         }
 
@@ -542,6 +542,11 @@
     shell.style.setProperty('--hp-line-x', x.toFixed(2) + 'px');
   }
 
+  // =========================================================
+  // OLD LINE FILL SYSTEM - DISABLED
+  // Replaced by professional scanner system
+  // =========================================================
+  /*
   function setupLineFill(ctx) {
     if (!ctx || !ctx.track || !ctx.fill) return () => { };
 
@@ -587,6 +592,60 @@
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };
+  }
+  */
+
+  // =========================================================
+  // TIMELINE SCANNER SYSTEM - Professional implementation
+  // =========================================================
+
+  function updateTrackScannerVisibility(trackEl) {
+    if (!trackEl) return;
+
+    const rect = trackEl.getBoundingClientRect();
+    const viewportH = window.innerHeight;
+    const isVisible = rect.top < viewportH && rect.bottom > 0;
+
+    trackEl.classList.toggle('is-in-view', isVisible);
+  }
+
+  function syncTrackFillToLine(trackEl) {
+    if (!trackEl) return;
+
+    const line = trackEl.querySelector('.hp-track-line');
+    const fill = trackEl.querySelector('.hp-track-fill');
+
+    if (!line || !fill) return;
+
+    const lineRect = line.getBoundingClientRect();
+    const lineCenterX = lineRect.left + (lineRect.width / 2);
+
+    fill.style.left = `${lineCenterX}px`;
+  }
+
+  function updateTimelineMarkers() {
+    const markers = document.querySelectorAll('.hp-marker');
+    if (!markers.length) return;
+
+    const triggerY = window.innerHeight * 0.5;
+    const tolerance = 22;
+
+    markers.forEach((marker) => {
+      const rect = marker.getBoundingClientRect();
+      const center = rect.top + rect.height / 2;
+      const isActive = Math.abs(center - triggerY) <= tolerance;
+
+      marker.classList.toggle('is-active', isActive);
+    });
+  }
+
+  function updateProfessionalTimeline() {
+    const trackEl = document.querySelector('[data-hp-track]');
+    if (!trackEl) return;
+
+    updateTrackScannerVisibility(trackEl);
+    syncTrackFillToLine(trackEl);
+    updateTimelineMarkers();
   }
 
   function openEventModal(id, byId, modal, root, config) {
@@ -746,8 +805,9 @@
         const io = setupActiveStep(root, navApi);
         registerDestroy(root, () => io && typeof io.disconnect === 'function' && io.disconnect());
 
-        const stopLine = setupLineFill(ctx);
-        registerDestroy(root, stopLine);
+        // OLD LINE FILL SYSTEM - DISABLED
+        // const stopLine = setupLineFill(ctx);
+        // registerDestroy(root, stopLine);
 
         const profilesApi = setupProfiles(root, renderState, config);
 
@@ -771,6 +831,11 @@
           }
         }
 
+        // Professional timeline scanner system
+        updateProfessionalTimeline();
+        window.addEventListener('scroll', updateProfessionalTimeline, { passive: true });
+        window.addEventListener('resize', updateProfessionalTimeline);
+
         if (renderState.monthIds && renderState.monthIds[0]) {
           window.dispatchEvent(
             new CustomEvent('timeline_month_view', {
@@ -790,8 +855,12 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
+    document.addEventListener('DOMContentLoaded', () => {
+      updateProfessionalTimeline();
+      boot();
+    });
   } else {
+    updateProfessionalTimeline();
     boot();
   }
 })();
