@@ -287,6 +287,35 @@
   border-right: 0.08em solid var(--hp-accent, #e10600);
 }
 
+/* Responsive adjustments for hero badge */
+@media (max-width: 900px) {
+  .hp-hero-copy,
+  .hp-hero__copy {
+    gap: 14px;
+  }
+
+  .hp-hero-highlight {
+    font-size: 0.3em;
+    letter-spacing: 0.1em;
+  }
+
+  .hp-hero-highlight__lead,
+  .hp-hero-highlight__text {
+    padding: 0.38em 0.56em;
+  }
+}
+
+@media (max-width: 640px) {
+  .hp-hero-highlight {
+    font-size: 0.57em;
+    max-width: 92%;
+  }
+
+  .hp-hero-highlight__text {
+    white-space: normal;
+  }
+}
+
 /* ==========================================================================
    STICKY NAV (PILLS)
    ========================================================================== */
@@ -962,35 +991,6 @@
   border-radius: 10px;
 }
 
-/* Responsive adjustments for hero badge */
-@media (max-width: 900px) {
-  .hp-hero-copy,
-  .hp-hero__copy {
-    gap: 14px;
-  }
-
-  .hp-hero-highlight {
-    font-size: 0.3em;
-    letter-spacing: 0.1em;
-  }
-
-  .hp-hero-highlight__lead,
-  .hp-hero-highlight__text {
-    padding: 0.38em 0.56em;
-  }
-}
-
-@media (max-width: 640px) {
-  .hp-hero-highlight {
-    font-size: 0.57em;
-    max-width: 92%;
-  }
-
-  .hp-hero-highlight__text {
-    white-space: normal;
-  }
-}
-
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
@@ -1152,12 +1152,13 @@
 .hp-byline {
   position: relative;
   z-index: 2;
-  margin-top: var(--hp-intro-byline-margin-top);
+  margin-top: 28px;
 }
 
 .hp-byline img {
   display: block;
-  width: var(--hp-intro-byline-logo-width);
+  width: 100%;
+  max-width: 180px;
   height: auto;
 }
 
@@ -1219,7 +1220,8 @@
 
   .hp-byline img {
     display: block;
-    width: var(--hp-intro-byline-logo-width-mobile);
+    width: 100%;
+    max-width: 180px;
     height: auto;
   }
 }
