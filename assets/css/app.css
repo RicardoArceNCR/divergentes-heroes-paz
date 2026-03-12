@@ -1324,3 +1324,45 @@
 .hp-shell .hp-sticky-nav-inner > * {
   flex: 0 0 auto;
 }
+
+/* ==========================================================================
+   INTRO LIGHT VARIANT
+   ========================================================================== */
+.hp-intro.hp-intro--light{
+  background: #ffffff;
+  color: #111111;
+}
+
+.hp-intro--light .hp-intro__copy{
+  color: #111111;
+}
+
+.hp-intro--light .hp-intro__lede{
+  margin: 0;
+  color: #111111;
+  font-size: clamp(1.05rem, 1.2vw, 1.3rem);
+  line-height: 1.9;
+  font-weight: 400;
+  white-space: pre-line;
+  text-wrap: pretty;
+  max-width: 65ch;
+}
+
+.hp-intro-signoff{
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.hp-intro-signoff__logo{
+  display: block;
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px){
+  .hp-intro-signoff__logo{
+    width: 200px;
+  }
+}
+
+/* Rail art visibility adjustment for light background */

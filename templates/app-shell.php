@@ -62,7 +62,7 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
 
         <!-- INTRO EDITORIAL -->
         <?php if (!empty($paragraphs) && is_array($paragraphs)): ?>
-            <section class="hp-intro hp-intro--dark">
+            <section class="hp-intro hp-intro--light">
                 <div class="hp-container hp-intro-container">
                     <img class="hp-intro-rail-art"
                          src="<?php echo esc_url(dhp_asset_image_url('hero-connector.png')); ?>"
@@ -72,22 +72,27 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                          loading="lazy" />
 
                     <div class="hp-intro-copy hp-intro__copy">
-                        <?php
-                        $first_paragraph = $paragraphs[0] ?? '';
-                        $remaining_paragraphs = array_slice($paragraphs, 1);
-                        ?>
 
-                        <?php if ($first_paragraph): ?>
-                            <p class="hp-lede hp-intro__lede" data-hp-line-start>
-                                <?php echo dhp_esc_html($first_paragraph); ?>
-                            </p>
-                        <?php endif; ?>
+                        <p class="hp-lede hp-intro__lede" data-hp-line-start>
+                            En Nicaragua existen nombres que, tras la crisis sociopolítica iniciada en abril de 2018, fueron elevados por el régimen Ortega-Murillo a la categoría de "héroes de la paz": civiles armados y policías que perdieron la vida mientras participaban en acciones violentas destinadas a reprimir las protestas y restablecer el control territorial del país. Sin embargo, no todos ocupan el mismo lugar en la memoria de la dictadura sandinista. Mientras algunos, como Francisco Aráuz Pineda —hijo de la legendaria militante Amada Pineda— o el militante Bismarck Martínez han sido recordados con homenajes, placas y monumentos, otros caídos apenas sobreviven en publicaciones de aniversario o han sido relegados al olvido.
 
-                        <?php foreach ($remaining_paragraphs as $paragraph): ?>
-                            <p class="hp-intro-paragraph hp-intro__paragraph">
-                                <?php echo dhp_esc_html($paragraph); ?>
-                            </p>
-                        <?php endforeach; ?>
+                            Los policías fallecidos durante las protestas de 2018 también fueron incorporados por el Gobierno a la categoría de "héroes de la paz y la seguridad", pese a que murieron en un contexto que organismos internacionales documentaron como de represión estatal en contra de las manifestaciones cívicas.
+
+                            En su informe de 2018, la Comisión Interamericana de Derechos Humanos (CIDH) concluyó que la violencia en Nicaragua que tuvo como principal agente represor a la Policía Nacional, estuvo dirigida a disuadir la participación en las manifestaciones y sofocar el disenso político, siguiendo un patrón caracterizado por el uso excesivo y arbitrario de la fuerza —incluida fuerza letal—, la actuación de grupos parapoliciales y paramilitares con tolerancia estatal, amenazas contra líderes sociales y la falta de diligencia en las investigaciones sobre asesinatos y lesiones.
+
+                            ¿Quiénes fueron estas personas, por qué el régimen las presenta como "héroes de la paz", pese a su participación en la represión y qué revela esa memoria selectiva del Frente Sandinista sobre la forma en que se justifica la violencia ejercida en 2018?
+                        </p>
+
+                        <div class="hp-intro-signoff">
+                            <img
+                                class="hp-intro-signoff__logo"
+                                src="<?php echo esc_url(dhp_asset_image_url('por-divergentes.png')); ?>"
+                                alt="Por Divergentes"
+                                decoding="async"
+                                loading="lazy"
+                            />
+                        </div>
+
                     </div>
                 </div>
             </section>
