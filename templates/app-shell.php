@@ -54,8 +54,18 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                     <?php endif; ?>
 
                     <p class="hp-hero-intro">
-                        Tras la crisis sociopolítica de abril de 2018 en Nicaragua, el régimen Ortega-Murillo elevó a ciertos civiles armados y policías fallecidos durante las protestas a la categoría de “héroes de la paz”. Entre ellos figuran militantes sandinistas, trabajadores del Estado y miembros de la Policía Nacional que participaron en operativos de represión contra manifestantes y en el desmantelamiento de tranques. El relato oficial justifica estas muertes como actos de lealtad y defensa de la paz, mientras documentos de organismos internacionales como la CIDH y el GIEI evidencian sus responsabilidadezs en la  violencia letal, tortura y represión sistemática contra manifestantes.
+                        Tras la crisis sociopolítica de abril de 2018 en Nicaragua, el régimen Ortega-Murillo elevó a ciertos civiles armados y policías fallecidos durante las protestas a la categoría de "héroes de la paz". Entre ellos figuran militantes sandinistas, trabajadores del Estado y miembros de la Policía Nacional que participaron en operativos de represión contra manifestantes y en el desmantelamiento de tranques. El relato oficial justifica estas muertes como actos de lealtad y defensa de la paz, mientras documentos de organismos internacionales como la CIDH y el GIEI evidencian sus responsabilidadezs en la  violencia letal, tortura y represión sistemática contra manifestantes.
                     </p>
+
+                    <div class="hp-signoff hp-hero-signoff">
+                        <img
+                            class="hp-signoff__logo hp-hero-signoff__logo"
+                            src="<?php echo esc_url(dhp_asset_image_url('por-divergentes.png')); ?>"
+                            alt="Por Divergentes"
+                            decoding="async"
+                            loading="lazy"
+                        />
+                    </div>
                 </div>
             </div>
         </section>
@@ -83,15 +93,6 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                             ¿Quiénes fueron estas personas, por qué el régimen las presenta como "héroes de la paz", pese a su participación en la represión y qué revela esa memoria selectiva del Frente Sandinista sobre la forma en que se justifica la violencia ejercida en 2018?
                         </p>
 
-                        <div class="hp-intro-signoff">
-                            <img
-                                class="hp-intro-signoff__logo"
-                                src="<?php echo esc_url(dhp_asset_image_url('por-divergentes.png')); ?>"
-                                alt="Por Divergentes"
-                                decoding="async"
-                                loading="lazy"
-                            />
-                        </div>
 
                     </div>
                 </div>

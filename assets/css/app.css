@@ -236,7 +236,7 @@
   width: 100%;
   max-width: var(--hp-hero-max);
   margin: 0 auto;
-  padding: clamp(64px, 12vw, 190px) 0;
+  padding: clamp(64px, 6vw, 190px) 0;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -406,7 +406,7 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, .92);
+  background: rgb(243 243 243);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--hp-gray);
   padding: 10px 0;
@@ -1151,7 +1151,7 @@
 .hp-intro,
 .hp-intro--dark {
   position: relative;
-  padding-block: clamp(56px, 8vw, 104px);
+  padding-block: clamp(5px, 8vw, 5px);
 }
 
 .hp-intro--dark {
@@ -1190,7 +1190,7 @@
 
 .hp-intro-rail-art {
   position: absolute;
-  top: 0;
+  top: -130px;
   left: var(--hp-intro-art-left);
   width: var(--hp-intro-art-width);
   height: auto;
@@ -1329,7 +1329,7 @@
    INTRO LIGHT VARIANT
    ========================================================================== */
 .hp-intro.hp-intro--light{
-  background: #ffffff;
+  background: rgb(243 243 243);
   color: #111111;
 }
 
@@ -1348,21 +1348,35 @@
   max-width: 65ch;
 }
 
-.hp-intro-signoff{
-  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+/* ==========================================================================
+   SIGNOFF COMPONENT
+   ========================================================================== */
+.hp-signoff{
+  display: block;
 }
 
-.hp-intro-signoff__logo{
+.hp-signoff__logo{
   display: block;
-  width: 300px;
   max-width: 100%;
   height: auto;
 }
 
+.hp-hero-signoff{
+  margin-top: 18px;
+}
+
+.hp-hero-signoff__logo{
+  width: 220px;
+}
+
 @media (max-width: 768px){
-  .hp-intro-signoff__logo{
-    width: 200px;
+  .hp-hero-signoff{
+    margin-top: 14px;
+  }
+
+  .hp-hero-signoff__logo{
+    width: 170px;
   }
 }
 
-/* Rail art visibility adjustment for light background */
+
