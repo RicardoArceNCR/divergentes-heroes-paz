@@ -196,3 +196,79 @@
     font-size: 0.98rem;
   }
 }
+
+/* ==========================================================================
+   RAIL COMPONENT STYLES
+   ========================================================================== */
+.hp-shell--editorial .hp-rail {
+  position: relative;
+  width: min(100%, 320px);
+}
+
+.hp-shell--editorial .hp-rail-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--rail-gap, 0.4rem);
+}
+
+.hp-shell--editorial .hp-rail .hp-month-title,
+.hp-shell--editorial .hp-rail .hp-month-chapter,
+.hp-shell--editorial .hp-rail .hp-month-chapter span {
+  margin: 0;
+  padding: 0;
+}
+
+.hp-shell--editorial .hp-month-title {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(
+    var(--rail-title-size-min, 2rem),
+    var(--rail-title-size-fluid, 4vw),
+    var(--rail-title-size-max, 4.5rem)
+  );
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: none;
+  color: var(--color-accent, #e10600);
+  text-wrap: balance;
+}
+
+.hp-shell--editorial .hp-month-chapter {
+  max-width: var(--rail-chapter-max, 12ch);
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(
+    var(--rail-chapter-size-min, 1.25rem),
+    var(--rail-chapter-size-fluid, 2.2vw),
+    var(--rail-chapter-size-max, 2.8rem)
+  );
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #9b9b9b);
+  text-wrap: balance;
+}
+
+.hp-shell--editorial .hp-month-chapter span {
+  display: block;
+}
+
+.hp-shell--editorial .hp-rail-dot {
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-top: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--color-accent, #e10600);
+  flex: 0 0 auto;
+}
+
+@media (max-width: 768px) {
+  .hp-shell--editorial .hp-rail {
+    width: 100%;
+  }
+
+  .hp-shell--editorial .hp-month-chapter {
+    max-width: 14ch;
+  }
+}

@@ -174,4 +174,16 @@
 
   /* Reveal Animation */
   --hp-reveal-y: 18px;
+
+  /* =========================
+     RAIL COMPONENT TOKENS
+  ========================= */
+  --rail-title-size-min: 2rem;
+  --rail-title-size-fluid: 4vw;
+  --rail-title-size-max: 4.5rem;
+  --rail-chapter-size-min: 1.25rem;
+  --rail-chapter-size-fluid: 2.2vw;
+  --rail-chapter-size-max: 2.8rem;
+  --rail-gap: 0.4rem;
+  --rail-chapter-max: 12ch;
 }
