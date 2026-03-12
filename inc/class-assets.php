@@ -13,13 +13,8 @@ class DHP_Assets {
     }
 
     public static function register() {
-        // Google Fonts
-        wp_register_style(
-            'dhp-fonts',
-            'https://fonts.googleapis.com/css2?family=Lacquer&family=Red+Hat+Mono:wght@400;500;700&display=swap',
-            [],
-            null
-        );
+        // Local fonts
+        self::register_style('dhp-fonts', 'assets/css/fonts.css');
 
         // CSS tokens and theme
         self::register_style('dhp-tokens', 'assets/css/tokens.css', ['dhp-fonts']);
