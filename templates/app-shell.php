@@ -52,6 +52,10 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                     <?php if ($subtitle): ?>
                         <p class="hp-subtitle hp-hero__subtitle"><?php echo dhp_esc_html($subtitle); ?></p>
                     <?php endif; ?>
+
+                    <p class="hp-hero-intro">
+                        Tras la crisis sociopolítica de abril de 2018 en Nicaragua, el régimen Ortega-Murillo elevó a ciertos civiles armados y policías fallecidos durante las protestas a la categoría de “héroes de la paz”. Entre ellos figuran militantes sandinistas, trabajadores del Estado y miembros de la Policía Nacional que participaron en operativos de represión contra manifestantes y en el desmantelamiento de tranques. El relato oficial justifica estas muertes como actos de lealtad y defensa de la paz, mientras documentos de organismos internacionales como la CIDH y el GIEI evidencian sus responsabilidadezs en la  violencia letal, tortura y represión sistemática contra manifestantes.
+                    </p>
                 </div>
             </div>
         </section>
