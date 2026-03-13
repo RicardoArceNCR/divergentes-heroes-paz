@@ -12,6 +12,7 @@
   color: var(--hp-text);
   background: var(--color-white);
   font-family: var(--hp-font-body);
+  line-height: 1.4;
 }
 
 /* Reset de herencia tipográfica del theme */
@@ -72,7 +73,7 @@
 }
 
 /* Chips del nav no se comprimen */
-.hp-shell .hp-sticky-nav-inner > * {
+.hp-shell .hp-sticky-nav-inner>* {
   flex: 0 0 auto;
 }
 
@@ -101,6 +102,24 @@
 .hp-shell select,
 .hp-shell textarea {
   font: inherit;
+  color: inherit;
+}
+
+.hp-shell h1,
+.hp-shell h2,
+.hp-shell h3,
+.hp-shell h4,
+.hp-shell h5,
+.hp-shell h6,
+.hp-shell p,
+.hp-shell ul,
+.hp-shell ol,
+.hp-shell figure {
+  margin: 0;
+}
+
+.hp-shell a {
+  color: inherit;
 }
 
 .hp-shell .hp-container {
@@ -183,7 +202,7 @@
   padding-block: var(--hp-section-space);
 }
 
-.hp-stack > * + * {
+.hp-stack>*+* {
   margin-top: var(--hp-block-space);
 }
 
@@ -206,10 +225,10 @@
    HERO LAYOUT
    ========================================================================== */
 
-.hp-hero__copy{
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+.hp-hero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .hp-hero {
@@ -244,25 +263,25 @@
   gap: 18px;
 }
 
-.hp-hero__subtitle{
-    margin: 0;
-    max-width: 34ch;
-    font-family: var(--hp-font-body);
-    font-size: clamp(1.3rem, 2.1vw, 2rem);
-    line-height: 1.45;
-    font-weight: 500;
-    text-wrap: balance;
-    opacity: 0.98;
+.hp-hero__subtitle {
+  margin: 0;
+  max-width: 34ch;
+  font-family: var(--hp-font-body);
+  font-size: clamp(1.3rem, 2.1vw, 2rem);
+  line-height: 1.45;
+  font-weight: 500;
+  text-wrap: balance;
+  opacity: 0.98;
 }
 
-.hp-hero-intro{
-    margin: 0;
-    max-width: 77ch;
-    font-family: var(--hp-font-body);
-    font-size: clamp(0.8rem, 1.15vw, 1.125rem);
-    line-height: 1.7;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.9);
+.hp-hero-intro {
+  margin: 0;
+  max-width: 77ch;
+  font-family: var(--hp-font-body);
+  font-size: clamp(0.8rem, 1.15vw, 1.125rem);
+  line-height: 1.7;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 @media (max-width: 900px) {
@@ -371,6 +390,7 @@
 
 /* Responsive adjustments for hero badge */
 @media (max-width: 900px) {
+
   .hp-hero-copy,
   .hp-hero__copy {
     gap: 14px;
@@ -404,9 +424,9 @@
 
 .hp-shell .hp-sticky-nav {
   position: sticky;
-  top: 0;
+  top: 37px;
   z-index: 10;
-  background: rgb(243 243 243);
+  background-color: var(--color-grey-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--hp-gray);
   padding: 10px 0;
@@ -542,6 +562,7 @@
 .hp-shell .hp-timeline {
   position: relative;
   padding: 22px 0;
+  background-color: var(--color-grey-bg);
 }
 
 .hp-shell .hp-month {
@@ -937,7 +958,7 @@
 /* ==========================================================================
    THEME: DIVERGENTES
    ========================================================================== */
-.hp-shell{
+.hp-shell {
   --hp-red: #e10600;
   --hp-black: #0b0b0c;
   --hp-white: #ffffff;
@@ -971,7 +992,7 @@
 .hp-shell[data-theme="dark"] {
   --hp-black: #ffffff;
   --hp-white: #0b0b0c;
-  --hp-text: #f0f0f2;
+  --hp-text: var(--hp-red);
   --hp-gray: #212124;
   --hp-shadow-active: 0 12px 36px rgba(0, 0, 0, .45);
 }
@@ -1134,7 +1155,7 @@
   padding-left: 20px;
 }
 
-.hp-shell .hp-fallback li + li {
+.hp-shell .hp-fallback li+li {
   margin-top: 12px;
 }
 
@@ -1165,13 +1186,11 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       rgba(255, 255, 255, 0.02) 0%,
       rgba(255, 255, 255, 0) 18%,
       rgba(255, 255, 255, 0) 82%,
-      rgba(255, 255, 255, 0.02) 100%
-    );
+      rgba(255, 255, 255, 0.02) 100%);
   pointer-events: none;
 }
 
@@ -1190,7 +1209,7 @@
 
 .hp-intro-rail-art {
   position: absolute;
-  top: -130px;
+  top: -300px;
   left: var(--hp-intro-art-left);
   width: var(--hp-intro-art-width);
   height: auto;
@@ -1209,14 +1228,14 @@
 
 .hp-intro-copy,
 .hp-intro__copy {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .hp-intro__lede,
-.hp-intro__paragraph{
-    margin: 0;
+.hp-intro__paragraph {
+  margin: 0;
 }
 
 .hp-intro .hp-lede,
@@ -1321,23 +1340,23 @@
 }
 
 /* Sticky nav stability */
-.hp-shell .hp-sticky-nav-inner > * {
+.hp-shell .hp-sticky-nav-inner>* {
   flex: 0 0 auto;
 }
 
 /* ==========================================================================
    INTRO LIGHT VARIANT
    ========================================================================== */
-.hp-intro.hp-intro--light{
-  background: rgb(243 243 243);
-  color: #111111;
+.hp-intro.hp-intro--light {
+  background: var(--color-grey-bg);
+  color: var(--color-text);
 }
 
-.hp-intro--light .hp-intro__copy{
-  color: #111111;
+.hp-intro--light .hp-intro__copy {
+  color: var(--color-text);
 }
 
-.hp-intro--light .hp-intro__lede{
+.hp-intro--light .hp-intro__lede {
   margin: 0;
   color: #111111;
   font-size: clamp(1.05rem, 1.2vw, 1.3rem);
@@ -1351,32 +1370,30 @@
 /* ==========================================================================
    SIGNOFF COMPONENT
    ========================================================================== */
-.hp-signoff{
+.hp-signoff {
   display: block;
 }
 
-.hp-signoff__logo{
+.hp-signoff__logo {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-.hp-hero-signoff{
+.hp-hero-signoff {
   margin-top: 18px;
 }
 
-.hp-hero-signoff__logo{
+.hp-hero-signoff__logo {
   width: 220px;
 }
 
-@media (max-width: 768px){
-  .hp-hero-signoff{
+@media (max-width: 768px) {
+  .hp-hero-signoff {
     margin-top: 14px;
   }
 
-  .hp-hero-signoff__logo{
+  .hp-hero-signoff__logo {
     width: 170px;
   }
 }
-
-

@@ -1,0 +1,164 @@
+/* --------------------------------------------------
+HOST COMPATIBILITY LAYER
+Site: divergentes.com
+Purpose: isolate plugin from theme/bootstrap styles
+Loaded AFTER dhp-page.css
+-------------------------------------------------- */
+
+
+/* ---------------------------------
+ROOT SHIELD
+--------------------------------- */
+
+.dhp-special,
+.dhp-special * {
+  box-sizing: border-box;
+}
+
+.dhp-special {
+  position: relative;
+  isolation: isolate;
+  color: var(--hp-text);
+  background: var(--color-white);
+  font-family: var(--hp-font-body);
+  line-height: 1.4;
+  overflow-x: clip;
+}
+
+
+/* ---------------------------------
+RESET SELECTIVO INTERNO
+--------------------------------- */
+
+.dhp-special img,
+.dhp-special svg,
+.dhp-special video,
+.dhp-special canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.dhp-special a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dhp-special h1,
+.dhp-special h2,
+.dhp-special h3,
+.dhp-special h4,
+.dhp-special h5,
+.dhp-special h6,
+.dhp-special p,
+.dhp-special ul,
+.dhp-special ol,
+.dhp-special figure,
+.dhp-special blockquote {
+  margin: 0;
+}
+
+
+/* ---------------------------------
+NEUTRALIZAR BOOTSTRAP / THEME
+--------------------------------- */
+
+.dhp-special .container,
+.dhp-special .container-fluid,
+.dhp-special .row,
+.dhp-special .col,
+.dhp-special [class*="col-"] {
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dhp-special .row {
+  display: block;
+}
+
+.dhp-special .btn,
+.dhp-special button,
+.dhp-special input,
+.dhp-special select,
+.dhp-special textarea {
+  font: inherit;
+  color: inherit;
+}
+
+
+/* ---------------------------------
+FULLBLEED AUTÓNOMO
+--------------------------------- */
+
+.dhp-special.hp-wp-wrap--fullbleed {
+  width: 100vw;
+  max-width: 100vw;
+
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  padding-left: 0;
+  padding-right: 0;
+
+  overflow-x: clip;
+}
+
+
+/* ---------------------------------
+CONTENEDOR INTERNO PROPIO
+--------------------------------- */
+
+.dhp-special .hp-container {
+  width: min(100% - 48px, 1200px);
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (max-width: 767px) {
+
+  .dhp-special .hp-container {
+    width: min(100% - 32px, 1200px);
+  }
+
+}
+
+
+/* ---------------------------------
+CERRAR HERENCIA TIPOGRÁFICA
+--------------------------------- */
+
+.dhp-special .hp-shell,
+.dhp-special .hp-title,
+.dhp-special .hp-subtitle,
+.dhp-special .hp-lede,
+.dhp-special .hp-intro-paragraph,
+.dhp-special .hp-event-name,
+.dhp-special .hp-meta,
+.dhp-special .hp-event-summary,
+.dhp-special .hp-button,
+.dhp-special .hp-month-title,
+.dhp-special .hp-month-chapter {
+  color: inherit;
+  font-family: inherit;
+}
+
+
+/* ---------------------------------
+COLORES CLAVE DEL ESPECIAL
+--------------------------------- */
+
+.dhp-special .hp-shell {
+  color: var(--hp-text);
+  background: var(--color-white);
+}
+
+.dhp-special .hp-month-title,
+.dhp-special .hp-kicker,
+.dhp-special .hp-hero-highlight__lead,
+.dhp-special .hp-hero-highlight__text {
+  color: var(--hp-accent, #cf2e2e);
+}

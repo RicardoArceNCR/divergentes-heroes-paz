@@ -7,28 +7,32 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class DHP_Shortcode {
+class DHP_Shortcode
+{
     protected static $has_fullbleed = false;
 
-    public static function init() {
+    public static function init()
+    {
         add_shortcode('heroes_paz', [__CLASS__, 'render']);
         add_shortcode('story_engine', [__CLASS__, 'render']);
         add_filter('body_class', [__CLASS__, 'body_class']);
     }
 
-    public static function body_class($classes) {
+    public static function body_class($classes)
+    {
         if (self::$has_fullbleed) {
             $classes[] = 'hp-has-fullbleed';
         }
         return $classes;
     }
 
-    public static function render($atts = []) {
+    public static function render($atts = [])
+    {
         $atts = shortcode_atts([
-            'demo'     => 'heroes',
-            'layout'   => 'fullbleed',
-            'theme'    => 'editorial',
-            'slug'     => '',
+            'demo' => 'heroes',
+            'layout' => 'fullbleed',
+            'theme' => 'editorial',
+            'slug' => '',
             'data_url' => '',
         ], $atts);
 
@@ -57,6 +61,7 @@ class DHP_Shortcode {
         wp_enqueue_style('dhp-theme');
         wp_enqueue_style('dhp-app');
         wp_enqueue_style('dhp-page');
+        wp_enqueue_style('dhp-host-compat-divergentes');
         wp_enqueue_script('dhp-app');
 
         // Load data using resolved dataset
@@ -68,15 +73,15 @@ class DHP_Shortcode {
         // Generate IDs and config
         $instance_id = dhp_instance_id();
         $root_id = 'heroesPazApp-' . $instance_id;
-        
+
         $config = [
-            'dataUrl'       => $data_url ?: DHP_Data::get_dataset_url($demo),
+            'dataUrl' => $data_url ?: DHP_Data::get_dataset_url($demo),
             'imagesBaseUrl' => plugins_url('assets/images/', DHP_FILE),
-            'layout'        => $layout,
-            'theme'         => $theme,
-            'instanceId'    => $instance_id,
-            'rootId'        => $root_id,
-            'slug'          => $slug,
+            'layout' => $layout,
+            'theme' => $theme,
+            'instanceId' => $instance_id,
+            'rootId' => $root_id,
+            'slug' => $slug,
         ];
 
         $config_json = wp_json_encode($config);

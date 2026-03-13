@@ -49,12 +49,18 @@
   --font-family-body: var(--font-mono);
 
   /* Font sizes */
-  --font-size-xs: 0.75rem;      /* 12px */
-  --font-size-sm: 0.875rem;     /* 14px */
-  --font-size-md: 1rem;         /* 16px */
-  --font-size-lg: 1.1875rem;    /* 19px */
-  --font-size-xl: 1.5rem;       /* 24px */
-  --font-size-2xl: 2rem;        /* 32px */
+  --font-size-xs: 0.75rem;
+  /* 12px */
+  --font-size-sm: 0.875rem;
+  /* 14px */
+  --font-size-md: 1rem;
+  /* 16px */
+  --font-size-lg: 1.1875rem;
+  /* 19px */
+  --font-size-xl: 1.5rem;
+  /* 24px */
+  --font-size-2xl: 2rem;
+  /* 32px */
 
   --font-size-hero: clamp(3.25rem, 8vw, 6.75rem);
 
@@ -77,12 +83,18 @@
   --line-height-relaxed: 1.6;
 
   /* Spacing */
-  --space-1: 0.25rem;   /* 4px */
-  --space-2: 0.5rem;    /* 8px */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-5: 1.5rem;    /* 24px */
-  --space-6: 2rem;      /* 32px */
+  --space-1: 0.25rem;
+  /* 4px */
+  --space-2: 0.5rem;
+  /* 8px */
+  --space-3: 0.75rem;
+  /* 12px */
+  --space-4: 1rem;
+  /* 16px */
+  --space-5: 1.5rem;
+  /* 24px */
+  --space-6: 2rem;
+  /* 32px */
   --space-8: 32px;
   --space-10: 40px;
   --space-12: 48px;
@@ -119,8 +131,8 @@
   --radius-xl: 24px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
 
   /* Colors */
   --color-bg: #f3f3f3;
@@ -130,6 +142,8 @@
   --color-border-strong: #bdbdbd;
   --color-text: #111111;
   --color-text-muted: #5c5c5c;
+  --color-grey-bg: #f3f3f3;
+  --color-grey-text: #5c5c5c;
   --color-accent: #ef1b1b;
   --color-accent-soft: #f8dede;
   --color-accent-strong: #c91414;
@@ -157,7 +171,7 @@
   --hp-card-pad-x: 16px;
 
   /* Intro Variables */
-  --hp-intro-art-left: 187px;
+  --hp-intro-art-left: 163px;
   --hp-intro-art-width: 93px;
   --hp-intro-copy-offset: 300px;
   --hp-intro-mobile-art-width: 90px;
