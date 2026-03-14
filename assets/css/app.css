@@ -272,6 +272,7 @@
   font-weight: 500;
   text-wrap: balance;
   opacity: 0.98;
+  color: var(--color-white);
 }
 
 .hp-hero-intro {
