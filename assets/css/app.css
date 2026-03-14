@@ -806,8 +806,8 @@
   min-height: 56px;
   padding: 0.9rem 1.6rem;
   border: 1px solid var(--hp-accent, #e10600);
-  background: var(--hp-black);
-  color: var(--hp-white);
+  background: var(--hp-white);
+  color: var(--hp-black);
   cursor: pointer;
   text-decoration: none;
   transition: opacity var(--hp-dur-1) var(--hp-ease);
@@ -1000,7 +1000,6 @@
 .hp-shell[data-theme="newspaper"] {
   --hp-white: #f4f1ea;
   --hp-text: #1a1a1a;
-  --hp-font-title: 'Georgia', serif;
   --hp-red: #880000;
   --hp-radius: 0;
   --hp-shadow: none;

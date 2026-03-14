@@ -2,51 +2,24 @@
    FONTS
    ------------------------------------------------ */
 
-@font-face {
-  font-family: "RedHatMono";
-  src: url("../../fonts/red-hat-mono/RedHatMono-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "RedHatMono";
-  src: url("../../fonts/red-hat-mono/RedHatMono-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "RedHatMono";
-  src: url("../../fonts/red-hat-mono/RedHatMono-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Lacquer";
-  src: url("../../fonts/lacquer/lacquer.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ===== Design System Tokens ===== */
 :root {
   /* =========================
      FONT FAMILIES
   ========================= */
-  --font-sans: system-ui, -apple-system, sans-serif;
-  --font-mono: "RedHatMono", monospace;
-  --font-display: "Lacquer", sans-serif;
+  --hp-font-body: "Red Hat Mono", monospace;
+  --hp-font-title: "Lacquer", sans-serif;
+  --hp-font-mono: "Red Hat Mono", monospace;
+  --hp-font-ui: "Red Hat Mono", monospace;
+
+  --font-sans: var(--hp-font-body);
+  --font-mono: var(--hp-font-mono);
+  --font-display: var(--hp-font-title);
 
   /* Legacy mappings - mantener compatibilidad */
   --font-family-display: var(--font-display);
-  --font-family-ui: var(--font-mono);
-  --font-family-body: var(--font-mono);
+  --font-family-ui: var(--hp-font-ui);
+  --font-family-body: var(--hp-font-body);
 
   /* Font sizes */
   --font-size-xs: 0.75rem;

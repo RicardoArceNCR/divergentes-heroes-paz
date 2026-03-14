@@ -1,164 +1,126 @@
-/* --------------------------------------------------
-HOST COMPATIBILITY LAYER
-Site: divergentes.com
-Purpose: isolate plugin from theme/bootstrap styles
-Loaded AFTER dhp-page.css
--------------------------------------------------- */
+/* =========================================================
+   HOST COMPAT · DIVERGENTES
+   Compatibilidad tipográfica específica del host
+   ========================================================= */
 
-
-/* ---------------------------------
-ROOT SHIELD
---------------------------------- */
-
-.dhp-special,
-.dhp-special * {
-  box-sizing: border-box;
-}
-
-.dhp-special {
-  position: relative;
-  isolation: isolate;
-  color: var(--hp-text);
-  background: var(--color-white);
+body.wp-theme-divergentes .dhp-special .hp-shell {
+  color: var(--hp-text, #181818);
   font-family: var(--hp-font-body);
-  line-height: 1.4;
-  overflow-x: clip;
 }
 
-
-/* ---------------------------------
-RESET SELECTIVO INTERNO
---------------------------------- */
-
-.dhp-special img,
-.dhp-special svg,
-.dhp-special video,
-.dhp-special canvas {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-.dhp-special a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.dhp-special h1,
-.dhp-special h2,
-.dhp-special h3,
-.dhp-special h4,
-.dhp-special h5,
-.dhp-special h6,
-.dhp-special p,
-.dhp-special ul,
-.dhp-special ol,
-.dhp-special figure,
-.dhp-special blockquote {
-  margin: 0;
-}
-
-
-/* ---------------------------------
-NEUTRALIZAR BOOTSTRAP / THEME
---------------------------------- */
-
-.dhp-special .container,
-.dhp-special .container-fluid,
-.dhp-special .row,
-.dhp-special .col,
-.dhp-special [class*="col-"] {
-  width: auto;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-}
-
-.dhp-special .row {
-  display: block;
-}
-
-.dhp-special .btn,
-.dhp-special button,
-.dhp-special input,
-.dhp-special select,
-.dhp-special textarea {
-  font: inherit;
-  color: inherit;
-}
-
-
-/* ---------------------------------
-FULLBLEED AUTÓNOMO
---------------------------------- */
-
-.dhp-special.hp-wp-wrap--fullbleed {
-  width: 100vw;
-  max-width: 100vw;
-
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-
-  padding-left: 0;
-  padding-right: 0;
-
-  overflow-x: clip;
-}
-
-
-/* ---------------------------------
-CONTENEDOR INTERNO PROPIO
---------------------------------- */
-
-.dhp-special .hp-container {
-  width: min(100% - 48px, 1200px);
-  max-width: 1200px;
-  margin-inline: auto;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-@media (max-width: 767px) {
-
-  .dhp-special .hp-container {
-    width: min(100% - 32px, 1200px);
-  }
-
-}
-
-
-/* ---------------------------------
-CERRAR HERENCIA TIPOGRÁFICA
---------------------------------- */
-
-.dhp-special .hp-shell,
-.dhp-special .hp-title,
-.dhp-special .hp-subtitle,
-.dhp-special .hp-lede,
-.dhp-special .hp-intro-paragraph,
-.dhp-special .hp-event-name,
-.dhp-special .hp-meta,
-.dhp-special .hp-event-summary,
-.dhp-special .hp-button,
-.dhp-special .hp-month-title,
-.dhp-special .hp-month-chapter {
-  color: inherit;
+body.wp-theme-divergentes .dhp-special .hp-shell p,
+body.wp-theme-divergentes .dhp-special .hp-shell h1,
+body.wp-theme-divergentes .dhp-special .hp-shell h2,
+body.wp-theme-divergentes .dhp-special .hp-shell h3,
+body.wp-theme-divergentes .dhp-special .hp-shell h4,
+body.wp-theme-divergentes .dhp-special .hp-shell ul,
+body.wp-theme-divergentes .dhp-special .hp-shell ol,
+body.wp-theme-divergentes .dhp-special .hp-shell li,
+body.wp-theme-divergentes .dhp-special .hp-shell a,
+body.wp-theme-divergentes .dhp-special .hp-shell button {
   font-family: inherit;
 }
 
-
-/* ---------------------------------
-COLORES CLAVE DEL ESPECIAL
---------------------------------- */
-
-.dhp-special .hp-shell {
-  color: var(--hp-text);
-  background: var(--color-white);
+/* Timeline */
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-chip {
+  font-family: var(--hp-font-mono);
+  font-size: 0.82rem;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
 }
 
-.dhp-special .hp-month-title,
-.dhp-special .hp-kicker,
-.dhp-special .hp-hero-highlight__lead,
-.dhp-special .hp-hero-highlight__text {
-  color: var(--hp-accent, #cf2e2e);
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-name {
+  margin: 0;
+  font-family: var(--hp-font-title);
+  font-size: clamp(1.55rem, 2vw, 2rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-summary,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-label,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-text,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-button,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-month-chapter {
+  font-family: var(--hp-font-body);
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-summary {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-label {
+  display: inline-block;
+  margin: 0 0 0.4rem;
+  font-size: 0.78rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-text {
+  margin: 0;
+  font-size: 0.813rem;
+  line-height: 1.5;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--hp-text-soft, #5e6b78);
+}
+
+/* CTA */
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-button,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-cta a,
+body.wp-theme-divergentes .dhp-special .hp-shell a.hp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Rail */
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-month-title {
+  margin: 0;
+  font-family: var(--hp-font-title);
+  font-size: clamp(1.4rem, 2vw, 1.85rem);
+  line-height: 0.95;
+  color: var(--hp-accent, #df2020);
+  text-transform: none;
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-month-chapter {
+  margin: 0.2rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.1;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--hp-text, #181818);
+}
+
+/* Margin normalization */
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-text>*:first-child,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official>*:first-child {
+  margin-top: 0;
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-text>*:last-child,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official>*:last-child {
+  margin-bottom: 0;
 }
