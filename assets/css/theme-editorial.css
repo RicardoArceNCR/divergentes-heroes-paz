@@ -64,11 +64,9 @@
 /* ===== Hero Visual Layer ===== */
 .hp-shell[data-theme="editorial"] .hp-hero {
   background-image:
-    linear-gradient(
-      to bottom,
+    linear-gradient(to bottom,
       rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0)
-    ),
+      rgba(0, 0, 0, 0)),
     url("../images/portada-desktop.webp");
   background-position: center top;
   background-repeat: no-repeat;
@@ -99,7 +97,7 @@
   gap: 0.28em;
   margin: 0;
   text-align: center;
-  max-width: 24ch;
+  max-width: 26ch;
 }
 
 .hp-hero-title-main {
@@ -146,11 +144,9 @@
 @media (max-width: 900px) {
   .hp-shell[data-theme="editorial"] .hp-hero {
     background-image:
-      linear-gradient(
-        to bottom,
+      linear-gradient(to bottom,
         rgba(0, 0, 0, 0.32),
-        rgba(0, 0, 0, 0.46)
-      ),
+        rgba(0, 0, 0, 0.46)),
       url("../images/portada-mobile.webp");
     background-size: cover;
   }
@@ -175,6 +171,7 @@
 }
 
 @media (max-width: 640px) {
+
   .hp-hero__byline,
   .hp-hero-byline-text {
     font-size: 0.78rem;
@@ -221,11 +218,9 @@
 
 .hp-shell--editorial .hp-month-title {
   font-family: var(--font-display, sans-serif);
-  font-size: clamp(
-    var(--rail-title-size-min, 2rem),
-    var(--rail-title-size-fluid, 4vw),
-    var(--rail-title-size-max, 4.5rem)
-  );
+  font-size: clamp(var(--rail-title-size-min, 2rem),
+      var(--rail-title-size-fluid, 4vw),
+      var(--rail-title-size-max, 4.5rem));
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.04em;
@@ -237,11 +232,9 @@
 .hp-shell--editorial .hp-month-chapter {
   max-width: var(--rail-chapter-max, 12ch);
   font-family: var(--font-display, sans-serif);
-  font-size: clamp(
-    var(--rail-chapter-size-min, 1.25rem),
-    var(--rail-chapter-size-fluid, 2.2vw),
-    var(--rail-chapter-size-max, 2.8rem)
-  );
+  font-size: clamp(var(--rail-chapter-size-min, 1.25rem),
+      var(--rail-chapter-size-fluid, 2.2vw),
+      var(--rail-chapter-size-max, 2.8rem));
   font-weight: 800;
   line-height: 1.02;
   letter-spacing: -0.03em;

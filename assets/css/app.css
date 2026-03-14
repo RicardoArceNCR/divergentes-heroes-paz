@@ -321,16 +321,15 @@
   flex-wrap: nowrap;
   width: fit-content;
   max-width: 100%;
-  margin-top: 0.08em;
-  border: 0.08em solid var(--hp-accent, #e10600);
+  margin-top: .08em;
+  border: .08em solid var(--hp-accent, #e10600);
   background: transparent;
   overflow: visible;
-
   font-family: var(--hp-font-ui, var(--font-family-ui));
-  font-size: 0.44em;
+  font-size: 0.72em;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.14em;
+  letter-spacing: .14em;
   text-transform: uppercase;
 }
 
@@ -497,8 +496,8 @@
 /* eje configurable */
 .hp-shell {
   --hp-line-x: clamp(80px, 12vw, 140px);
-  --hp-track-line-width: 6px;
-  --hp-track-fill-width: 9px;
+  --hp-track-line-width: 17px;
+  --hp-track-fill-width: 17px;
   --hp-track-fill-height: 46vh;
 }
 
@@ -518,7 +517,7 @@
 /* scanner rojo fijo */
 .hp-track-fill {
   position: fixed;
-  top: calc(50vh - 92px);
+  top: calc(50vh - 284px);
   left: var(--hp-line-x);
   transform: translateX(-50%) translateY(-50%);
   width: var(--hp-track-fill-width);
@@ -549,13 +548,13 @@
 @media (max-width: 860px) {
   .hp-shell {
     --hp-line-x: 22px;
-    --hp-track-line-width: 5px;
-    --hp-track-fill-width: 8px;
+    --hp-track-line-width: 17px;
+    --hp-track-fill-width: 17px;
     --hp-track-fill-height: 40vh;
   }
 
   .hp-track-fill {
-    top: calc(50vh - 40px);
+    top: calc(50vh - 170px);
   }
 }
 
@@ -669,7 +668,7 @@
 
 .hp-shell .hp-marker.is-active {
   border-color: var(--hp-red) !important;
-  transform: scale(1.08);
+  transform: scale(2);
   box-shadow:
     0 0 0 4px rgba(225, 6, 0, 0.12),
     0 0 0 9px rgba(225, 6, 0, 0.05);
@@ -1208,7 +1207,7 @@
 
 .hp-intro-rail-art {
   position: absolute;
-  top: -300px;
+  top: -182px;
   left: var(--hp-intro-art-left);
   width: var(--hp-intro-art-width);
   height: auto;
@@ -1279,7 +1278,7 @@
   .hp-shell {
     --hp-intro-art-left: 0px;
     --hp-intro-art-width: 80px;
-    --hp-intro-copy-offset: 92px;
+    --hp-intro-copy-offset: 150px;
   }
 
   .hp-shell .hp-title {
@@ -1297,8 +1296,8 @@
 
 @media (max-width: 767px) {
   .hp-shell .hp-container {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
 
@@ -1317,8 +1316,8 @@
   }
 
   .hp-intro-rail-art {
-    top: 16px;
-    left: 50%;
+    top: -137px;
+    left: 3%;
     width: var(--hp-intro-mobile-art-width);
     transform: translateX(-50%);
   }
