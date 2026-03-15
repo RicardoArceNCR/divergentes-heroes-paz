@@ -37,7 +37,7 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                 <div class="hp-hero-copy hp-hero__copy">
                     <?php if ($title): ?>
                         <h1 class="hp-title hp-hero__title">
-                            <span class="hp-hero-title-main">Los "héroes de la paz"</span>
+                            <span class="hp-hero-title-main hp-hero-title">Los "héroes de la paz"</span>
                             <span class="hp-hero-highlight" aria-label="sin pasamontañas">
                                 <span class="hp-hero-highlight__corner hp-hero-highlight__corner--tl" aria-hidden="true"></span>
                                 <span class="hp-hero-highlight__corner hp-hero-highlight__corner--tr" aria-hidden="true"></span>
@@ -74,12 +74,16 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
         <?php if (!empty($paragraphs) && is_array($paragraphs)): ?>
             <section class="hp-intro hp-intro--light">
                 <div class="hp-container hp-intro-container">
-                    <img class="hp-intro-rail-art"
-                         src="<?php echo esc_url(dhp_asset_image_url('hero-connector.png')); ?>"
-                         alt=""
-                         aria-hidden="true"
-                         decoding="async"
-                         loading="lazy" />
+                    <picture class="hp-intro-rail-art" aria-hidden="true">
+                        <source
+                            media="(max-width: 767px)"
+                            srcset="<?php echo esc_url(dhp_asset_image_url('intro-rail-mobile.webp')); ?>">
+                        <img
+                            src="<?php echo esc_url(dhp_asset_image_url('intro-rail-desktop.webp')); ?>"
+                            alt=""
+                            decoding="async"
+                            loading="lazy">
+                    </picture>
 
                     <div class="hp-intro-copy hp-intro__copy">
 
