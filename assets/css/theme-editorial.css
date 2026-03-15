@@ -155,7 +155,7 @@
   .hp-hero__title,
   .hp-hero .hp-title {
     gap: 0.22em;
-    max-width: 10ch;
+    max-width: 21ch;
   }
 
   .hp-hero-title-main {
@@ -277,7 +277,7 @@
    ----------------------------- */
 
 .hp-hero-title {
-  font-size: clamp(2.75rem, 6vw, 6.25rem);
+  font-size: clamp(3.75rem, 7vw, 6.25rem);
   line-height: 0.95;
   letter-spacing: -0.02em;
   text-wrap: balance;
