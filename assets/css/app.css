@@ -1197,7 +1197,7 @@
 .hp-intro-rail-art {
   position: absolute;
   top: 36px;
-  left: calc(var(--hp-line-x) - 50px);
+  left: calc(var(--hp-line-x) - 247px);
   width: 100px;
   height: auto;
   pointer-events: none;
