@@ -1196,12 +1196,13 @@
 
 .hp-intro-rail-art {
   position: absolute;
-  top: var(--hp-intro-art-top);
-  left: var(--hp-intro-art-left);
-  width: var(--hp-intro-art-width);
+  top: 36px;
+  left: 0;
+  width: 200px;
   height: auto;
   pointer-events: none;
   user-select: none;
+  opacity: 1;
   z-index: 0;
 }
 
@@ -1215,7 +1216,7 @@
 .hp-intro__copy {
   position: relative;
   z-index: 2;
-  padding-left: var(--hp-intro-copy-offset);
+  padding-left: 110px;
   max-width: 68ch;
 }
 
@@ -1259,11 +1260,10 @@
 
 @media (max-width: 782px) {
 
-  .hp-shell {
-    --hp-intro-art-top: 60px;
-    --hp-intro-art-left: -18px;
-    --hp-intro-art-width: 84px;
-    --hp-intro-copy-offset: 0px;
+  .hp-intro-rail-art {
+    top: 60px;
+    left: -18px;
+    width: 84px;
   }
 
   .hp-intro-copy,
