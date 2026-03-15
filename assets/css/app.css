@@ -1235,7 +1235,7 @@
 }
 
 /* DESKTOP GRANDE */
-@media (min-width: 1200px) {
+@media (min-width: 1231px) {
   .hp-intro-container {
     --hp-intro-art-top: 44px;
     --hp-intro-art-x: 58px;
@@ -1244,13 +1244,13 @@
   }
 }
 
-/* DESKTOP / TABLET HORIZONTAL */
-@media (min-width: 1008px) and (max-width: 1199px) {
+/* AJUSTE FINO DEL TRAMO PROBLEMÁTICO */
+@media (min-width: 1008px) and (max-width: 1230px) {
   .hp-intro-container {
     --hp-intro-art-top: 44px;
-    --hp-intro-art-x: 58px;
-    --hp-intro-art-width: 185px;
-    --hp-intro-copy-offset: 150px;
+    --hp-intro-art-x: 44px;
+    --hp-intro-art-width: 148px;
+    --hp-intro-copy-offset: 132px;
   }
 }
 
