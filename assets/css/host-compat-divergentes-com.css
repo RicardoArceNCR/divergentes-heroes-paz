@@ -124,3 +124,58 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-text>*:last-child,
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official>*:last-child {
   margin-bottom: 0;
 }
+
+/* =========================================================
+   HOST COMPAT — DIVERGENTES.COM
+   Neutralización de estilos globales del tema sobre el especial
+   ========================================================= */
+
+/* 1. Base tipográfica del especial */
+.dhp-special .hp-shell {
+  font-family: var(--hp-font-body);
+  color: var(--hp-color-text);
+}
+
+/* 2. Reset controlado de textos para evitar contaminación del tema */
+.dhp-special .hp-shell p,
+.dhp-special .hp-shell li,
+.dhp-special .hp-shell blockquote {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  font-family: inherit;
+}
+
+/* 3. Títulos del especial conservan su propia familia */
+.dhp-special .hp-shell .hp-title,
+.dhp-special .hp-shell .hp-hero__title,
+.dhp-special .hp-shell .hp-month-title,
+.dhp-special .hp-shell .hp-card-title {
+  font-family: var(--hp-font-display);
+}
+
+/* 4. Subtítulo del hero: recuperación puntual frente al body p del host */
+.dhp-special .hp-shell .hp-hero__subtitle {
+  font-size: clamp(1.3rem, 2.1vw, 2rem) !important;
+  line-height: 1.45 !important;
+  font-weight: 500;
+  letter-spacing: normal;
+  max-width: 34ch;
+}
+
+/* 5. Intro del hero: evita que herede tamaño global incorrecto */
+.dhp-special .hp-shell .hp-hero-intro {
+  font-size: 0.91rem !important;
+  line-height: 1.3;
+  text-align: left;
+  padding-left: 6%;
+}
+
+/* 6. Lede editorial: define su escala propia */
+.dhp-special .hp-shell .hp-intro__lede {
+  font-size: 0.91rem !important;
+  line-height: 1.8;
+  letter-spacing: -0.02rem;
+  padding-left: 30px;
+}
