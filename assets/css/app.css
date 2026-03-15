@@ -1165,7 +1165,8 @@
 
 
 /* ==========================================
-   INTRO EDITORIAL — RAIL SYSTEM LIMPIO
+   INTRO EDITORIAL — ANCLA COMPARTIDA
+   PNG + TEXTO CON SISTEMA ÚNICO
    ========================================== */
 
 .hp-intro,
@@ -1185,20 +1186,38 @@
   position: relative;
   max-width: 980px;
   min-height: 0;
+
+  /* ======================================
+     ANCLA MAESTRA DEL INTRO
+     ====================================== */
+  --hp-intro-anchor-x: clamp(84px, 8vw, 118px);
+
+  /* PNG */
+  --hp-intro-rail-width: 185px;
+  --hp-intro-rail-top: 44px;
+  --hp-intro-rail-shift-x: 0px;
+  --hp-intro-rail-shift-y: 0px;
+
+  /* TEXTO */
+  --hp-intro-copy-gap: 34px;
+  --hp-intro-copy-shift-x: 0px;
 }
 
 .hp-intro-container,
 .hp-intro-copy,
 .hp-intro__copy {
   position: relative;
-  z-index: 1;
 }
 
 .hp-intro-rail-art {
   position: absolute;
-  top: var(--hp-intro-art-top, 44px);
-  left: calc(var(--hp-line-x) - var(--hp-intro-art-left, 180px));
-  inline-size: var(--hp-intro-art-width, 185px);
+  top: calc(var(--hp-intro-rail-top) + var(--hp-intro-rail-shift-y));
+  left: calc(
+    var(--hp-intro-anchor-x)
+    - (var(--hp-intro-rail-width) / 2)
+    + var(--hp-intro-rail-shift-x)
+  );
+  inline-size: var(--hp-intro-rail-width);
   pointer-events: none;
   user-select: none;
   z-index: 0;
@@ -1212,10 +1231,13 @@
 
 .hp-intro-copy,
 .hp-intro__copy {
-  position: relative;
   z-index: 2;
-  padding-left: var(--hp-intro-copy-offset, 120px);
   max-width: 68ch;
+  padding-left: calc(
+    var(--hp-intro-anchor-x)
+    + var(--hp-intro-copy-gap)
+    + var(--hp-intro-copy-shift-x)
+  );
 }
 
 .hp-intro .hp-intro__lede {
@@ -1229,37 +1251,52 @@
   white-space: pre-line;
 }
 
-/* DESKTOP GRANDE */
+/* ======================================
+   DESKTOP GRANDE
+   ====================================== */
 @media (min-width: 1200px) {
-  .hp-shell {
-    --hp-intro-art-top: 44px;
-    --hp-intro-art-left: 47px;
-    --hp-intro-art-width: 96px;
-    --hp-intro-copy-offset: 120px;
+  .hp-intro-container {
+    --hp-intro-anchor-x: 102px;
+    --hp-intro-rail-width: 185px;
+    --hp-intro-rail-top: 44px;
+    --hp-intro-copy-gap: 30px;
   }
 }
 
-
-/* DESKTOP / TABLET HORIZONTAL */
-@media (min-width: 783px) and (max-width: 1199px) {
-  .hp-shell {
-    --hp-intro-art-top: 44px;
-    --hp-intro-art-left: 47px;
-    --hp-intro-art-width: 96px;
-    --hp-intro-copy-offset: 120px;
+/* ======================================
+   DESKTOP MEDIO
+   ====================================== */
+@media (min-width: 1011px) and (max-width: 1199px) {
+  .hp-intro-container {
+    --hp-intro-anchor-x: 92px;
+    --hp-intro-rail-width: 185px;
+    --hp-intro-rail-top: 44px;
+    --hp-intro-copy-gap: 24px;
   }
 }
 
+/* ======================================
+   TABLET HORIZONTAL
+   ====================================== */
+@media (min-width: 783px) and (max-width: 1010px) {
+  .hp-intro-container {
+    --hp-intro-anchor-x: 88px;
+    --hp-intro-rail-width: 185px;
+    --hp-intro-rail-top: 44px;
+    --hp-intro-copy-gap: 20px;
+  }
+}
 
-/* MOBILE / TABLET VERTICAL */
+/* ======================================
+   MOBILE / TABLET VERTICAL
+   ====================================== */
 @media (max-width: 782px) {
-  .hp-shell {
-    --hp-intro-art-top: 18px;
-    --hp-intro-art-left: 0px;
-    --hp-intro-art-width: 78px;
-    --hp-intro-copy-offset: 48px;
+  .hp-intro-container {
+    --hp-intro-anchor-x: 38px;
+    --hp-intro-rail-width: 78px;
+    --hp-intro-rail-top: 18px;
+    --hp-intro-copy-gap: 12px;
   }
-
 
   .hp-intro-copy,
   .hp-intro__copy {
@@ -1272,15 +1309,16 @@
   }
 }
 
-/* MOBILE PEQUEÑO */
+/* ======================================
+   MOBILE PEQUEÑO
+   ====================================== */
 @media (max-width: 640px) {
-  .hp-shell {
-    --hp-intro-art-top: 16px;
-    --hp-intro-art-left: 0px;
-    --hp-intro-art-width: 72px;
-    --hp-intro-copy-offset: 42px;
+  .hp-intro-container {
+    --hp-intro-anchor-x: 34px;
+    --hp-intro-rail-width: 72px;
+    --hp-intro-rail-top: 16px;
+    --hp-intro-copy-gap: 10px;
   }
-
 
   .hp-intro .hp-intro__lede {
     font-size: clamp(0.98rem, 4.6vw, 1.12rem);
