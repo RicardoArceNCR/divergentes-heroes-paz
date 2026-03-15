@@ -286,9 +286,9 @@
 /* hero intro text */
 
 .hp-hero-intro {
-  font-size: clamp(1rem, 1.5vw, 1.35rem);
-  line-height: 1.45;
-  max-width: 62ch;
+  font-size: clamp(0.98rem, 1.2vw, 1.18rem);
+  line-height: 1.6;
+  max-width: 68ch;
 }
 
 
@@ -304,149 +304,12 @@
 }
 
 .hp-intro-copy {
-  font-size: clamp(1rem, 1.2vw, 1.18rem);
-  line-height: 1.65;
+  font-size: clamp(1rem, 1.1vw, 1.1rem);
+  line-height: 1.7;
   max-width: 64ch;
 }
 
 .hp-intro-signoff {
-  font-size: clamp(0.95rem, 1vw, 1.05rem);
-  line-height: 1.5;
-}
-
-
-/* =========================================================
-   INTRO RAIL ART POSITION SYSTEM
-   ========================================================= */
-
-:root {
-
-  --hp-intro-art-top: 24px;
-  --hp-intro-art-right: 0px;
-  --hp-intro-art-width: 520px;
-
-}
-
-.hp-intro {
-  position: relative;
-}
-
-.hp-intro-rail-art {
-
-  position: absolute;
-  top: var(--hp-intro-art-top);
-  right: var(--hp-intro-art-right);
-
-  width: min(100%, var(--hp-intro-art-width));
-
-  pointer-events: none;
-  z-index: 1;
-
-}
-
-.hp-intro-rail-art img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-
-/* texto siempre arriba del arte */
-
-.hp-intro-title,
-.hp-intro-copy,
-.hp-intro-signoff {
-  position: relative;
-  z-index: 2;
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 1024px) {
-
-  :root {
-
-    --hp-intro-art-top: 18px;
-    --hp-intro-art-right: -8px;
-    --hp-intro-art-width: 420px;
-
-  }
-
-  .hp-hero-title {
-    max-width: 11ch;
-  }
-
-  .hp-hero-intro {
-    max-width: 54ch;
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 767px) {
-
-  :root {
-
-    --hp-intro-art-top: 10px;
-    --hp-intro-art-right: -10px;
-    --hp-intro-art-width: 220px;
-
-  }
-
-  .hp-hero-title {
-    font-size: clamp(2.2rem, 9.5vw, 3.35rem);
-    line-height: 0.96;
-    max-width: 9ch;
-  }
-
-  .hp-hero-intro {
-    font-size: 1rem;
-    line-height: 1.55;
-    max-width: none;
-  }
-
-  .hp-intro-title {
-    font-size: clamp(1.75rem, 8vw, 2.6rem);
-    line-height: 1;
-    max-width: 10ch;
-  }
-
-  .hp-intro-copy {
-    font-size: 1rem;
-    line-height: 1.6;
-    max-width: none;
-  }
-
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 389px) {
-
-  :root {
-
-    --hp-intro-art-top: 8px;
-    --hp-intro-art-right: -14px;
-    --hp-intro-art-width: 190px;
-
-  }
-
-  .hp-hero-title {
-    font-size: 2.05rem;
-  }
-
-  .hp-intro-title {
-    font-size: 1.65rem;
-  }
-
+  font-size: clamp(0.9rem, 0.9vw, 1rem);
+  line-height: 1.4;
 }

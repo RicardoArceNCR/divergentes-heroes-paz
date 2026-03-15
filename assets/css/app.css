@@ -1165,38 +1165,26 @@
 
 
 /* ==========================================
-   INTRO EDITORIAL SIMPLE Y ESTABLE
+   INTRO EDITORIAL — SISTEMA ESTABLE
    ========================================== */
 
 .hp-intro,
-.hp-intro--dark {
+.hp-intro--dark,
+.hp-intro.hp-intro--light {
   position: relative;
-  padding-block: clamp(5px, 8vw, 5px);
-}
-
-.hp-intro--dark {
-  background: #0f1014;
-  color: #ffffff;
   overflow: hidden;
+  padding-block: 0;
 }
 
-.hp-intro--dark::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg,
-      rgba(255, 255, 255, 0.02) 0%,
-      rgba(255, 255, 255, 0) 18%,
-      rgba(255, 255, 255, 0) 82%,
-      rgba(255, 255, 255, 0.02) 100%);
-  pointer-events: none;
+.hp-intro.hp-intro--light {
+  background: var(--color-grey-bg);
+  color: var(--color-text);
 }
 
 .hp-intro-container {
   position: relative;
   max-width: 980px;
-  min-height: 220px;
+  min-height: 0;
 }
 
 .hp-intro-container,
@@ -1208,13 +1196,19 @@
 
 .hp-intro-rail-art {
   position: absolute;
-  top: -182px;
+  top: var(--hp-intro-art-top);
   left: var(--hp-intro-art-left);
   width: var(--hp-intro-art-width);
   height: auto;
   pointer-events: none;
   user-select: none;
-  opacity: 0.95;
+  z-index: 0;
+}
+
+.hp-intro-rail-art img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .hp-intro-copy,
@@ -1222,120 +1216,67 @@
   position: relative;
   z-index: 2;
   padding-left: var(--hp-intro-copy-offset);
-  max-width: 85ch;
+  max-width: 68ch;
 }
 
-.hp-intro-copy,
-.hp-intro__copy {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.hp-intro__lede,
-.hp-intro__paragraph {
-  margin: 0;
-}
-
-.hp-intro .hp-lede,
 .hp-intro .hp-intro__lede {
   margin: 0;
-  max-width: 72ch;
-  color: #ffffff;
-  font-size: clamp(18px, 2.1vw, 28px);
-  line-height: 1.55;
+  color: #111;
+  font-size: clamp(1.15rem, 1.45vw, 1.42rem);
+  line-height: 1.78;
+  font-weight: 400;
+  text-wrap: pretty;
+  max-width: 65ch;
 }
 
-.hp-intro .hp-lede strong,
-.hp-intro .hp-intro__lede strong {
-  color: #ffffff;
-  font-weight: 700;
-}
+/* DESKTOP GRANDE */
 
-.hp-intro .hp-intro-paragraph,
-.hp-intro .hp-intro__paragraph {
-  margin: 18px 0 0;
-  max-width: 70ch;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: clamp(15px, 1.3vw, 18px);
-  line-height: 1.7;
-}
+@media (min-width: 1200px) {
 
-.hp-byline {
-  position: relative;
-  z-index: 2;
-  margin-top: 28px;
-}
-
-.hp-byline img {
-  display: block;
-  width: 100%;
-  max-width: 180px;
-  height: auto;
-}
-
-/* Responsive Hero + Intro */
-@media (max-width: 900px) {
   .hp-shell {
-    --hp-intro-art-left: 0px;
-    --hp-intro-art-width: 80px;
-    --hp-intro-copy-offset: 150px;
+    --hp-intro-art-top: 52px;
+    --hp-intro-art-left: -10px;
+    --hp-intro-art-width: 230px;
+    --hp-intro-copy-offset: 120px;
   }
 
-  .hp-shell .hp-title {
-    max-width: 100%;
-  }
-
-  .hp-shell .hp-subtitle {
-    max-width: 28ch;
-  }
-
-  .hp-intro-container {
-    min-height: 110px;
-  }
 }
 
-@media (max-width: 767px) {
-  .hp-shell .hp-container {
-    padding-left: 0px;
-    padding-right: 0px;
+/* DESKTOP */
+
+@media (min-width: 783px) and (max-width: 1199px) {
+
+  .hp-shell {
+    --hp-intro-art-top: 44px;
+    --hp-intro-art-left: -4px;
+    --hp-intro-art-width: 185px;
+    --hp-intro-copy-offset: 100px;
   }
+
 }
 
-/* mobile */
+/* MOBILE */
+
 @media (max-width: 782px) {
+
   .hp-shell {
-    --hp-intro-art-left: 0px;
-    --hp-intro-art-width: var(--hp-intro-mobile-art-width);
+    --hp-intro-art-top: 60px;
+    --hp-intro-art-left: -18px;
+    --hp-intro-art-width: 84px;
     --hp-intro-copy-offset: 0px;
-  }
-
-  .hp-intro-container {
-    min-height: auto;
-    display: block;
-    padding-top: var(--hp-intro-mobile-top-space);
-  }
-
-  .hp-intro-rail-art {
-    top: -137px;
-    left: 3%;
-    width: var(--hp-intro-mobile-art-width);
-    transform: translateX(-50%);
   }
 
   .hp-intro-copy,
   .hp-intro__copy {
     padding-left: 0;
-    padding-top: 0;
     max-width: 100%;
   }
 
-  .hp-byline img {
-    display: block;
-    width: 100%;
-    max-width: 180px;
-    height: auto;
+  .hp-intro .hp-intro__lede {
+    font-size: clamp(1rem, 4.7vw, 1.25rem);
+    line-height: 1.72;
   }
+
 }
 
 /* Sticky nav stability */
