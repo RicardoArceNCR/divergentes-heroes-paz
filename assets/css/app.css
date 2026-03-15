@@ -1196,10 +1196,10 @@
 
 .hp-intro-rail-art {
   position: absolute;
-  top: 36px;
-  left: calc(var(--hp-line-x) - 247px);
-  width: 100px;
-  height: auto;
+  top: var(--hp-intro-art-top, 44px);
+  left: calc(var(--hp-line-x) - var(--hp-intro-art-left, 180px));
+  inline-size: var(--hp-intro-art-width, 185px);
+  block-size: auto;
   pointer-events: none;
   user-select: none;
   z-index: 0;
@@ -1207,57 +1207,63 @@
 
 .hp-intro-rail-art img {
   display: block;
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
 }
 
 .hp-intro-copy,
 .hp-intro__copy {
   position: relative;
   z-index: 2;
-  padding-left: 163px;
+  padding-left: var(--hp-intro-copy-offset, 100px);
   max-width: 68ch;
 }
 
 .hp-intro .hp-intro__lede {
   margin: 0;
   color: #111;
-  font-size: clamp(1.15rem, 1.45vw, 1.42rem);
-  line-height: 1.78;
+  font-size: clamp(1.05rem, 1.2vw, 1.3rem);
+  line-height: 1.85;
   font-weight: 400;
   text-wrap: pretty;
   max-width: 65ch;
+  white-space: pre-line;
 }
 
 /* DESKTOP GRANDE */
-
 @media (min-width: 1200px) {
-
   .hp-shell {
     --hp-intro-art-top: 52px;
-    --hp-intro-art-left: -10px;
+    --hp-intro-art-left: 196px;
     --hp-intro-art-width: 230px;
     --hp-intro-copy-offset: 120px;
   }
-
 }
 
-/* DESKTOP */
-
+/* DESKTOP / TABLET HORIZONTAL */
 @media (min-width: 783px) and (max-width: 1199px) {
-
   .hp-shell {
     --hp-intro-art-top: 44px;
-    --hp-intro-art-left: -4px;
+    --hp-intro-art-left: 176px;
     --hp-intro-art-width: 185px;
     --hp-intro-copy-offset: 100px;
   }
-
 }
 
-/* MOBILE */
-
+/* MOBILE / TABLET VERTICAL */
 @media (max-width: 782px) {
+  .hp-shell {
+    --hp-intro-art-top: 8px;
+    --hp-intro-art-left: 0px;
+    --hp-intro-art-width: 42px;
+    --hp-intro-copy-offset: 0px;
+  }
+
+  .hp-intro-rail-art {
+    top: var(--hp-intro-art-top);
+    left: 0;
+    inline-size: var(--hp-intro-art-width);
+  }
 
   .hp-intro-copy,
   .hp-intro__copy {
@@ -1269,7 +1275,18 @@
     font-size: clamp(1rem, 4.7vw, 1.25rem);
     line-height: 1.72;
   }
+}
 
+/* MICRO-AJUSTE */
+@media (max-width: 640px) {
+  .hp-shell {
+    --hp-intro-art-width: 34px;
+  }
+
+  .hp-intro .hp-intro__lede {
+    font-size: clamp(0.98rem, 4.6vw, 1.12rem);
+    line-height: 1.68;
+  }
 }
 
 /* Sticky nav stability */
