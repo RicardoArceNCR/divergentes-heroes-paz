@@ -1197,12 +1197,11 @@
 .hp-intro-rail-art {
   position: absolute;
   top: 36px;
-  left: 0;
-  width: 200px;
+  left: calc(var(--hp-line-x) - 50px);
+  width: 100px;
   height: auto;
   pointer-events: none;
   user-select: none;
-  opacity: 1;
   z-index: 0;
 }
 
@@ -1259,12 +1258,6 @@
 /* MOBILE */
 
 @media (max-width: 782px) {
-
-  .hp-intro-rail-art {
-    top: 60px;
-    left: -18px;
-    width: 84px;
-  }
 
   .hp-intro-copy,
   .hp-intro__copy {
