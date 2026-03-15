@@ -1193,14 +1193,12 @@
   --hp-intro-anchor-x: clamp(84px, 8vw, 118px);
 
   /* PNG */
-  --hp-intro-rail-width: 185px;
-  --hp-intro-rail-top: 44px;
-  --hp-intro-rail-shift-x: 0px;
-  --hp-intro-rail-shift-y: 0px;
+  --hp-intro-art-width: 185px;
+  --hp-intro-art-top: 44px;
+  --hp-intro-art-left: 180px;
 
   /* TEXTO */
-  --hp-intro-copy-gap: 34px;
-  --hp-intro-copy-shift-x: 0px;
+  --hp-intro-copy-offset: 100px;
 }
 
 .hp-intro-container,
@@ -1211,13 +1209,9 @@
 
 .hp-intro-rail-art {
   position: absolute;
-  top: calc(var(--hp-intro-rail-top) + var(--hp-intro-rail-shift-y));
-  left: calc(
-    var(--hp-intro-anchor-x)
-    - (var(--hp-intro-rail-width) / 2)
-    + var(--hp-intro-rail-shift-x)
-  );
-  inline-size: var(--hp-intro-rail-width);
+  top: var(--hp-intro-art-top, 44px);
+  left: var(--hp-intro-art-x, 0px);
+  inline-size: var(--hp-intro-art-width, 185px);
   pointer-events: none;
   user-select: none;
   z-index: 0;
@@ -1233,11 +1227,7 @@
 .hp-intro__copy {
   z-index: 2;
   max-width: 68ch;
-  padding-left: calc(
-    var(--hp-intro-anchor-x)
-    + var(--hp-intro-copy-gap)
-    + var(--hp-intro-copy-shift-x)
-  );
+  padding-left: var(--hp-intro-copy-offset);
 }
 
 .hp-intro .hp-intro__lede {
@@ -1251,51 +1241,43 @@
   white-space: pre-line;
 }
 
-/* ======================================
-   DESKTOP GRANDE
-   ====================================== */
+/* DESKTOP GRANDE */
 @media (min-width: 1200px) {
-  .hp-intro-container {
-    --hp-intro-anchor-x: 102px;
-    --hp-intro-rail-width: 185px;
-    --hp-intro-rail-top: 44px;
-    --hp-intro-copy-gap: 30px;
+  .hp-shell {
+    --hp-intro-art-top: 44px;
+    --hp-intro-art-x: 58px;
+    --hp-intro-art-width: 185px;
+    --hp-intro-copy-offset: 150px;
   }
 }
 
-/* ======================================
-   DESKTOP MEDIO
-   ====================================== */
-@media (min-width: 1011px) and (max-width: 1199px) {
-  .hp-intro-container {
-    --hp-intro-anchor-x: 92px;
-    --hp-intro-rail-width: 185px;
-    --hp-intro-rail-top: 44px;
-    --hp-intro-copy-gap: 24px;
+/* DESKTOP / TABLET HORIZONTAL */
+@media (min-width: 1008px) and (max-width: 1199px) {
+  .hp-shell {
+    --hp-intro-art-top: 44px;
+    --hp-intro-art-x: 58px;
+    --hp-intro-art-width: 185px;
+    --hp-intro-copy-offset: 150px;
   }
 }
 
-/* ======================================
-   TABLET HORIZONTAL
-   ====================================== */
-@media (min-width: 783px) and (max-width: 1010px) {
-  .hp-intro-container {
-    --hp-intro-anchor-x: 88px;
-    --hp-intro-rail-width: 185px;
-    --hp-intro-rail-top: 44px;
-    --hp-intro-copy-gap: 20px;
+/* RANGO QUE YA TE FUNCIONA */
+@media (min-width: 783px) and (max-width: 1007px) {
+  .hp-shell {
+    --hp-intro-art-top: 44px;
+    --hp-intro-art-x: 58px;
+    --hp-intro-art-width: 185px;
+    --hp-intro-copy-offset: 150px;
   }
 }
 
-/* ======================================
-   MOBILE / TABLET VERTICAL
-   ====================================== */
+/* MOBILE / TABLET VERTICAL */
 @media (max-width: 782px) {
-  .hp-intro-container {
-    --hp-intro-anchor-x: 38px;
-    --hp-intro-rail-width: 78px;
-    --hp-intro-rail-top: 18px;
-    --hp-intro-copy-gap: 12px;
+  .hp-shell {
+    --hp-intro-art-top: 18px;
+    --hp-intro-art-x: 0px;
+    --hp-intro-art-width: 78px;
+    --hp-intro-copy-offset: 48px;
   }
 
   .hp-intro-copy,
@@ -1309,15 +1291,13 @@
   }
 }
 
-/* ======================================
-   MOBILE PEQUEÑO
-   ====================================== */
+/* MOBILE PEQUEÑO */
 @media (max-width: 640px) {
-  .hp-intro-container {
-    --hp-intro-anchor-x: 34px;
-    --hp-intro-rail-width: 72px;
-    --hp-intro-rail-top: 16px;
-    --hp-intro-copy-gap: 10px;
+  .hp-shell {
+    --hp-intro-art-top: 16px;
+    --hp-intro-art-x: 0px;
+    --hp-intro-art-width: 72px;
+    --hp-intro-copy-offset: 44px;
   }
 
   .hp-intro .hp-intro__lede {
