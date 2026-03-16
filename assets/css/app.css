@@ -1276,6 +1276,16 @@
   }
 }
 
+/* =========================================================
+   AJUSTE FINO — 862px a 1007px
+   da más aire entre el eje del timeline y el texto
+   ========================================================= */
+@media (max-width: 1007px) and (min-width: 862px) {
+  .hp-intro-container {
+    --hp-intro-copy-offset: 200px;
+  }
+}
+
 /* MOBILE */
 @media (max-width: 782px) {
   .hp-intro-container {
