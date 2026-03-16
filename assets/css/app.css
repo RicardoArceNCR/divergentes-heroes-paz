@@ -1266,6 +1266,19 @@
   }
 }
 
+/* =========================================================
+   AJUSTE DE LECTURA — 980px a 1199px
+   evita que el texto se monte sobre el eje del timeline
+   ========================================================= */
+
+@media (max-width: 1199px) and (min-width: 980px) {
+
+  .hp-intro-container {
+    --hp-intro-copy-offset: 235px;
+  }
+
+}
+
 /* TABLET GRANDE */
 @media (max-width: 1007px) and (min-width: 783px) {
   .hp-intro-container {
