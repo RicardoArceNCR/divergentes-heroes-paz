@@ -1190,7 +1190,7 @@
   /* Variables reales del intro */
   --hp-intro-art-top: 44px;
   --hp-intro-art-x: 58px;
-  --hp-intro-art-width: 185px;
+  --hp-intro-art-width: 96px;
   --hp-intro-copy-offset: 150px;
 }
 
@@ -1245,7 +1245,7 @@
        para obtener la posición local.
     */
     --hp-intro-art-x: calc(var(--hp-line-x) - (50vw - 490px));
-    --hp-intro-art-width: 185px;
+    --hp-intro-art-width: 96px;
     --hp-intro-copy-offset: 150px;
   }
 }
@@ -1255,7 +1255,7 @@
   .hp-intro-container {
     --hp-intro-art-top: 44px;
     --hp-intro-art-x: 58px;
-    --hp-intro-art-width: 185px;
+    --hp-intro-art-width: 96px;
     --hp-intro-copy-offset: 150px;
   }
 }
