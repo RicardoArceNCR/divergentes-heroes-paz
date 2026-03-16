@@ -174,7 +174,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official>*:last-child
 
 /* 6. Lede editorial: define su escala propia */
 .dhp-special .hp-shell .hp-intro__lede {
-  font-size: 0.91rem !important;
-  line-height: 1.8;
-  letter-spacing: -0.02rem;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
 }

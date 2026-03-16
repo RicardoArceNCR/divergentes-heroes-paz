@@ -1191,6 +1191,7 @@
   --hp-intro-art-top: 44px;
   --hp-intro-art-x: 58px;
   --hp-intro-art-width: 96px;
+  --hp-intro-art-anchor-offset: 18px; /* Offset para alinear eje visual del PNG */
   --hp-intro-copy-offset: 150px;
 }
 
@@ -1203,9 +1204,9 @@
 .hp-intro-rail-art {
   position: absolute;
   top: var(--hp-intro-art-top, 44px);
-  left: var(--hp-intro-art-x, 0px);
+  left: calc(var(--hp-intro-art-x, 0px) - var(--hp-intro-art-anchor-offset, 0px));
   inline-size: var(--hp-intro-art-width, 185px);
-  transform: translateX(0);
+  transform: none;
   pointer-events: none;
   user-select: none;
   z-index: 0;
@@ -1235,29 +1236,33 @@
   white-space: pre-line;
 }
 
-/* DESKTOP GRANDE Y FLUIDO */
-@media (min-width: 1008px) {
+/* DESKTOP GRANDE */
+@media (min-width: 1200px) {
   .hp-intro-container {
     --hp-intro-art-top: 44px;
-    /* 
-       Sincronización fluida con el eje del timeline:
-       --hp-line-x es el eje en coordenadas de viewport.
-       Restamos el margen izquierdo del contenedor centrado (50vw - 490px)
-       para obtener la posición local.
-    */
-    --hp-intro-art-x: calc(var(--hp-line-x) - (50vw - 350px));
+    --hp-intro-art-x: 86px;
     --hp-intro-art-width: 96px;
-    --hp-intro-copy-offset: 150px;
+    --hp-intro-copy-offset: 205px;
   }
 }
 
-/* TABLET */
-@media (min-width: 783px) and (max-width: 1007px) {
+/* LAPTOP / RANGO PROBLEMÁTICO */
+@media (max-width: 1199px) and (min-width: 1008px) {
+  .hp-intro-container {
+    --hp-intro-art-top: 44px;
+    --hp-intro-art-x: 78px;
+    --hp-intro-art-width: 92px;
+    --hp-intro-copy-offset: 198px;
+  }
+}
+
+/* TABLET GRANDE */
+@media (max-width: 1007px) and (min-width: 783px) {
   .hp-intro-container {
     --hp-intro-art-top: 44px;
     --hp-intro-art-x: 58px;
     --hp-intro-art-width: 96px;
-    --hp-intro-copy-offset: 150px;
+    --hp-intro-copy-offset: 170px;
   }
 }
 
@@ -1293,38 +1298,6 @@
   .hp-intro .hp-intro__lede {
     font-size: clamp(0.98rem, 4.6vw, 1.12rem);
     line-height: 1.68;
-  }
-}
-
-/* ==========================================
-   ALIGNMENT OVERRIDES (PIXEL-PERFECT)
-   ========================================== */
-
-/* desktop grande */
-@media (min-width: 1200px) {
-  .hp-intro-rail-art {
-    transform: translateX(92px);
-  }
-}
-
-/* laptop */
-@media (max-width: 1200px) and (min-width: 900px) {
-  .hp-intro-rail-art {
-    transform: translateX(-14px);
-  }
-}
-
-/* tablet */
-@media (max-width: 900px) and (min-width: 700px) {
-  .hp-intro-rail-art {
-    transform: translateX(-18px);
-  }
-}
-
-/* móvil grande */
-@media (max-width: 700px) {
-  .hp-intro-rail-art {
-    transform: translateX(-22px);
   }
 }
 

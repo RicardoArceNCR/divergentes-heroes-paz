@@ -645,6 +645,26 @@
     fill.style.left = `${lineCenterX}px`;
   }
 
+function syncIntroRailToTimeline(trackEl) {
+  if (!trackEl) return;
+
+  const line = trackEl.querySelector('.hp-track-line');
+  const shell = trackEl.closest('.hp-shell');
+  if (!line || !shell) return;
+
+  const introContainer = shell.querySelector('.hp-intro-container');
+  if (!introContainer) return;
+
+  const lineRect = line.getBoundingClientRect();
+  const introRect = introContainer.getBoundingClientRect();
+
+  const lineCenterX = lineRect.left + (lineRect.width / 2);
+
+  // posición local dentro del intro container
+  const localX = lineCenterX - introRect.left;
+
+  introContainer.style.setProperty('--hp-intro-art-x', `${localX}px`);
+}
 function updateTimelineMarkers() {
 const markers = document.querySelectorAll('.hp-marker');
 if (!markers.length) return;
@@ -667,6 +687,7 @@ const isActive = Math.abs(center - triggerY) <= tolerance;
 
     updateTrackScannerVisibility(trackEl);
     syncTrackFillToLine(trackEl);
+    syncIntroRailToTimeline(trackEl);
     updateTimelineMarkers();
   }
 
@@ -835,6 +856,13 @@ const isActive = Math.abs(center - triggerY) <= tolerance;
 
         // Dynamic line calibration
         setLineToMarker(root);
+
+        const trackElForSync = root.closest('.hp-shell')?.querySelector('[data-hp-track]');
+        if (trackElForSync) {
+          syncTrackFillToLine(trackElForSync);
+          syncIntroRailToTimeline(trackElForSync);
+        }
+
         const onResizeLine = () => window.requestAnimationFrame(() => setLineToMarker(root));
         window.addEventListener('resize', onResizeLine);
         registerDestroy(root, () => window.removeEventListener('resize', onResizeLine));
