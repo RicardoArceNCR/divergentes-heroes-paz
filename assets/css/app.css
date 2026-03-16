@@ -1250,13 +1250,19 @@
   }
 }
 
-/* LAPTOP / RANGO PROBLEMÁTICO */
+/* =========================================================
+   INTRO — ajuste de lectura en rango desktop medio
+   (corrige alineación del párrafo alrededor de 1190px)
+   ========================================================= */
+
 @media (max-width: 1199px) and (min-width: 1008px) {
   .hp-intro-container {
     --hp-intro-art-top: 44px;
     --hp-intro-art-x: 78px;
     --hp-intro-art-width: 96px;
-    --hp-intro-copy-offset: 198px;
+
+    /* más aire entre línea del timeline y texto */
+    --hp-intro-copy-offset: 210px;
   }
 }
 
