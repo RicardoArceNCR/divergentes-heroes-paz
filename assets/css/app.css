@@ -1295,7 +1295,7 @@
    ========================================================= */
 @media (max-width: 1007px) and (min-width: 862px) {
   .hp-intro-container {
-    --hp-intro-copy-offset: 200px;
+    --hp-intro-copy-offset: 250px;
   }
 }
 
@@ -1325,7 +1325,7 @@
     --hp-intro-art-top: 16px;
     --hp-intro-art-x: 0px;
     --hp-intro-art-width: 96px;
-    --hp-intro-copy-offset: 44px;
+    --hp-intro-copy-offset: 64px;
   }
 
   .hp-intro .hp-intro__lede {
