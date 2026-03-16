@@ -410,7 +410,7 @@
 @media (max-width: 640px) {
   .hp-hero-highlight {
     font-size: 0.57em;
-    max-width: 92%;
+    max-width: 123%;
   }
 
   .hp-hero-highlight__text {
