@@ -143,13 +143,6 @@
   --hp-card-pad-y: 14px;
   --hp-card-pad-x: 16px;
 
-  /* Intro Variables */
-  --hp-intro-art-left: 53px;
-  --hp-intro-art-width: 93px;
-  --hp-intro-copy-offset: 150px;
-  --hp-intro-mobile-art-width: 90px;
-  --hp-intro-mobile-top-space: 10px;
-
   /* Intro Byline Logo */
   --hp-intro-byline-logo-width: 220px;
   --hp-intro-byline-logo-width-mobile: 180px;

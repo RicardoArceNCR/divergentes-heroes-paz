@@ -1234,27 +1234,23 @@
   white-space: pre-line;
 }
 
-/* DESKTOP GRANDE */
-@media (min-width: 1231px) {
+/* DESKTOP GRANDE Y FLUIDO */
+@media (min-width: 1008px) {
   .hp-intro-container {
     --hp-intro-art-top: 44px;
-    --hp-intro-art-x: 58px;
+    /* 
+       Sincronización fluida con el eje del timeline:
+       --hp-line-x es el eje en coordenadas de viewport.
+       Restamos el margen izquierdo del contenedor centrado (50vw - 490px)
+       para obtener la posición local.
+    */
+    --hp-intro-art-x: calc(var(--hp-line-x) - (50vw - 490px));
     --hp-intro-art-width: 185px;
     --hp-intro-copy-offset: 150px;
   }
 }
 
-/* AJUSTE FINO DEL TRAMO PROBLEMÁTICO */
-@media (min-width: 1008px) and (max-width: 1230px) {
-  .hp-intro-container {
-    --hp-intro-art-top: 44px;
-    --hp-intro-art-x: 44px;
-    --hp-intro-art-width: 148px;
-    --hp-intro-copy-offset: 132px;
-  }
-}
-
-/* RANGO QUE YA TE FUNCIONA */
+/* TABLET */
 @media (min-width: 783px) and (max-width: 1007px) {
   .hp-intro-container {
     --hp-intro-art-top: 44px;
@@ -1264,7 +1260,7 @@
   }
 }
 
-/* MOBILE / TABLET VERTICAL */
+/* MOBILE */
 @media (max-width: 782px) {
   .hp-intro-container {
     --hp-intro-art-top: 18px;
