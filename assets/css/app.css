@@ -1191,8 +1191,12 @@
   --hp-intro-art-top: 44px;
   --hp-intro-art-x: 58px;
   --hp-intro-art-width: 96px;
-  --hp-intro-art-anchor-offset: 18px; /* Offset para alinear eje visual del PNG */
+  --hp-intro-art-anchor-offset: 18px;
+  /* Offset para alinear eje visual del PNG */
   --hp-intro-copy-offset: 150px;
+
+  /* Ajuste global fino del PNG */
+  --hp-intro-art-global-shift: -49px;
 }
 
 .hp-intro-container,
@@ -1204,7 +1208,7 @@
 .hp-intro-rail-art {
   position: absolute;
   top: var(--hp-intro-art-top, 44px);
-  left: calc(var(--hp-intro-art-x, 0px) - var(--hp-intro-art-anchor-offset, 0px));
+  left: calc(var(--hp-intro-art-x, 0px) + var(--hp-intro-art-global-shift, 0px));
   inline-size: var(--hp-intro-art-width, 185px);
   transform: none;
   pointer-events: none;
@@ -1251,7 +1255,7 @@
   .hp-intro-container {
     --hp-intro-art-top: 44px;
     --hp-intro-art-x: 78px;
-    --hp-intro-art-width: 92px;
+    --hp-intro-art-width: 96px;
     --hp-intro-copy-offset: 198px;
   }
 }
@@ -1271,7 +1275,7 @@
   .hp-intro-container {
     --hp-intro-art-top: 18px;
     --hp-intro-art-x: 0px;
-    --hp-intro-art-width: 78px;
+    --hp-intro-art-width: 96px;
     --hp-intro-copy-offset: 48px;
   }
 
@@ -1291,7 +1295,7 @@
   .hp-intro-container {
     --hp-intro-art-top: 16px;
     --hp-intro-art-x: 0px;
-    --hp-intro-art-width: 72px;
+    --hp-intro-art-width: 96px;
     --hp-intro-copy-offset: 44px;
   }
 
