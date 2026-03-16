@@ -1237,7 +1237,12 @@
   font-weight: 400;
   text-wrap: pretty;
   max-width: 77ch;
-  white-space: pre-line;
+  white-space: normal;
+}
+
+.hp-intro .hp-intro__lede-group {
+  display: grid;
+  gap: 1.6rem;
 }
 
 /* DESKTOP GRANDE */
