@@ -128,13 +128,13 @@ body.wp-theme-divergentes .dhp-special .hp-shell a.hp-button {
    ========================================================= */
 @media (max-width: 860px) and (min-width: 481px) {
   body.wp-theme-divergentes .dhp-special .hp-shell {
-    --hp-card-chip-size: 0.70rem;
-    --hp-card-name-size: clamp(1.44rem, 1.10rem + 2.1vw, 1.86rem);
-    --hp-card-meta-size: 0.82rem;
-    --hp-card-summary-size: 0.95rem;
-    --hp-card-official-label-size: 0.70rem;
-    --hp-card-official-text-size: 0.74rem;
-    --hp-card-button-size: 0.88rem;
+    --hp-card-chip-size: 0.64rem;
+    --hp-card-name-size: 2.06rem;
+    --hp-card-meta-size: 0.74rem;
+    --hp-card-summary-size: 0.90rem;
+    --hp-card-official-label-size: 0.66rem;
+    --hp-card-official-text-size: 0.66rem;
+    --hp-card-button-size: 0.84rem;
   }
 }
 
@@ -144,13 +144,13 @@ body.wp-theme-divergentes .dhp-special .hp-shell a.hp-button {
    ========================================================= */
 @media (max-width: 480px) {
   body.wp-theme-divergentes .dhp-special .hp-shell {
-    --hp-card-chip-size: 0.66rem;
-    --hp-card-name-size: clamp(1.52rem, 1.18rem + 2.8vw, 1.92rem);
-    --hp-card-meta-size: 0.78rem;
-    --hp-card-summary-size: 0.92rem;
-    --hp-card-official-label-size: 0.68rem;
-    --hp-card-official-text-size: 0.70rem;
-    --hp-card-button-size: 0.86rem;
+    --hp-card-chip-size: 0.60rem;
+    --hp-card-name-size: 2.6rem;
+    --hp-card-meta-size: 0.70rem;
+    --hp-card-summary-size: 0.86rem;
+    --hp-card-official-label-size: 0.62rem;
+    --hp-card-official-text-size: 0.62rem;
+    --hp-card-button-size: 0.80rem;
   }
 }
 
