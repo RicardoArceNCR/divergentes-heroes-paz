@@ -55,12 +55,14 @@ class DHP_Shortcode
             self::$has_fullbleed = true;
         }
 
+        DHP_Assets::enable_hero_preload();
+
         // Enqueue all assets
         wp_enqueue_style('dhp-fonts');
         wp_enqueue_style('dhp-tokens');
-        wp_enqueue_style('dhp-theme');
         wp_enqueue_style('dhp-app');
         wp_enqueue_style('dhp-page');
+        wp_enqueue_style('dhp-theme-editorial');
         wp_enqueue_style('dhp-host-compat-divergentes');
         wp_enqueue_script('dhp-app');
 

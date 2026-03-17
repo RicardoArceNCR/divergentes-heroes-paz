@@ -9,9 +9,12 @@ if (!defined('ABSPATH')) {
 
 class DHP_Assets
 {
+    protected static $should_preload_hero = false;
+
     public static function init()
     {
         add_action('wp_enqueue_scripts', [__CLASS__, 'register']);
+        add_action('wp_head', [__CLASS__, 'print_preloads'], 1);
     }
 
     public static function register()
@@ -30,6 +33,24 @@ class DHP_Assets
 
         // JS
         self::register_script('dhp-app', 'assets/js/app.js', [], true);
+    }
+
+    public static function enable_hero_preload()
+    {
+        self::$should_preload_hero = true;
+    }
+
+    public static function print_preloads()
+    {
+        if (!self::$should_preload_hero) {
+            return;
+        }
+
+        $desktop = DHP_URL . 'assets/images/portada-desktop.webp';
+        $mobile  = DHP_URL . 'assets/images/portada-mobile.webp';
+
+        echo "\n" . '<link rel="preload" as="image" href="' . esc_url($desktop) . '" fetchpriority="high">' . "\n";
+        echo '<link rel="preload" as="image" href="' . esc_url($mobile) . '" media="(max-width: 782px)">' . "\n";
     }
 
     protected static function register_style($handle, $relative_path, $deps = [])
