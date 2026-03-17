@@ -1170,8 +1170,10 @@
 
   .hp-shell .hp-chip {
     padding: 6px 10px;
-    font-size: 0.78rem;
+    font-size: 0.69rem;
     line-height: 1.15;
+    font-weight: 500;
+
   }
 
   /* CTA MÁS LIMPIO */
