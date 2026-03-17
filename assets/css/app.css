@@ -1112,22 +1112,78 @@
     display: none;
   }
 
+  /* Card mobile only: desktop queda intacto */
   .hp-shell .hp-event {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .hp-shell .hp-marker {
     left: -24px;
   }
 
+  /* FOTO ARRIBA */
   .hp-shell .hp-event-photo {
+    order: -1;
     justify-content: flex-start;
     width: 100%;
+    margin: 0 0 4px 0;
   }
 
   .hp-shell[data-theme="divergentes"] .hp-event-photo {
     width: 100%;
     height: 180px;
+  }
+
+  .hp-shell .hp-photo {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* TEXTO MÁS COMPACTO */
+  .hp-shell .hp-event-text {
+    min-width: 0;
+  }
+
+  .hp-shell .hp-event-name {
+    margin: 0 0 6px 0;
+  }
+
+  .hp-shell .hp-meta {
+    margin: 0 0 10px 0;
+  }
+
+  .hp-shell .hp-event-summary {
+    margin: 0 0 12px 0;
+  }
+
+  .hp-shell .hp-event-official {
+    margin: 0 0 12px 0;
+    padding: 10px 14px;
+  }
+
+  /* CHIP MÁS COMPACTO */
+  .hp-shell .hp-chips,
+  .hp-shell .hp-event-chip {
+    margin-bottom: 8px;
+  }
+
+  .hp-shell .hp-chip {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    line-height: 1.15;
+  }
+
+  /* CTA MÁS LIMPIO */
+  .hp-shell .hp-event-cta {
+    margin-top: 2px;
+  }
+
+  .hp-shell .hp-button,
+  .hp-shell .hp-event-cta a,
+  .hp-shell a.hp-button {
+    width: 100%;
+    max-width: 320px;
   }
 }
 
