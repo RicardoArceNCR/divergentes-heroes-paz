@@ -6,6 +6,18 @@
 body.wp-theme-divergentes .dhp-special .hp-shell {
   color: var(--hp-text, #181818);
   font-family: var(--hp-font-body);
+
+  /* =========================================================
+     CARD TYPO SCALE · PRIMERA PRUEBA
+     Base desktop
+     ========================================================= */
+  --hp-card-chip-size: 0.82rem;
+  --hp-card-name-size: clamp(1.55rem, 1.15rem + 1.2vw, 2rem);
+  --hp-card-meta-size: 0.95rem;
+  --hp-card-summary-size: 1.05rem;
+  --hp-card-official-label-size: 0.78rem;
+  --hp-card-official-text-size: 0.813rem;
+  --hp-card-button-size: 0.95rem;
 }
 
 body.wp-theme-divergentes .dhp-special .hp-shell p,
@@ -24,7 +36,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell button {
 /* Timeline */
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-chip {
   font-family: var(--hp-font-mono);
-  font-size: 0.82rem;
+  font-size: var(--hp-card-chip-size);
   line-height: 1.1;
   letter-spacing: 0.02em;
 }
@@ -32,7 +44,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-chip {
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-name {
   margin: 0;
   font-family: var(--hp-font-title);
-  font-size: clamp(1.55rem, 2vw, 2rem);
+  font-size: var(--hp-card-name-size);
   line-height: 0.95;
   letter-spacing: 0;
   text-transform: none;
@@ -49,7 +61,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-month-chapter {
 
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: var(--hp-card-meta-size);
   line-height: 1.35;
   letter-spacing: 0.01em;
   text-transform: uppercase;
@@ -57,7 +69,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
 
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-summary {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: var(--hp-card-summary-size);
   line-height: 1.45;
   font-weight: 600;
 }
@@ -65,7 +77,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-summary {
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-label {
   display: inline-block;
   margin: 0 0 0.4rem;
-  font-size: 0.78rem;
+  font-size: var(--hp-card-official-label-size);
   line-height: 1.2;
   font-weight: 700;
   text-transform: uppercase;
@@ -74,7 +86,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-label {
 
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-text {
   margin: 0;
-  font-size: 0.813rem;
+  font-size: var(--hp-card-official-text-size);
   line-height: 1.5;
   font-style: italic;
   font-weight: 500;
@@ -89,17 +101,48 @@ body.wp-theme-divergentes .dhp-special .hp-shell a.hp-button {
   align-items: center;
   justify-content: center;
   margin: 0;
-  font-size: 0.95rem;
+  font-size: var(--hp-card-button-size);
   line-height: 1;
   font-weight: 600;
   text-decoration: none;
+}
+
+/* =========================================================
+   CARD TYPO SCALE · TABLET
+   ========================================================= */
+@media (max-width: 1199px) and (min-width: 861px) {
+  body.wp-theme-divergentes .dhp-special .hp-shell {
+    --hp-card-chip-size: 0.78rem;
+    --hp-card-name-size: clamp(1.42rem, 1.05rem + 1.1vw, 1.82rem);
+    --hp-card-meta-size: 0.90rem;
+    --hp-card-summary-size: 1rem;
+    --hp-card-official-label-size: 0.74rem;
+    --hp-card-official-text-size: 0.79rem;
+    --hp-card-button-size: 0.92rem;
+  }
+}
+
+/* =========================================================
+   CARD TYPO SCALE · MOBILE
+   Sigue el breakpoint donde tu card ya cambia a layout vertical
+   ========================================================= */
+@media (max-width: 860px) {
+  body.wp-theme-divergentes .dhp-special .hp-shell {
+    --hp-card-chip-size: 0.74rem;
+    --hp-card-name-size: clamp(1.34rem, 1.02rem + 2.6vw, 1.78rem);
+    --hp-card-meta-size: 0.86rem;
+    --hp-card-summary-size: 0.96rem;
+    --hp-card-official-label-size: 0.72rem;
+    --hp-card-official-text-size: 0.78rem;
+    --hp-card-button-size: 0.90rem;
+  }
 }
 
 /* Rail */
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-month-title {
   margin: 0;
   font-family: var(--hp-font-title);
-  font-size: clamp(1.4rem, 2vw, 1.85rem);
+  font-size: clamp(2.4rem, 2vw, 2.4rem);
   line-height: 0.95;
   color: var(--hp-accent, #df2020);
   text-transform: none;
