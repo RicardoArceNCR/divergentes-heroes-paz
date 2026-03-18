@@ -579,7 +579,7 @@
 }
 
 .hp-shell .hp-rail-inner {
-  position: sticky;
+  /* position: sticky; neutralized to allow parent .hp-rail to handle stickiness on desktop */
   top: calc(var(--hp-sticky-top) + var(--hp-adminbar));
   padding: 6px 0 12px 0;
 }
@@ -1492,5 +1492,28 @@
 
   .hp-hero-signoff__logo {
     width: 170px;
+  }
+}
+
+/* =========================================================
+   DESKTOP ONLY — STICKY MONTH RAIL
+   Mantiene visible la columna de fechas en desktop
+   sin tocar mobile ni agregar JS
+========================================================= */
+@media (min-width: 992px) {
+  .dhp-special .hp-shell {
+    --hp-rail-sticky-top: 110px;
+  }
+
+  .dhp-special .hp-shell .hp-rail {
+    position: sticky;
+    top: var(--hp-rail-sticky-top);
+    align-self: start;
+    height: max-content;
+  }
+
+  /* Neutralize inner sticky if parent is now the sticky anchor */
+  .hp-shell .hp-rail-inner {
+    position: static;
   }
 }
