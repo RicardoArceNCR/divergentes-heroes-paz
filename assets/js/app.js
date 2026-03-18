@@ -211,6 +211,8 @@
       modal.setAttribute('aria-describedby', bodyId);
     }
 
+    const btnCloseEndSelector = '[data-hp-close-end]';
+
     let lastActive = null;
     let onDocKeydown = null;
 
@@ -277,21 +279,29 @@
       }
     }
 
-    backdrop.addEventListener('click', function (e) {
-      if (e.target === backdrop) {
-        close();
-        if (window.location.hash) {
-          history.replaceState(null, '', window.location.pathname + window.location.search);
-        }
-      }
-    });
-
-    btnClose.addEventListener('click', function () {
+    function handleCloseAction() {
       close();
       if (window.location.hash) {
         history.replaceState(null, '', window.location.pathname + window.location.search);
       }
+    }
+
+    backdrop.addEventListener('click', function (e) {
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+
+      if (target === backdrop) {
+        handleCloseAction();
+        return;
+      }
+
+      const endCloseBtn = target.closest(btnCloseEndSelector);
+      if (endCloseBtn) {
+        handleCloseAction();
+      }
     });
+
+    btnClose.addEventListener('click', handleCloseAction);
 
     return { open, close };
   }
@@ -724,10 +734,16 @@ const isActive = Math.abs(center - triggerY) <= tolerance;
     // Role subtitle for modal header
     const roleHtml = e.role ? '<p class="hp-modal-role">' + escapeHtml(e.role) + '</p>' : '';
 
+    const closeEndHtml =
+      '<div class="hp-modal-close-end-wrap">' +
+      '<button type="button" class="hp-modal-close-end" data-hp-close-end>Cerrar</button>' +
+      '</div>';
+
     const html =
       roleHtml +
       bodyHtml +
-      sourcesHtml;
+      sourcesHtml +
+      closeEndHtml;
 
     const triggerEl = root.querySelector('[data-hp-event-id="' + cssEscape(String(id)) + '"]');
 

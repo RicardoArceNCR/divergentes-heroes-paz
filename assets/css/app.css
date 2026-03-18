@@ -970,6 +970,49 @@
   margin-top: 12px;
 }
 
+/* MODAL — cierre secundario al final */
+.hp-shell .hp-modal-close-end-wrap {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.hp-shell .hp-modal-close-end {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--hp-red);
+  font-family: var(--hp-font-ui);
+  font-size: 1.125rem;
+  font-weight: var(--hp-weight-ui);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 12px 16px;
+}
+
+.hp-shell .hp-modal-close-end:hover {
+  opacity: 0.82;
+}
+
+.hp-shell .hp-modal-close-end:focus-visible {
+  outline: 3px solid rgba(225, 6, 0, .28);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.hp-modal-body .hp-section:last-of-type {
+  margin-bottom: 4px;
+}
+
+@media (min-width: 783px) {
+  .hp-shell .hp-modal-close-end-wrap {
+    display: none;
+  }
+}
+
 .hp-shell .hp-sources {
   padding-left: 18px;
   margin: 8px 0 0 0;
