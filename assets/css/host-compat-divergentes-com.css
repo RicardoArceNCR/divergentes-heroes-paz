@@ -12,7 +12,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell {
      Base desktop
      ========================================================= */
   --hp-card-chip-size: 0.82rem;
-  --hp-card-name-size: clamp(1.55rem, 1.15rem + 1.2vw, 2rem);
+  --hp-card-name-size: clamp(1.55rem, 1.15rem + 1.2vw, 2.2rem);
   --hp-card-meta-size: 0.95rem;
   --hp-card-summary-size: 1.05rem;
   --hp-card-official-label-size: 0.78rem;
@@ -185,13 +185,31 @@ body.wp-theme-divergentes .dhp-special .hp-shell a.hp-button {
   body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-summary {
     font-size: 0.86rem !important;
     line-height: 1.34 !important;
-    font-weight: 600 !important;
+    font-weight: 500 !important;
+    text-align: center;
+  }
+
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-label {
     text-align: center;
   }
 
   body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-text {
-    font-size: 0.62rem;
-    line-height: 1.40;
+    font-size: 0.62rem !important;
+    line-height: 1.40 !important;
+    text-align: center !important;
+  }
+
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-name {
+    text-align: center !important;
+  }
+
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-chip,
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-chips {
+    text-align: center;
+  }
+
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-chip {
+    text-align: center;
   }
 }
 
