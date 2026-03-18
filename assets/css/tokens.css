@@ -4,166 +4,166 @@
 
 /* ===== Design System Tokens ===== */
 :root {
-  /* =========================
+   /* =========================
      FONT FAMILIES
   ========================= */
-  --hp-font-body: "Red Hat Mono", monospace;
-  --hp-font-title: "Lacquer", sans-serif;
-  --hp-font-mono: "Red Hat Mono", monospace;
-  --hp-font-ui: "Red Hat Mono", monospace;
+   --hp-font-body: "Red Hat Mono", monospace;
+   --hp-font-title: "Lacquer", sans-serif;
+   --hp-font-mono: "Red Hat Mono", monospace;
+   --hp-font-ui: "Red Hat Mono", monospace;
 
-  --font-sans: var(--hp-font-body);
-  --font-mono: var(--hp-font-mono);
-  --font-display: var(--hp-font-title);
+   --font-sans: var(--hp-font-body);
+   --font-mono: var(--hp-font-mono);
+   --font-display: var(--hp-font-title);
 
-  /* Legacy mappings - mantener compatibilidad */
-  --font-family-display: var(--font-display);
-  --font-family-ui: var(--hp-font-ui);
-  --font-family-body: var(--hp-font-body);
+   /* Legacy mappings - mantener compatibilidad */
+   --font-family-display: var(--font-display);
+   --font-family-ui: var(--hp-font-ui);
+   --font-family-body: var(--hp-font-body);
 
-  /* Font sizes */
-  --font-size-xs: 0.75rem;
-  /* 12px */
-  --font-size-sm: 0.875rem;
-  /* 14px */
-  --font-size-md: 1rem;
-  /* 16px */
-  --font-size-lg: 1.1875rem;
-  /* 19px */
-  --font-size-xl: 1.5rem;
-  /* 24px */
-  --font-size-2xl: 2rem;
-  /* 32px */
+   /* Font sizes */
+   --font-size-xs: 0.75rem;
+   /* 12px */
+   --font-size-sm: 0.875rem;
+   /* 14px */
+   --font-size-md: 1rem;
+   /* 16px */
+   --font-size-lg: 1.1875rem;
+   /* 19px */
+   --font-size-xl: 1.5rem;
+   /* 24px */
+   --font-size-2xl: 2rem;
+   /* 32px */
 
-  --font-size-hero: clamp(3.25rem, 8vw, 6.75rem);
+   --font-size-hero: clamp(3.25rem, 8vw, 6.75rem);
 
-  /* Font weights */
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
+   /* Font weights */
+   --font-weight-regular: 400;
+   --font-weight-medium: 500;
+   --font-weight-semibold: 600;
+   --font-weight-bold: 700;
 
-  /* Letter spacing */
-  --letter-spacing-tight: -0.02em;
-  --letter-spacing-normal: 0;
-  --letter-spacing-wide: 0.04em;
-  --letter-spacing-wider: 0.08em;
+   /* Letter spacing */
+   --letter-spacing-tight: -0.02em;
+   --letter-spacing-normal: 0;
+   --letter-spacing-wide: 0.04em;
+   --letter-spacing-wider: 0.08em;
 
-  /* Line heights */
-  --line-height-tight: 1.02;
-  --line-height-snug: 1.18;
-  --line-height-normal: 1.45;
-  --line-height-relaxed: 1.6;
+   /* Line heights */
+   --line-height-tight: 1.02;
+   --line-height-snug: 1.18;
+   --line-height-normal: 1.45;
+   --line-height-relaxed: 1.6;
 
-  /* Spacing */
-  --space-1: 0.25rem;
-  /* 4px */
-  --space-2: 0.5rem;
-  /* 8px */
-  --space-3: 0.75rem;
-  /* 12px */
-  --space-4: 1rem;
-  /* 16px */
-  --space-5: 1.5rem;
-  /* 24px */
-  --space-6: 2rem;
-  /* 32px */
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --space-14: 56px;
-  --space-16: 64px;
-  --space-20: 80px;
+   /* Spacing */
+   --space-1: 0.25rem;
+   /* 4px */
+   --space-2: 0.5rem;
+   /* 8px */
+   --space-3: 0.75rem;
+   /* 12px */
+   --space-4: 1rem;
+   /* 16px */
+   --space-5: 1.5rem;
+   /* 24px */
+   --space-6: 2rem;
+   /* 32px */
+   --space-8: 32px;
+   --space-10: 40px;
+   --space-12: 48px;
+   --space-14: 56px;
+   --space-16: 64px;
+   --space-20: 80px;
 
-  /* Layout */
-  --container-max: 1200px;
-  --reading-max: 760px;
-  --hero-max: 980px;
+   /* Layout */
+   --container-max: 1200px;
+   --reading-max: 760px;
+   --hero-max: 980px;
 
-  /* Special spacing */
-  --section-space-desktop: 64px;
-  --section-space-mobile: 40px;
-  --block-space: 24px;
-  --text-space: 16px;
+   /* Special spacing */
+   --section-space-desktop: 20px;
+   --section-space-mobile: 25px;
+   --block-space: 24px;
+   --text-space: 16px;
 
-  /* Motion */
-  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --dur-fast: 180ms;
-  --dur-base: 320ms;
+   /* Motion */
+   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+   --dur-fast: 180ms;
+   --dur-base: 320ms;
 
-  /* Timeline */
-  --timeline-line-width: 6px;
-  --timeline-dot-offset-contained: -32px;
-  --timeline-dot-offset-fullbleed: -40px;
-  --timeline-dot-offset-divergentes: -22px;
+   /* Timeline */
+   --timeline-line-width: 6px;
+   --timeline-dot-offset-contained: -32px;
+   --timeline-dot-offset-fullbleed: -40px;
+   --timeline-dot-offset-divergentes: -22px;
 
-  /* Radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-xl: 24px;
+   /* Radius */
+   --radius-sm: 8px;
+   --radius-md: 12px;
+   --radius-lg: 18px;
+   --radius-xl: 24px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+   /* Shadows */
+   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
 
-  /* Colors */
-  --color-bg: #f3f3f3;
-  --color-surface: #ffffff;
-  --color-surface-muted: #f7efef;
-  --color-border: #d9d9d9;
-  --color-border-strong: #bdbdbd;
-  --color-text: #111111;
-  --color-text-muted: #5c5c5c;
-  --color-grey-bg: #f3f3f3;
-  --color-grey-text: #5c5c5c;
-  --color-accent: #ef1b1b;
-  --color-accent-soft: #f8dede;
-  --color-accent-strong: #c91414;
-  --color-black: #000000;
-  --color-white: #ffffff;
+   /* Colors */
+   --color-bg: #f3f3f3;
+   --color-surface: #ffffff;
+   --color-surface-muted: #f7efef;
+   --color-border: #d9d9d9;
+   --color-border-strong: #bdbdbd;
+   --color-text: #111111;
+   --color-text-muted: #5c5c5c;
+   --color-grey-bg: #f3f3f3;
+   --color-grey-text: #5c5c5c;
+   --color-accent: #ef1b1b;
+   --color-accent-soft: #f8dede;
+   --color-accent-strong: #c91414;
+   --color-black: #000000;
+   --color-white: #ffffff;
 
-  /* =========================
+   /* =========================
      LAYOUT SYSTEM
   ========================= */
-  --hp-max: 1280px;
-  --hp-shell-pad-left: clamp(20px, 6vw, 120px);
-  --hp-rail-w: 160px;
-  --hp-rail-gap: 22px;
-  --hp-sticky-top: 64px;
-  --hp-adminbar: 0px;
-  --hp-container-pad: 16px;
-  --hp-line-x: 72px;
-  --hp-line-w: 6px;
-  --hp-line-top: -8px;
-  --hp-line-bottom: 0px;
+   --hp-max: 1280px;
+   --hp-shell-pad-left: clamp(20px, 6vw, 120px);
+   --hp-rail-w: 160px;
+   --hp-rail-gap: 22px;
+   --hp-sticky-top: 64px;
+   --hp-adminbar: 0px;
+   --hp-container-pad: 16px;
+   --hp-line-x: 72px;
+   --hp-line-w: 6px;
+   --hp-line-top: -8px;
+   --hp-line-bottom: 0px;
 
-  /* Component Specific */
-  --hp-event-photo-w: 320px;
-  --hp-card-pad-y: 14px;
-  --hp-card-pad-x: 16px;
+   /* Component Specific */
+   --hp-event-photo-w: 320px;
+   --hp-card-pad-y: 14px;
+   --hp-card-pad-x: 16px;
 
-  /* Intro Byline Logo */
-  --hp-intro-byline-logo-width: 220px;
-  --hp-intro-byline-logo-width-mobile: 180px;
-  --hp-intro-byline-margin-top: 28px;
+   /* Intro Byline Logo */
+   --hp-intro-byline-logo-width: 220px;
+   --hp-intro-byline-logo-width-mobile: 180px;
+   --hp-intro-byline-margin-top: 28px;
 
-  /* Shadows */
-  --hp-shadow: none;
-  --hp-shadow-active: 0 8px 24px rgba(0, 0, 0, .08);
+   /* Shadows */
+   --hp-shadow: none;
+   --hp-shadow-active: 0 8px 24px rgba(0, 0, 0, .08);
 
-  /* Reveal Animation */
-  --hp-reveal-y: 18px;
+   /* Reveal Animation */
+   --hp-reveal-y: 18px;
 
-  /* =========================
+   /* =========================
      RAIL COMPONENT TOKENS
   ========================= */
-  --rail-title-size-min: 2rem;
-  --rail-title-size-fluid: 4vw;
-  --rail-title-size-max: 4.5rem;
-  --rail-chapter-size-min: 1.25rem;
-  --rail-chapter-size-fluid: 2.2vw;
-  --rail-chapter-size-max: 2.8rem;
-  --rail-gap: 0.4rem;
-  --rail-chapter-max: 12ch;
+   --rail-title-size-min: 2rem;
+   --rail-title-size-fluid: 4vw;
+   --rail-title-size-max: 4.5rem;
+   --rail-chapter-size-min: 1.25rem;
+   --rail-chapter-size-fluid: 2.2vw;
+   --rail-chapter-size-max: 2.8rem;
+   --rail-gap: 0.4rem;
+   --rail-chapter-max: 12ch;
 }

@@ -145,7 +145,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell a.hp-button {
     --hp-card-summary-size: 0.86rem;
     --hp-card-official-label-size: 0.62rem;
     --hp-card-official-text-size: 0.62rem;
-    --hp-card-button-size: 0.80rem;
+    --hp-card-button-size: 0.90rem;
   }
 }
 
@@ -172,7 +172,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell a.hp-button {
 
 @media (max-width: 480px) {
   body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
-    font-size: 0.70rem !important;
+    font-size: 0.88rem !important;
     line-height: 1.22 !important;
     text-align: center;
   }
@@ -189,7 +189,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell a.hp-button {
   }
 
   body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-text {
-    font-size: 0.72rem !important;
+    font-size: 0.83rem !important;
     line-height: 1.40 !important;
   }
 

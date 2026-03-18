@@ -506,19 +506,15 @@
               el.classList.toggle('is-active', el === activeEl);
             }
 
+            // Tie month activation to the newly active event
+            const activeSection = activeEl.closest('[data-hp-month-section]');
+            if (activeSection) {
+              const mid = activeSection.getAttribute('data-hp-month-section');
+              if (mid) navApi.setActive(mid);
+            }
+
             window.requestAnimationFrame(() => updateProfessionalTimeline());
           }
-        }
-
-        for (const me of entries) {
-          const sec = me.target && me.target.closest
-            ? me.target.closest('[data-hp-month-section]')
-            : null;
-
-          if (!sec) continue;
-
-          const mid = sec.getAttribute('data-hp-month-section');
-          if (mid) navApi.setActive(mid);
         }
       },
       {
