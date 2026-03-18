@@ -42,7 +42,6 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-chip {
 }
 
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-name {
-  margin: 0;
   font-family: var(--hp-font-title);
   font-size: var(--hp-card-name-size);
   line-height: 0.95;
@@ -60,7 +59,6 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-month-chapter {
 }
 
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
-  margin: 0;
   font-size: var(--hp-card-meta-size);
   line-height: 1.35;
   letter-spacing: 0.01em;
@@ -68,7 +66,6 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
 }
 
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-summary {
-  margin: 0;
   font-size: var(--hp-card-summary-size);
   line-height: 1.45;
   font-weight: 600;
@@ -76,7 +73,6 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-summary {
 
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-label {
   display: inline-block;
-  margin: 0 0 0.4rem;
   font-size: var(--hp-card-official-label-size);
   line-height: 1.2;
   font-weight: 700;
@@ -85,7 +81,6 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-label {
 }
 
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-text {
-  margin: 0;
   font-size: var(--hp-card-official-text-size);
   line-height: 1.5;
   font-style: italic;
@@ -100,7 +95,6 @@ body.wp-theme-divergentes .dhp-special .hp-shell a.hp-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 0;
   font-size: var(--hp-card-button-size);
   line-height: 1;
   font-weight: 600;
@@ -230,6 +224,17 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-month-chapter {
   font-weight: 700;
   text-transform: uppercase;
   color: var(--hp-text, #181818);
+}
+
+/* Base rhythm reinforcement (if needed) */
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 480px) {
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
+    margin-bottom: 0.8rem;
+  }
 }
 
 /* Margin normalization */

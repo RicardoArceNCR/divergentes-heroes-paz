@@ -614,6 +614,10 @@
   min-width: 0;
 }
 
+.hp-shell .hp-event-text > * {
+  margin-top: 0;
+}
+
 .hp-shell .hp-event {
   position: relative;
   display: grid;
@@ -632,25 +636,30 @@
   grid-template-columns: 1fr;
 }
 
+.hp-shell .hp-event-cta {
+  margin-top: 0;
+}
+
 .hp-shell .hp-event-text {
   min-width: 0;
 }
 
 .hp-shell .hp-event-photo {
-  display: flex;
-  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  aspect-ratio: 4 / 5;
 }
 
-.hp-shell .hp-photo {
+.hp-shell .hp-event-photo img {
   width: 100%;
-  max-width: var(--hp-event-photo-w);
-  border-radius: 12px;
-  border: 1px solid var(--hp-gray);
-  background: #f3f3f5;
-  transition: transform var(--hp-dur-2) var(--hp-ease);
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
 }
 
-.hp-shell .hp-event:hover .hp-photo {
+.hp-shell .hp-event:hover .hp-event-photo img {
   transform: scale(1.02);
 }
 
@@ -690,8 +699,8 @@
 }
 
 /* --- Chip: rol único (una sola aparición visual) --- */
-.hp-shell .hp-chips {
-  margin-bottom: var(--sp-2, 8px);
+.hp-shell .hp-event-chip {
+  margin-bottom: 0.55rem;
 }
 
 .hp-shell .hp-chip {
@@ -714,7 +723,7 @@
   font-weight: var(--hp-weight-ui);
   line-height: var(--hp-leading-title);
   letter-spacing: var(--hp-tracking-title);
-  margin: 0 0 var(--space-2) 0;
+  margin-bottom: 0.3rem;
 }
 
 /* --- Meta: fecha y lugar --- */
@@ -725,14 +734,14 @@
   line-height: var(--hp-leading-meta);
   letter-spacing: var(--hp-tracking-meta);
   text-transform: uppercase;
-  margin: 0 0 var(--space-3) 0;
+  margin-bottom: 1rem;
   color: var(--hp-text);
   opacity: 0.78;
 }
 
 /* --- Resumen editorial --- */
 .hp-shell .hp-event-summary {
-  margin: 0 0 var(--space-4) 0;
+  margin-bottom: 0.85rem;
   font-family: var(--hp-font-body);
   font-size: var(--hp-text-body-size);
   font-weight: var(--hp-weight-body);
@@ -743,7 +752,7 @@
 
 /* --- Caja: versión oficial --- */
 .hp-shell .hp-event-official {
-  margin: 0 0 var(--sp-4, 16px) 0;
+  margin-bottom: 1rem;
   padding: var(--sp-3, 12px) var(--sp-4, 16px);
   background: var(--hp-official-bg, #f7efef);
   border-left: 3px solid var(--hp-official-border, var(--hp-red));
@@ -1078,20 +1087,7 @@
   margin-bottom: 4px;
 }
 
-.hp-shell[data-theme="divergentes"] .hp-event-photo {
-  width: var(--hp-event-photo-w);
-  height: 310px;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.hp-shell[data-theme="divergentes"] .hp-event-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-}
+/* Event photo handled by base aspect-ratio styles */
 
 /* ==========================================================================
    RESPONSIVE
@@ -1130,63 +1126,95 @@
     margin: 0 auto;
   }
 
-  .hp-shell[data-theme="divergentes"] .hp-event-photo {
-    width: 100%;
-    height: 180px;
-  }
+/* Event rhythm handled by new media queries */
+}
 
-  .hp-shell .hp-photo {
-    width: 100%;
-    max-width: 100%;
-  }
 
-  /* TEXTO MÁS COMPACTO */
-  .hp-shell .hp-event-text {
-    min-width: 0;
+/* =========================================================
+   EVENT CARD — DESKTOP
+   ========================================================= */
+@media (min-width: 861px) {
+  .hp-shell .hp-event-chip {
+    margin-bottom: 0.6rem;
   }
 
   .hp-shell .hp-event-name {
-    margin: 0 0 6px 0;
+    margin-bottom: 0.35rem;
   }
 
   .hp-shell .hp-meta {
-    margin: 0 0 10px 0;
+    margin-bottom: 1.05rem;
   }
 
   .hp-shell .hp-event-summary {
-    margin: 0 0 12px 0;
+    margin-bottom: 0.9rem;
   }
 
   .hp-shell .hp-event-official {
-    margin: 0 0 12px 0;
-    padding: 10px 14px;
+    margin-bottom: 1.05rem;
   }
 
-  /* CHIP MÁS COMPACTO */
-  .hp-shell .hp-chips,
+  .hp-shell .hp-event-photo {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* =========================================================
+   EVENT CARD — TABLET
+   ========================================================= */
+@media (min-width: 481px) and (max-width: 860px) {
   .hp-shell .hp-event-chip {
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
   }
 
-  .hp-shell .hp-chip {
-    padding: 6px 10px;
-    font-size: 0.69rem;
-    line-height: 1.15;
-    font-weight: 500;
-    text-align: center;
-
+  .hp-shell .hp-event-name {
+    margin-bottom: 0.28rem;
   }
 
-  /* CTA MÁS LIMPIO */
-  .hp-shell .hp-event-cta {
-    margin-top: 2px;
+  .hp-shell .hp-meta {
+    margin-bottom: 0.9rem;
   }
 
-  .hp-shell .hp-button,
-  .hp-shell .hp-event-cta a,
-  .hp-shell a.hp-button {
-    width: 100%;
-    max-width: 320px;
+  .hp-shell .hp-event-summary {
+    margin-bottom: 0.78rem;
+  }
+
+  .hp-shell .hp-event-official {
+    margin-bottom: 0.95rem;
+  }
+
+  .hp-shell .hp-event-photo {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* =========================================================
+   EVENT CARD — MOBILE
+   ========================================================= */
+@media (max-width: 480px) {
+  .hp-shell .hp-event-chip {
+    margin-bottom: 0.45rem;
+  }
+
+  .hp-shell .hp-event-name {
+    margin-bottom: 0.24rem;
+  }
+
+  .hp-shell .hp-meta {
+    margin-bottom: 0.8rem;
+  }
+
+  .hp-shell .hp-event-summary {
+    margin-bottom: 0.72rem;
+  }
+
+  .hp-shell .hp-event-official {
+    margin-bottom: 0.85rem;
+  }
+
+  .hp-shell .hp-event-photo {
+    aspect-ratio: 4 / 5;
+    border-radius: 0.9rem;
   }
 }
 
