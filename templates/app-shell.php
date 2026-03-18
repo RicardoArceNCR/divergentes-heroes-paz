@@ -73,25 +73,43 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                 <div class="hp-container hp-intro-container">
                     <picture class="hp-intro-rail-art" aria-hidden="true">
                         <source media="(max-width: 782px)"
-                            srcset="<?php echo esc_url(dhp_asset_image_url('intro-rail-mobile-2.webp')); ?>">
-                        <img src="<?php echo esc_url(dhp_asset_image_url('intro-rail-desktop.webp')); ?>" alt=""
-                            decoding="async" loading="lazy">
+                            srcset="<?php echo esc_url(dhp_asset_image_url('img-desktop.webp')); ?>">
+                        <img src="<?php echo esc_url(dhp_asset_image_url('img-desktop.webp')); ?>" alt="" decoding="async"
+                            loading="lazy">
                     </picture>
 
                     <div class="hp-intro-copy hp-intro__copy">
 
                         <div class="hp-lede hp-intro__lede-group" data-hp-line-start>
                             <p class="hp-intro__lede">
-                                En Nicaragua existen nombres que, tras la crisis sociopolítica iniciada en abril de 2018, fueron elevados por el régimen Ortega-Murillo a la categoría de “héroes de la paz”: civiles armados y policías que perdieron la vida mientras participaban en acciones violentas destinadas a reprimir las protestas y restablecer el control territorial del país. Sin embargo, no todos ocupan el mismo lugar en la memoria de la dictadura sandinista. Mientras algunos, como Francisco Aráuz Pineda —hijo de la legendaria militante Amada Pineda— o el militante Bismarck Martínez han sido recordados con homenajes, placas y monumentos, otros caídos apenas sobreviven en publicaciones de aniversario o han sido relegados al olvido.
+                                En Nicaragua existen nombres que, tras la crisis sociopolítica iniciada en abril de 2018,
+                                fueron elevados por el régimen Ortega-Murillo a la categoría de “héroes de la paz”: civiles
+                                armados y policías que perdieron la vida mientras participaban en acciones violentas
+                                destinadas a reprimir las protestas y restablecer el control territorial del país. Sin
+                                embargo, no todos ocupan el mismo lugar en la memoria de la dictadura sandinista. Mientras
+                                algunos, como Francisco Aráuz Pineda —hijo de la legendaria militante Amada Pineda— o el
+                                militante Bismarck Martínez han sido recordados con homenajes, placas y monumentos, otros
+                                caídos apenas sobreviven en publicaciones de aniversario o han sido relegados al olvido.
                             </p>
                             <p class="hp-intro__lede">
-                                Los policías fallecidos durante las protestas de 2018 también fueron incorporados por el Gobierno a la categoría de “héroes de la paz y la seguridad”, pese a que murieron en un contexto que organismos internacionales documentaron como de represión estatal en contra de las manifestaciones cívicas.
+                                Los policías fallecidos durante las protestas de 2018 también fueron incorporados por el
+                                Gobierno a la categoría de “héroes de la paz y la seguridad”, pese a que murieron en un
+                                contexto que organismos internacionales documentaron como de represión estatal en contra de
+                                las manifestaciones cívicas.
                             </p>
                             <p class="hp-intro__lede">
-                                En su informe de 2018, la Comisión Interamericana de Derechos Humanos (CIDH) concluyó que la violencia en Nicaragua que tuvo como principal agente represor a la Policía Nacional, estuvo dirigida a disuadir la participación en las manifestaciones y sofocar el disenso político, siguiendo un patrón caracterizado por el uso excesivo y arbitrario de la fuerza —incluida fuerza letal—, la actuación de grupos parapoliciales y paramilitares con tolerancia estatal, amenazas contra líderes sociales y la falta de diligencia en las investigaciones sobre asesinatos y lesiones.
+                                En su informe de 2018, la Comisión Interamericana de Derechos Humanos (CIDH) concluyó que la
+                                violencia en Nicaragua que tuvo como principal agente represor a la Policía Nacional, estuvo
+                                dirigida a disuadir la participación en las manifestaciones y sofocar el disenso político,
+                                siguiendo un patrón caracterizado por el uso excesivo y arbitrario de la fuerza —incluida
+                                fuerza letal—, la actuación de grupos parapoliciales y paramilitares con tolerancia estatal,
+                                amenazas contra líderes sociales y la falta de diligencia en las investigaciones sobre
+                                asesinatos y lesiones.
                             </p>
                             <p class="hp-intro__lede">
-                                ¿Quiénes fueron estas personas, por qué el régimen las presenta como “héroes de la paz”, pese a su participación en la represión y qué revela esa memoria selectiva del Frente Sandinista sobre la forma en que se justifica la violencia ejercida en 2018?
+                                ¿Quiénes fueron estas personas, por qué el régimen las presenta como “héroes de la paz”,
+                                pese a su participación en la represión y qué revela esa memoria selectiva del Frente
+                                Sandinista sobre la forma en que se justifica la violencia ejercida en 2018?
                             </p>
                         </div>
 

@@ -728,22 +728,8 @@ const isActive = Math.abs(center - triggerY) <= tolerance;
     // Role subtitle for modal header
     const roleHtml = e.role ? '<p class="hp-modal-role">' + escapeHtml(e.role) + '</p>' : '';
 
-    // Summary (editorial brief) — separate from official_version
-    const summaryText = e.summary || e.context || '';
-    const summaryHtml = summaryText
-      ? '<div class="hp-section"><h3>Resumen</h3><p>' + escapeHtml(summaryText) + '</p></div>'
-      : '';
-
-    // Official version — voice of the regime, visually differentiated
-    const officialText = e.official_version || '';
-    const officialHtml = officialText
-      ? '<div class="hp-section hp-section--official"><h3>Versión oficial</h3><p>' + escapeHtml(officialText) + '</p></div>'
-      : '';
-
     const html =
       roleHtml +
-      summaryHtml +
-      officialHtml +
       bodyHtml +
       sourcesHtml;
 

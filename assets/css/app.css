@@ -1461,10 +1461,6 @@
     font-size: clamp(0.98rem, 4.6vw, 1.12rem);
     line-height: 1.68;
   }
-
-  .hp-shell .hp-sticky-nav {
-    background-color: var(--color-grey-bg);
-  }
 }
 
 /* Sticky nav stability */
