@@ -614,7 +614,7 @@
   min-width: 0;
 }
 
-.hp-shell .hp-event-text > * {
+.hp-shell .hp-event-text>* {
   margin-top: 0;
 }
 
@@ -1126,7 +1126,7 @@
     margin: 0 auto;
   }
 
-/* Event rhythm handled by new media queries */
+  /* Event rhythm handled by new media queries */
 }
 
 
@@ -1281,6 +1281,7 @@
   --hp-intro-art-anchor-offset: 18px;
   /* Offset para alinear eje visual del PNG */
   --hp-intro-copy-offset: 150px;
+  --hp-intro-copy-offset-y: 30px;
 
   /* Ajuste global fino del PNG */
   --hp-intro-art-global-shift: -49px;
@@ -1314,6 +1315,8 @@
   z-index: 2;
   max-width: 68ch;
   padding-left: var(--hp-intro-copy-offset, 150px);
+  padding-top: var(--hp-intro-copy-offset-y, 30px);
+  padding-bottom: var(--hp-intro-copy-offset-y, 30px);
 }
 
 .hp-intro .hp-intro__lede {

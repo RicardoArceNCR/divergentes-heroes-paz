@@ -188,7 +188,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell a.hp-button {
   }
 
   body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-text {
-    font-size: 0.62rem !important;
+    font-size: 0.72rem !important;
     line-height: 1.40 !important;
     text-align: center !important;
   }
@@ -233,7 +233,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
 
 @media (max-width: 480px) {
   body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.85rem;
   }
 }
 
