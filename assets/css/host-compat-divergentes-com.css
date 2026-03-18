@@ -69,6 +69,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-summary {
   font-size: var(--hp-card-summary-size);
   line-height: 1.45;
   font-weight: 600;
+  margin-bottom: var(--hp-block-space);
 }
 
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-label {
@@ -213,7 +214,7 @@ body.wp-theme-divergentes .dhp-special .hp-shell a.hp-button {
 body.wp-theme-divergentes .dhp-special .hp-shell .hp-month-title {
   margin: 0;
   font-family: var(--hp-font-title);
-  font-size: clamp(2.4rem, 2vw, 2.4rem);
+  font-size: clamp(2.1rem, 2vw, 2.1rem);
   line-height: 0.95;
   color: var(--hp-accent, #df2020);
   text-transform: none;
