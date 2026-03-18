@@ -1517,3 +1517,22 @@
     position: static;
   }
 }
+
+/* =========================================================
+   MOBILE — TIMELINE FULLBLEED & REFINEMENTS
+========================================================= */
+@media (max-width: 767px) {
+  body.wp-theme-divergentes .dhp-special .hp-app.hp-timeline > .hp-container {
+    width: 100%;
+    max-width: none;
+  }
+
+  .dhp-special .hp-shell .hp-event {
+    padding-right: 16px;
+  }
+
+  /* Optional line balance */
+  .dhp-special .hp-shell {
+    --hp-line-x: 28px;
+  }
+}
