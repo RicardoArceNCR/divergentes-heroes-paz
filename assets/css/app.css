@@ -738,6 +738,10 @@
     padding: 0.16em 0.34em;
     letter-spacing: 0.04em;
   }
+
+  .hp-shell .hp-sticky-nav {
+    background-color: var(--color-grey-bg);
+  }
 }
 
 @media (min-width: 861px) {
@@ -959,6 +963,11 @@
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+/* MODAL — espaciado mínimo entre párrafos */
+.hp-modal-body .hp-section p+p {
+  margin-top: 12px;
 }
 
 .hp-shell .hp-sources {

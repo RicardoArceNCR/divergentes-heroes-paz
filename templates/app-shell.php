@@ -73,7 +73,7 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                 <div class="hp-container hp-intro-container">
                     <picture class="hp-intro-rail-art" aria-hidden="true">
                         <source media="(max-width: 782px)"
-                            srcset="<?php echo esc_url(dhp_asset_image_url('img-desktop.webp')); ?>">
+                            srcset="<?php echo esc_url(dhp_asset_image_url('img-mobile.webp')); ?>">
                         <img src="<?php echo esc_url(dhp_asset_image_url('img-desktop.webp')); ?>" alt="" decoding="async"
                             loading="lazy">
                     </picture>
