@@ -1126,8 +1126,8 @@
   .hp-shell .hp-event-photo {
     order: -1;
     justify-content: flex-start;
-    width: 100%;
-    margin: 0 0 4px 0;
+    width: 74%;
+    margin: 0 auto;
   }
 
   .hp-shell[data-theme="divergentes"] .hp-event-photo {
@@ -1173,6 +1173,7 @@
     font-size: 0.69rem;
     line-height: 1.15;
     font-weight: 500;
+    text-align: center;
 
   }
 
