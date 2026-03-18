@@ -190,20 +190,22 @@ body.wp-theme-divergentes .dhp-special .hp-shell a.hp-button {
   body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-text {
     font-size: 0.72rem !important;
     line-height: 1.40 !important;
-    text-align: center !important;
   }
 
   body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-name {
     text-align: center !important;
   }
 
-  body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-chip,
-  body.wp-theme-divergentes .dhp-special .hp-shell .hp-chips {
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-chip {
     text-align: center;
   }
 
   body.wp-theme-divergentes .dhp-special .hp-shell .hp-chip {
-    text-align: center;
+    display: inline;
+    background: #111111;
+    color: #ffffff;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
   }
 }
 
