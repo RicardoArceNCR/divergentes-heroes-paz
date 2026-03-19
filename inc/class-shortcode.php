@@ -67,7 +67,8 @@ class DHP_Shortcode
         wp_enqueue_script('dhp-app');
 
         // Load data using resolved dataset
-        $data = DHP_Data::load_dataset($demo);
+        $dataset_key = !empty($slug) ? $slug : $demo;
+        $data = DHP_Data::load_dataset($dataset_key);
         if (!$data) {
             return '<!-- Story data not available -->';
         }
@@ -77,7 +78,7 @@ class DHP_Shortcode
         $root_id = 'heroesPazApp-' . $instance_id;
 
         $config = [
-            'dataUrl' => $data_url ?: DHP_Data::get_dataset_url($demo),
+            'dataUrl' => $data_url ?: DHP_Data::get_dataset_url($dataset_key),
             'imagesBaseUrl' => plugins_url('assets/images/', DHP_FILE),
             'layout' => $layout,
             'theme' => $theme,

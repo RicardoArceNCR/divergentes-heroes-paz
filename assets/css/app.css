@@ -255,7 +255,7 @@
   width: 100%;
   max-width: var(--hp-hero-max);
   margin: 0 auto;
-  padding: clamp(64px, 6vw, 190px) 0;
+  padding: clamp(64px, 8vw, 190px) 0;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -1211,7 +1211,7 @@
   padding: clamp(60px, 10vh, 120px) 0;
   text-align: center;
   color: var(--hp-white);
-  background: url("../images/portada.webp") center top / cover no-repeat;
+  background: url("../images/-2.webp") center top / cover no-repeat;
   position: relative;
   overflow: hidden;
 }

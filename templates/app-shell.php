@@ -70,8 +70,7 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
         </section>
 
         <!-- INTRO EDITORIAL -->
-        <?php if (!empty($paragraphs) && is_array($paragraphs)): ?>
-            <section class="hp-intro hp-intro--light">
+        <section class="hp-intro hp-intro--light">
                 <div class="hp-container hp-intro-container">
                     <picture class="hp-intro-rail-art" aria-hidden="true">
                         <source media="(max-width: 782px)"
@@ -119,8 +118,7 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
 
                     </div>
                 </div>
-            </section>
-        <?php endif; ?>
+        </section>
 
         <!-- TIMELINE -->
         <div class="hp-track" data-hp-track>
