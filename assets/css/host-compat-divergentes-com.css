@@ -300,7 +300,23 @@ body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official>*:last-child
 
 /* 6. Lede editorial: define su escala propia */
 .dhp-special .hp-shell .hp-intro__lede {
-  font-size: inherit !important;
-  line-height: inherit !important;
-  letter-spacing: inherit !important;
+  color: #111 !important;
+  font-size: clamp(1.05rem, 1.2vw, 1.3rem) !important;
+  line-height: 1.82 !important;
+  letter-spacing: normal !important;
+  font-weight: 400 !important;
+}
+
+@media (max-width: 782px) {
+  .dhp-special .hp-shell .hp-intro__lede {
+    font-size: clamp(1rem, 4.7vw, 1.22rem) !important;
+    line-height: 1.72 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .dhp-special .hp-shell .hp-intro__lede {
+    font-size: clamp(0.98rem, 4.6vw, 1.12rem) !important;
+    line-height: 1.68 !important;
+  }
 }

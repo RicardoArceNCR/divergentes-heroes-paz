@@ -35,9 +35,10 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
             <div class="hp-container hp-hero-container">
                 <div class="hp-hero-copy hp-hero__copy">
                     <?php if ($title): ?>
-                        <h1 class="hp-title hp-hero__title">
+                        <h1 class="hp-title hp-hero__title hp-hero-animate hp-hero-animate--title">
                             <span class="hp-hero-title-main hp-hero-title">Los "héroes de la paz"</span>
-                            <span class="hp-hero-highlight" aria-label="sin pasamontañas">
+                            <span class="hp-hero-highlight"
+                                aria-label="sin pasamontañas">
                                 <span class="hp-hero-highlight__corner hp-hero-highlight__corner--tl"
                                     aria-hidden="true"></span>
                                 <span class="hp-hero-highlight__corner hp-hero-highlight__corner--tr"
@@ -53,12 +54,13 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                     <?php endif; ?>
 
                     <?php if ($subtitle): ?>
-                        <p class="hp-subtitle hp-hero__subtitle"><?php echo dhp_esc_html($subtitle); ?></p>
+                        <p class="hp-subtitle hp-hero__subtitle hp-hero-animate hp-hero-animate--subtitle">
+                            <?php echo dhp_esc_html($subtitle); ?></p>
                     <?php endif; ?>
 
                     <div class="hp-hero-intro"></div>
 
-                    <div class="hp-signoff hp-hero-signoff">
+                    <div class="hp-signoff hp-hero-signoff hp-hero-animate hp-hero-animate--signoff">
                         <img class="hp-signoff__logo hp-hero-signoff__logo"
                             src="<?php echo esc_url(dhp_asset_image_url('por-divergentes.png')); ?>"
                             alt="Por Divergentes" decoding="async" loading="lazy" />
@@ -87,14 +89,15 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                                 armados y policías que perdieron la vida mientras participaban en acciones violentas
                                 destinadas a reprimir las protestas y restablecer el control territorial del país. Sin
                                 embargo, no todos ocupan el mismo lugar en la memoria de la dictadura sandinista. Mientras
-                                algunos, como Francisco Aráuz Pineda —hijo de la legendaria militante Amada Pineda— o el
+                                algunos, como Francisco Aráuz Pineda —hijo de la reconocida sandinista Amada Pineda— o el
                                 militante Bismarck Martínez han sido recordados con homenajes, placas y monumentos, otros
                                 caídos apenas sobreviven en publicaciones de aniversario o han sido relegados al olvido.
                             </p>
                             <p class="hp-intro__lede">
                                 Los policías fallecidos durante las protestas de 2018 también fueron incorporados por el
                                 Gobierno a la categoría de “héroes de la paz y la seguridad”, pese a que murieron en un
-                                contexto que organismos internacionales documentaron como de represión estatal en contra de
+                                contexto violento que organismos internacionales documentaron como de represión estatal en
+                                contra de
                                 las manifestaciones cívicas.
                             </p>
                             <p class="hp-intro__lede">

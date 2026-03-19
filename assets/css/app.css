@@ -334,6 +334,90 @@
   text-transform: uppercase;
 }
 
+/* ==========================================================================
+   HERO MOTION — NIVEL 1 SEGURO
+   Entrada editorial sutil
+   ========================================================================== */
+
+.hp-shell[data-theme="divergentes"] .hp-hero::before {
+  content: "";
+  position: absolute;
+  inset: -2%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.09;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12) 0, transparent 32%),
+    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.08) 0, transparent 28%),
+    radial-gradient(circle at 55% 80%, rgba(255, 255, 255, 0.07) 0, transparent 30%);
+  animation: hpHeroTextureDrift 18s linear infinite alternate;
+}
+
+.hp-shell[data-theme="divergentes"] .hp-hero-container {
+  position: relative;
+  z-index: 1;
+}
+
+.hp-hero-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: hpHeroFadeRise 700ms var(--hp-ease, ease) forwards;
+  will-change: transform, opacity;
+}
+
+.hp-hero-animate--title {
+  animation-delay: 80ms;
+}
+
+.hp-hero-animate--badge {
+  animation-delay: 180ms;
+}
+
+.hp-hero-animate--subtitle {
+  animation-delay: 300ms;
+}
+
+.hp-hero-animate--signoff {
+  animation-name: hpHeroFadeOnly;
+  animation-duration: 700ms;
+  animation-delay: 420ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: var(--hp-ease, ease);
+  transform: none;
+}
+
+@keyframes hpHeroFadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hpHeroFadeOnly {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hpHeroTextureDrift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
 .hp-hero-highlight__lead,
 .hp-hero-highlight__text {
   display: inline-flex;
@@ -1039,8 +1123,12 @@
   .hp-modal,
   .hp-modal-backdrop,
   .hp-track-fill,
-  .hp-shell .hp-pill {
+  .hp-shell .hp-pill,
+  .hp-hero-animate,
+  .hp-intro-rail-art,
+  .hp-shell[data-theme="divergentes"] .hp-hero::before {
     transition: none !important;
+    animation: none !important;
     transform: none !important;
     opacity: 1 !important;
   }
@@ -1396,6 +1484,30 @@
   height: auto;
 }
 
+/* ==========================================================================
+   INTRO ART MOTION — NIVEL 2 PRUDENTE
+   Solo desplazamiento vertical leve, sin escala
+   ========================================================================== */
+
+.hp-intro-rail-art {
+  will-change: transform;
+  animation: hpIntroArtFloat 7.5s ease-in-out infinite;
+}
+
+@keyframes hpIntroArtFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .hp-intro-copy,
 .hp-intro__copy {
   z-index: 2;
@@ -1419,6 +1531,17 @@
 .hp-intro .hp-intro__lede-group {
   display: grid;
   gap: 1.6rem;
+}
+
+/* =========================================================
+   INTRO EDITORIAL — ESTÁTICO Y SIEMPRE LEGIBLE
+   ========================================================= */
+
+.hp-intro .hp-intro__lede-group {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  will-change: auto;
 }
 
 /* DESKTOP GRANDE */
