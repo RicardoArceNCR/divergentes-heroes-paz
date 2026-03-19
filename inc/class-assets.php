@@ -46,8 +46,8 @@ class DHP_Assets
             return;
         }
 
-        $desktop = DHP_URL . 'assets/images/portada-desktop.webp';
-        $mobile  = DHP_URL . 'assets/images/portada-mobile.webp';
+        $desktop = DHP_URL . 'assets/images/portada-desktop-especial-2.webp';
+        $mobile  = DHP_URL . 'assets/images/portada-mobile-especial.webp';
 
         echo "\n" . '<link rel="preload" as="image" href="' . esc_url($desktop) . '" fetchpriority="high">' . "\n";
         echo '<link rel="preload" as="image" href="' . esc_url($mobile) . '" media="(max-width: 782px)">' . "\n";

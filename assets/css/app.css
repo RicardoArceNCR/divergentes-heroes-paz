@@ -1211,7 +1211,7 @@
   padding: clamp(60px, 10vh, 120px) 0;
   text-align: center;
   color: var(--hp-white);
-  background: url("../images/-2.webp") center top / cover no-repeat;
+  background: url("../images/portada-desktop-especial-2.webp") center top / cover no-repeat;
   position: relative;
   overflow: hidden;
 }
