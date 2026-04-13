@@ -173,32 +173,10 @@
     );
   }
 
-  function createModal(mountEl, instanceId) {
-    const uid = 'hp-' + String(instanceId || 'x');
+  function buildModalApiFromExisting(backdrop, uid) {
     const titleId = uid + '-modal-title';
     const metaId = uid + '-modal-meta';
     const bodyId = uid + '-modal-body';
-
-    const backdrop = document.createElement('div');
-    backdrop.className = 'hp-modal-backdrop';
-    backdrop.setAttribute('role', 'dialog');
-    backdrop.setAttribute('aria-modal', 'true');
-    backdrop.setAttribute('aria-label', 'Perfil');
-
-    backdrop.innerHTML =
-      '<div class="hp-modal" role="document">' +
-      '  <div class="hp-modal-header">' +
-      '    <div>' +
-      '      <h2 class="hp-modal-title" id="' + titleId + '"></h2>' +
-      '      <p class="hp-kv" id="' + metaId + '"></p>' +
-      '    </div>' +
-      '    <button type="button" class="hp-modal-close" data-hp-close>Salir</button>' +
-      '  </div>' +
-      '  <div class="hp-modal-body" id="' + bodyId + '"></div>' +
-      '</div>';
-
-    const mount = mountEl && mountEl.appendChild ? mountEl : document.body;
-    mount.appendChild(backdrop);
 
     const modal = backdrop.querySelector('.hp-modal');
     const btnClose = backdrop.querySelector('[data-hp-close]');
@@ -255,7 +233,6 @@
       if (e.key === 'Escape') {
         e.preventDefault();
         close();
-        // Clear hash on escape if it was set
         if (window.location.hash) {
           history.replaceState(null, '', window.location.pathname + window.location.search);
         }
@@ -303,7 +280,54 @@
 
     btnClose.addEventListener('click', handleCloseAction);
 
-    return { open, close };
+    const api = { open, close };
+    return api;
+  }
+
+  function createModal(mountEl, instanceId) {
+    const uid = 'hp-' + String(instanceId || 'x');
+    const mount = mountEl && mountEl.appendChild ? mountEl : document.body;
+    const existing = mount.querySelector('.hp-modal-backdrop[data-hp-modal-instance="' + uid + '"]');
+
+    if (existing) {
+      if (existing.dataset.hpModalBound === '1') {
+        return existing._hpModalApi;
+      }
+      const api = buildModalApiFromExisting(existing, uid);
+      existing.dataset.hpModalBound = '1';
+      existing._hpModalApi = api;
+      return api;
+    }
+
+    const titleId = uid + '-modal-title';
+    const metaId = uid + '-modal-meta';
+    const bodyId = uid + '-modal-body';
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'hp-modal-backdrop';
+    backdrop.setAttribute('role', 'dialog');
+    backdrop.setAttribute('aria-modal', 'true');
+    backdrop.setAttribute('aria-label', 'Perfil');
+    backdrop.setAttribute('data-hp-modal-instance', uid);
+
+    backdrop.innerHTML =
+      '<div class="hp-modal" role="document">' +
+      '  <div class="hp-modal-header">' +
+      '    <div>' +
+      '      <h2 class="hp-modal-title" id="' + titleId + '"></h2>' +
+      '      <p class="hp-kv" id="' + metaId + '"></p>' +
+      '    </div>' +
+      '    <button type="button" class="hp-modal-close" data-hp-close>Salir</button>' +
+      '  </div>' +
+      '  <div class="hp-modal-body" id="' + bodyId + '"></div>' +
+      '</div>';
+
+    mount.appendChild(backdrop);
+
+    const api = buildModalApiFromExisting(backdrop, uid);
+    backdrop.dataset.hpModalBound = '1';
+    backdrop._hpModalApi = api;
+    return api;
   }
 
   function renderApp(root, data, config) {
@@ -453,21 +477,66 @@
     };
   }
 
+  function shouldCenterActivePill() {
+    return window.innerWidth <= 1024;
+  }
+
+  function centerActivePill(root, activeBtn) {
+    if (!shouldCenterActivePill()) return;
+    if (!root || !activeBtn) return;
+
+    const navInner = root.querySelector('.hp-sticky-nav-inner');
+    if (!navInner) return;
+
+    const navRect = navInner.getBoundingClientRect();
+    const pillRect = activeBtn.getBoundingClientRect();
+
+    const currentScroll = navInner.scrollLeft;
+    const offset =
+      (pillRect.left - navRect.left) -
+      (navRect.width / 2) +
+      (pillRect.width / 2);
+
+    navInner.scrollTo({
+      left: currentScroll + offset,
+      behavior: 'smooth'
+    });
+  }
+
   function setupStickyNav(root) {
     const pills = Array.from(root.querySelectorAll('[data-hp-month]'));
+
     pills.forEach((btn) => {
       btn.addEventListener('click', function () {
         const mid = btn.getAttribute('data-hp-month');
         if (!mid) return;
+
         const section = root.querySelector('[data-hp-month-section="' + cssEscape(mid) + '"]');
-        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        if (shouldCenterActivePill()) {
+          centerActivePill(root, btn);
+        }
+
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       });
     });
 
     function setActive(mid) {
+      let activeBtn = null;
+
       for (const b of pills) {
         const isActive = b.getAttribute('data-hp-month') === mid;
         b.setAttribute('aria-current', isActive ? 'true' : 'false');
+
+        if (isActive) {
+          activeBtn = b;
+        }
+      }
+
+      if (activeBtn) {
+        centerActivePill(root, activeBtn);
       }
     }
 
@@ -816,13 +885,16 @@ const isActive = Math.abs(center - triggerY) <= tolerance;
   async function boot() {
     const roots = Array.from(document.querySelectorAll('.hp-root[data-config]'));
     for (const root of roots) {
+      if (root.dataset.hpBooted === '1') continue;
+      root.dataset.hpBooted = '1';
+
       const rawConfig = root.getAttribute('data-config');
       if (!rawConfig) continue;
       const config = safeJsonParse(rawConfig);
       if (!config || !config.dataUrl) continue;
 
       try {
-        destroyInstance(root); // Cleanup if re-running
+        destroyInstance(root);
 
         let dataPromise = dataCache.get(config.dataUrl);
         if (!dataPromise) {
