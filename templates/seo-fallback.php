@@ -53,16 +53,40 @@ foreach ($months as $m) {
                     continue;
                 }
                 $name = isset($e['name']) ? (string) $e['name'] : '';
+                // Support both old (display_date) and new (date) schemas
                 $display_date = isset($e['display_date']) ? (string) $e['display_date'] : '';
+                if ($display_date === '' && !empty($e['date'])) {
+                    $display_date = (string) $e['date'];
+                }
+                // Support both old (place) and new (location) schemas
                 $place = isset($e['place']) ? (string) $e['place'] : '';
+                if ($place === '' && !empty($e['location'])) {
+                    $place = (string) $e['location'];
+                }
+                // Support both old (context) and new (summary) schemas
                 $context = isset($e['context']) ? (string) $e['context'] : '';
+                if ($context === '' && !empty($e['summary'])) {
+                    $context = (string) $e['summary'];
+                }
+                // Role field (new schema)
+                $role = isset($e['role']) ? (string) $e['role'] : '';
+                // month_id: support both month_id and monthId
+                $month_id_val = '';
+                if (!empty($e['month_id'])) {
+                    $month_id_val = (string) $e['month_id'];
+                } elseif (!empty($e['monthId'])) {
+                    $month_id_val = (string) $e['monthId'];
+                }
                 $month_label = '';
-                if (!empty($e['month_id']) && isset($months_by_id[(string) $e['month_id']]['label'])) {
-                    $month_label = (string) $months_by_id[(string) $e['month_id']]['label'];
+                if ($month_id_val !== '' && isset($months_by_id[$month_id_val]['label'])) {
+                    $month_label = (string) $months_by_id[$month_id_val]['label'];
                 }
                 ?>
                 <li>
                     <strong><?php echo esc_html($name); ?></strong>
+                    <?php if ($role !== ''): ?>
+                        <div><em><?php echo esc_html($role); ?></em></div>
+                    <?php endif; ?>
                     <?php if ($display_date !== '' || $place !== ''): ?>
                         <div><small><?php echo esc_html(trim($display_date . ($place ? ' — ' . $place : ''))); ?></small></div>
                     <?php endif; ?>

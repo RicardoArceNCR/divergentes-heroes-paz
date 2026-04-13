@@ -1,0 +1,4 @@
+*.backup
+*.old
+*-backup.php
+*-old.php

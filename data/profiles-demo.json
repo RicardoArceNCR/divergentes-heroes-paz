@@ -1,0 +1,123 @@
+{
+  "meta": {
+    "title": "Protagonistas del cambio",
+    "subtitle": "Las personas que transformaron la historia",
+    "dek": "Conoce a los líderes sociales, activistas y ciudadanos comunes que impulsaron los cambios más significativos en nuestra sociedad reciente.",
+    "author": "Equipo editorial",
+    "total": 18
+  },
+  "intro": {
+    "paragraphs": [
+      "Detrás de cada gran transformación social existen personas valientes que arriesgaron todo por un futuro mejor. En este especial, presentamos los perfiles de quienes lideraron el cambio.",
+      "Desde defensores de derechos humanos hasta líderes comunitarios, cada protagonista representa una pieza fundamental en el rompecabezas de la transición democrática.",
+      "Sus historias nos inspiran a seguir trabajando por una sociedad más justa, equitativa y democrática para todas y todos."
+    ],
+    "byline_label": "Equipo editorial"
+  },
+  "months": [
+    {
+      "id": "2020-01",
+      "label": "Enero 2020",
+      "chapter": "Líderes emergentes"
+    },
+    {
+      "id": "2020-06",
+      "label": "Junio 2020",
+      "chapter": "Activistas sociales"
+    },
+    {
+      "id": "2020-12",
+      "label": "Diciembre 2020",
+      "chapter": "Defensores de derechos"
+    },
+    {
+      "id": "2021-03",
+      "label": "Marzo 2021",
+      "chapter": "Constructores de paz"
+    },
+    {
+      "id": "2021-09",
+      "label": "Septiembre 2021",
+      "chapter": "Innovadores democráticos"
+    },
+    {
+      "id": "2022-02",
+      "label": "Febrero 2022",
+      "chapter": "Gestores institucionales"
+    }
+  ],
+  "events": [
+    {
+      "id": "maria-gonzalez",
+      "type": "perfil",
+      "date": "2020-01-10",
+      "month": "2020-01",
+      "title": "María González",
+      "description": "Líder comunitaria que organizó las primeras manifestaciones pacíficas en su barrio, inspirando a miles de ciudadanos a unirse a la causa democrática.",
+      "location": "Barrio Norte",
+      "impact": "alto",
+      "role": "Líder comunitaria",
+      "tags": ["liderazgo", "comunitario", "pacífico"]
+    },
+    {
+      "id": "carlos-mendoza",
+      "type": "perfil",
+      "date": "2020-06-15",
+      "month": "2020-06",
+      "title": "Carlos Mendoza",
+      "description": "Abogado defensor de derechos humanos que representó legalmente a manifestantes detenidos y documentó violaciones a los derechos humanos.",
+      "location": "Instituto de derechos humanos",
+      "impact": "alto",
+      "role": "Defensor de DDHH",
+      "tags": ["derechos", "legal", "defensa"]
+    },
+    {
+      "id": "ana-silva",
+      "type": "perfil",
+      "date": "2020-12-05",
+      "month": "2020-12",
+      "title": "Ana Silva",
+      "description": "Periodista independiente que arriesgó su vida para informar sobre los acontecimientos, denunciando la represión y dando voz a las víctimas.",
+      "location": "Redacción independiente",
+      "impact": "alto",
+      "role": "Periodista",
+      "tags": ["prensa", "libertad", "verdad"]
+    },
+    {
+      "id": "roberto-ramos",
+      "type": "perfil",
+      "date": "2021-03-20",
+      "month": "2021-03",
+      "title": "Roberto Ramos",
+      "description": "Mediador social que facilitó el diálogo entre el gobierno y la oposición, buscando consensos para la transición pacífica.",
+      "location": "Centro de diálogos",
+      "impact": "medio",
+      "role": "Mediador",
+      "tags": ["diálogo", "paz", "consenso"]
+    },
+    {
+      "id": "luisa-torres",
+      "type": "perfil",
+      "date": "2021-09-12",
+      "month": "2021-09",
+      "title": "Luisa Torres",
+      "description": "Experta en derecho constitucional que ayudó a redactar las reformas democráticas que fortalecieron la participación ciudadana.",
+      "location": "Comisión de reforma",
+      "impact": "alto",
+      "role": "Constitucionalista",
+      "tags": ["reforma", "constitución", "democracia"]
+    },
+    {
+      "id": "pedro-castro",
+      "type": "perfil",
+      "date": "2022-02-25",
+      "month": "2022-02",
+      "title": "Pedro Castro",
+      "description": "Funcionario público que desde dentro del sistema trabajó por la transición institucional, garantizando la continuidad del Estado de derecho.",
+      "location": "Institución gubernamental",
+      "impact": "medio",
+      "role": "Servidor público",
+      "tags": ["instituciones", "servicio", "transición"]
+    }
+  ]
+}

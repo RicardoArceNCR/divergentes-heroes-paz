@@ -1,0 +1,314 @@
+/* ===== Theme Editorial: mapeo de tokens al componente ===== */
+.hp-shell,
+.hp-shell--editorial {
+  /* Tipografía semántica */
+  --hp-font-display: var(--font-family-display);
+  --hp-font-ui: var(--font-family-ui);
+  --hp-font-body: var(--font-family-body);
+
+  /* Tamaños semánticos */
+  --hp-text-hero-size: var(--font-size-hero);
+  --hp-text-title-size: var(--font-size-lg);
+  --hp-text-meta-size: var(--font-size-sm);
+  --hp-text-body-size: var(--font-size-md);
+  --hp-text-button-size: 1.125rem;
+
+  /* Pesos semánticos */
+  --hp-weight-display: var(--font-weight-regular);
+  --hp-weight-ui: var(--font-weight-bold);
+  --hp-weight-body: var(--font-weight-medium);
+
+  /* Line heights semánticos */
+  --hp-leading-display: var(--line-height-tight);
+  --hp-leading-title: var(--line-height-snug);
+  --hp-leading-meta: 1.3;
+  --hp-leading-body: 1.55;
+  --hp-leading-button: 1.1;
+
+  /* Tracking semántico */
+  --hp-tracking-display: var(--letter-spacing-tight);
+  --hp-tracking-title: var(--letter-spacing-tight);
+  --hp-tracking-meta: var(--letter-spacing-wide);
+  --hp-tracking-button: var(--letter-spacing-normal);
+
+  /* Colores y superficies */
+  --hp-bg: var(--color-bg);
+  --hp-card-bg: var(--color-surface);
+  --hp-card-border: var(--color-border-strong);
+  --hp-text: var(--color-text);
+  --hp-text-muted: var(--color-text-muted);
+  --hp-accent: var(--color-accent);
+  --hp-accent-soft: var(--color-accent-soft);
+  --hp-chip-bg: var(--color-black);
+  --hp-chip-text: var(--color-white);
+  --hp-radius-card: var(--radius-lg);
+  --hp-radius-pill: var(--radius-xl);
+  --hp-card-shadow: var(--shadow-sm);
+
+  /* Layout */
+  --hp-container-max: var(--container-max);
+  --hp-reading-max: var(--reading-max);
+  --hp-hero-max: var(--hero-max);
+
+  /* Spacing */
+  --hp-section-space: var(--section-space-desktop);
+  --hp-block-space: var(--block-space);
+  --hp-text-space: var(--text-space);
+
+  /* Motion */
+  --hp-ease: var(--ease-standard);
+  --hp-dur-1: var(--dur-fast);
+  --hp-dur-2: var(--dur-base);
+}
+
+/* ===== Hero Visual Layer ===== */
+.hp-shell[data-theme="editorial"] .hp-hero {
+  background-image:
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0)),
+    url("../images/portada-desktop-especial-2.webp");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--color-white);
+}
+
+.hp-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.16) 0%,
+      rgba(0, 0, 0, 0.38) 0%,
+      rgba(0, 0, 0, 0.58) 0%
+    ); */
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hp-hero__title,
+.hp-hero .hp-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.28em;
+  margin: 0;
+  text-align: center;
+  max-width: 26ch;
+}
+
+.hp-hero-title-main {
+  display: block;
+  max-width: 100%;
+  text-wrap: balance;
+  font-family: var(--hp-font-display);
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: var(--hp-weight-display);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.hp-hero__subtitle,
+.hp-hero .hp-subtitle {
+  margin: 0;
+  max-width: 34ch;
+  font-family: var(--hp-font-body);
+  font-size: clamp(1.3rem, 2.1vw, 2rem);
+  line-height: 1.45;
+  font-weight: 500;
+  text-wrap: balance;
+  opacity: 0.98;
+  /* color: var(--color-white); */
+}
+
+.hp-hero__byline,
+.hp-hero-byline-text {
+  margin-top: 8px;
+  font-family: var(--hp-font-body);
+  font-size: 0.84rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.hp-hero__byline span,
+.hp-hero-byline-text span {
+  display: inline-block;
+}
+
+/* Responsive visual adjustments */
+@media (max-width: 900px) {
+  .hp-shell[data-theme="editorial"] .hp-hero {
+    background-image:
+      linear-gradient(to bottom,
+        rgba(0, 0, 0, 0.32),
+        rgba(0, 0, 0, 0.46)),
+      url("../images/portada-mobile-especial.webp");
+    background-size: cover;
+  }
+
+  .hp-hero__title,
+  .hp-hero .hp-title {
+    gap: 0.22em;
+    max-width: 21ch;
+  }
+
+  .hp-hero-title-main {
+    font-size: clamp(2.2rem, 12vw, 3.9rem);
+    line-height: 0.95;
+  }
+
+  .hp-hero__subtitle,
+  .hp-hero .hp-subtitle {
+    max-width: 30ch;
+    font-size: 1rem;
+    line-height: 1.42;
+    color: var(--color-white);
+  }
+}
+
+@media (max-width: 640px) {
+
+  .hp-hero__byline,
+  .hp-hero-byline-text {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+  }
+
+  .hp-hero__title,
+  .hp-hero .hp-title {
+    max-width: 10ch;
+  }
+
+  .hp-hero-title-main {
+    font-size: clamp(2.2rem, 12vw, 3.9rem);
+  }
+
+  .hp-hero__subtitle,
+  .hp-hero .hp-subtitle {
+    max-width: 26ch;
+    font-size: 0.98rem;
+  }
+}
+
+/* ==========================================================================
+   RAIL COMPONENT STYLES
+   ========================================================================== */
+.hp-shell--editorial .hp-rail {
+  position: relative;
+  width: min(100%, 320px);
+}
+
+.hp-shell--editorial .hp-rail-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--rail-gap, 0.4rem);
+}
+
+.hp-shell--editorial .hp-rail .hp-month-title,
+.hp-shell--editorial .hp-rail .hp-month-chapter,
+.hp-shell--editorial .hp-rail .hp-month-chapter span {
+  margin: 0;
+  padding: 0;
+}
+
+.hp-shell--editorial .hp-month-title {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(var(--rail-title-size-min, 2rem),
+      var(--rail-title-size-fluid, 4vw),
+      var(--rail-title-size-max, 4.5rem));
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: none;
+  color: var(--color-accent, #e10600);
+  text-wrap: balance;
+}
+
+.hp-shell--editorial .hp-month-chapter {
+  max-width: var(--rail-chapter-max, 12ch);
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(var(--rail-chapter-size-min, 1.25rem),
+      var(--rail-chapter-size-fluid, 2.2vw),
+      var(--rail-chapter-size-max, 2.8rem));
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #9b9b9b);
+  text-wrap: balance;
+}
+
+.hp-shell--editorial .hp-month-chapter span {
+  display: block;
+}
+
+.hp-shell--editorial .hp-rail-dot {
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-top: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--color-accent, #e10600);
+  flex: 0 0 auto;
+}
+
+@media (max-width: 768px) {
+  .hp-shell--editorial .hp-rail {
+    width: 100%;
+  }
+
+  .hp-shell--editorial .hp-month-chapter {
+    max-width: 14ch;
+  }
+}
+
+/* =========================================================
+   HERO + INTRO — RESPONSIVE TYPE REFINEMENT
+   ========================================================= */
+
+/* -----------------------------
+   HERO TITLE
+   ----------------------------- */
+
+.hp-hero-title {
+  font-size: clamp(3.75rem, 7vw, 6.25rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* hero intro text */
+
+.hp-hero-intro {
+  font-size: clamp(0.98rem, 1.2vw, 1.18rem);
+  line-height: 1.6;
+  max-width: 68ch;
+}
+
+/* -----------------------------
+   INTRO SECTION TYPE
+   ----------------------------- */
+
+.hp-intro-title {
+  font-size: clamp(1.9rem, 4vw, 3.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.hp-intro-copy {
+  font-size: clamp(1rem, 1.1vw, 1.1rem);
+  line-height: 1.7;
+  max-width: 88ch;
+}
+
+.hp-intro-signoff {
+  font-size: clamp(0.9rem, 0.9vw, 1rem);
+  line-height: 1.4;
+}

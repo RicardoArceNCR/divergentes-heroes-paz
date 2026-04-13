@@ -1,9 +1,17 @@
 {
   "meta": {
-    "title": "Los “Héroes de la Paz”",
+    "title": "Los \"héroes de la paz\" sin pasamontañas",
     "subtitle": "Quiénes son en realidad los sandinistas que el régimen Ortega-Murillo glorifica",
-    "total": 3,
-    "updated_at": "2026-03-03"
+    "dek": "Tras la crisis sociopolítica de abril de 2018 en Nicaragua, el régimen Ortega-Murillo elevó a ciertos civiles armados y policías fallecidos durante las protestas a la categoría de \"héroes de la paz\". Entre ellos figuran militantes sandinistas, trabajadores del Estado y miembros de la Policía Nacional que participaron en operativos de represión contra manifestantes y en el desmantelamiento de tranques. El relato oficial justifica estas muertes como actos de lealtad y defensa de la paz, mientras documentos de organismos internacionales como la CIDH y el GIEI evidencian sus responsabilidades en la violencia letal, tortura y represión sistemática contra manifestantes.",
+    "author": "Por Divergentes",
+    "total": 23
+  },
+  "intro": {
+    "paragraphs": [
+      "Tras la crisis sociopolítica de abril de 2018 en Nicaragua, el régimen Ortega-Murillo elevó a ciertos civiles armados y policías fallecidos durante las protestas a la categoría de \"héroes de la paz\".",
+      "Entre ellos figuran militantes sandinistas, trabajadores del Estado y miembros de la Policía Nacional que participaron en operativos de represión contra manifestantes y en el desmantelamiento de tranques.",
+      "El relato oficial presenta esas muertes como actos de lealtad y defensa de la paz, mientras documentos de organismos internacionales como la CIDH y el GIEI señalan responsabilidades en hechos de violencia letal, tortura y represión sistemática contra manifestantes."
+    ]
   },
   "months": [
     {
@@ -20,73 +28,400 @@
       "id": "2018-06",
       "label": "Junio 2018",
       "chapter": "Represión y tranques"
+    },
+    {
+      "id": "2018-07",
+      "label": "Julio 2018",
+      "chapter": "Operación Limpieza"
+    },
+    {
+      "id": "2019-02",
+      "label": "Febrero 2019",
+      "chapter": "Consolidación del control"
+    },
+    {
+      "id": "2019-12",
+      "label": "Diciembre 2019",
+      "chapter": "Cierre del relato"
     }
   ],
   "events": [
     {
-      "id": "evt-2018-04-20-cadenas",
-      "date": "2018-04-20",
-      "month_id": "2018-04",
-      "display_date": "20 de abril",
+      "id": "cristhiam-emilio-cadenas",
       "name": "Cristhiam Emilio Cadenas",
-      "place": "León",
-      "category": ["estudiante", "movimiento estudiantil"],
-      "context": "Estudiante y miembro histórico del Movimiento Estudiantil de la UNAN-León; falleció calcinado en el incendio del Centro Universitario.",
-      "contrast": "El régimen atribuyó el incendio a “grupos golpistas”, pero la familia cuestiona la versión; se reportaron inconsistencias forenses.",
-      "photo": {
-        "src": "./images/img-1.webp",
-        "alt": "Retrato de Cristhiam Emilio Cadenas"
-      },
-      "profile": {
-        "mode": "modal",
-        "body": "Texto completo del perfil…",
-        "sources": [
-          { "label": "CIDH Informe 2018", "url": "https://example.com" }
-        ]
-      }
+      "role": "Miembro histórico del movimiento estudiantil oficialista",
+      "date": "2018-04-20",
+      "monthId": "2018-04",
+      "location": "UNAN-León, León",
+      "image": "cristhiam-emilio-cadenas.webp",
+      "kicker": "León",
+      "summary": "Murió calcinado durante el incendio del Centro Universitario de la UNAN-León. El régimen lo convirtió en símbolo de paz y seguridad, pese a que su familia denunció inconsistencias forenses graves.",
+      "official_version": "Dirigentes universitarios oficialistas atribuyeron el incendio a \"grupos golpistas y delincuenciales\". La Asamblea Nacional declaró abril como el mes de la paz en su nombre.",
+      "body": [
+        "El asesinato de Cadenas es cuestionado por sus familiares, pero el régimen lo convirtió en símbolo de paz y seguridad. En León, las protestas contra las reformas al Seguro Social marcaron uno de los primeros focos de resistencia en abril de 2018. Dos días después, el 20 de abril, Cadenas murió calcinado durante el incendio que destruyó el Centro Universitario de la UNAN-León, hecho que dirigentes universitarios oficialistas atribuyeron a \"grupos golpistas y delincuenciales\".",
+        "Desde el 18 de abril, el GIEI documentó acciones de represión de grupos de choque afines al régimen y de dirigentes estudiantiles sandinistas, quienes presionaron a alumnos para manifestarse a favor del Gobierno y participar en agresiones contra otros manifestantes, bajo amenaza de perder becas y beneficios.",
+        "Cadenas era miembro histórico del Movimiento Estudiantil de la UNAN-León y cursaba el tercer año de Ingeniería Agroecológica, aunque en el listado de la Comisión de la Verdad, Justicia y Paz fue catalogado como estudiante de secundaria. Tras su muerte, la Asamblea Nacional declaró abril como el mes de la paz, en reconocimiento oficial a quienes cayeron \"en acciones terroristas con las que se intentó dar un golpe de Estado\".",
+        "Su familia cuestionó la versión oficial. Su hermano Alexander relató que reconoció el pantalón de su hermano y que \"el peritaje oficial concluyó que Emilio falleció por inhalación de gases tóxicos. ¿Cómo se explica que si murió calcinado, la ropa que llevaba no estaba quemada? ¿Por qué estaba entonces su cuerpo mutilado, sin brazos, piernas y sin dientes?\"."
+      ]
     },
     {
-      "id": "evt-2018-05-11-miranda",
-      "date": "2018-05-11",
-      "month_id": "2018-05",
-      "display_date": "11 de mayo",
+      "id": "carlos-alberto-miranda",
       "name": "Carlos Alberto Miranda",
-      "place": "Managua",
-      "category": ["juventud sandinista"],
-      "context": "Miembro de estructuras partidarias; el fallecimiento fue incorporado a la narrativa institucional como símbolo de “paz y seguridad”.",
-      "contrast": "Diversas reconstrucciones del contexto difieren de la narrativa oficial y hay vacíos de información pública verificable.",
-      "photo": {
-        "src": "./images/img-1.webp",
-        "alt": "Retrato de Carlos Alberto Miranda"
-      },
-      "profile": {
-        "mode": "modal",
-        "body": "Texto completo del perfil…",
-        "sources": []
-      }
+      "role": "Miembro de la Juventud Sandinista",
+      "date": "2018-05-11",
+      "monthId": "2018-05",
+      "location": "Managua",
+      "image": "carlos-alberto-miranda.webp",
+      "kicker": "Managua",
+      "summary": "Murió tras recibir un disparo mientras resguardaba instalaciones de la Alcaldía del Distrito VI. El oficialismo levantó un monumento en su honor.",
+      "official_version": "Familiares atribuyeron su muerte a \"pandillas y vándalos de la derecha\". El FSLN lo honró con un festival cultural y lo incorporó a la memoria oficial como símbolo de paz.",
+      "body": [
+        "Miembro de la Juventud Sandinista convertido en \"héroe de la paz\". Tras su muerte fue identificado por el listado de la Comisión de la Verdad, Justicia y Paz como obrero, sin embargo, al momento de su muerte, Miranda se encontraba resguardando las instalaciones de la Alcaldía del Distrito VI de Managua, lo que introduce contradicciones sobre su rol y actividades en el contexto de las protestas de 2018.",
+        "Miranda falleció el 11 de mayo de 2018 tras recibir un disparo en el pecho. Familiares atribuyeron su muerte a \"pandillas y vándalos de la derecha\". Su caso fue incorporado a los actos de memoria promovidos por el Frente Sandinista: en su vela y aniversarios de fallecimiento participaron la alcaldesa de Managua, Reyna Rueda.",
+        "En el primer aniversario, se realizó un festival cultural y se develó un monumento erigido a su nombre. Dirigentes de JS han vinculado la figura de Miranda con la defensa de la \"paz\". El GIEI documentó su fallecimiento como parte de las personas asesinadas en el contexto de la crisis sociopolítica, pero señalan que \"la falta de información y la escasez de fuentes alternativas ha impedido determinar en mayor medida las circunstancias de las muertes\", además de no obtener respuestas por parte del Estado."
+      ]
     },
     {
-      "id": "evt-2018-06-15-ejemplo",
-      "date": "2018-06-15",
-      "month_id": "2018-06",
-      "display_date": "15 de junio",
-      "name": "Nombre Apellido (Ejemplo)",
-      "place": "Masaya",
-      "category": ["policía"],
-      "context": "Descripción breve verificable del caso (qué se sabe, desde qué fuentes).",
-      "contrast": "Cómo difiere la narrativa oficial o qué puntos están en disputa (si aplica).",
-      "photo": {
-        "src": "./images/img-1.webp",
-        "alt": "Retrato de Nombre Apellido"
-      },
-      "profile": {
-        "mode": "modal",
-        "body": "Dossier largo del caso. Puedes usar párrafos con saltos de línea.\n\nIncluye secciones: Contexto / Versión oficial / Uso político / Fuentes.",
-        "sources": [
-          { "label": "Fuente 1", "url": "" },
-          { "label": "Fuente 2", "url": "" }
-        ]
-      }
+      "id": "holman-eliezer-zeledon",
+      "name": "Holman Eliezer Zeledón",
+      "role": "Militante sandinista y trabajador de la Alcaldía",
+      "date": "2018-05-16",
+      "monthId": "2018-05",
+      "location": "Puente de Sébaco, Matagalpa",
+      "image": "holman-eliezer-zeledon.webp",
+      "kicker": "Matagalpa",
+      "summary": "Resultó herido desmantelando el tranque de Sébaco y murió dos días después. El régimen usó su nombre para designar una escuela municipal de danza.",
+      "official_version": "Medios sandinistas afirmaron que fue \"asesinado por grupos terroristas de la derecha golpista\". El Estado lo catalogó como obrero que murió en \"fuego cruzado\".",
+      "body": [
+        "Originario de El Tuma–La Dalia, en el departamento de Matagalpa. Militante sandinista desde joven, su muerte según el listado de la Comisión de la Verdad, Justicia y Paz —presentado por el Estado nicaragüense ante organismos internacionales— señala que murió en \"fuego cruzado\" y lo identifican como obrero, pese a que era trabajador de la Alcaldía municipal.",
+        "El 14 de mayo de 2018 resultó gravemente herido por un disparo en el abdomen en el puente de Sébaco, durante las acciones para desmontar el tranque instalado en ese punto. Dos días después, el 16 de mayo, falleció en el hospital César Amador Molina, de Matagalpa. De acuerdo con versiones oficiales y medios afines al FSLN fue enviado al lugar por autoridades municipales con la orden de desinstalar el tranque.",
+        "Medios de comunicación sandinistas afirmaron que \"se esclareció que el joven, militante sandinista, fue asesinado por grupos terroristas de la derecha golpista\". Mientras que el GIEI solicitó expresamente al Estado que proporcionara información de contacto o gestionar las medidas pertinentes para poder concretar una reunión con la familia de Holman, sin embargo nunca hubo respuesta por el Estado.",
+        "Luego de su fallecimiento, el régimen utilizó su nombre para designar una escuela municipal de danza."
+      ]
+    },
+    {
+      "id": "jose-alfredo-urroz-jiron",
+      "name": "José Alfredo Urroz Jirón",
+      "role": "Docente técnico y trabajador del Mined",
+      "date": "2018-05-16",
+      "monthId": "2018-05",
+      "location": "Matagalpa",
+      "image": "jose-alfredo-urroz-jiron.webp",
+      "kicker": "Matagalpa",
+      "summary": "Murió tras resultar herido frente al Comisariato de la Policía. El régimen lo incorporó a la lista de \"héroes de la paz\" mientras los trabajadores estatales eran presionados a ocupar las calles.",
+      "official_version": "El alcalde Zeledón lo presentó como víctima de la \"saña criminal\" de grupos opositores. En 2022, la ANEN entregó un reconocimiento póstumo a su madre.",
+      "body": [
+        "El alcalde Sadrach Zeledón calificó el ataque como \"otra manifestación de la increíble saña criminal de atacar a los matagalpinos, a jóvenes, a profesores, a trabajadores de servicios municipales\", denunciando el asedio que sufría la ciudad. En febrero de 2022, la Asociación Nacional de Educadores de Nicaragua rindió homenaje a Urroz Jirón y entregó un reconocimiento a su madre, Azucena Jirón.",
+        "En 2018, la primera orden para los trabajadores del Estado fue mantenerse alertas y ocupar rotondas y calles, mostrando respaldo a la pareja presidencial. Instituciones tuvieron gran presencia en las calles, mientras el Estado implementó un monitoreo sobre la asistencia de los funcionarios para medir su compromiso, incluso amenazaron con despedirlos de sus trabajos contraviniendo la Ley de Probidad de los Servicios Públicos."
+      ]
+    },
+    {
+      "id": "jorge-gaston-palacios-vargas",
+      "name": "Jorge Gastón Palacios Vargas",
+      "role": "Economista y auxiliar contable del Inatec",
+      "date": "2018-05-26",
+      "monthId": "2018-05",
+      "location": "El Quebracho, Teustepe, Boaco",
+      "image": "jorge-gaston-palacios-vargas.webp",
+      "kicker": "Boaco",
+      "summary": "Murió en El Quebracho mientras, según el relato oficial, defendía a mujeres que exigían el levantamiento de un tranque.",
+      "official_version": "La Comisión de la Verdad lo presentó como \"trabajador por cuenta propia\" que murió \"defendiendo a mujeres\". Los sandinistas le rinden homenaje anual en su tumba.",
+      "body": [
+        "Economista y auxiliar contable del Inatec murió el 26 de mayo de 2018 \"mientras defendía a mujeres que exigían el levantamiento de un tranque\" en la comarca El Quebracho, municipio de Teustepe, Boaco. Su inclusión entre los \"héroes de la paz\" subraya la contradicción central del reconocimiento oficial: trabajadores del Estado y militantes políticos, actuando bajo órdenes para controlar protestas ciudadanas, son elevados a símbolos de pacificación, pese a que su acción estuvo directamente vinculada a la represión.",
+        "Aunque la Comisión de la Verdad, Justicia y Paz lo presenta como \"trabajador por cuenta propia\", era empleado del Inatec. Los sandinistas le rinden homenaje en su tumba."
+      ]
+    },
+    {
+      "id": "heriberto-maudiel-perez",
+      "name": "Heriberto Maudiel Pérez",
+      "role": "Miembro de la Juventud Sandinista",
+      "date": "2018-05-30",
+      "monthId": "2018-05",
+      "location": "Barrio Jonathan González, Managua",
+      "image": "heriberto-maudiel-perez.webp",
+      "kicker": "Managua",
+      "summary": "Murió durante la cantata del Día de las Madres. Trabajaba en el Ministerio de Salud y fue catalogado como obrero en la lista oficial.",
+      "official_version": "La Policía Nacional reportó que cayó a manos de un \"grupo delincuencial\" que atacó la cantata organizada por el Gobierno. El régimen lo reconoció como \"héroe de la paz y la reconciliación\".",
+      "body": [
+        "Miembro de la Juventud Sandinista, falleció el 30 de mayo de 2018 en el contexto de la cantata y oración en honor a las madres nicaragüenses, en las cercanías de los semáforos del barrio Jonathan González en Managua. El régimen Ortega-Murillo lo presentó como víctima de un acto terrorista y lo reconoció oficialmente como \"héroe de la paz y la reconciliación\". Heriberto trabajaba en el Ministerio de Salud, pero en la lista oficial de fallecidos fue catalogado únicamente como obrero.",
+        "La Policía Nacional reportó que \"grupos terroristas de la derecha golpista\" habrían intentado destruir el Estadio Nacional de Béisbol y quemar la sede de Caruna. Sin embargo, informes de la CIDH y de Amnistía Internacional documentaron la presencia de francotiradores en las manifestaciones desde el 20 de abril de 2018, que dispararon intencionalmente contra manifestantes. Según Amnistía, \"los orificios de entrada de los proyectiles, en múltiples casos, estaban localizados en zonas de alta letalidad del cuerpo… En al menos cuatro casos, la trayectoria de la bala habría sido de arriba hacia abajo, lo que sugiere la posibilidad de francotiradores o personas disparando desde una posición privilegiada\".",
+        "Heriberto, militante comprometido del FSLN, fue elevado por el régimen a la categoría de \"héroe de la paz\", pese a que su muerte ocurrió en un contexto de represión estatal documentado por organismos internacionales."
+      ]
+    },
+    {
+      "id": "kevin-coffin-reyes",
+      "name": "Kevin Coffin Reyes",
+      "role": "Miembro de la Juventud Sandinista",
+      "date": "2018-05-30",
+      "monthId": "2018-05",
+      "location": "Barrio Jonathan González, Managua",
+      "image": "kevin-coffin-reyes.webp",
+      "kicker": "Managua",
+      "summary": "Murió durante la cantata del Día de las Madres. Militante del FSLN, fue elevado a la categoría de \"héroe de la paz\".",
+      "official_version": "La Policía Nacional reportó que cayó a manos de un \"grupo delincuencial\" que atacó la cantata organizada por el Gobierno. El régimen lo reconoció como \"héroe de la paz y la reconciliación\".",
+      "body": [
+        "Miembro de la Juventud Sandinista, falleció el 30 de mayo de 2018 en el contexto de la cantata y oración en honor a las madres nicaragüenses, en las cercanías de los semáforos del barrio Jonathan González en Managua. El régimen Ortega-Murillo lo presentó como víctima de un acto terrorista y lo reconoció oficialmente como \"héroe de la paz y la reconciliación\".",
+        "La Policía Nacional reportó que \"grupos terroristas de la derecha golpista\" habrían intentado destruir el Estadio Nacional de Béisbol y quemar la sede de Caruna. Sin embargo, informes de la CIDH y de Amnistía Internacional documentaron la presencia de francotiradores en las manifestaciones desde el 20 de abril de 2018, que dispararon intencionalmente contra manifestantes. Según Amnistía, \"los orificios de entrada de los proyectiles, en múltiples casos, estaban localizados en zonas de alta letalidad del cuerpo… En al menos cuatro casos, la trayectoria de la bala habría sido de arriba hacia abajo, lo que sugiere la posibilidad de francotiradores o personas disparando desde una posición privilegiada\".",
+        "Kevin, militante comprometido del FSLN, fue elevado por el régimen a la categoría de \"héroe de la paz\", pese a que su muerte ocurrió en un contexto de represión estatal documentado por organismos internacionales."
+      ]
+    },
+    {
+      "id": "jose-abraham-martinez",
+      "name": "José Abraham Martínez",
+      "role": "Policía de la DOEP",
+      "date": "2018-06-03",
+      "monthId": "2018-06",
+      "location": "Masaya",
+      "image": "jose-abraham-martinez.webp",
+      "kicker": "Masaya",
+      "summary": "Murió en Masaya según la Policía mientras restablecía el orden. Rosario Murillo vinculó el nacimiento de su hija con la narrativa del sacrificio heroico.",
+      "official_version": "La Policía informó que cayó \"cumpliendo su deber de restablecer el orden\". Murillo declaró que quien \"entrega su vida por causas nobles es un héroe que está en la gloria\".",
+      "body": [
+        "Miembro de la Policía Nacional que murió en el \"cumplimiento de su deber\" el 3 de junio de 2018 en Masaya \"mientras cumplía con su deber de restablecer el orden\". Tenía 2 años y 7 meses de servicio y se desempeñaba como policía en la Dirección de Operaciones Especiales Policiales (DOEP).",
+        "El Gobierno lo presentó como víctima de \"grupos terroristas de la derecha golpista\", y su nombre se incorporó a la lista de \"héroes de la paz\". En diciembre de 2018, Rosario Murillo vinculó el nacimiento de la segunda hija de Martínez con la memoria de su padre, describiéndola como \"una niña que simboliza la paz, el cariño, la solidaridad y la felicidad\" y señalando que quien entrega su vida por causas nobles es \"un héroe que está en la gloria y desde ahí implora a Dios por Nuestra Nicaragua\".",
+        "En el primer aniversario de su muerte, en junio de 2019, el Comisionado Ramón Avellán afirmó que la pérdida de Martínez los afectó, pero \"nos dio fuerzas, nos dio conciencia para seguir adelante y no permitir que los delincuentes se tomaran la Unidad Policial de Masaya\"."
+      ]
+    },
+    {
+      "id": "kevin-cruz-ruiz",
+      "name": "Kevin Cruz Ruiz",
+      "role": "Militante sandinista",
+      "date": "2018-06-09",
+      "monthId": "2018-06",
+      "location": "Carretera Jinotepe–El Rosario, Carazo",
+      "image": "kevin-cruz-ruiz.webp",
+      "kicker": "Carazo",
+      "summary": "Murió en un accidente vial —no en acciones de pacificación—, pero fue integrado al relato oficial de los \"héroes de la paz\".",
+      "official_version": "Pese a que la Policía documentó su muerte como accidente de tránsito, el régimen lo incorporó al relato como \"héroe de la paz\", militante de la Juventud Sandinista y referente juvenil sandinista.",
+      "body": [
+        "El departamento de Carazo fue uno de los principales escenarios de la represión durante las protestas de 2018. En ese contexto ocurrió la muerte de Cruz Ruiz, otro de los jóvenes incluidos por el régimen en la categoría de \"héroes de la paz\". Originario del municipio de El Rosario, Carazo, falleció el 9 de junio de 2018 en la carretera Jinotepe–El Rosario, una vía afectada por tranques que mantenían varados a numerosos transportistas centroamericanos en la Carretera Panamericana Sur.",
+        "Según la nota de prensa 47-2018 de la Policía Nacional, Cruz Ruiz murió tras colisionar en su motocicleta contra un furgón detenido en la vía. Sin embargo, Cruz Ruiz fue incorporado al relato oficial como \"héroe de la paz\". Militante de la Juventud Sandinista, también formó parte de la Federación de Estudiantes de Secundaria y del Movimiento Ambientalista Guardabarranco, además de haber participado desde niño en programas municipales vinculados al sandinismo.",
+        "Su muerte no ocurrió en acciones de \"pacificación\" ni en enfrentamientos vinculados a la represión de protestas, sino como consecuencia de un accidente vial."
+      ]
+    },
+    {
+      "id": "dixon-bismarck-soza-enrique",
+      "name": "Dixón Bismarck Soza Enrique",
+      "role": "Teniente de la Policía Nacional",
+      "date": "2018-06-11",
+      "monthId": "2018-06",
+      "location": "Mulukukú",
+      "image": "dixon-bismarck-soza-enrique.webp",
+      "kicker": "Mulukukú",
+      "summary": "Murió durante el ataque a la delegación policial de Mulukukú. Fue ascendido póstumamente y su nombre inscrito en el mausoleo de los \"héroes y mártires de la patria\".",
+      "official_version": "Rosario Murillo aseguró que fue \"masacrado por los golpistas diabólicos\". La Policía lo presenta como \"un hombre que dio su vida por la paz de los nicaragüenses\".",
+      "body": [
+        "Originario de Bocana de Paiwas, en la Región Autónoma de la Costa Caribe Sur, el teniente Soza falleció el 11 de junio de 2018. Según la versión de la Policía Nacional, murió durante un ataque a la delegación policial del municipio de Mulukukú. Tras su muerte, fue objeto de homenajes oficiales y ascendido póstumamente al grado de comisionado, junto a otros 21 agentes.",
+        "Su nombre fue inscrito en el mausoleo de los \"héroes y mártires de la patria\", y la institución policial destaca su figura como \"un hombre que dio su vida por la paz de los nicaragüenses\". Hoy es considerado y homenajeado por la institución policial y el Gobierno como un \"héroe de la paz\". En su honor, se inauguró una estación policial que lleva su nombre en su ciudad natal.",
+        "Los líderes campesinos Silvio Saúl Pineda, Medardo Mairena, Pedro Mena, Apolonio Fargas Gómez, Ernesto Jarquín Orozco y Nicolás Cienfuegos Alaníz fueron procesados judicialmente y acusados de asesinato, terrorismo, crimen organizado y robo agravado por su muerte. En febrero de 2019, un juez condenó a Mairena a 216 años de prisión y a Mena a 210 años por terrorismo y otros delitos.",
+        "Siete años después de los hechos, la copresidenta Rosario Murillo envió un mensaje a la familia y llamó \"héroe de la paz\" asegurando que Soza y otros dos policías fallecidos en la estación habían sido \"masacrados por los golpistas diabólicos\"."
+      ]
+    },
+    {
+      "id": "carlos-jose-zamora-martinez",
+      "name": "Carlos José Zamora Martínez",
+      "role": "Policía Nacional",
+      "date": "2018-06-11",
+      "monthId": "2018-06",
+      "location": "Mulukukú",
+      "image": "carlos-jose-zamora-martinez.webp",
+      "kicker": "Mulukukú",
+      "summary": "Murió durante el ataque a la estación policial de Mulukukú. Su caso contrasta con documentación de grupos parapoliciales que la Policía negó que existieran.",
+      "official_version": "Murillo afirmó en 2025 que Zamora fue \"masacrado por los golpistas diabólicos\". La Policía lo condecoró como \"héroe de la paz\" y fue ascendido póstumamente a comisionado.",
+      "body": [
+        "Fue condecorado por la Policía Nacional como \"héroe de la paz\" tras fallecer durante el ataque a la estación policial de Mulukukú, en junio de 2018. El 11 de junio de 2025, Rosario Murillo, copresidenta de Nicaragua, aseguró que Zamora y otros dos policías fueron \"masacrados por los golpistas diabólicos\".",
+        "Zamora, de 36 años y originario de Río Blanco, Matagalpa, llevaba apenas dos años en las filas policiales cuando murió y fue ascendido póstumamente al grado de comisionado. Por su muerte, líderes campesinos como Medardo Mairena, Pedro Mena, Apolonio Fargas Gómez, Ernesto Jarquín Orozco y Nicolás Cienfuegos Alaníz fueron enjuiciados por los delitos de asesinato, terrorismo, crimen organizado y robo agravado.",
+        "Esta retórica oficialista contrasta con otros hechos documentados. El 27 de mayo de 2018, la Policía Nacional emitió un comunicado en el que negó la existencia de fuerzas parapoliciales o paramilitares en el país. Sin embargo, organismos nacionales e internacionales documentaron la actuación de civiles armados que, en coordinación con la Policía, participaron en operativos de represión, control territorial y desarticulación de protestas, configurando en la práctica un estado policial de facto."
+      ]
+    },
+    {
+      "id": "ariel-ignacio-vivas",
+      "name": "Ariel Ignacio Vivas",
+      "role": "Miembro de la Juventud Sandinista y de CFA Valiente",
+      "date": "2018-06-12",
+      "monthId": "2018-06",
+      "location": "Nueva Libia, Managua",
+      "image": "ariel-ignacio-vivas.webp",
+      "kicker": "Managua",
+      "summary": "Murió tras participar en el desmantelamiento de un tranque en Nueva Libia. El FSLN construyó un gimnasio de boxeo con su nombre.",
+      "official_version": "El FSLN lo integró al relato de la \"paz\" como obrero y militante que cayó en servicio. En su memoria se inauguró el Gimnasio Ariel Ignacio Vivas en el Distrito IV de Managua.",
+      "body": [
+        "Murió el 12 de junio de 2018, tras participar en el desmantelamiento de un tranque ubicado en el barrio Nueva Libia, en Managua, una acción enmarcada en los operativos para restablecer el control durante las protestas sociopolíticas de 2018. En el listado de la Comisión de la Verdad, Justicia y Paz fue presentado como obrero. Era miembro de la Juventud Sandinista y del grupo de motorizados CFA Valiente.",
+        "El Meseni no consigna información sobre las circunstancias de su muerte, mientras testigos señalaron que resultó herido en un contexto de movilización de motocicletas en la zona.",
+        "Pese a la falta de claridad sobre las condiciones de su fallecimiento, su muerte fue incorporada al relato oficial de la \"paz\". En su memoria, el FSLN impulsó la construcción de un gimnasio de boxeo que lleva su nombre en el barrio Primero de Mayo, Distrito IV de Managua, reforzando la narrativa de símbolo de pacificación, sin cuestionar su rol en acciones violentas destinadas a desmontar las protestas ciudadanas."
+      ]
+    },
+    {
+      "id": "francisco-arauz-pineda",
+      "name": "Francisco Aráuz Pineda",
+      "role": "Trabajador de la Alcaldía de Managua",
+      "date": "2018-06-16",
+      "monthId": "2018-06",
+      "location": "Cerca del colegio Edgar Arbizú, Managua",
+      "image": "francisco-arauz-pineda.webp",
+      "kicker": "Managua",
+      "summary": "Hijo de la militante histórica Amada Pineda. Murió en un operativo de desmontaje de tranques y fue transformado en uno de los símbolos más visibles de la narrativa de paz.",
+      "official_version": "El régimen dijo que fue \"asesinado y quemado por terroristas de la derecha golpista\". Su muerte \"no podía quedar impune\"; sentenciaron a Steven José Espinoza Marín.",
+      "body": [
+        "Aráuz Pineda pasó de ser un operador municipal a símbolo oficial de la \"paz\". Hijo de Amada Pineda, combatiente histórica conocida como \"las mujeres del Cuá\". Fue asesinado y quemado por \"terroristas de la derecha golpista\" el 16 de junio de 2018, en las cercanías del colegio Edgar Arbizú, en Managua, afirmaron medios oficialistas.",
+        "Según esas mismas versiones, murió mientras, junto a otros trabajadores de la Alcaldía de Managua —institución en la que laboraba—, participaban en acciones para desmontar un tranque instalado por pobladores del barrio 8 de Marzo, quienes levantaron barricadas tras denunciar los ataques policiales en la zona.",
+        "En el listado de la Comisión de la Verdad, Justicia y Paz, el Gobierno lo presentó como obrero; sin embargo, era trabajador de la Alcaldía. Tras su muerte, el Gobierno lo elevó a la categoría de \"héroe de la paz\" y lo convirtió en un símbolo oficial. En su nombre se erigió un monumento en las inmediaciones del mercado Iván Montenegro, en el Distrito VII de Managua, y bautizaron un preescolar y un gimnasio.",
+        "El Gobierno dijo que su muerte \"no podía quedar impune\", y sentenciaron a Steven José Espinoza Marín. El Meseni señaló que el Gobierno usaba el sistema penal como un mecanismo de represión para los participantes en las protestas."
+      ]
+    },
+    {
+      "id": "bismarck-martinez",
+      "name": "Bismarck Martínez",
+      "role": "Militante sandinista y trabajador de la Alcaldía",
+      "date": "2018-06-29",
+      "monthId": "2018-06",
+      "location": "Jinotepe, Carazo",
+      "image": "bismarck-martinez.webp",
+      "kicker": "Jinotepe",
+      "summary": "Desapareció el 29 de junio en Jinotepe. El régimen lo convirtió en el símbolo central de su narrativa de lealtad y paz, pese a que la Fiscalía nunca investigó su asesinato.",
+      "official_version": "Murillo lo describió como una victoria del \"espíritu sandinista que no se rinde jamás\". El régimen bautizó con su nombre un programa de viviendas de interés social.",
+      "body": [
+        "Martínez fue un militante sandinista y trabajador de la Alcaldía de Managua, fue colocado en el centro de los operativos de control durante las protestas de 2018. Considerado el símbolo de la \"paz\" del oficialismo. El 29 de junio de ese año, Martínez supuestamente fue secuestrado, torturado y desaparecido en el tranque del Colegio San José, en Jinotepe.",
+        "A pesar de la violencia que sufrió, el régimen convirtió su nombre en símbolo de lealtad y \"paz\", honrando su \"legado histórico\" en actos partidarios y en el Programa de Viviendas de Interés Social que lleva su nombre. El 6 de junio de 2019, el gobierno municipal entregó a su familia la Orden Municipal \"Año del Bicentenario, Leal Villa de Managua 1819-2019\".",
+        "La vicepresidenta Rosario Murillo destacó su vida como \"una victoria de la tenacidad, de la determinación y de la fuerza del espíritu sandinista y revolucionario de los nicaragüenses que no se rinde jamás\".",
+        "El GIEI señaló que registraron el asesinato de Martínez y evidenciaron que la Fiscalía no investigaba los crímenes, sino que se limitaba a encarcelar a personas que protestaban contra el Gobierno. El 6 de septiembre de 2018, la CIDH otorgó medidas cautelares a Martínez a solicitud de su hija. La Comisión solicitó en más de seis ocasiones información al Estado de Nicaragua sobre las investigaciones realizadas, sin recibir respuesta."
+      ]
+    },
+    {
+      "id": "miguel-ramos",
+      "name": "Miguel Ramos, conocido como \"Franklin\"",
+      "role": "Trabajador del Inatec y excombatiente",
+      "date": "2018-07-03",
+      "monthId": "2018-07",
+      "location": "La Trinidad, Estelí",
+      "image": "miguel-ramos.webp",
+      "kicker": "Estelí",
+      "summary": "Murió en el enfrentamiento para desalojar un tranque en La Trinidad. Veterano de guerra, la Comisión lo clasificó como \"trabajador por cuenta propia\" pese a ser empleado del Inatec.",
+      "official_version": "Los sandinistas le rinden homenaje anual en su tumba, presentándolo como un \"defensor de la paz\" que cumplía órdenes estatales para restablecer el orden público.",
+      "body": [
+        "Trabajador del Inatec falleció el 3 de julio de 2018 en el enfrentamiento para desalojar un tranque en La Trinidad, Estelí. Figura en la larga lista de los llamados \"héroes de la paz\", aunque su muerte ocurrió cumpliendo órdenes estatales para restablecer el orden público durante las protestas.",
+        "Aunque la Comisión de la Verdad, Justicia y Paz lo presenta como \"trabajador por cuenta propia\", era empleado del Inatec y veterano de la lucha armada contra Somoza, participó en las tres insurrecciones en Estelí como combatiente en la columna guerrillera Facundo Picado, y se desempeñó como jefe del batallón Frente Norte Carlos Fonseca Amador. Su militancia y su participación en la represión de tranques lo convirtieron, para el Estado, en un \"defensor de la paz\"; cada año, sandinistas le rinden homenaje en su tumba."
+      ]
+    },
+    {
+      "id": "martin-exequiel-sanchez-gutierrez",
+      "name": "Martín Exequiel Sánchez Gutiérrez",
+      "role": "Suboficial de la Policía Nacional",
+      "date": "2018-07-04",
+      "monthId": "2018-07",
+      "location": "Mulukukú / San Ramón",
+      "image": "martin-exequiel-sanchez-gutierrez.webp",
+      "kicker": "Mulukukú",
+      "summary": "Fue secuestrado según la Policía durante el ataque a la delegación de Mulukukú. Sus restos aparecieron el 4 de julio; fue ascendido póstumamente a comisionado.",
+      "official_version": "Murillo los calificó como \"héroes de la paz\" \"masacrados por los golpistas diabólicos\". Una estación policial en San Ramón lleva su nombre.",
+      "body": [
+        "Suboficial de la Policía Nacional fallecido junto a dos policías más durante el ataque a la delegación policial del municipio de Mulukukú. La institución policial informó que Sánchez Gutiérrez fue \"secuestrado por grupos delincuenciales\" y que sus restos fueron encontrados el 4 de julio de 2018, a unos 15 kilómetros del municipio.",
+        "En 2022 fue ascendido póstumamente a comisionado y, en el municipio de San Ramón, Matagalpa, se inauguró la estación policial número 310 con su nombre.",
+        "Siete años después de los hechos, el 11 de junio de 2025, Rosario Murillo, copresidenta de Nicaragua, envió un mensaje a las familias de los tres policías fallecidos en Mulukukú, en el que los calificó como \"héroes de la paz\" y aseguró que habían sido \"masacrados por los golpistas diabólicos\"."
+      ]
+    },
+    {
+      "id": "faber-antonio-lopez-vivas",
+      "name": "Faber Antonio López Vivas",
+      "role": "Policía Nacional",
+      "date": "2018-07-08",
+      "monthId": "2018-07",
+      "location": "Jinotepe y Diriamba, Carazo",
+      "image": "faber-antonio-lopez-vivas.webp",
+      "kicker": "Carazo",
+      "summary": "Su madre rechazó la versión oficial: asegura que fue torturado y asesinado por sus propios compañeros tras negarse a participar en la represión conocida como \"Operación Limpieza\".",
+      "official_version": "La Policía informó que murió \"restableciendo el orden público\" liberando a personas que estaban \"secuestradas por terroristas armados\" en Jinotepe y Diriamba.",
+      "body": [
+        "La versión oficial sobre una muerte durante las protestas fue cuestionada por su propia familia. López Vivas, policía originario de Santo Tomás, Chontales, murió el 8 de julio de 2018 en el contexto de la represión estatal. Aunque el Gobierno lo incorporó al listado de \"héroes de la paz\", su madre sostiene que fue asesinado por la misma institución a la que pertenecía.",
+        "Fátima Vivas expresó que su hijo había solicitado la baja de la Policía Nacional por negarse a participar en la represión contra los manifestantes. Sin embargo, la nota de prensa 79-2018 de la Policía informó que López Vivas murió mientras participaba en un operativo para \"restablecer el orden público\" y liberar a transportistas y pobladores que, según la versión oficial, estaban \"secuestrados por terroristas armados\" en los municipios de Jinotepe y Diriamba. Esa jornada fue una de las más violentas del conflicto donde fallecieron al menos 29 personas ese día, durante la llamada \"Operación Limpieza\", documentó el Cenidh.",
+        "La madre del policía rechazó esa versión. Asegura que su hijo fue torturado y asesinado por sus propios compañeros tras expresar su desacuerdo con la represión. \"Le quitaron las uñas, le sacaron los ojos, tenía quemaduras de cigarro y puñaladas. Eso no lo hace un impacto de bala, como dice el certificado\". Pese a estas denuncias, la Policía incluyó a López Vivas entre los 13 agentes \"caídos en el cumplimiento del deber\" y lo nombró oficialmente \"héroe de la paz y la seguridad\".",
+        "Años después, el Estado lo ascendió de manera póstuma al grado de comisionado, mediante el acuerdo presidencial 142-2022."
+      ]
+    },
+    {
+      "id": "lenin-ernesto-olivas-alaniz",
+      "name": "Lenín Ernesto Olivas Alaniz",
+      "role": "Agente de Tránsito de la Policía Nacional",
+      "date": "2018-07-12",
+      "monthId": "2018-07",
+      "location": "Morrito, Río San Juan",
+      "image": "lenin-ernesto-olivas-alaniz.webp",
+      "kicker": "Río San Juan",
+      "summary": "Murió durante el ataque a la delegación policial de Morrito según la versión policial. Está integrado a la lista oficial de \"héroes de la paz\".",
+      "official_version": "La Policía informó que murió cuando \"grupos terroristas atacaron con arma de fuego la delegación policial de Morrito\". Murillo enfatizó que \"jamás liquidarán el amor que siente nuestra Policía\".",
+      "body": [
+        "El teniente cumplió con su deber de proteger a los nicaragüenses, según la Policía Nacional y el Gobierno. Hoy es presentado como \"héroe de la paz\", reconocido por los sandinistas como víctima de \"grupos terroristas de la derecha golpista\". Su nombre fue incorporado a la lista oficial de este reconocimiento.",
+        "Olivas Alaniz era agente de Tránsito de la delegación policial de San Carlos, falleció el 12 de julio de 2018. Según la Policía Nacional, su muerte ocurrió cuando \"grupos terroristas atacaron con arma de fuego la delegación policial de Morrito, Río San Juan\".",
+        "Alberto Navas López fue señalado y puesto a la orden del juez por la quema de la delegación policial y el asesinato de Olivas Alaniz y de tres policías más. Rosario Murillo enfatizó que \"jamás liquidarán el amor que siente nuestra policía, el orgullo que siente nuestra Policía Nacional de cuidar al pueblo nicaragüense, a las familias nicaragüenses\"."
+      ]
+    },
+    {
+      "id": "pablo-ramos-chavarria",
+      "name": "Pablo Ramos Chavarría",
+      "role": "Agricultor y miembro activo de la Juventud Sandinista",
+      "date": "2018-07-17",
+      "monthId": "2018-07",
+      "location": "Cruce entre Matagalpa y Jinotega",
+      "image": "pablo-ramos-chavarria.webp",
+      "kicker": "Matagalpa / Jinotega",
+      "summary": "Murió a los 21 años mientras participaba en la \"limpieza\" de tranques. Testimonios de operadores sandinistas lo describen como herido de bala, torturado y quemado.",
+      "official_version": "Militantes sandinistas lo presentan cada año como \"héroe de la paz y el amor\" frente al monumento que el FSLN erigió en su honor.",
+      "body": [
+        "Murió el 17 de julio de 2018, en el cruce de carretera entre Matagalpa y Jinotega, a los 21 años. Según la Comisión de la Verdad, Justicia y Paz, de oficio era agricultor y miembro activo de la Juventud Sandinista. Su muerte ocurrió mientras participaba en la \"limpieza\" de tranques que protegían a los manifestantes: fue herido de bala, torturado y quemado, según testimonios de operadores sandinistas, en lo que hoy se recuerda como un episodio de violencia extrema.",
+        "Militantes sandinistas lo recuerdan cada año frente al monumento que el FSLN erigió en su honor, donde lo presentan como un \"héroe de la paz y el amor\". La contradicción es evidente: no murió promoviendo la paz, ni mediando entre ciudadanos, sino ejecutando acciones de control y represión ordenadas por las autoridades municipales y policiales.",
+        "Su figura se resignifica en el discurso oficial como víctima y símbolo de la paz, mientras que las condiciones reales de su muerte revelan la violencia con la que el régimen buscaba desmontar protestas legítimas."
+      ]
+    },
+    {
+      "id": "luis-david-lopez-hurtado",
+      "name": "Luis David López Hurtado",
+      "role": "Miembro de la Policía Nacional",
+      "date": "2018-07-18",
+      "monthId": "2018-07",
+      "location": "Empalme de Lóvago, Chontales",
+      "image": "luis-david-lopez-hurtado.webp",
+      "kicker": "Chontales",
+      "summary": "Murió en el tranque del empalme de Lóvago en una de las fases más violentas de la Operación Limpieza documentada por la CIDH.",
+      "official_version": "Visión Policial publicó que murió \"por impacto de bala en la cabeza, perpetrado por grupos encapuchados que mantenían el tranque\". Fue ascendido póstumamente a comisionado general.",
+      "body": [
+        "Miembro de la Policía Nacional que murió \"cumpliendo su deber\", según la versión oficial. El Gobierno lo presenta como víctima de \"grupos terroristas de la derecha golpista\", y su nombre se incorporó a la lista de \"héroes de la paz\".",
+        "López Hurtado murió el 18 de julio de 2018 en el tranque del empalme de Lóvago, apenas un año y diez meses después de ingresar a la Policía. Fue ascendido póstumamente a comisionado general y homenajeado por la institución.",
+        "Visión Policial publicó que López Hurtado murió \"producto de impacto de bala en la cabeza, perpetrado por grupos encapuchados que mantenían el tranque\". Cuatro días antes, una caravana integrada por Policía, Ejército y civiles armados había sorprendido a manifestantes a nueve kilómetros del empalme de Lóvago. El Informe Anual 2018 de la CIDH califica estos hechos como \"los incidentes más violentos ocurridos en el marco de la Operación Limpieza\"."
+      ]
+    },
+    {
+      "id": "jorge-isaac-cruz-centeno",
+      "name": "Jorge Isaac Cruz Centeno",
+      "role": "Miembro de la Policía Nacional",
+      "date": "2019-02-08",
+      "monthId": "2019-02",
+      "location": "Los Chiles, San Carlos, Río San Juan",
+      "image": "jorge-isaac-cruz-centeno.webp",
+      "kicker": "Río San Juan",
+      "summary": "Murió en 2019, cuando el Estado ya había recuperado el control territorial, pero fue incorporado al mismo relato de \"héroes de la paz\" construido desde 2018.",
+      "official_version": "El Gobierno lo declaró \"héroe de la paz\" y atribuyó su muerte a \"terrorismo\". Se inauguró la unidad policial número 27 en su nombre en La Trinidad, Estelí.",
+      "body": [
+        "Falleció el 8 de febrero de 2019 en Los Chiles, San Carlos, Río San Juan. Era miembro de la Policía Nacional y fue ascendido póstumamente a inspector reconociéndolo con la medalla al valor Juan Ramón Torres.",
+        "El Gobierno lo presenta como víctima de \"grupos terroristas de la derecha golpista\", y su nombre se incorporó a la lista de \"héroes de la paz\". En diciembre de 2019 se inauguró la unidad número 27 en su nombre en la ciudad de La Trinidad en Estelí. Por el crimen de Cruz Centeno fue encarcelado Santiago Gatica Benavidez.",
+        "Aunque la muerte ocurrió en 2019, cuando el Estado ya había recuperado el control territorial tras la crisis, el caso fue incorporado al mismo relato político construido después de 2018. Al declararlo \"héroe de la paz\", atribuir el hecho a \"terrorismo\" y nombrar una unidad policial en su honor, las autoridades fijaron una interpretación oficial previa sobre lo sucedido."
+      ]
+    },
+    {
+      "id": "carlos-alberto-suce-ortiz",
+      "name": "Carlos Alberto Suce Ortiz",
+      "role": "Teniente de la DOEP",
+      "date": "2019-12-01",
+      "monthId": "2019-12",
+      "location": "Camino viejo a Niquinohomo, Masaya",
+      "image": "carlos-alberto-suce-ortiz.webp",
+      "kicker": "Masaya",
+      "summary": "Murió en 2019 durante un operativo policial y fue integrado a la lista de \"héroes de la paz y la seguridad\", ampliando la narrativa más allá del ciclo de protestas de 2018.",
+      "official_version": "Fue incorporado a la lista de \"héroes de la paz y la seguridad\". Se le otorgó la medalla al valor y se inauguró el Centro de Atención a la Ciudadanía en Boaco en su nombre.",
+      "body": [
+        "Murió el 1 de diciembre de 2019, cuando ya se había restablecido el control policial en el país. Originario de Masaya y miembro de la DOEP. Suce Ortiz recibió un disparo durante un operativo en el que, según la versión oficial, \"delincuentes armados pretendían escapar de un retén policial en el camino viejo a Niquinohomo\".",
+        "Fue incorporado al listado de \"héroes de la paz y la seguridad\", consolidando la narrativa institucional que convierte su muerte en símbolo de lealtad y sacrificio por el régimen. Autoridades policiales ascendieron a Suce Ortiz a teniente y se le otorgó la medalla al valor, subcomisionado Juan Ramón Torres Espinoza.",
+        "En memoria del teniente Carlos Alberto Suce Ortiz, en el departamento de Boaco se inauguró el Centro de Atención a la Ciudadanía. La muerte de Suce Ortiz evidencia cómo, incluso fuera del contexto de crisis de 2018, el régimen construye símbolos de lealtad y sacrificio."
+      ]
     }
   ]
 }

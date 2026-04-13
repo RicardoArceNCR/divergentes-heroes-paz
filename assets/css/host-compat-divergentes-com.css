@@ -1,0 +1,323 @@
+/* =========================================================
+   HOST COMPAT · DIVERGENTES
+   Compatibilidad tipográfica específica del host
+   ========================================================= */
+
+body.wp-theme-divergentes .dhp-special .hp-shell {
+  color: var(--hp-text, #181818);
+  font-family: var(--hp-font-body);
+
+  /* =========================================================
+     CARD TYPO SCALE · PRIMERA PRUEBA
+     Base desktop
+     ========================================================= */
+  --hp-card-chip-size: 0.82rem;
+  --hp-card-name-size: clamp(1.55rem, 1.15rem + 1.2vw, 2.2rem);
+  --hp-card-meta-size: 0.95rem;
+  --hp-card-summary-size: 1.05rem;
+  --hp-card-official-label-size: 0.78rem;
+  --hp-card-official-text-size: 0.813rem;
+  --hp-card-button-size: 0.95rem;
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell p,
+body.wp-theme-divergentes .dhp-special .hp-shell h1,
+body.wp-theme-divergentes .dhp-special .hp-shell h2,
+body.wp-theme-divergentes .dhp-special .hp-shell h3,
+body.wp-theme-divergentes .dhp-special .hp-shell h4,
+body.wp-theme-divergentes .dhp-special .hp-shell ul,
+body.wp-theme-divergentes .dhp-special .hp-shell ol,
+body.wp-theme-divergentes .dhp-special .hp-shell li,
+body.wp-theme-divergentes .dhp-special .hp-shell a,
+body.wp-theme-divergentes .dhp-special .hp-shell button {
+  font-family: inherit;
+}
+
+/* Timeline */
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-chip {
+  font-family: var(--hp-font-mono);
+  font-size: var(--hp-card-chip-size);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-name {
+  font-family: var(--hp-font-title);
+  font-size: var(--hp-card-name-size);
+  line-height: 0.95;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-summary,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-label,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-text,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-button,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-month-chapter {
+  font-family: var(--hp-font-body);
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
+  font-size: var(--hp-card-meta-size);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-summary {
+  font-size: var(--hp-card-summary-size);
+  line-height: 1.45;
+  font-weight: 600;
+  margin-bottom: var(--hp-block-space);
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-label {
+  display: inline-block;
+  font-size: var(--hp-card-official-label-size);
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-text {
+  font-size: var(--hp-card-official-text-size);
+  line-height: 1.5;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--hp-text-soft, #5e6b78);
+}
+
+/* CTA */
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-button,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-cta a,
+body.wp-theme-divergentes .dhp-special .hp-shell a.hp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--hp-card-button-size);
+  line-height: 1;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* =========================================================
+   CARD TYPO SCALE · TABLET
+   ========================================================= */
+@media (max-width: 1199px) and (min-width: 861px) {
+  body.wp-theme-divergentes .dhp-special .hp-shell {
+    --hp-card-chip-size: 0.78rem;
+    --hp-card-name-size: clamp(1.42rem, 1.05rem + 1.1vw, 1.82rem);
+    --hp-card-meta-size: 0.90rem;
+    --hp-card-summary-size: 1rem;
+    --hp-card-official-label-size: 0.74rem;
+    --hp-card-official-text-size: 0.79rem;
+    --hp-card-button-size: 0.92rem;
+  }
+}
+
+/* =========================================================
+   CARD TYPO SCALE · MOBILE LARGE
+   481px → 860px
+   ========================================================= */
+@media (max-width: 860px) and (min-width: 481px) {
+  body.wp-theme-divergentes .dhp-special .hp-shell {
+    --hp-card-chip-size: 0.64rem;
+    --hp-card-name-size: 2.06rem;
+    --hp-card-meta-size: 0.74rem;
+    --hp-card-summary-size: 0.90rem;
+    --hp-card-official-label-size: 0.66rem;
+    --hp-card-official-text-size: 0.66rem;
+    --hp-card-button-size: 0.84rem;
+  }
+}
+
+/* =========================================================
+   CARD TYPO SCALE · MOBILE SMALL
+   480px ↓
+   ========================================================= */
+@media (max-width: 480px) {
+  body.wp-theme-divergentes .dhp-special .hp-shell {
+    --hp-card-chip-size: 0.60rem;
+    --hp-card-name-size: 2.2rem;
+    --hp-card-meta-size: 0.70rem;
+    --hp-card-summary-size: 0.86rem;
+    --hp-card-official-label-size: 0.62rem;
+    --hp-card-official-text-size: 0.62rem;
+    --hp-card-button-size: 0.90rem;
+  }
+}
+
+/* =========================================================
+   MOBILE TYPO OVERRIDES · CIERRE CONTRA body p DEL HOST
+   ========================================================= */
+@media (max-width: 860px) {
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
+    font-size: 0.74rem !important;
+    line-height: 1.25 !important;
+  }
+
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-summary {
+    font-size: 0.90rem !important;
+    line-height: 1.38 !important;
+    font-weight: 600 !important;
+  }
+
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-text {
+    font-size: 0.66rem;
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 480px) {
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
+    font-size: 0.88rem !important;
+    line-height: 1.22 !important;
+    text-align: center;
+  }
+
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-summary {
+    font-size: 0.86rem !important;
+    line-height: 1.34 !important;
+    font-weight: 500 !important;
+    text-align: center;
+  }
+
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-label {
+    text-align: center;
+  }
+
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official-text {
+    font-size: 0.83rem !important;
+    line-height: 1.40 !important;
+  }
+
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-name {
+    text-align: center !important;
+  }
+
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-chip {
+    text-align: center;
+  }
+
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-chip {
+    display: inline;
+    background: #111111;
+    color: #ffffff;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+}
+
+/* Rail */
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-month-title {
+  margin: 0;
+  font-family: var(--hp-font-title);
+  font-size: clamp(2.1rem, 2vw, 2.1rem);
+  line-height: 0.95;
+  color: var(--hp-accent, #df2020);
+  text-transform: none;
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-month-chapter {
+  margin: 0.2rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.1;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--hp-text, #181818);
+}
+
+/* Base rhythm reinforcement (if needed) */
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 480px) {
+  body.wp-theme-divergentes .dhp-special .hp-shell .hp-meta {
+    margin-bottom: 0.85rem;
+  }
+}
+
+/* Margin normalization */
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-text>*:first-child,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official>*:first-child {
+  margin-top: 0;
+}
+
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-text>*:last-child,
+body.wp-theme-divergentes .dhp-special .hp-shell .hp-event-official>*:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   HOST COMPAT — DIVERGENTES.COM
+   Neutralización de estilos globales del tema sobre el especial
+   ========================================================= */
+
+/* 1. Base tipográfica del especial */
+.dhp-special .hp-shell {
+  font-family: var(--hp-font-body);
+  color: var(--hp-color-text);
+}
+
+/* 2. Reset controlado de textos para evitar contaminación del tema */
+.dhp-special .hp-shell p,
+.dhp-special .hp-shell li,
+.dhp-special .hp-shell blockquote {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  font-family: inherit;
+}
+
+/* 3. Títulos del especial conservan su propia familia */
+.dhp-special .hp-shell .hp-title,
+.dhp-special .hp-shell .hp-hero__title,
+.dhp-special .hp-shell .hp-month-title,
+.dhp-special .hp-shell .hp-card-title {
+  font-family: var(--hp-font-display);
+}
+
+/* 4. Subtítulo del hero: recuperación puntual frente al body p del host */
+.dhp-special .hp-shell .hp-hero__subtitle {
+  font-size: clamp(1.3rem, 2.1vw, 2rem) !important;
+  line-height: 1.45 !important;
+  font-weight: 500;
+  letter-spacing: normal;
+  max-width: 34ch;
+}
+
+/* 5. Intro del hero: evita que herede tamaño global incorrecto */
+.dhp-special .hp-shell .hp-hero-intro {
+  font-size: 0.91rem !important;
+  line-height: 1.3;
+  text-align: left;
+  padding-left: 6%;
+}
+
+/* 6. Lede editorial: define su escala propia */
+.dhp-special .hp-shell .hp-intro__lede {
+  color: #111 !important;
+  font-size: clamp(1.05rem, 1.2vw, 1.3rem) !important;
+  line-height: 1.82 !important;
+  letter-spacing: normal !important;
+  font-weight: 400 !important;
+}
+
+@media (max-width: 782px) {
+  .dhp-special .hp-shell .hp-intro__lede {
+    font-size: clamp(1rem, 4.7vw, 1.22rem) !important;
+    line-height: 1.72 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .dhp-special .hp-shell .hp-intro__lede {
+    font-size: clamp(0.98rem, 3.2vw, 1.12rem) !important;
+    line-height: 1.68 !important;
+    letter-spacing: -0.8px !important;
+  }
+}
