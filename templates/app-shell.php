@@ -64,6 +64,35 @@ $theme = dhp_array_get_string($config, 'theme', 'editorial');
                         <img class="hp-signoff__logo hp-hero-signoff__logo"
                             src="<?php echo esc_url(dhp_asset_image_url('por-divergentes.png')); ?>"
                             alt="Por Divergentes" decoding="async" loading="lazy" />
+
+                        <div class="hp-share" aria-label="Compartir este especial">
+                            <a class="hp-share__btn hp-share__btn--fb" href="#" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Facebook">
+                                <img
+                                    src="<?php echo esc_url(dhp_asset_image_url('facebook.webp')); ?>"
+                                    alt="Facebook"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </a>
+
+                            <a class="hp-share__btn hp-share__btn--wa" href="#" target="_blank" rel="noopener noreferrer" aria-label="Compartir en WhatsApp">
+                                <img
+                                    src="<?php echo esc_url(dhp_asset_image_url('whatsapp.webp')); ?>"
+                                    alt="WhatsApp"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </a>
+
+                            <a class="hp-share__btn hp-share__btn--x" href="#" target="_blank" rel="noopener noreferrer" aria-label="Compartir en X">
+                                <img
+                                    src="<?php echo esc_url(dhp_asset_image_url('x.webp')); ?>"
+                                    alt="X"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1674,6 +1674,41 @@
   }
 }
 
+/* ==========================================================================
+   SHARE BUTTONS
+   ========================================================================== */
+.hp-share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.hp-share__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform var(--hp-dur-1) var(--hp-ease), opacity var(--hp-dur-1) var(--hp-ease);
+}
+
+.hp-share__btn:hover,
+.hp-share__btn:focus-visible {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.hp-share__btn img {
+  display: block;
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
 /* =========================================================
    DESKTOP ONLY — STICKY MONTH RAIL
    Mantiene visible la columna de fechas en desktop

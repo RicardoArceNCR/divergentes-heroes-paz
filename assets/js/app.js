@@ -882,6 +882,32 @@ const isActive = Math.abs(center - triggerY) <= tolerance;
     wrap.hidden = true;
   }
 
+  function setupShareButtons(root) {
+    if (!root) return;
+
+    const shell = root.closest('.hp-shell');
+    if (!shell) return;
+
+    const currentUrl = encodeURIComponent(window.location.href);
+    const currentTitle = encodeURIComponent(document.title);
+
+    const fb = shell.querySelector('.hp-share__btn--fb');
+    const wa = shell.querySelector('.hp-share__btn--wa');
+    const x = shell.querySelector('.hp-share__btn--x');
+
+    if (fb) {
+      fb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + currentUrl;
+    }
+
+    if (wa) {
+      wa.href = 'https://api.whatsapp.com/send?text=' + currentTitle + '%20' + currentUrl;
+    }
+
+    if (x) {
+      x.href = 'https://twitter.com/intent/tweet?text=' + currentTitle + '&url=' + currentUrl;
+    }
+  }
+
   async function boot() {
     const roots = Array.from(document.querySelectorAll('.hp-root[data-config]'));
     for (const root of roots) {
@@ -910,6 +936,7 @@ const isActive = Math.abs(center - triggerY) <= tolerance;
 
         const renderState = renderApp(root, data, config);
         hideFallback(root);
+        setupShareButtons(root);
 
         const ctx = getInstanceCtx(root);
         if (!ctx) continue;
